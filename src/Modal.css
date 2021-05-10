@@ -1,0 +1,79 @@
+.Modal_Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(0 0 0 / 75%);
+    backdrop-filter: contrast(40%) blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.Modal {
+    height: calc(100% - 35px);
+    width: calc(100% - 35px);
+    overflow: hidden;
+    text-align: center;
+}
+
+.Modal .modal-close-btn {
+    margin-bottom: 25px;
+}
+
+.Modal .video-list {
+    height: calc(100% - 80px);
+    width: 100%;
+    padding: 20px;
+    background: #555;
+    display: block;
+    overflow: auto;
+}
+
+.Modal .video-list .box {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    width: 100%;
+    height: calc((100vw - 40px) / (16 / 9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: .15s;
+}
+
+.Modal .video-list .box:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.Modal .video-list .box img {
+    width: 100%;
+    height: 100%;
+}
+
+.Modal .video-list .box div.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    opacity: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: contrast(40%) blur(3px);
+    transition: .25s;
+}
+
+.Modal .video-list .box:hover div.title, .Modal .video-list .box.keep_show div.title {
+    display: flex;
+    opacity: 1;
+}
+
+.Modal .video-list .box.keep_show {
+    box-shadow: 0 0 3px 1px rgb(0 182 61);
+}
