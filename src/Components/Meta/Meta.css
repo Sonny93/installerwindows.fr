@@ -1,0 +1,15 @@
+.meta {
+    max-width: 100%;
+    margin-top: 40px;
+}
+
+.meta .date {
+    color: #999;
+    font-style: italic;
+}
+
+.meta .description {
+    white-space: pre-wrap;
+    margin: 25px 0;
+    line-height: 1.75em;
+}
