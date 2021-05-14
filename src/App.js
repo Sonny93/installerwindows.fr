@@ -1,58 +1,61 @@
 import React from 'react';
-import { FaArrowLeft, FaArrowRight, FaDiscord } from 'react-icons/fa';
-import MediaQuery from 'react-responsive';
 import ReactModal from 'react-modal';
-import Carousel from 'react-elastic-carousel';
 
 import { v4 as uuidv4 } from 'uuid';
+
+import Meta from './Components/Meta/index.jsx';
+import NeedHelp from './Components/NeedHelp/index.jsx';
+import VideoPlayer from './Components/VideoPlayer/index.jsx';
+import VideoList from './Components/VideoList/index.jsx';
+import Loader from './Components/Loader/index.jsx';
 
 import './App.css';
 import './Modal.css';
 import './Carousel.css';
+import './Components/Loader/Loader.css';
 
 ReactModal.setAppElement('#root');
-
-const settings = {
-	dots: true,
-	infinite: true,
-	speed: 500,
-	slidesToShow: 1,
-	slidesToScroll: 1
-};
 
 export default class App extends React.Component {
 	constructor() {
 		super();
-
-		const temp = [
-			'1RFmGfmmUls',
-			'0L2XpBGKUa4',
-			'aScZ5G3AMd4',
-			'WWOQYY0HCmE',
-			'3OjsyDnyN2U'
-		]
-		const videos = [];
-		for (let i = 0; i < 60; i++) {
-			videos.push({
-				id: new uuidv4(),
-				video_id: temp[Math.floor(Math.random() * temp.length)],
-				title: `Test title #${i + 1}`,
-				description: `Test description #${i + 1}`,
-			});
-		}
-
 		this.state = {
-			videos,
-			currentVideo: videos[0],
+			videos: [],
+			currentVideo: null,
 			showModal: false
 		}
 	}
 
-	componentDidMount() {
+	componentDidMount = async () => {
+		try {
+			const response = await fetch('https://api.emmawatson.fr/api/video');
+			if (response.status !== 200)
+				throw new Error(`HTTP Error: ${response.status}`);
 
+			const data = await response.json();
+			if (!data?.videos)
+				throw new Error(`There is no videos`);
+
+			const { videos } = data;
+			if (!Array.isArray(videos))
+				throw new Error(`Array expected, but receive ${typeof (videos)}`);
+
+			for (let i = 0; i < videos.length; i++) {
+				const video = videos[i];
+				video.id = new uuidv4();
+				video.title = htmlDecode(video.title);
+				videos[i] = video;
+			}
+			this.setState({
+				videos: data.videos,
+				currentVideo: data.videos[0]
+			});
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
-	showVideo(video_id) {
+	showVideo = (video_id) => {
 		const { videos } = this.state;
 		const video_index = videos.findIndex(v => v.id === video_id);
 
@@ -62,7 +65,7 @@ export default class App extends React.Component {
 		this.setState({ currentVideo: videos[video_index] });
 	}
 
-	showVideoByIndex(video_index) {
+	showVideoByIndex = (video_index) => {
 		const { videos } = this.state;
 		if (videos[video_index] === null)
 			return alert('Une erreur est survenue (impossible de trouver la vidéo demandée)');
@@ -100,138 +103,57 @@ export default class App extends React.Component {
 		return index;
 	}
 
+	showModal = (s = false) => {
+		this.setState({ showModal: !!s });
+	}
+
+	setCarouselDesk = (cd = null) => {
+		if (cd !== null)
+			this.carouselDesk = cd;
+	}
+
 	render() {
-		const { videos, currentVideo, showModal } = this.state;
-		const currentVideoIndex = this.getCurrentVideoIndex(currentVideo);
+		const { videos, currentVideo } = this.state;
 		const queries = {
 			minWidth: 1440,
 			maxWidth: 1439
 		}
-		const itemsToShow = 5;
 
+		if (videos.length < 1) {
+			return <Loader show={true} text={"Chargement des vidéos en cours"} />;
+		}
+
+		const currentVideoIndex = this.getCurrentVideoIndex(currentVideo);
 		return (<>
 			<div className="App">
-				<MediaQuery minWidth={queries.minWidth}>
-					<div className="video-list">
-						<Carousel 
-							itemsToShow={itemsToShow} 
-							itemsToScroll={itemsToShow} 
-							ref={(ref) => this.carouselDesk = ref}
-						>
-							{videos.map((video, key) => (
-								<div
-									className={`box ${currentVideo.id === video.id ? 'keep_show' : null}`}
-									onClick={() => this.showVideo(video.id)}
-									key={key}
-								>
-									<img
-										src={`https://i.ytimg.com/vi_webp/${video.video_id}/maxresdefault.webp`}
-										alt="Miniature YTB"
-									/>
-									<div className='title'>{video.title}</div>
-								</div>
-							))}
-						</Carousel>
-					</div>
-				</MediaQuery>
-				<MediaQuery maxWidth={queries.maxWidth}>
-					<div className="center-el">
-						<button className="custom" onClick={() => this.setState({ showModal: true })}>
-							Afficher les vidéos • {currentVideoIndex + 1} / {videos.length}
-						</button>
-					</div>
-					<ReactModal
-						isOpen={showModal}
-						contentLabel="Vidéos de Piwi_"
-						className="Modal"
-						overlayClassName="Modal_Overlay"
-					>
-						<button
-							onClick={() => this.setState({ showModal: false })}
-							className="modal-close-btn custom">
-							Fermer le modal
-						</button>
-						<div className="video-list">
-							{videos.map((video) => (
-								<div
-									className={`box ${currentVideo.id === video.id ? 'keep_show' : null}`}
-									onClick={() => {
-										this.showVideo(video.id);
-										this.setState({ showModal: false });
-									}}
-								>
-									<img
-										src={`https://i.ytimg.com/vi_webp/${video.video_id}/maxresdefault.webp`}
-										alt="Miniature YTB"
-									/>
-									<div className='title'>{video.title}</div>
-								</div>
-							))}
-						</div>
-					</ReactModal>
-				</MediaQuery>
-				<div className="video">
-					<MediaQuery minWidth={queries.minWidth}>
-						<div className="controls">
-							<FaArrowLeft
-								className={currentVideoIndex < 1 ? 'disabled' : null}
-								onClick={() => {
-									this.previousVideo();
-									let index = currentVideoIndex;
-									console.log(currentVideoIndex, index);
-									if (index !== 0 && index % 5 === 0) {
-										this.carouselDesk.slidePrev();
-									}
-								}}
-							/>
-						</div>
-					</MediaQuery>
-					<div className="video-content">
-						<iframe
-							width="853"
-							height="480"
-							src={`https://www.youtube.com/embed/${currentVideo.video_id}`}
-							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowFullScreen
-							title="Embedded youtube"
-						/>
-					</div>
-					<MediaQuery minWidth={queries.minWidth}>
-						<div className="controls">
-							<FaArrowRight
-								className={currentVideoIndex >= videos.length - 1 ? 'disabled' : null}
-								onClick={() => {
-									this.nextVideo();
-									let index = currentVideoIndex + 1;
-									if (index !== videos.length && index % 5 === 0) {
-										this.carouselDesk.slideNext();
-									}
-								}}
-							/>
-						</div>
-					</MediaQuery>
-				</div>
-				<div className="meta">
-					<h1 className="title">{currentVideo.title}</h1>
-					<hr />
-					<div className="description">
-						{currentVideo.description}
-					</div>
-				</div>
-				<a
-					href="https://discord.gg/informatique"
-					className="ineedhelp"
-					target="_blank"
-				>
-					<div className="text">
-						Besoin d'aide ?
-					</div>
-					<div className="icon">
-						<FaDiscord />
-					</div>
-				</a>
+				<VideoList
+					queries={queries}
+					showModal={this.showModal}
+					isModalShow={this.state.showModal}
+					videos={videos}
+					currentVideo={currentVideo}
+					currentVideoIndex={currentVideoIndex}
+					setCarouselDesk={this.setCarouselDesk}
+					showVideo={this.showVideo}
+				/>
+				<VideoPlayer
+					queries={queries}
+					videos={videos}
+					currentVideo={currentVideo}
+					currentVideoIndex={currentVideoIndex}
+					previousVideo={this.previousVideo}
+					nextVideo={this.nextVideo}
+					carouselDesk={this.carouselDesk}
+				/>
+				<Meta video={currentVideo} />
+				<NeedHelp />
 			</div>
 		</>);
 	}
+}
+
+function htmlDecode(input) {
+	let e = document.createElement('textarea');
+	e.innerHTML = input;
+	return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
