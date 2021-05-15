@@ -3,6 +3,8 @@ import MediaQuery from 'react-responsive';
 import ReactModal from 'react-modal';
 import Carousel from 'react-elastic-carousel';
 
+import Video from './Video';
+
 export default function VideoList({ 
     queries,
     videos, 
@@ -17,23 +19,9 @@ export default function VideoList({
     return <>
         <MediaQuery minWidth={queries.minWidth}>
             <div className="video-list">
-                <Carousel
-                    itemsToShow={itemsToShow}
-                    itemsToScroll={itemsToShow}
-                    ref={(ref) => setCarouselDesk(ref)}
-                >
+                <Carousel itemsToShow={itemsToShow} itemsToScroll={itemsToShow} ref={(ref) => setCarouselDesk(ref)}>
                     {videos.map((video, key) => (
-                        <div
-                            className={`box ${currentVideo.id === video.id ? 'keep_show' : null}`}
-                            onClick={() => showVideo(video.id)}
-                            key={key}
-                        >
-                            <img
-                                src={`https://i.ytimg.com/vi/${video.video_id}/hqdefault.jpg`}
-                                alt="Miniature YTB"
-                            />
-                            <div className='title'>{video.title}</div>
-                        </div>
+                        <Video currentVideo={currentVideo} video={video} showVideo={showVideo} key={key} />    
                     ))}
                 </Carousel>
             </div>
@@ -50,26 +38,12 @@ export default function VideoList({
                 className="Modal"
                 overlayClassName="Modal_Overlay"
             >
-                <button
-                    onClick={() => showModal(false)}
-                    className="modal-close-btn custom">
+                <button onClick={() => showModal(false)} className="modal-close-btn custom">
                     Fermer le modal
                 </button>
                 <div className="video-list">
-                    {videos.map((video) => (
-                        <div
-                            className={`box ${currentVideo.id === video.id ? 'keep_show' : null}`}
-                            onClick={() => {
-                                showVideo(video.id);
-                                showModal(false);
-                            }}
-                        >
-                            <img
-                                src={`https://i.ytimg.com/vi_webp/${video.video_id}/maxresdefault.webp`}
-                                alt="Miniature YTB"
-                            />
-                            <div className='title'>{video.title}</div>
-                        </div>
+                    {videos.map((video, key) => (
+                        <Video currentVideo={currentVideo} video={video} showVideo={showVideo} key={key} />
                     ))}
                 </div>
             </ReactModal>
