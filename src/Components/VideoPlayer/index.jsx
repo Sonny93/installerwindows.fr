@@ -40,10 +40,7 @@ export default function VideoPlayer({
                     opts={options} 
                     onReady={onReady} 
                     onPlay={onPlay} 
-                    onEnd={() => {
-                        funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos);
-                        clearInterval(interval);
-                    }}
+                    onEnd={() => funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos)}
                     onPause={() => clearInterval(interval)}
                 />
             </div>
@@ -77,11 +74,13 @@ function funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos) {
 
 function onReady(event) {
     const player = event.target;
+    clearInterval(interval);
     console.log('La vidéo dure', player.getDuration() / 60, 'minutes ->', player.getDuration());
 }
 
 function onPlay(event) {
     const player = event.target;
+    clearInterval(interval);
     interval = setInterval(() => {
         console.log('Current time:', player.getCurrentTime());
     }, 1000);
