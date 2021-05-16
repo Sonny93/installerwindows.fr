@@ -1,17 +1,10 @@
 import React from 'react';
 
 export default function Description({ content = null }) {
-    const regexLink = /(https?:\/\/[^\s]+)/g;
-    if (content) {
-        return <>
-            <div className="description" dangerouslySetInnerHTML={{ __html: urlify(content) }}>
-            </div>
-        </>;
-    } else {
-        return <>
-            Description indisponible
-        </>;
-    }
+    if (content)
+        return <div className="description" dangerouslySetInnerHTML={{ __html: urlify(content) }} />;
+    else
+        return <div className="description">Description indisponible</div>;
 }
 
 const urlify = (text) => text.replace(/(https?:\/\/[^\s]+)/g, (url) => `<a href="${url}" target="_blank">${url}</a>`);

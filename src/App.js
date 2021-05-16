@@ -44,6 +44,19 @@ export default class App extends React.Component {
 				const video = videos[i];
 				video.id = new uuidv4();
 				video.title = htmlDecode(video.title);
+				// const videoStorage = localStorage.getItem(`video-${video.video_id}`);
+				// if (videoStorage) {
+				// 	try {
+				// 		const obj = JSON.parse(videoStorage);
+				// 		if (!obj) return;
+				// 		if (obj['time_view']) {
+				// 			const time = obj['time_view'];
+				// 			
+				// 		}
+				// 	} catch(e) {
+				// 		console.error(e);
+				// 	}
+				// }
 				videos[i] = video;
 			}
 			this.setState({
