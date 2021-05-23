@@ -75,3 +75,8 @@ typings/
 # FuseBox cache
 .fusebox/
 node_modules
+
+# Other
+build/
+build/*
+build/

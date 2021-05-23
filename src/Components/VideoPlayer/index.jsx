@@ -3,6 +3,8 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import MediaQuery from 'react-responsive';
 import YouTube from 'react-youtube';
 
+import './video-player.css';
+
 const options = {
     width: 853,
     height: 480,

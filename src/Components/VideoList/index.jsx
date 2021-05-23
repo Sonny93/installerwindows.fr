@@ -3,6 +3,7 @@ import MediaQuery from 'react-responsive';
 import ReactModal from 'react-modal';
 import Carousel from 'react-elastic-carousel';
 
+import './video-list.css';
 import Video from './Video';
 
 export default function VideoList({ 
@@ -28,8 +29,8 @@ export default function VideoList({
         </MediaQuery>
         <MediaQuery maxWidth={queries.maxWidth}>
             <div className="center-el">
-                <button className="custom" onClick={() => showModal(true)}>
-                    Afficher les vidéos • {currentVideoIndex + 1} / {videos.length}
+                <button className="custom" style={{ width: '853px' }} onClick={() => showModal(true)}>
+                    Afficher les vidéos
                 </button>
             </div>
             <ReactModal
@@ -38,8 +39,8 @@ export default function VideoList({
                 className="Modal"
                 overlayClassName="Modal_Overlay"
             >
-                <button onClick={() => showModal(false)} className="modal-close-btn custom">
-                    Fermer le modal
+                <button onClick={() => showModal(false)} style={{ width: '853px' }} className="modal-close-btn custom">
+                    Fermer
                 </button>
                 <div className="video-list">
                     {videos.map((video, key) => (

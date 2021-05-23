@@ -29,16 +29,12 @@
     color: #999;
 }
 
-.rec.rec-dot {
+.rec.rec-dot, .rec.rec-dot:hover {
     background: transparent;
-    box-shadow: 0 0 1px 2px rgb(0 0 0 / 50%);
-}
-
-.rec.rec-dot:hover {
-    background: transparent;
-    box-shadow: 0 0 1px 2px rgb(0 0 0 / 50%);
+    box-shadow: 0 0 1px 3px #3F88C5;
 }
 
 .rec.rec-dot.rec.rec-dot_active {
     box-shadow: 0 0 1px 3px #3F88C5;
+    background: #3F88C5;
 }

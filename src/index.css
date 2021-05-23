@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
 * {
 	outline: none;
 	box-sizing: border-box;
@@ -8,7 +10,7 @@ html, body {
 	width: 100%;
 	color: #fff;
 	background-color: #222831;
-	font-family: 'Poppins', sans-serif;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 0;
 	padding: 0;
 	margin: 0;
@@ -32,14 +34,19 @@ hr {
 }
 
 a {
+	text-decoration: none;
+	border: none;
+	word-wrap: break-word;
+}
+
+a.link-anim {
 	color: #3F88C5;
 	background: transparent;
-	text-decoration: none;
 	position: relative;
 	padding-bottom: 4px;
 }
 
-a:before, a:after {
+a.link-anim:before, a.link-anim:after {
 	content: "";
 	position: absolute;
 	bottom: 2px;
@@ -49,27 +56,27 @@ a:before, a:after {
 	background-color: #3F88C5;
 }
 
-a:before {
+a.link-anim:before {
 	opacity: 0;
 	transform: translateY(-8px);
 	transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
 }
 
-a:after {
+a.link-anim:after {
 	opacity: 0;
 	transform: translateY(4px);
 	transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
 }
 
-a:hover:before, a:hover:after, a:focus:before, a:focus:after {
+a.link-anim:hover:before, a.link-anim:hover:after, a.link-anim:focus:before, a.link-anim:focus:after {
 	opacity: 1;
 	transform: translateY(0);
 }
 
-a:hover:before, a:focus:before {
+a.link-anim:hover:before, a.link-anim:focus:before {
 	transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
 }
 
-a:hover:after, a:focus:after {
+a.link-anim:hover:after, a.link-anim:focus:after {
 	transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
 }
