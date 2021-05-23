@@ -128,8 +128,8 @@ export default class App extends React.Component {
 	render() {
 		const { videos, currentVideo } = this.state;
 		const queries = {
-			minWidth: 1440,
-			maxWidth: 1439
+			minWidth: 1070,
+			maxWidth: 1069
 		}
 		
 		if (videos.length < 1) {

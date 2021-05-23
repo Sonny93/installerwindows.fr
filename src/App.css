@@ -1,5 +1,6 @@
 .App {
     width: 1430px;
+    transition: .15s;
 }
 
 .App .center-el {
@@ -73,25 +74,46 @@
   stroke-dashoffset: -480;
 }
 
+@media screen and (max-width: 2560px) {
+    .App {
+        width: 1920px;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    .App {
+        width: 1690px;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .App {
+        width: 1430px;
+    }
+}
+
 @media screen and (max-width: 1440px) {
+    .App {
+        width: 1150px;
+    }
+}
+
+@media screen and (max-width: 1175px) {
     .App {
         width: 100%;
         padding: 10px;
     }
     .video .video-content iframe {
-        max-width: 100%;
         max-height: calc((100vw - 40px) / (16 / 9));
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1070px) {
+    .video .video-content iframe {
+        max-width: 100%;
+    }
+    
     .custom {
         width: 100% !important;
-    }
-    .modal-close-btn .custom {
-        margin: 15px 0 0;
-    }
-    .Modal .modal-close-btn {
-        margin-bottom: 0 !important;
     }
 }

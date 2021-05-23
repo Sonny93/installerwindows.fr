@@ -14,7 +14,7 @@
     line-height: 1.75em;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1070px) {
     .meta {
         margin-bottom: 80px;
     }
