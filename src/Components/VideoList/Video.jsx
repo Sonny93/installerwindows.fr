@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Video({ video, currentVideo, showVideo, key, onClick }) {
     const { video_id, title, id } = video;
-    const miniature_url = `https://i.ytimg.com/vi/${video_id}/hqdefault.jpg`;
+    const miniature_url = `https://i.ytimg.com/vi/${video_id}/maxresdefault.jpg`;
     const className = `box ${currentVideo.id === id ? 'keep_show' : null}`;
 
     return <div className={className} onClick={() => {
