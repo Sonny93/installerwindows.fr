@@ -14,9 +14,10 @@ export default function VideoList({
     showModal,
     isModalShow = false,
     setCarouselDesk,
-    showVideo
+    showVideo,
+    itemsToShow = 0,
+    setItemsToShow
 }) {
-    let [ itemsToShow, setItemsToShow] = useState(0);
     useEffect(() => {
         updateItemsToShow(setItemsToShow, itemsToShow);
         window.addEventListener('resize', () => updateItemsToShow(setItemsToShow, itemsToShow));

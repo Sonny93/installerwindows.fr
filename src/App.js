@@ -22,7 +22,8 @@ export default class App extends React.Component {
 		this.state = {
 			videos: [],
 			currentVideo: null,
-			showModal: false
+			showModal: false,
+			itemsToShow: 0
 		}
 	}
 
@@ -125,6 +126,8 @@ export default class App extends React.Component {
 			this.carouselDesk = cd;
 	}
 
+	setItemsToShow = (its) => this.setState({ itemsToShow: its });
+
 	render() {
 		const { videos, currentVideo } = this.state;
 		const queries = {
@@ -155,6 +158,8 @@ export default class App extends React.Component {
 					currentVideoIndex={currentVideoIndex}
 					setCarouselDesk={this.setCarouselDesk}
 					showVideo={this.showVideo}
+					setItemsToShow={this.setItemsToShow}
+					itemsToShow={this.state.itemsToShow}
 				/>
 				<VideoPlayer
 					queries={queries}
@@ -164,6 +169,8 @@ export default class App extends React.Component {
 					previousVideo={this.previousVideo}
 					nextVideo={this.nextVideo}
 					carouselDesk={this.carouselDesk}
+					setItemsToShow={this.setItemsToShow}
+					itemsToShow={this.state.itemsToShow}
 				/>
 				<Meta video={currentVideo} />
 				<NeedHelp />
