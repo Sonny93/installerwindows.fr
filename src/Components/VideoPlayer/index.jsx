@@ -24,7 +24,8 @@ export default function VideoPlayer({
     currentVideoIndex,
     previousVideo,
     nextVideo,
-    carouselDesk
+    carouselDesk,
+    itemsToShow
 }) {
     return <>
         <div className="video">
@@ -32,7 +33,7 @@ export default function VideoPlayer({
                 <div className="controls">
                     <FaArrowLeft
                         className={currentVideoIndex < 1 ? 'disabled' : null}
-                        onClick={() => funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, videos)}
+                        onClick={() => funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, videos, itemsToShow)}
                     />
                 </div>
             </MediaQuery>
@@ -42,7 +43,7 @@ export default function VideoPlayer({
                     opts={options} 
                     onReady={onReady} 
                     onPlay={onPlay} 
-                    onEnd={() => funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos)}
+                    onEnd={() => funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos, itemsToShow)}
                     onPause={() => clearInterval(interval)}
                 />
             </div>
@@ -50,7 +51,7 @@ export default function VideoPlayer({
                 <div className="controls">
                     <FaArrowRight
                         className={currentVideoIndex >= videos.length - 1 ? 'disabled' : null}
-                        onClick={() => funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos)}
+                        onClick={() => funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos, itemsToShow)}
                     />
                 </div>
             </MediaQuery>
@@ -58,18 +59,18 @@ export default function VideoPlayer({
     </>;
 }
 
-function funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, videos) {
+function funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, videos, itemsToShow) {
     previousVideo();
     let index = currentVideoIndex;
-    if (index !== 0 && index % 5 === 0) {
+    if (index !== 0 && index % itemsToShow === 0) {
         carouselDesk.slidePrev();
     }
 }
 
-function funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos) {
+function funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos, itemsToShow) {
     nextVideo();
     let index = currentVideoIndex + 1;
-    if (index !== videos.length && index % 5 === 0) {
+    if (index !== videos.length && index % itemsToShow === 0) {
         carouselDesk.slideNext();
     }
 }
@@ -84,6 +85,6 @@ function onPlay(event) {
     const player = event.target;
     clearInterval(interval);
     interval = setInterval(() => {
-        console.log('Current time:', player.getCurrentTime());
+        // console.log('Current time:', player.getCurrentTime());
     }, 1000);
 }

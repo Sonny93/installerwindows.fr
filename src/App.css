@@ -76,19 +76,19 @@
 
 @media screen and (max-width: 2560px) {
     .App {
-        width: 1920px;
+        width: 1900px;
     }
 }
 
 @media screen and (max-width: 1920px) {
     .App {
-        width: 1690px;
+        width: 1680px;
     }
 }
 
 @media screen and (max-width: 1700px) {
     .App {
-        width: 1430px;
+        width: 1420px;
     }
 }
 
@@ -111,9 +111,5 @@
 @media screen and (max-width: 1070px) {
     .video .video-content iframe {
         max-width: 100%;
-    }
-    
-    .custom {
-        width: 100% !important;
     }
 }
