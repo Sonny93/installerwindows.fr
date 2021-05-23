@@ -50,3 +50,15 @@
     width: 100%;
     height: 100%;
 }
+
+@media screen and (max-width: 1070px) {
+    .custom {
+        width: 100% !important;
+    }
+    .modal-close-btn .custom {
+        margin: 15px 0 0;
+    }
+    .Modal .modal-close-btn {
+        margin-bottom: 0 !important;
+    }
+}

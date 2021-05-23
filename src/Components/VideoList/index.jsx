@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MediaQuery from 'react-responsive';
 import ReactModal from 'react-modal';
 import Carousel from 'react-elastic-carousel';
@@ -16,7 +16,12 @@ export default function VideoList({
     setCarouselDesk,
     showVideo
 }) {
-    const itemsToShow = 5;
+    let [ itemsToShow, setItemsToShow] = useState(0);
+    useEffect(() => {
+        updateItemsToShow(setItemsToShow, itemsToShow);
+        window.addEventListener('resize', () => updateItemsToShow(setItemsToShow, itemsToShow));
+    }, []);
+
     return <>
         <MediaQuery minWidth={queries.minWidth}>
             <div className="video-list">
@@ -44,10 +49,24 @@ export default function VideoList({
                 </button>
                 <div className="video-list">
                     {videos.map((video, key) => (
-                        <Video currentVideo={currentVideo} video={video} showVideo={showVideo} key={key} />
+                        <Video currentVideo={currentVideo} video={video} onClick={() => showModal(false)} showVideo={showVideo} key={key} />
                     ))}
                 </div>
             </ReactModal>
         </MediaQuery>
     </>;    
+}
+
+function updateItemsToShow(setItemsToShow, itemsToShow) {
+    if (window.innerWidth >= 1920) {
+        setItemsToShow(7);
+    } else if (window.innerWidth >= 1700) {
+        setItemsToShow(6);
+    } else if (window.innerWidth >= 1440) {
+        setItemsToShow(5);
+    } else if (window.innerWidth >= 1175) {
+        setItemsToShow(4);
+    } else {
+        setItemsToShow(3);
+    }
 }
