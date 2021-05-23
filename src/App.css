@@ -25,55 +25,6 @@
     border: 1px solid #fff;
 }
 
-.ineedhelp {
-    user-select: none;
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    height: 50px;
-    width: 150px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #3F88C5;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .1s ease-in-out;
-}
-
-.ineedhelp>svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    fill: none;
-    stroke: #fff;
-    stroke-dasharray: 150 480;
-    stroke-dashoffset: 150;
-    transition: 1s ease-in-out;
-}
-
-.ineedhelp>.text {
-    height: fit-content;
-    width: fit-content;
-    display: flex;
-}
-
-.ineedhelp>.icon {
-    height: fit-content;
-    width: fit-content;
-    display: none;
-}
-
-.ineedhelp:hover {
-    transform: scale(1.05);
-    background: #4F95DA;
-}
-
-.ineedhelp:hover svg {
-  stroke-dashoffset: -480;
-}
-
 @media screen and (max-width: 2560px) {
     .App {
         width: 1900px;

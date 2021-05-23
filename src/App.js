@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
 	componentDidMount = async () => {
 		try {
-			const response = await fetch('https://api.emmawatson.fr/api/video');
+			const response = await fetch('https://api.installerwindows.fr/api/video');
 			if (response.status !== 200)
 				throw new Error(`HTTP Error: ${response.status}`);
 
@@ -180,7 +180,7 @@ export default class App extends React.Component {
 }
 
 function htmlDecode(input) {
-	let e = document.createElement('textarea');
+	const e = document.createElement('textarea');
 	e.innerHTML = input;
 	return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }

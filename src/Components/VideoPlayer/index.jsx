@@ -9,9 +9,11 @@ const options = {
     width: 853,
     height: 480,
     playerVars: {
-        autoplay: 1,
+        autoplay: 0,
         modestbranding: 0,
-        showinfo: 0
+        showinfo: 1,
+        rel: 0,
+        playsinline: 1
     }
 }
 
@@ -41,9 +43,8 @@ export default function VideoPlayer({
                 <YouTube 
                     videoId={currentVideo.video_id} 
                     opts={options} 
-                    onReady={onReady} 
-                    onPlay={onPlay} 
-                    onEnd={() => funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos, itemsToShow)}
+                    onReady={() => clearInterval(interval)} 
+                    onPlay={onPlay}
                     onPause={() => clearInterval(interval)}
                 />
             </div>
@@ -61,7 +62,7 @@ export default function VideoPlayer({
 
 function funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, videos, itemsToShow) {
     previousVideo();
-    let index = currentVideoIndex;
+    const index = currentVideoIndex;
     if (index !== 0 && index % itemsToShow === 0) {
         carouselDesk.slidePrev();
     }
@@ -69,22 +70,14 @@ function funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, video
 
 function funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos, itemsToShow) {
     nextVideo();
-    let index = currentVideoIndex + 1;
+    const index = currentVideoIndex + 1;
     if (index !== videos.length && index % itemsToShow === 0) {
         carouselDesk.slideNext();
     }
 }
 
-function onReady(event) {
-    const player = event.target;
-    clearInterval(interval);
-    console.log('La vidéo dure', player.getDuration() / 60, 'minutes ->', player.getDuration());
-}
-
 function onPlay(event) {
     const player = event.target;
     clearInterval(interval);
-    interval = setInterval(() => {
-        // console.log('Current time:', player.getCurrentTime());
-    }, 1000);
+    // interval = setInterval(() => console.log('Current time:', player.getCurrentTime()), 1000);
 }
