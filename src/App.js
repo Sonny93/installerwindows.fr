@@ -15,6 +15,7 @@ import './Carousel.css';
 import './Components/Loader/Loader.css';
 
 ReactModal.setAppElement('#root');
+React.lazy();
 
 export default class App extends React.Component {
 	constructor() {
@@ -139,7 +140,7 @@ export default class App extends React.Component {
 			return <>
 				<Loader show={true}>
 					<p>Chargement des vidéos en cours</p>
-					<a className="custom" href="https://discord.gg/informatique" target="_blank">
+					<a className="custom" href="https://discord.gg/informatique" rel="noreferrer" target="_blank">
 						https://discord.gg/informatique
 					</a>
 				</Loader>
