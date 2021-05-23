@@ -1,10 +1,6 @@
 import React from 'react';
+import urlify from '../../Utils/Urlify.js';
 
-export default function Description({ content = null }) {
-    if (content)
-        return <div className="description" dangerouslySetInnerHTML={{ __html: urlify(content) }} />;
-    else
-        return <div className="description">Description indisponible</div>;
+export default function Description({ content = 'Discord : https://discord.gg/informatique' }) {
+    return <div className="description" dangerouslySetInnerHTML={{ __html: urlify(content) }} />;
 }
-
-const urlify = (text) => text.replace(/(https?:\/\/[^\s]+)/g, (url) => `<a href="${url}" target="_blank">${url}</a>`);

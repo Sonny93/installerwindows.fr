@@ -131,9 +131,16 @@ export default class App extends React.Component {
 			minWidth: 1440,
 			maxWidth: 1439
 		}
-
+		
 		if (videos.length < 1) {
-			return <Loader show={true} text={"Chargement des vidéos en cours"} />;
+			return <>
+				<Loader show={true}>
+					<p>Chargement des vidéos en cours</p>
+					<a className="custom" href="https://discord.gg/informatique" target="_blank">
+						https://discord.gg/informatique
+					</a>
+				</Loader>
+			</>;
 		}
 
 		const currentVideoIndex = this.getCurrentVideoIndex(currentVideo);

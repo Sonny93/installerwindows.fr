@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Loader({ show = false, text = "Chargement en cours" }) {
+export default function Loader({ show = false, children }) {
     if (!show) return;
     
     return <div className="loader">
@@ -410,7 +410,7 @@ export default function Loader({ show = false, text = "Chargement en cours" }) {
             </svg>
         </div>
         <div className="text">
-            {text}
+            {children ? children : 'Chargement en cours'}
         </div>
     </div>;
 }

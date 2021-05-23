@@ -1,0 +1,55 @@
+.video {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.video .controls {
+    user-select: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video .controls>svg {
+    cursor: pointer;
+    padding: 15px;
+    font-size: 4em;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    transition: .15s;
+}
+
+.video .controls>svg.disabled {
+    cursor: not-allowed;
+    color: #999;
+    border: 2px solid #999;
+}
+
+.video .controls>svg:not(.disabled):hover {
+    transform: scale(1.1);
+    background: #fff;
+    color: #222831;
+    border: 2px solid transparent;
+}
+
+.video .video-content {
+    display: flex;
+    flex: 1;
+}
+
+.video .video-content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.video .video-content iframe {
+    flex: 1;
+}
