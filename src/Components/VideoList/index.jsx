@@ -59,13 +59,13 @@ export default function VideoList({
 }
 
 function updateItemsToShow(setItemsToShow, itemsToShow) {
-    if (window.innerWidth >= 1920) {
+    if (window.innerWidth > 1920) {
         setItemsToShow(7);
-    } else if (window.innerWidth >= 1700) {
+    } else if (window.innerWidth > 1700) {
         setItemsToShow(6);
-    } else if (window.innerWidth >= 1440) {
+    } else if (window.innerWidth > 1440) {
         setItemsToShow(5);
-    } else if (window.innerWidth >= 1175) {
+    } else if (window.innerWidth > 1175) {
         setItemsToShow(4);
     } else {
         setItemsToShow(3);

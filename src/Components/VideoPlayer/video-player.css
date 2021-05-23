@@ -52,4 +52,33 @@
 
 .video .video-content iframe {
     flex: 1;
+    transition: .15s;
+}
+
+@media screen and (max-width: 2560px) {
+    .video .video-content iframe {
+        width: 1600px;
+        height: 900px;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    .video .video-content iframe {
+        width: 1280px;
+        height: 720px;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .video .video-content iframe {
+        width: 960px;
+        height: 540px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .video .video-content iframe {
+        width: 853px;
+        height: 480px;
+    }
 }
