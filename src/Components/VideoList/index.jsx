@@ -11,6 +11,7 @@ export default function VideoList({
     videos, 
     currentVideo,
     currentVideoIndex,
+    setCurrentVideo,
     showModal,
     isModalShow = false,
     setCarouselDesk,
@@ -28,7 +29,14 @@ export default function VideoList({
             <div className="video-list">
                 <Carousel itemsToShow={itemsToShow} itemsToScroll={itemsToShow} ref={(ref) => setCarouselDesk(ref)}>
                     {videos.map((video, key) => (
-                        <Video currentVideo={currentVideo} video={video} showVideo={showVideo} key={key} />    
+                        <Video 
+                            currentVideo={currentVideo} 
+                            setCurrentVideo={setCurrentVideo}
+                            video={video} 
+                            videos={videos} 
+                            showVideo={showVideo} 
+                            key={key} 
+                        />    
                     ))}
                 </Carousel>
             </div>
@@ -50,7 +58,15 @@ export default function VideoList({
                 </button>
                 <div className="video-list">
                     {videos.map((video, key) => (
-                        <Video currentVideo={currentVideo} video={video} onClick={() => showModal(false)} showVideo={showVideo} key={key} />
+                        <Video 
+                            currentVideo={currentVideo} 
+                            setCurrentVideo={setCurrentVideo}
+                            video={video} 
+                            videos={videos} 
+                            onClick={() => showModal(false)} 
+                            showVideo={showVideo} 
+                            key={key} 
+                        />
                     ))}
                 </div>
             </ReactModal>

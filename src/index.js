@@ -1,46 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 
-import urlify from './Utils/Urlify';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	useRouteMatch,
+	useParams
+} from "react-router-dom";
 
-class ErrorBoundary extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { error: null, errorInfo: null };
-	}
+import './assets/index.css';
 
-	componentDidCatch(error, errorInfo) {
-		this.setState({
-			error: error,
-			errorInfo: errorInfo
-		});
-	}
+import ErrorBoundary from './ErrorBoundary';
+import App from './Components/App.jsx';
+import Home from './Components/Home.jsx';
 
-	render() {
-		if (this.state.errorInfo) {
-			return (
-				<div>
-					<h2 style={{ textAlign: 'center' }}>Une erreur est survenue</h2>
-					<p style={{ whiteSpace: 'pre-wrap', textAlign: 'center' }} dangerouslySetInnerHTML={{ __html: urlify(`Si cela se reproduit, merci de nous en informer\nhttps://discord.gg/informatique`) }}></p>
-					<details style={{ whiteSpace: 'pre-wrap' }}>
-						{this.state.error && this.state.error.toString()}
-						<br />
-						{this.state.errorInfo.componentStack}
-					</details>
-				</div>
-			);
-		}
-		return this.props.children;
-	}
+React.lazy();
+
+function AppRouter() {
+	return (
+		<Router>
+			<Switch>
+				<Route path="/videos">
+					<ErrorBoundary>
+						<App />
+					</ErrorBoundary>
+				</Route>
+				<Route path="/">
+					<Home />
+				</Route>
+			</Switch>
+		</Router>
+	);
 }
 
 ReactDOM.render(
 	<React.StrictMode>
-		<ErrorBoundary>
-			<App />
-		</ErrorBoundary>
+		<AppRouter />
 	</React.StrictMode>,
 	document.getElementById('root')
 );
