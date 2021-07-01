@@ -19,31 +19,38 @@ const options = {
 
 let interval = null;
 
-export default function VideoPlayer({ 
-    queries, 
+export default function VideoPlayer({
+    queries,
     videos,
-    currentVideo, 
+    setCurrentVideo,
+    currentVideo,
     currentVideoIndex,
     previousVideo,
     nextVideo,
     carouselDesk,
     itemsToShow
 }) {
+
     return <>
         <div className="video">
             <MediaQuery minWidth={queries.minWidth}>
                 <div className="controls">
                     <FaArrowLeft
                         className={currentVideoIndex < 1 ? 'disabled' : null}
-                        onClick={() => funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, videos, itemsToShow)}
+                        onClick={() => {
+                            previousVideo(currentVideo, videos, setCurrentVideo);
+                            const index = currentVideoIndex;
+                            if (index !== 0 && index % itemsToShow === 0)
+                                carouselDesk.slidePrev();
+                        }}
                     />
                 </div>
             </MediaQuery>
             <div className="video-content">
-                <YouTube 
-                    videoId={currentVideo.video_id} 
-                    opts={options} 
-                    onReady={() => clearInterval(interval)} 
+                <YouTube
+                    videoId={currentVideo.video_id}
+                    opts={options}
+                    onReady={() => clearInterval(interval)}
                     onPlay={onPlay}
                     onPause={() => clearInterval(interval)}
                 />
@@ -52,28 +59,17 @@ export default function VideoPlayer({
                 <div className="controls">
                     <FaArrowRight
                         className={currentVideoIndex >= videos.length - 1 ? 'disabled' : null}
-                        onClick={() => funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos, itemsToShow)}
+                        onClick={() => {
+                            nextVideo(currentVideo, videos, setCurrentVideo);
+                            const index = currentVideoIndex + 1;
+                            if (index !== videos.length && index % itemsToShow === 0)
+                                carouselDesk.slideNext();
+                        }}
                     />
                 </div>
             </MediaQuery>
         </div>
     </>;
-}
-
-function funcPreviousVideo(previousVideo, currentVideoIndex, carouselDesk, videos, itemsToShow) {
-    previousVideo();
-    const index = currentVideoIndex;
-    if (index !== 0 && index % itemsToShow === 0) {
-        carouselDesk.slidePrev();
-    }
-}
-
-function funcNextVideo(nextVideo, currentVideoIndex, carouselDesk, videos, itemsToShow) {
-    nextVideo();
-    const index = currentVideoIndex + 1;
-    if (index !== videos.length && index % itemsToShow === 0) {
-        carouselDesk.slideNext();
-    }
 }
 
 function onPlay(event) {

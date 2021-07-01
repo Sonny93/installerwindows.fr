@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactModal from 'react-modal';
+import toastr from 'toastr';
+import 'toastr/build/toastr.css';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,18 +19,14 @@ import './Components/Loader/Loader.css';
 ReactModal.setAppElement('#root');
 React.lazy();
 
-export default class App extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			videos: [],
-			currentVideo: null,
-			showModal: false,
-			itemsToShow: 0
-		}
-	}
+export default function App() {
+	const [ videos, setVideos ] = useState([]);
+	const [ currentVideo, setCurrentVideo ] = useState(null);
+	const [ showModal, setShowModal ] = useState(false);
+	const [ itemsToShow, setItemsToShow ] = useState(0);
+	const [ carouselDesk, setCarouselDesk ] = useState(null);
 
-	componentDidMount = async () => {
+	useState(async () => {
 		try {
 			const response = await fetch('https://api.installerwindows.fr/api/video');
 			if (response.status !== 200)
@@ -38,146 +36,115 @@ export default class App extends React.Component {
 			if (!data?.videos)
 				throw new Error(`There is no videos`);
 
-			const { videos } = data;
-			if (!Array.isArray(videos))
-				throw new Error(`Array expected, but receive ${typeof (videos)}`);
+			const { videos: videosData } = data;
+			if (!Array.isArray(videosData))
+				throw new Error(`Array expected, but receive ${typeof (videosData)}`);
 
-			for (let i = 0; i < videos.length; i++) {
-				const video = videos[i];
+			for (let i = 0; i < videosData.length; i++) {
+				const video = videosData[i];
 				video.id = new uuidv4();
 				video.title = htmlDecode(video.title);
-				// const videoStorage = localStorage.getItem(`video-${video.video_id}`);
-				// if (videoStorage) {
-				// 	try {
-				// 		const obj = JSON.parse(videoStorage);
-				// 		if (!obj) return;
-				// 		if (obj['time_view']) {
-				// 			const time = obj['time_view'];
-				// 			
-				// 		}
-				// 	} catch(e) {
-				// 		console.error(e);
-				// 	}
-				// }
-				videos[i] = video;
+				videosData[i] = video;
 			}
-			this.setState({
-				videos: data.videos,
-				currentVideo: data.videos[0]
-			});
+
+			setVideos(videosData);
+			setCurrentVideo(videosData[0]);
 		} catch (error) {
 			console.error(error);
 		}
+	}, []);
+
+	const queries = {
+		minWidth: 1070,
+		maxWidth: 1069
 	}
-
-	showVideo = (video_id) => {
-		const { videos } = this.state;
-		const video_index = videos.findIndex(v => v.id === video_id);
-
-		if (video_index === -1)
-			return alert('Une erreur est survenue (impossible de trouver la vidéo demandée)');
-
-		this.setState({ currentVideo: videos[video_index] });
+	
+	if (videos.length < 1 || !currentVideo) {
+		return <>
+			<Loader show={true}>
+				<p>Chargement des vidéos en cours</p>
+				<a className="custom" href="https://discord.gg/informatique" rel="noreferrer" target="_blank">
+					https://discord.gg/informatique
+				</a>
+			</Loader>
+		</>;
 	}
+	
+	const currentVideoIndex = getCurrentVideoIndex(currentVideo, videos);
+	return (<>
+		<div className="App">
+			<VideoList
+				queries={queries}
+				showModal={setShowModal}
+				isModalShow={showModal}
+				videos={videos}
+				setCurrentVideo={setCurrentVideo}
+				currentVideo={currentVideo}
+				currentVideoIndex={currentVideoIndex}
+				setCarouselDesk={setCarouselDesk}
+				showVideo={showVideo}
+				setItemsToShow={setItemsToShow}
+				itemsToShow={itemsToShow}
+			/>
+			<VideoPlayer
+				queries={queries}
+				videos={videos}
+				setCurrentVideo={setCurrentVideo}
+				currentVideo={currentVideo}
+				currentVideoIndex={currentVideoIndex}
+				previousVideo={previousVideo}
+				nextVideo={nextVideo}
+				carouselDesk={carouselDesk}
+				setItemsToShow={setItemsToShow}
+				itemsToShow={itemsToShow}
+			/>
+			<Meta video={currentVideo} />
+			<NeedHelp />
+		</div>
+	</>);
+}
 
-	showVideoByIndex = (video_index) => {
-		const { videos } = this.state;
-		if (videos[video_index] === null)
-			return alert('Une erreur est survenue (impossible de trouver la vidéo demandée)');
+function showVideo(video_id, videos, setCurrentVideo) {
+	const video_index = videos.findIndex(video => video.id === video_id);
+	if (video_index === -1)
+		return toastr.error('Une erreur est survenue (impossible de trouver la vidéo demandée)');
 
-		this.setState({ currentVideo: videos[video_index] });
-	}
+	showVideoByIndex(video_index, videos, setCurrentVideo);
+}
 
-	previousVideo = () => {
-		const { currentVideo, videos } = this.state;
-		const video_index = videos.findIndex(v => v.id === currentVideo.id);
-		if (video_index === -1)
-			return alert('Impossible de trouver la précédente vidéo');
+function showVideoByIndex(video_index, videos, setCurrentVideo) {
+	if (videos[video_index] === null)
+		return toastr.error('Une erreur est survenue (impossible de trouver la vidéo demandée)');
 
-		const newIndex = video_index - 1;
-		if (newIndex >= 0)
-			this.showVideoByIndex(newIndex);
-	}
+	setCurrentVideo(videos[video_index]);
+}
 
-	nextVideo = () => {
-		const { currentVideo, videos } = this.state;
-		const video_index = videos.findIndex(v => v.id === currentVideo.id);
-		if (video_index === -1)
-			return alert('Impossible de trouver la prochaine vidéo');
+function getCurrentVideoIndex(video, videos) {
+	const index = videos.findIndex(v => v.id === video.id);
+	if (index === -1) {
+		toastr.error('Impossible de trouver la vidéo demandée');
+		return false;
+	} else return index;
+}
 
-		const newIndex = video_index + 1;
-		if (newIndex < videos.length)
-			this.showVideoByIndex(newIndex);
-	}
+function previousVideo(currentVideo, videos, setCurrentVideo) {
+	const video_index = videos.findIndex(v => v.id === currentVideo.id);
+	if (video_index === -1)
+		return toastr.error('Impossible de trouver la précédente vidéo');
 
-	getCurrentVideoIndex = (video) => {
-		const { videos } = this.state;
-		const index = videos.findIndex(v => v.id === video.id);
-		if (index === -1)
-			return alert('Impossible de trouver la vidéo demandée');
-		return index;
-	}
+	const newIndex = video_index - 1;
+	if (newIndex >= 0)
+		showVideoByIndex(newIndex, videos, setCurrentVideo);
+}
 
-	showModal = (s = false) => {
-		this.setState({ showModal: !!s });
-	}
+function nextVideo(currentVideo, videos, setCurrentVideo) {
+	const video_index = videos.findIndex(v => v.id === currentVideo.id);
+	if (video_index === -1)
+		return toastr.error('Impossible de trouver la prochaine vidéo');
 
-	setCarouselDesk = (cd = null) => {
-		if (cd !== null)
-			this.carouselDesk = cd;
-	}
-
-	setItemsToShow = (its) => this.setState({ itemsToShow: its });
-
-	render() {
-		const { videos, currentVideo } = this.state;
-		const queries = {
-			minWidth: 1070,
-			maxWidth: 1069
-		}
-		
-		if (videos.length < 1) {
-			return <>
-				<Loader show={true}>
-					<p>Chargement des vidéos en cours</p>
-					<a className="custom" href="https://discord.gg/informatique" rel="noreferrer" target="_blank">
-						https://discord.gg/informatique
-					</a>
-				</Loader>
-			</>;
-		}
-
-		const currentVideoIndex = this.getCurrentVideoIndex(currentVideo);
-		return (<>
-			<div className="App">
-				<VideoList
-					queries={queries}
-					showModal={this.showModal}
-					isModalShow={this.state.showModal}
-					videos={videos}
-					currentVideo={currentVideo}
-					currentVideoIndex={currentVideoIndex}
-					setCarouselDesk={this.setCarouselDesk}
-					showVideo={this.showVideo}
-					setItemsToShow={this.setItemsToShow}
-					itemsToShow={this.state.itemsToShow}
-				/>
-				<VideoPlayer
-					queries={queries}
-					videos={videos}
-					currentVideo={currentVideo}
-					currentVideoIndex={currentVideoIndex}
-					previousVideo={this.previousVideo}
-					nextVideo={this.nextVideo}
-					carouselDesk={this.carouselDesk}
-					setItemsToShow={this.setItemsToShow}
-					itemsToShow={this.state.itemsToShow}
-				/>
-				<Meta video={currentVideo} />
-				<NeedHelp />
-			</div>
-		</>);
-	}
+	const newIndex = video_index + 1;
+	if (newIndex < videos.length)
+		showVideoByIndex(newIndex, videos, setCurrentVideo);
 }
 
 function htmlDecode(input) {
