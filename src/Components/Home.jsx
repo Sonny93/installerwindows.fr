@@ -1,22 +1,31 @@
 import React from 'react';
-import ReactModal from 'react-modal';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link,
-	useRouteMatch,
-	useParams
-} from "react-router-dom";
+import '../assets/Home.css';
+import Loader from './Loader/index.jsx';
 
 export default function Home() {
+	const [ mdText, setMdText ] = useState(null);
+	useEffect(async () => setMdText(await fetch('https://raw.githubusercontent.com/Piwielle/oui/master/README.md').then(res => res.text())));
+
+	if (!mdText) {
+		return <Loader show={true}>
+			<p>Chargement de la page d'accueil en cours</p>
+			<a className="custom" href="https://discord.gg/informatique" rel="noreferrer" target="_blank">
+				https://discord.gg/informatique
+			</a>
+		</Loader>
+	}
+
 	return (<>
-		<div className="App">
-            <h1>Komen kon fé pour opti windauz ?</h1>
+		<div className="Home">
+			<ReactMarkdown children={mdText} linkTarget='_blank' />
 			<Link className='link-anim' to='/videos'>
-                cliké la pour allé voir lé vidéo
-            </Link>
+				Voir les vidéos
+			</Link>
 		</div>
 	</>);
 }

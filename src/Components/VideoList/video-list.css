@@ -26,8 +26,24 @@
     transition: .15s;
 }
 
-.video-list .box:not(:last-child) {
+.video-list .box.mobile {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: .15s;
+}
+
+.video-list .box:not(:last-child):not(.mobile) {
     margin-right: 15px;
+}
+
+.video-list .box.mobile:not(:last-child) {
+    margin-bottom: 15px;
 }
 
 .video-list .box img {
@@ -36,7 +52,12 @@
     transition: .15s;
 }
 
-.video-list .box div.title {
+.video-list .box.mobile img {
+    width: 100%;
+    height: 100%;
+}
+
+.video-list .box .title {
     position: absolute;
     top: 0;
     left: 0;
@@ -53,8 +74,16 @@
     transition: .15s;
 }
 
-.video-list .box:hover div.title, .video-list .box.keep_show div.title {
+.video-list .box:hover .title, 
+.video-list .box.keep_show .title {
     display: flex;
+    opacity: 1;
+}
+
+.video-list .box.mobile .title {
+    position: unset;
+    top: unset;
+    left: unset;
     opacity: 1;
 }
 
@@ -62,6 +91,11 @@
     border: 1px solid #3F88C5;
 }
 
-.video-list .box:hover img, .video-list .box.keep_show img {
+.video-list .box.keep_show.mobile .title {
+    color: #3F88C5;
+}
+
+.video-list .box:not(.mobile):hover img, 
+.video-list .box.keep_show:not(.mobile) img {
     filter: brightness(0.125);
 }
