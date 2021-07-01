@@ -5,6 +5,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    opacity: 0;
+    animation: .5s fadein both;
+    animation-delay: 200ms;
+    transform: translate(0, 0);
 }
 
 .video .controls {

@@ -1,6 +1,10 @@
 .meta {
     max-width: 100%;
     margin-top: 40px;
+    opacity: 0;
+    animation: .5s fadein both;
+    animation-delay: 300ms;
+    transform: translate(0, 0);
 }
 
 .meta .date {

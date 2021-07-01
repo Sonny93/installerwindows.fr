@@ -5,16 +5,16 @@ import 'toastr/build/toastr.css';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import Meta from './Components/Meta/index.jsx';
-import NeedHelp from './Components/NeedHelp/index.jsx';
-import VideoPlayer from './Components/VideoPlayer/index.jsx';
-import VideoList from './Components/VideoList/index.jsx';
-import Loader from './Components/Loader/index.jsx';
+import Meta from './Meta/index.jsx';
+import NeedHelp from './NeedHelp/index.jsx';
+import VideoPlayer from './VideoPlayer/index.jsx';
+import VideoList from './VideoList/index.jsx';
+import Loader from './Loader/index.jsx';
 
-import './App.css';
-import './Modal.css';
-import './Carousel.css';
-import './Components/Loader/Loader.css';
+import '../assets/App.css';
+import '../assets/Modal.css';
+import '../assets/Carousel.css';
+import './Loader/Loader.css';
 
 ReactModal.setAppElement('#root');
 React.lazy();
@@ -72,7 +72,7 @@ export default function App() {
 	
 	const currentVideoIndex = getCurrentVideoIndex(currentVideo, videos);
 	return (<>
-		<div className="App">
+		<div className="App anim">
 			<VideoList
 				queries={queries}
 				showModal={setShowModal}

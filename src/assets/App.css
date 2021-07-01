@@ -3,6 +3,14 @@
     transition: .15s;
 }
 
+.App.anim {
+    width: 1430px;
+    transition: .15s;
+    opacity: 0;
+    animation: .5s fadein both;
+    transform: translate(0, 0);
+}
+
 .App .center-el {
     display: flex;
     justify-content: center;
@@ -26,31 +34,31 @@
 }
 
 @media screen and (max-width: 2560px) {
-    .App {
+    .App, .App.anim {
         width: 1900px;
     }
 }
 
 @media screen and (max-width: 1920px) {
-    .App {
+    .App, .App.anim {
         width: 1680px;
     }
 }
 
 @media screen and (max-width: 1700px) {
-    .App {
+    .App, .App.anim {
         width: 1420px;
     }
 }
 
 @media screen and (max-width: 1440px) {
-    .App {
+    .App, .App.anim {
         width: 1150px;
     }
 }
 
 @media screen and (max-width: 1175px) {
-    .App {
+    .App, .App.anim {
         width: 100%;
         padding: 10px;
     }
@@ -62,5 +70,17 @@
 @media screen and (max-width: 1070px) {
     .video .video-content iframe {
         max-width: 100%;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translate(0, -30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
     }
 }

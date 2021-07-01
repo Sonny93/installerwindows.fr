@@ -8,6 +8,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
+    opacity: 0;
+    animation: .5s fadein both;
+    animation-delay: 100ms;
+    transform: translate(0, 0);
 }
 
 .video-list .box {
