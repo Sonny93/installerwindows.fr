@@ -66,6 +66,7 @@ export default function VideoList({
                             onClick={() => showModal(false)} 
                             showVideo={showVideo} 
                             key={key} 
+                            isMobile={true}
                         />
                     ))}
                 </div>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
 * {
 	outline: none;
@@ -39,14 +39,14 @@ a {
 	word-wrap: break-word;
 }
 
-a.link-anim {
+a {
 	color: #3F88C5;
 	background: transparent;
 	position: relative;
 	padding-bottom: 4px;
 }
 
-a.link-anim:before, a.link-anim:after {
+a:before, a:after {
 	content: "";
 	position: absolute;
 	bottom: 2px;
@@ -56,27 +56,27 @@ a.link-anim:before, a.link-anim:after {
 	background-color: #3F88C5;
 }
 
-a.link-anim:before {
+a:before {
 	opacity: 0;
 	transform: translateY(-8px);
 	transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
 }
 
-a.link-anim:after {
+a:after {
 	opacity: 0;
 	transform: translateY(4px);
 	transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
 }
 
-a.link-anim:hover:before, a.link-anim:hover:after, a.link-anim:focus:before, a.link-anim:focus:after {
+a:hover:before, a:hover:after, a:focus:before, a:focus:after {
 	opacity: 1;
 	transform: translateY(0);
 }
 
-a.link-anim:hover:before, a.link-anim:focus:before {
+a:hover:before, a:focus:before {
 	transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
 }
 
-a.link-anim:hover:after, a.link-anim:focus:after {
+a:hover:after, a:focus:after {
 	transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
 }
