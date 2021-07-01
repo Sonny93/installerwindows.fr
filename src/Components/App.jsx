@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
+import { useRouteMatch } from 'react-router-dom';
 import toastr from 'toastr';
 import 'toastr/build/toastr.css';
 
@@ -20,6 +21,8 @@ ReactModal.setAppElement('#root');
 React.lazy();
 
 export default function App() {
+	const match = useRouteMatch().params;
+
 	const [ videos, setVideos ] = useState([]);
 	const [ currentVideo, setCurrentVideo ] = useState(null);
 	const [ showModal, setShowModal ] = useState(false);
@@ -48,8 +51,16 @@ export default function App() {
 			}
 
 			setVideos(videosData);
-			setCurrentVideo(videosData[0]);
+
+			if (match?.videoId) {
+				const video = videosData.find(v => v.video_id === match.videoId);
+				setCurrentVideo(video || videosData[0]);
+			} else {
+				setCurrentVideo(videosData[0]);
+				window.history.pushState({}, '', `/videos/${videosData[0].video_id}`);
+			}
 		} catch (error) {
+			toastr.error(error);
 			console.error(error);
 		}
 	}, []);
@@ -117,6 +128,7 @@ function showVideoByIndex(video_index, videos, setCurrentVideo) {
 		return toastr.error('Une erreur est survenue (impossible de trouver la vidéo demandée)');
 
 	setCurrentVideo(videos[video_index]);
+	window.history.pushState({}, '', `/videos/${videos[video_index].video_id}`);
 }
 
 function getCurrentVideoIndex(video, videos) {

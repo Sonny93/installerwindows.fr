@@ -22,14 +22,17 @@ function AppRouter() {
 	return (
 		<Router>
 			<Switch>
-				<Route path="/videos">
-					<ErrorBoundary>
+				<ErrorBoundary>
+					<Route path="/videos/:videoId">
 						<App />
-					</ErrorBoundary>
-				</Route>
-				<Route path="/">
-					<Home />
-				</Route>
+					</Route>
+					<Route path="/videos">
+						<App />
+					</Route>
+					<Route exact path="/">
+						<Home />
+					</Route>
+				</ErrorBoundary>
 			</Switch>
 		</Router>
 	);
