@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import MediaQuery from 'react-responsive';
 import YouTube from 'react-youtube';
@@ -30,9 +30,10 @@ export default function VideoPlayer({
     carouselDesk,
     itemsToShow
 }) {
-
+    const [ loaded, setLoaded ] = useState(false);
+    
     return <>
-        <div className="video">
+        <div className={`video ${loaded ? 'loaded' : ''}`}>
             <MediaQuery minWidth={queries.minWidth}>
                 <div className="controls">
                     <FaArrowLeft
@@ -50,7 +51,10 @@ export default function VideoPlayer({
                 <YouTube
                     videoId={currentVideo.video_id}
                     opts={options}
-                    onReady={() => clearInterval(interval)}
+                    onReady={() => {
+                        clearInterval(interval);
+                        setLoaded(true);
+                    }}
                     onPlay={onPlay}
                     onPause={() => clearInterval(interval)}
                 />

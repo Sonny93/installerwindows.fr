@@ -6,9 +6,12 @@
     justify-content: center;
     flex-direction: row;
     opacity: 0;
+    transform: translate(0, 0);
+}
+
+.video.loaded {
     animation: .5s fadein both;
     animation-delay: 200ms;
-    transform: translate(0, 0);
 }
 
 .video .controls {
