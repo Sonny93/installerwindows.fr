@@ -4,11 +4,8 @@ import ReactDOM from 'react-dom';
 import {
 	BrowserRouter as Router,
 	Switch,
-	Route,
-	Link,
-	useRouteMatch,
-	useParams
-} from "react-router-dom";
+	Route
+} from 'react-router-dom';
 
 import './assets/index.css';
 
@@ -23,13 +20,10 @@ function AppRouter() {
 		<Router>
 			<Switch>
 				<ErrorBoundary>
-					<Route path="/videos/:videoId">
+					<Route path={'/videos/:videoId?'}>
 						<App />
 					</Route>
-					<Route path="/videos">
-						<App />
-					</Route>
-					<Route exact path="/">
+					<Route exact path='/'>
 						<Home />
 					</Route>
 				</ErrorBoundary>

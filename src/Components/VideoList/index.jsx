@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import MediaQuery from 'react-responsive';
 import ReactModal from 'react-modal';
 import Carousel from 'react-elastic-carousel';

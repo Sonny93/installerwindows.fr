@@ -52,6 +52,7 @@ export default function App() {
 
 			setVideos(videosData);
 
+			console.log(videos, match?.videoId, videos.find(v => v.video_id === match?.videoId))
 			if (match?.videoId) {
 				const video = videosData.find(v => v.video_id === match.videoId);
 				setCurrentVideo(video || videosData[0]);
