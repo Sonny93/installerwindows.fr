@@ -1,12 +1,13 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
+
 import styles from '../styles/error-page.module.scss';
 
 export default function NoVideo() {
     return (<>
-        <Head>
-            <title>Installerwindows.fr — Aucune vidéo disponible</title>
-        </Head>
+        <NextSeo
+            description='Aucune vidéo disponible'
+        />
         <div className={styles['App']}>
             <div className={styles['title']}>
                 <h1>Oups</h1>
