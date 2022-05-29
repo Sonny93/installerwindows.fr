@@ -7,7 +7,7 @@ import nProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
 // Composants React
-import ErrorBoundary from '../components/ErrorBoundary';
+import ErrorBoundary from '../Components/ErrorBoundary';
 import NeedHelp from '../Components/NeedHelp/NeedHelp';
 
 // Fichiers CSS globaux
