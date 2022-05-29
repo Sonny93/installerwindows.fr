@@ -1,4 +1,5 @@
 module.exports = {
+    reactStrictMode: true,
     images: {
         domains: ['i.ytimg.com']
     },
@@ -6,5 +7,6 @@ module.exports = {
         images: {
             layoutRaw: true
         }
-    }
+    },
+    optimizeFonts: false
 }

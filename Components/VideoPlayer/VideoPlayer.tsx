@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-import MediaQuery from 'react-responsive';
 import YouTube, { YouTubeProps } from 'react-youtube';
-
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { AiOutlineHome } from 'react-icons/ai';
 
@@ -22,21 +20,17 @@ const options: YouTubeProps['opts'] = {
 }
 
 export default function VideoPlayer({
-    queries,
-
     videos,
     currentVideo,
+    deviceType,
     handleChangeVideo,
-
     canGoNext,
     canGoPrevious
 }: {
-    queries: { minWidth: number; maxWidth: number; }
-
     videos: Video[];
     currentVideo: Video;
+    deviceType: string;
     handleChangeVideo: (currentVideoId: string, videos: Video[], direction: 'next' | 'keep' | 'previous') => void;
-
     canGoPrevious: boolean;
     canGoNext: boolean;
 }) {
@@ -48,8 +42,8 @@ export default function VideoPlayer({
     const playerOnReady = () => setPlayerLoaded(true);
 
     const classNameWrapper = `${styles['wrapper-video-player']} ${playerLoaded ? styles['loaded'] : ''}`;
-    return (<>
-        <MediaQuery minWidth={queries.minWidth}>
+    if (deviceType !== 'mobile') {
+        return (<>
             <div className={classNameWrapper}>
                 <div className={styles['controls']}>
                     <FaArrowLeft
@@ -71,36 +65,36 @@ export default function VideoPlayer({
                     />
                 </div>
             </div>
-        </MediaQuery>
-        <MediaQuery maxWidth={queries.maxWidth}>
-            <div className={classNameWrapper + ' ' + styles['mobile']}>
-                <div className={styles['mobile-controls']}>
-                    <div className={styles['controls']}>
-                        <FaArrowLeft
-                            className={!canGoPrevious ? styles['disabled'] : null}
-                            onClick={onLeftArrowClick}
-                        />
-                    </div>
-                    <Link href={'/'}>
-                        <a className={`${styles['home-btn']} reset`}>
-                            <AiOutlineHome /> Accueil
-                        </a>
-                    </Link>
-                    <div className={styles['controls']}>
-                        <FaArrowRight
-                            className={!canGoNext ? styles['disabled'] : null}
-                            onClick={onRightArrowClick}
-                        />
-                    </div>
+        </>);
+    }
+    return (<>
+        <div className={classNameWrapper + ' ' + styles['mobile']}>
+            <div className={styles['mobile-controls']}>
+                <div className={styles['controls']}>
+                    <FaArrowLeft
+                        className={!canGoPrevious ? styles['disabled'] : null}
+                        onClick={onLeftArrowClick}
+                    />
                 </div>
-                <div className={styles['player-video']}>
-                    <YouTube
-                        videoId={currentVideo.videoId}
-                        opts={options}
-                        onReady={playerOnReady}
+                <Link href={'/'}>
+                    <a className={`${styles['home-btn']} reset`}>
+                        <AiOutlineHome /> Accueil
+                    </a>
+                </Link>
+                <div className={styles['controls']}>
+                    <FaArrowRight
+                        className={!canGoNext ? styles['disabled'] : null}
+                        onClick={onRightArrowClick}
                     />
                 </div>
             </div>
-        </MediaQuery>
+            <div className={styles['player-video']}>
+                <YouTube
+                    videoId={currentVideo.videoId}
+                    opts={options}
+                    onReady={playerOnReady}
+                />
+            </div>
+        </div>
     </>);
 }

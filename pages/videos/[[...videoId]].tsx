@@ -121,7 +121,7 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 			}
 
 			if (index % device.items === 0) {
-				carouselRef.current.next()
+				carouselRef.current?.next();
 			}
 		} else if (direction === 'previous') {
 			if (index - 1 >= 0) {
@@ -129,7 +129,7 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 			}
 
 			if (index % device.items === 0) {
-				carouselRef.current.previous()
+				carouselRef.current?.previous();
 			}
 		}
 
@@ -148,7 +148,6 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 				</title>
 			</Head>
 			<VideoList
-				queries={MEDIA_QUERIES}
 				carouselQueries={CAROUSEL_QUERIES}
 				videos={videos}
 				currentVideo={currentVideo}
@@ -157,9 +156,9 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 				handleChangeVideo={handleChangeVideo}
 			/>
 			<VideoPlayer
-				queries={MEDIA_QUERIES}
 				videos={videos}
 				currentVideo={currentVideo}
+				deviceType={deviceType}
 				handleChangeVideo={handleChangeVideo}
 				canGoPrevious={canGoPrevious}
 				canGoNext={canGoNext}
@@ -178,7 +177,8 @@ export async function getServerSideProps({ query }) {
 			redirect: {
 				permanent: false,
 				destination: '/novideo'
-			}
+			},
+			props: {}
 		}
 	}
 
@@ -202,7 +202,8 @@ export async function getServerSideProps({ query }) {
 			redirect: {
 				permanent: false,
 				destination: '/'
-			}
+			},
+			props: {}
 		}
 	}
 
