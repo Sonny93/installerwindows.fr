@@ -15,7 +15,7 @@ export default function Home() {
     const [markdown, setMarkdown] = useState<string | null>(null);
     useEffect(() => {
         downloadMarkdown(HOME_MARKDOWN_URL, setMarkdown);
-    });
+    }, []);
 
     if (!markdown) {
         return (<>
@@ -33,7 +33,9 @@ export default function Home() {
                 , nous vous recommandons de lire le texte ci-dessous.
             </p>
             {/* @ts-ignore */}
-            <ReactMarkdown rehypePlugins={[rehypeRaw]} children={markdown} linkTarget='_blank' className={styles['markdown-gh']} />
+            <ReactMarkdown rehypePlugins={[rehypeRaw]} linkTarget='_blank' className={styles['markdown-gh']}>
+                {markdown}
+            </ReactMarkdown>
         </div>
     </>);
 }
