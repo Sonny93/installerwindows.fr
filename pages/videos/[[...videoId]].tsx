@@ -12,6 +12,7 @@ import VideoList from '../../Components/VideoList/VideoList';
 
 import { getIndexByVideoId, getVideos } from '../../Utils/index';
 import styles from '../../styles/videos.module.scss';
+import { NextSeo } from 'next-seo';
 
 const MEDIA_QUERIES = {
 	minWidth: 931,
@@ -90,17 +91,6 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 		}
 	}, [currentVideo, videos]);
 
-	if (videos.length < 1 || !currentVideo) {
-		return (<>
-			<div className={styles['App']}>
-				<Head>
-					<title>Installerwindows.fr — Aucune vidéo disponible</title>
-				</Head>
-				<p>Aucune vidéo disponible</p>
-			</div>
-		</>);
-	}
-
 	const handleChangeVideo = (currentVideoId: string, videos: Video[], direction: 'previous' | 'next' | 'keep' = 'keep'): Video => {
 		if (!videos || videos.length === 0) {
 			console.error('missing param "videos"');
@@ -142,11 +132,13 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 
 	return (<>
 		<div className={styles['App']}>
-			<Head>
-				<title>
-					Installerwindows.fr — {currentVideo.title}
-				</title>
-			</Head>
+			<NextSeo
+				title={currentVideo.title}
+				description={currentVideo.description}
+				openGraph={{
+					site_name: 'installerwindows.fr'
+				}}
+			/>
 			<VideoList
 				carouselQueries={CAROUSEL_QUERIES}
 				videos={videos}

@@ -1,12 +1,13 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 import styles from '../styles/error-page.module.scss';
 
 export default function Custom404() {
     return (<>
-        <Head>
-            <title>Installerwindows.fr — Page introuvable</title>
-        </Head>
+        <NextSeo
+            title='Page introuvable'
+            description='Page introuvable'
+        />
         <div className={styles['App']}>
             <div className={styles['title']}>
                 <h1>404</h1>
