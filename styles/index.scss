@@ -1,0 +1,110 @@
+* {
+	outline: none;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	color: #fff;
+	background-color: #222831;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#__next {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex: 1;
+	flex-direction: column;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-weight: 400;
+}
+
+hr {
+	border: 1px solid #737373;
+}
+
+a {
+	position: relative;
+	text-decoration: none;
+	word-wrap: break-word;
+	color: #3f88c5;
+	background: transparent;
+	border: none;
+}
+
+a:not(.reset) {
+	padding-bottom: 4px;
+
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 2px;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background-color: #3f88c5;
+	}
+
+	&:before {
+		opacity: 0;
+		transform: translateY(-8px);
+		transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+	}
+
+	&:after {
+		opacity: 0;
+		transform: translateY(4px);
+		transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+	}
+
+	&:hover:before,
+	&:hover:after,
+	&:focus:before,
+	&:focus:after {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	&:hover:before,
+	&:focus:before {
+		transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+	}
+
+	&:hover:after,
+	&:focus:after {
+		transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
+	}
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #222831;
+	border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #323e4f;
+	border-radius: 2px;
+
+	&:hover {
+		background: #3a4b62;
+	}
+}

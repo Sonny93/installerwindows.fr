@@ -1,19 +1,22 @@
 # oui
- Site de Piwi_ pour les optis Windows
+
+Front-end installerwindows.fr
 
 # install
+
 ```
 npm install
 ```
 
 # dev
+
 ```
-npm run start
+npm run dev
 ```
 
 # build
+
 ```
 npm run build
-npm install -g serve
-serve -s build
+npm start
 ```

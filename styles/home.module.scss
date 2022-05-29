@@ -1,0 +1,46 @@
+@use "./keyframes.scss";
+
+.Home {
+    width: 1110px;
+    padding: 0 10px 50px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: 0.15s;
+    opacity: 0;
+    animation: 0.5s fadein both;
+
+    & .markdown-gh {
+        & h1,
+        & h2 {
+            color: #3f88c5;
+            margin-bottom: 0;
+        }
+
+        & p {
+            line-height: 1.4;
+            font-weight: 300;
+            word-break: break-word;
+        }
+
+        & code {
+            word-break: break-word;
+        }
+
+        & a {
+            width: fit-content;
+        }
+
+        & img {
+            vertical-align: middle;
+        }
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .Home {
+        width: 100%;
+        padding: 0 10px;
+    }
+}

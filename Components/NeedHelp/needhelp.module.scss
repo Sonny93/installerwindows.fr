@@ -1,0 +1,48 @@
+a.ineedhelp {
+    user-select: none;
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    height: 50px;
+    width: 165px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #3f88c5;
+    padding: 15px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s cubic-bezier(1, 0, 0, 0);
+
+    & > svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        fill: none;
+        stroke: #fff;
+        stroke-dasharray: 150 480;
+        stroke-dashoffset: 150;
+        transition: 0.25s ease-in-out;
+    }
+
+    & > .text {
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & > .text > svg {
+        margin-right: 5px;
+    }
+
+    &:hover {
+        transform: scale(0.95);
+        background: #4f95da;
+    }
+
+    &:hover svg {
+        stroke-dashoffset: -480;
+    }
+}
