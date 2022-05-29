@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw';
 
 import { downloadMarkdown } from '../Utils';
 
-import Loader from '../Components/Loader/Loader';
+import FullLoader from '../Components/Loader/FullLoader';
 import styles from '../styles/home.module.scss';
 
 const HOME_MARKDOWN_URL: string = 'https://raw.githubusercontent.com/Piwielle/oui/master/README.md';
@@ -19,7 +19,7 @@ export default function Home() {
 
     if (!markdown) {
         return (<>
-            <Loader text='Chargement de la page en cours' />
+            <FullLoader text='Chargement de la page en cours' />
         </>);
     }
 
