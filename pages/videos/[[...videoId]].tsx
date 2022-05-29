@@ -68,6 +68,7 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 		handleResize(deviceType, setDeviceType);
 		window.addEventListener('resize', () => handleResize(deviceType, setDeviceType), false);
 		return () => window.removeEventListener('resize', () => handleResize(deviceType, setDeviceType), false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -87,7 +88,7 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 		} else {
 			setGoNext(false);
 		}
-	}, [currentVideo]);
+	}, [currentVideo, videos]);
 
 	if (videos.length < 1 || !currentVideo) {
 		return (<>
