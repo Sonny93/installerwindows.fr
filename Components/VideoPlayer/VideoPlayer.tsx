@@ -55,6 +55,7 @@ export default function VideoPlayer({
                     <YouTube
                         videoId={currentVideo.videoId}
                         opts={options}
+                        containerClassName={styles['video-player-container']}
                         onReady={playerOnReady}
                     />
                 </div>
@@ -69,6 +70,14 @@ export default function VideoPlayer({
     }
     return (<>
         <div className={classNameWrapper + ' ' + styles['mobile']}>
+            <div className={styles['player-video']}>
+                <YouTube
+                    videoId={currentVideo.videoId}
+                    opts={options}
+                    containerClassName={styles['video-player-container']}
+                    onReady={playerOnReady}
+                />
+            </div>
             <div className={styles['mobile-controls']}>
                 <div className={styles['controls']}>
                     <FaArrowLeft
@@ -78,7 +87,7 @@ export default function VideoPlayer({
                 </div>
                 <Link href={'/'}>
                     <a className={`${styles['home-btn']} reset`}>
-                        <AiOutlineHome /> Accueil
+                        <AiOutlineHome />
                     </a>
                 </Link>
                 <div className={styles['controls']}>
@@ -87,13 +96,6 @@ export default function VideoPlayer({
                         onClick={onRightArrowClick}
                     />
                 </div>
-            </div>
-            <div className={styles['player-video']}>
-                <YouTube
-                    videoId={currentVideo.videoId}
-                    opts={options}
-                    onReady={playerOnReady}
-                />
             </div>
         </div>
     </>);

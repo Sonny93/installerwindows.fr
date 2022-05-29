@@ -14,11 +14,6 @@ import { getIndexByVideoId, getVideos } from '../../Utils/index';
 import styles from '../../styles/videos.module.scss';
 import { NextSeo } from 'next-seo';
 
-const MEDIA_QUERIES = {
-	minWidth: 931,
-	maxWidth: 930
-}
-
 const CAROUSEL_QUERIES = {
 	'extra-large-desktop': {
 		breakpoint: { max: 5000, min: 1920 },
@@ -131,31 +126,43 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 	}
 
 	return (<>
+		<NextSeo
+			title={currentVideo.title}
+			description={currentVideo.description}
+			openGraph={{
+				site_name: 'installerwindows.fr'
+			}}
+		/>
 		<div className={styles['App']}>
-			<NextSeo
-				title={currentVideo.title}
-				description={currentVideo.description}
-				openGraph={{
-					site_name: 'installerwindows.fr'
-				}}
-			/>
-			<VideoList
-				carouselQueries={CAROUSEL_QUERIES}
-				videos={videos}
-				currentVideo={currentVideo}
-				deviceType={deviceType}
-				carouselRef={carouselRef}
-				handleChangeVideo={handleChangeVideo}
-			/>
-			<VideoPlayer
-				videos={videos}
-				currentVideo={currentVideo}
-				deviceType={deviceType}
-				handleChangeVideo={handleChangeVideo}
-				canGoPrevious={canGoPrevious}
-				canGoNext={canGoNext}
-			/>
-			<Meta video={currentVideo} />
+			<div className={styles['block-wrapper']}>
+				<div className={styles['block']}>
+					<VideoList
+						carouselQueries={CAROUSEL_QUERIES}
+						videos={videos}
+						currentVideo={currentVideo}
+						deviceType={deviceType}
+						carouselRef={carouselRef}
+						handleChangeVideo={handleChangeVideo}
+					/>
+				</div>
+			</div>
+			<div className={styles['block-wrapper']}>
+				<div className={styles['block']}>
+					<VideoPlayer
+						videos={videos}
+						currentVideo={currentVideo}
+						deviceType={deviceType}
+						handleChangeVideo={handleChangeVideo}
+						canGoPrevious={canGoPrevious}
+						canGoNext={canGoNext}
+					/>
+				</div>
+			</div>
+			<div className={styles['block-wrapper']}>
+				<div className={styles['block']}>
+					<Meta video={currentVideo} />
+				</div>
+			</div>
 		</div>
 	</>);
 }
