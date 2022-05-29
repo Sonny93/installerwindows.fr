@@ -20,9 +20,11 @@ export default function VideoItem({
     const miniatureUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
     const onItemClick = () => {
-        handleChangeVideo(videoId, videos, 'keep');
         if (onClick)
             onClick();
+
+        if (currentVideo.videoId !== videoId)
+            handleChangeVideo(videoId, videos, 'keep');
     }
 
     const className = `${styles['box']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
