@@ -30,7 +30,14 @@ export default function VideoItem({
     const className = `${styles['box']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
     return (<>
         <div className={className} onClick={onItemClick}>
-            <Image width={250} height={140} layout='raw' src={miniatureUrl} alt='Miniature YTB' />
+            <Image
+                height={140}
+                width={250}
+                priority={true}
+                layout='raw'
+                src={miniatureUrl}
+                alt='Miniature YTB'
+            />
             <div className={styles['title']}>{title}</div>
         </div>
     </>);

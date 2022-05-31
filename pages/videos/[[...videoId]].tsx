@@ -129,9 +129,6 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 		<NextSeo
 			title={currentVideo.title}
 			description={currentVideo.description}
-			openGraph={{
-				site_name: 'installerwindows.fr'
-			}}
 		/>
 		<div className={styles['App']}>
 			<div className={styles['block-wrapper']}>

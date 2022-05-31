@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
                     images: [{
                         url: 'https://installerwindows.fr/img/piwi.png'
                     }],
-                    site_name: 'Installer Windows',
+                    site_name: 'installerwindows.fr'
                 }}
             />
             <Component {...pageProps} />
