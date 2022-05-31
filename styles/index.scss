@@ -113,3 +113,11 @@ a:not(.reset) {
 		background: #3a4b62;
 	}
 }
+
+/* Image home page */
+@media screen and (max-width: 900px) {
+	img#img-header {
+		height: auto;
+		width: 100%;
+	}
+}
