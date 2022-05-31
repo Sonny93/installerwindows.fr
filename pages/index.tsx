@@ -9,7 +9,7 @@ import { downloadMarkdown } from '../Utils';
 import FullLoader from '../Components/Loader/FullLoader';
 import styles from '../styles/home.module.scss';
 
-const HOME_MARKDOWN_URL: string = 'https://raw.githubusercontent.com/Piwielle/oui/master/README.md';
+const HOME_MARKDOWN_URL: string = 'https://raw.githubusercontent.com/Piwielle/windows_11/master/README.md';
 
 export default function Home() {
     const [markdown, setMarkdown] = useState<string | null>(null);
@@ -25,13 +25,6 @@ export default function Home() {
 
     return (<>
         <div className={styles['Home']}>
-            <p>
-                Avant de{' '}
-                <Link href='/videos'>
-                    <a>voir les vidéos</a>
-                </Link>
-                , nous vous recommandons de lire le texte ci-dessous.
-            </p>
             {/* @ts-ignore */}
             <ReactMarkdown rehypePlugins={[rehypeRaw]} linkTarget='_blank' className={styles['markdown-gh']}>
                 {markdown}
