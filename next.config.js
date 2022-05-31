@@ -8,7 +8,8 @@ module.exports = {
         return config;
     },
     images: {
-        domains: ['i.ytimg.com']
+        domains: ['i.ytimg.com'],
+        formats: ['image/webp']
     },
     experimental: {
         images: {

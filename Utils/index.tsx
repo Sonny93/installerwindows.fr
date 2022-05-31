@@ -2,7 +2,7 @@ export function urlify(text) {
     return text.replace(/(https?:\/\/[^\s]+)/g, (url) => `<a href="${url}" class="link-anim" rel="noreferrer" target="_blank">${url}</a>`);
 }
 
-export async function downloadMarkdown(url: string, setMdText: (data: string) => void): Promise<void> {
+export async function downloadMarkdown(url: string): Promise<string> {
     const response = await fetch(url);
     if (response.status !== 200) {
         throw new Error(`Erreur HTTP: ${response.status}`);
@@ -13,7 +13,7 @@ export async function downloadMarkdown(url: string, setMdText: (data: string) =>
         throw new Error('Impossible de récupérer le contenu de la page d\'accueil');
     }
 
-    setMdText(data);
+    return data;
 }
 
 export async function getVideos(): Promise<Video[]> {
