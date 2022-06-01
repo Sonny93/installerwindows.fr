@@ -400,5 +400,9 @@
 	.meta {
 		margin-top: 15px !important;
 		margin-bottom: 80px;
+
+		& .title {
+			font-size: 1.5em;
+		}
 	}
 }
