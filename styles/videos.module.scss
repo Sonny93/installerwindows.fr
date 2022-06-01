@@ -2,6 +2,7 @@
 
 .App {
 	width: 100%;
+	margin-bottom: 50px;
 	opacity: 0;
 	transition: 0.15s;
 	animation: 0.5s fadein both;
@@ -368,10 +369,6 @@
 		width: 747px;
 		height: 420px;
 	}
-
-	.meta {
-		margin-bottom: 80px;
-	}
 }
 
 /* Mobile */
@@ -399,7 +396,6 @@
 
 	.meta {
 		margin-top: 15px !important;
-		margin-bottom: 80px;
 
 		& .title {
 			font-size: 1.5em;

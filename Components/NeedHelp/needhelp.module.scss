@@ -1,48 +1,43 @@
 a.ineedhelp {
     user-select: none;
     position: fixed;
-    right: 25px;
-    bottom: 25px;
-    height: 50px;
-    width: 165px;
+    right: 15px;
+    bottom: 15px;
     text-decoration: none;
     color: #fff;
     background-color: #3f88c5;
-    padding: 15px !important;
+    padding: 10px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.5s cubic-bezier(1, 0, 0, 0);
+    overflow: hidden;
+    transition: 0.15s;
+    transform: scale(1);
+    animation: pulse-black 2s infinite;
 
-    & > svg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        fill: none;
-        stroke: #fff;
-        stroke-dasharray: 150 480;
-        stroke-dashoffset: 150;
-        transition: 0.25s ease-in-out;
-    }
-
-    & > .text {
-        height: fit-content;
-        width: fit-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    & > .text > svg {
-        margin-right: 5px;
+    & svg {
+        font-size: 2em;
     }
 
     &:hover {
-        transform: scale(0.95);
         background: #4f95da;
     }
+}
 
-    &:hover svg {
-        stroke-dashoffset: -480;
+@keyframes pulse-black {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 #3f88c5;
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
 }
