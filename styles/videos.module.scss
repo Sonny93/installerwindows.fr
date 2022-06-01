@@ -260,14 +260,14 @@
 				color: #999;
 				border: 2px solid #999;
 			}
-
-			&:not(.disabled):hover {
-				transform: scale(1.1);
-				background: #fff;
-				color: #222831;
-				border: 2px solid transparent;
-			}
 		}
+	}
+
+	&:not(.mobile) .controls > svg:not(.disabled):hover {
+		transform: scale(1.1);
+		background: #fff;
+		color: #222831;
+		border: 2px solid transparent;
 	}
 
 	&.mobile {
@@ -285,6 +285,13 @@
 				& > svg {
 					font-size: 2em;
 					padding: 5px;
+				}
+
+				& > svg:not(.disabled):active {
+					transform: scale(1.1);
+					background: #fff;
+					color: #222831;
+					border: 2px solid transparent;
 				}
 			}
 		}
