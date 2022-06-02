@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { NextSeo } from 'next-seo';
+import Controls from '../Components/ErrorPage/Controls';
 import styles from '../styles/error-page.module.scss';
 
 export default function Custom500() {
@@ -10,12 +10,10 @@ export default function Custom500() {
         />
         <div className={styles['App']}>
             <div className={styles['title']}>
-                <h1>500</h1>
+                <h1>Oups</h1>
                 <h2>Une erreur côté serveur est survenue.</h2>
             </div>
-            <Link href={'/'}>
-                <a>⟵ Revenir à la page d'accueil</a>
-            </Link>
+            <Controls />
         </div>
     </>)
 }
