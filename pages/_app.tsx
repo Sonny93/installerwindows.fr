@@ -31,7 +31,6 @@ function MyApp({ Component, pageProps }) {
         <ErrorBoundary>
             <Head>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-                <link rel='icon' href='/img/piwi.png' />
                 <title>Installerwindows.fr</title>
             </Head>
             <DefaultSeo

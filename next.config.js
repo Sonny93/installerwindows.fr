@@ -1,8 +1,19 @@
-module.exports = {
+const withPWA = require('next-pwa');
+const runtimeCaching = require('next-pwa/cache');
+
+console.log(process.env.NODE_ENV);
+module.exports = withPWA({
+    pwa: {
+        dest: 'public',
+        register: true,
+        skipWaiting: true,
+        runtimeCaching,
+        disable: process.env.NODE_ENV === 'development'
+    },
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
-            use: ["@svgr/webpack"]
+            use: ['@svgr/webpack']
         });
 
         return config;
@@ -17,4 +28,4 @@ module.exports = {
         }
     },
     optimizeFonts: false
-}
+});
