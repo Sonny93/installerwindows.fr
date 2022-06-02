@@ -5,7 +5,13 @@ import styles from './needhelp.module.scss';
 
 export default function NeedHelp() {
     return <>
-        <a href='https://discord.gg/informatique' rel='noreferrer' className={`reset ${styles['ineedhelp']}`} target='_blank'>
+        <a
+            href='https://discord.gg/informatique'
+            rel='noreferrer'
+            className={`reset ${styles['ineedhelp']}`}
+            target='_blank'
+            title="Lien vers le serveur discord pour demander de l'aide"
+        >
             <FaDiscord />
         </a>
     </>;
