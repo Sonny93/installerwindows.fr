@@ -80,3 +80,8 @@ node_modules
 build/
 build/*
 build/
+
+# PWA -> Workers
+/public/fallback-*
+/public/sw.js
+/public/workbox-*
