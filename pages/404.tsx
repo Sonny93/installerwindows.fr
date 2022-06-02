@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { NextSeo } from 'next-seo';
+import Controls from '../Components/ErrorPage/Controls';
 import styles from '../styles/error-page.module.scss';
 
 export default function Custom404() {
@@ -13,11 +13,7 @@ export default function Custom404() {
                 <h1>404</h1>
                 <h2>Cette page est introuvable.</h2>
             </div>
-            <Link href={'/'}>
-                <a>
-                    ⟵ Revenir à la page d'accueil
-                </a>
-            </Link>
+            <Controls />
         </div>
     </>)
 }
