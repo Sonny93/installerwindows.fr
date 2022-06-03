@@ -3,8 +3,8 @@
 .Home {
     width: 1110px;
     font-size: 1.2em;
-    padding: 0 10px 50px;
-    margin-bottom: 50px;
+    padding: 15px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -17,24 +17,19 @@
         & h2 {
             border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 0;
+            transition: 0.15s;
         }
 
         & p {
             line-height: 1.4;
             font-weight: 300;
             word-break: break-word;
-        }
-
-        & code {
-            word-break: break-word;
+            text-align: justify;
         }
 
         & a {
             width: fit-content;
-        }
-
-        & img {
-            vertical-align: middle;
+            font-weight: 400;
         }
     }
 }
@@ -42,6 +37,16 @@
 @media screen and (max-width: 1130px) {
     .Home {
         width: 100%;
-        padding: 0 10px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 900px) {
+    .Home h1 {
+        font-size: 1.5em;
+    }
+
+    .Home h2 {
+        font-size: 1.3em;
     }
 }
