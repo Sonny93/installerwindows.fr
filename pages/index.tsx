@@ -8,6 +8,7 @@ import rehypeRaw from 'rehype-raw';
 
 import { downloadMarkdown, urlify } from '../Utils';
 import styles from '../styles/home.module.scss';
+import Image from 'next/image';
 
 const HOME_MARKDOWN_URL: string = 'https://raw.githubusercontent.com/Piwielle/windows_11/master/README.md';
 
@@ -49,6 +50,29 @@ export default function Home({ markdown }: { markdown: string; }) {
 								</Link>
 							</>);
 						}
+					},
+					img({ src, height, width, id, alt }) {
+						if (id === 'img-logo-discord') {
+							return (
+								<Image
+									src={src}
+									height={25}
+									width={25}
+									style={{ verticalAlign: 'middle', marginRight: '2px' }}
+									layout='raw'
+									alt={alt || 'Logo Discord'}
+								/>
+							);
+						}
+
+						return (
+							<Image
+								src={src}
+								height={height}
+								width={width}
+								alt={alt || 'Image'}
+							/>
+						);
 					}
 				}}
 				className={styles['markdown-gh']}

@@ -10,7 +10,7 @@ export default function NeedHelp() {
             rel='noreferrer'
             className={`reset ${styles['ineedhelp']}`}
             target='_blank'
-            title="Lien vers le serveur discord pour demander de l'aide"
+            title="Besoin d'aide ?"
         >
             <FaDiscord />
         </a>

@@ -19,7 +19,7 @@ module.exports = withPWA({
         return config;
     },
     images: {
-        domains: ['i.ytimg.com'],
+        domains: ['i.ytimg.com', 'i.imgur.com'],
         formats: ['image/webp']
     },
     experimental: {
