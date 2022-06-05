@@ -54,7 +54,7 @@ type CustomImgComponentsProps = ClassAttributes<HTMLImageElement>
 	& ImgHTMLAttributes<HTMLImageElement>
 	& ReactMarkdownProps;
 
-const IMG_Builder = ({ src, height, width, className, alt = 'Logo' }: CustomImgComponentsProps) => {
+const IMG_Builder = ({ src, height, width, id, className, alt = 'Logo' }: CustomImgComponentsProps) => {
 	let props = {
 		height,
 		width,
@@ -63,6 +63,7 @@ const IMG_Builder = ({ src, height, width, className, alt = 'Logo' }: CustomImgC
 		className,
 		src,
 		alt,
+		id,
 		priority: true
 	} as ImageProps;
 
