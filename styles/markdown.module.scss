@@ -1,8 +1,9 @@
 @use "./keyframes.scss";
 
-.Home {
+.App {
     width: 1110px;
     font-size: 1.2em;
+    font-weight: 300;
     padding: 15px;
     margin-bottom: 25px;
     display: flex;
@@ -22,7 +23,6 @@
 
         & p {
             line-height: 1.4;
-            font-weight: 300;
             word-break: break-word;
             text-align: justify;
         }
@@ -32,21 +32,28 @@
             font-weight: 400;
         }
     }
+
+    & code.source {
+        font-size: 0.85em;
+        background-color: #161a1f;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px;
+    }
 }
 
 @media screen and (max-width: 1130px) {
-    .Home {
+    .App {
         width: 100%;
     }
 }
 
 /* Mobile */
 @media screen and (max-width: 900px) {
-    .Home h1 {
+    .App h1 {
         font-size: 1.5em;
     }
 
-    .Home h2 {
+    .App h2 {
         font-size: 1.3em;
     }
 }
