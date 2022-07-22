@@ -31,17 +31,17 @@ function MyApp({ Component, pageProps }) {
         <ErrorBoundary>
             <Head>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-                <title>Installerwindows.fr</title>
             </Head>
             <DefaultSeo
                 titleTemplate='Installerwindows.fr — %s'
+                defaultTitle='Installerwindows.fr'
                 description='Installation de Windows et optimisations saines'
                 openGraph={{
                     type: 'website',
                     locale: 'fr_FR',
                     url: 'https://installerwindows.fr/',
                     images: [{
-                        url: 'https://installerwindows.fr/img/piwi.png'
+                        url: 'https://installerwindows.fr/icon-192x192.png'
                     }],
                     site_name: 'installerwindows.fr'
                 }}
