@@ -7,6 +7,8 @@ import rehypeRaw from 'rehype-raw';
 import { ReactMarkdownProps } from 'react-markdown/src/ast-to-react';
 
 const DOMAIN_URL = 'https://installerwindows.fr';
+const YOUTUBE_DOMAIN = 'https://www.youtube.com/';
+const YOUTUBE_SHORT_DOMAIN = 'https://youtu.be/';
 
 interface MarkdownProps {
 	markdown: string;
@@ -34,20 +36,46 @@ type CustomAComponentsProps = ClassAttributes<HTMLAnchorElement>
 	& ReactMarkdownProps;
 
 const A_Builder = ({ href, children }: CustomAComponentsProps) => {
-	if (!href.startsWith(DOMAIN_URL)) {
+	const path = getPathFromUrl(href, DOMAIN_URL);
+	if (path) {
 		return (<>
-			<a href={href} target='_blank' rel='noreferrer'>
-				{children}
-			</a>
+			<Link href={path}>
+				<a>{children}</a>
+			</Link>
 		</>);
 	}
 
-	const path = href.split(DOMAIN_URL)[1];
+	const videoId = getVideoIdFromPath(
+		getPathFromUrl(href, YOUTUBE_DOMAIN) ||
+		getPathFromUrl(href, YOUTUBE_SHORT_DOMAIN)
+	);
+	if (videoId) {
+		return (<>
+			<Link href={`/videos/${videoId}`}>
+				<a>{children}</a>
+			</Link>
+		</>);
+	}
+
 	return (<>
-		<Link href={path} scroll={true}>
-			<a>{children}</a>
+		<Link href={`/videos/${videoId}`}>
+			<a href={href} target='_blank' rel='noreferrer'>
+				{children}
+			</a>
 		</Link>
 	</>);
+}
+
+function getPathFromUrl(url: string = null, domain: string = null) {
+	if (!url || !domain) return url;
+	const path = url.split(domain)[1];
+	return path;
+}
+
+function getVideoIdFromPath(path: string = null) {
+	if (!path) return path;
+	const videoId = path.startsWith('watch?v=') ? path.split('watch?v=')[1] : path;
+	return videoId;
 }
 
 type CustomImgComponentsProps = ClassAttributes<HTMLImageElement>

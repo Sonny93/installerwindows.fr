@@ -1,7 +1,6 @@
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 
-console.log(process.env.NODE_ENV);
 module.exports = withPWA({
     pwa: {
         dest: 'public',
@@ -27,5 +26,5 @@ module.exports = withPWA({
             allowFutureImage: true
         }
     },
-    optimizeFonts: false
+    optimizeFonts: true
 });
