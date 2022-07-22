@@ -17,19 +17,22 @@
         & h1,
         & h2 {
             border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 0;
+            margin: 35px 0 0;
             transition: 0.15s;
         }
 
         & p {
-            line-height: 1.4;
             word-break: break-word;
-            text-align: justify;
+            margin: 1em 0;
         }
 
         & a {
             width: fit-content;
             font-weight: 400;
+        }
+
+        & ul li {
+            margin-bottom: 15px;
         }
     }
 
@@ -65,5 +68,9 @@
 
     .App h2 {
         font-size: 1.3em;
+    }
+
+    .App p {
+        text-align: justify;
     }
 }
