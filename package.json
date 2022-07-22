@@ -1,6 +1,6 @@
 {
 	"name": "piwoui-installerwindows",
-	"version": "2.3.2",
+	"version": "2.3.4",
 	"private": true,
 	"dependencies": {
 		"@svgr/webpack": "^6.2.1",
@@ -16,6 +16,7 @@
 		"react-icons": "^4.2.0",
 		"react-markdown": "^6.0.2",
 		"react-multi-carousel": "^2.8.0",
+		"react-tooltip": "^4.2.21",
 		"react-youtube": "^7.13.1",
 		"rehype-raw": "^6.1.1",
 		"sass": "^1.52.1",
