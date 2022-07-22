@@ -1,4 +1,4 @@
-import Image, { ImageProps } from 'next/image';
+import Image, { ImageProps } from 'next/future/image';
 import Link from 'next/link';
 import { AnchorHTMLAttributes, ClassAttributes, ImgHTMLAttributes } from 'react';
 

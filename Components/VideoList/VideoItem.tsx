@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 import styles from '../../styles/videos.module.scss';
 
@@ -34,7 +34,6 @@ export default function VideoItem({
                 height={140}
                 width={250}
                 priority={true}
-                layout='raw'
                 src={miniatureUrl}
                 alt='Miniature YTB'
             />
