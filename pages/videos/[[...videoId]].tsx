@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-
-import Head from 'next/head';
 import Router from 'next/router';
 
 import toastr from 'toastr';
@@ -129,6 +127,13 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 		<NextSeo
 			title={currentVideo.title}
 			description={currentVideo.description}
+			openGraph={{
+				type: 'image',
+				url: '/videos/' + video.videoId,
+				images: [{
+					url: `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`
+				}]
+			}}
 		/>
 		<div className={styles['App']}>
 			<div className={styles['block-wrapper']}>
