@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
             <DefaultSeo
                 titleTemplate='Installerwindows.fr — %s'
                 defaultTitle='Installerwindows.fr'
-                description='Installation de Windows et optimisations saines'
+                description="Un guide d'installation et d'optimisation complet et sans risques"
                 openGraph={{
                     type: 'website',
                     locale: 'fr_FR',
@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
                     images: [{
                         url: 'https://installerwindows.fr/icon-192x192.png'
                     }],
-                    site_name: 'installerwindows.fr'
+                    site_name: 'Guide Windows'
                 }}
             />
             <Component {...pageProps} />
