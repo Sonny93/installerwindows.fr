@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import ReactTooltip from 'react-tooltip';
 
 import { DefaultSeo } from 'next-seo';
 
@@ -48,6 +49,7 @@ function MyApp({ Component, pageProps }) {
             />
             <Component {...pageProps} />
             <NeedHelp />
+            <ReactTooltip />
         </ErrorBoundary>
     );
 }
