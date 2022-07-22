@@ -24,7 +24,7 @@ module.exports = withPWA({
     },
     experimental: {
         images: {
-            layoutRaw: true
+            allowFutureImage: true
         }
     },
     optimizeFonts: false
