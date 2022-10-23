@@ -1,9 +1,11 @@
-import { downloadMarkdown } from '../../Utils';
-import styles from '../../styles/markdown.module.scss';
 import { NextSeo } from 'next-seo';
-import NoMarkdown from './NoMarkdown';
+
+import Navbar from '../Navbar/Navbar';
 import Markdown from './Markdown';
+import NoMarkdown from './NoMarkdown';
 import Source from './Source';
+
+import styles from '../../styles/markdown.module.scss';
 
 export default function MarkdownPage({
 	content,
@@ -20,6 +22,7 @@ export default function MarkdownPage({
 		return (<>
 			<NextSeo title={pageTitle} />
 			<div className={styles['App']}>
+				<Navbar />
 				<NoMarkdown />
 			</div>
 		</>);
@@ -27,6 +30,7 @@ export default function MarkdownPage({
 
 	return (<>
 		<div className={styles['App']}>
+			<Navbar />
 			<Markdown
 				markdown={content}
 				innerClassName={styles['markdown-gh']}

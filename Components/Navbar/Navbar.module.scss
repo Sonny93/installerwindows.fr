@@ -1,0 +1,36 @@
+@import "../../styles/colors.scss";
+@import "../../styles/media-queries.scss";
+
+.navbar {
+    height: 75px;
+    width: 100%;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    & .brand {
+        color: $main-color;
+        font-size: 2em;
+    }
+
+    & .links {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: $media-mobile) {
+    .navbar {
+        height: 35px;
+        justify-content: center;
+
+        & .brand {
+            display: none;
+        }
+    }
+}

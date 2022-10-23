@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/future/image';
 
-import styles from '../../styles/videos.module.scss';
+import styles from './VideoList.module.scss';
 
 export default function VideoItem({
     video,
@@ -27,9 +27,9 @@ export default function VideoItem({
             handleChangeVideo(videoId, videos, 'keep');
     }
 
-    const className = `${styles['box']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
+    const className = `${styles['video-item']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
     return (<>
-        <div className={className} onClick={onItemClick}>
+        <li className={className} onClick={onItemClick}>
             <Image
                 height={140}
                 width={250}
@@ -38,6 +38,6 @@ export default function VideoItem({
                 alt='Miniature YTB'
             />
             <div className={styles['title']}>{title}</div>
-        </div>
+        </li>
     </>);
 }
