@@ -1,7 +1,9 @@
 @use "./keyframes.scss";
+@import "./colors.scss";
 
 .App {
     height: 100%;
+    margin-top: 150px;
     display: flex;
     gap: 15px;
     align-items: center;
@@ -16,7 +18,7 @@
 
         & h1 {
             display: inline-block;
-            border-right: 1px solid rgba(0, 0, 0, 0.3);
+            border-right: 1px solid $black-border-color;
             margin: 0;
             margin-right: 20px;
             padding: 10px 23px 10px 0;
@@ -42,7 +44,7 @@
 
         & hr {
             width: 50px;
-            border: 1px solid rgba(0, 0, 0, 0.3);
+            border: 1px solid $black-border-color;
         }
     }
 }
@@ -55,7 +57,7 @@
 
         & h1 {
             border: 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid $black-border-color;
             margin: 0;
             margin-bottom: 15px;
             padding: 0;

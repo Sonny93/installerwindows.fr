@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Router from 'next/router';
+import { NextSeo } from 'next-seo';
 
 import toastr from 'toastr';
 import 'toastr/build/toastr.css';
@@ -10,7 +11,7 @@ import VideoList from '../../Components/VideoList/VideoList';
 
 import { getIndexByVideoId, getVideos } from '../../Utils/index';
 import styles from '../../styles/videos.module.scss';
-import { NextSeo } from 'next-seo';
+import Navbar from '../../Components/Navbar/Navbar';
 
 const CAROUSEL_QUERIES = {
 	'extra-large-desktop': {
@@ -136,20 +137,11 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 			}}
 		/>
 		<div className={styles['App']}>
-			<div className={styles['block-wrapper']}>
-				<div className={styles['block']}>
-					<VideoList
-						carouselQueries={CAROUSEL_QUERIES}
-						videos={videos}
-						currentVideo={currentVideo}
-						deviceType={deviceType}
-						carouselRef={carouselRef}
-						handleChangeVideo={handleChangeVideo}
-					/>
-				</div>
-			</div>
-			<div className={styles['block-wrapper']}>
-				<div className={styles['block']}>
+			<header>
+				<Navbar />
+			</header>
+			<div className={styles['content-wrapper']}>
+				<main>
 					<VideoPlayer
 						videos={videos}
 						currentVideo={currentVideo}
@@ -158,12 +150,18 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
 						canGoPrevious={canGoPrevious}
 						canGoNext={canGoNext}
 					/>
-				</div>
-			</div>
-			<div className={styles['block-wrapper']}>
-				<div className={styles['block']}>
 					<Meta video={currentVideo} />
-				</div>
+				</main>
+				<aside>
+					<VideoList
+						carouselQueries={CAROUSEL_QUERIES}
+						videos={videos}
+						currentVideo={currentVideo}
+						deviceType={deviceType}
+						carouselRef={carouselRef}
+						handleChangeVideo={handleChangeVideo}
+					/>
+				</aside>
 			</div>
 		</div>
 	</>);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { urlify } from '../../Utils/index';
-import styles from '../../styles/videos.module.scss';
+
+import styles from './Meta.module.scss';
 
 export default function Description({
     description = 'Discord : https://discord.gg/informatique'

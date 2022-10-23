@@ -45,24 +45,12 @@ export default function VideoPlayer({
     if (deviceType !== 'mobile') {
         return (<>
             <div className={classNameWrapper}>
-                <div className={styles['controls']}>
-                    <FaArrowLeft
-                        className={!canGoPrevious ? styles['disabled'] : null}
-                        onClick={onLeftArrowClick}
-                    />
-                </div>
                 <div className={styles['player-video']}>
                     <YouTube
                         videoId={currentVideo.videoId}
                         opts={options}
                         containerClassName={styles['video-player-container']}
                         onReady={playerOnReady}
-                    />
-                </div>
-                <div className={styles['controls']}>
-                    <FaArrowRight
-                        className={!canGoNext ? styles['disabled'] : null}
-                        onClick={onRightArrowClick}
                     />
                 </div>
             </div>

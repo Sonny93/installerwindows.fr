@@ -1,0 +1,38 @@
+@import "../../styles/videos.module.scss";
+@import "../../styles/media-queries.scss";
+
+.meta {
+    height: auto;
+    width: 100%;
+    margin-top: 40px;
+    opacity: 0;
+    animation: 0.5s fadein both;
+    animation-delay: 300ms;
+
+    & .title {
+        margin: 0;
+        font-size: 1.8em;
+    }
+
+    & .date {
+        font-size: 0.85em;
+        font-style: italic;
+        color: $gray-border-color;
+    }
+
+    & .description {
+        white-space: pre-wrap;
+        margin: 25px 0;
+        line-height: 1.75em;
+    }
+}
+
+@media screen and (max-width: $media-mobile) {
+    .meta {
+        margin-top: 15px !important;
+
+        & .title {
+            font-size: 1.5em;
+        }
+    }
+}
