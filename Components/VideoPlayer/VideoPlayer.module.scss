@@ -1,0 +1,118 @@
+@use "../../styles/keyframes.scss";
+
+@import "../../styles/media-queries.scss";
+@import "../../styles/colors.scss";
+
+.wrapper-video-player {
+    height: auto;
+    width: 100%;
+    z-index: 0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    animation-delay: 100ms;
+
+    &.loaded {
+        animation: 0.5s fadein both;
+    }
+
+    & .player-video {
+        width: 100%;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        & .video-player-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        & iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            flex: 1;
+            transition: 0.15s;
+        }
+    }
+
+    & .home-btn {
+        user-select: none;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > svg {
+            cursor: pointer;
+            padding: 5px;
+            font-size: 2.5em;
+        }
+    }
+
+    & .controls {
+        user-select: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > svg {
+            cursor: pointer;
+            padding: 15px;
+            font-size: 4em;
+            border-radius: 50%;
+            border: 2px solid $font-color;
+            transition: 0.15s;
+
+            &.disabled {
+                cursor: not-allowed;
+                color: $font-grey-color;
+                border: 2px solid $font-grey-color;
+            }
+        }
+    }
+
+    & .controls > svg:not(.disabled):hover {
+        transform: scale(1.1);
+        background: $font-color;
+        color: $bg-color;
+        border: 2px solid transparent;
+    }
+
+    & .mobile-controls {
+        width: 100%;
+        display: none;
+        align-items: center;
+        justify-content: space-around;
+
+        & .controls {
+            width: fit-content;
+
+            & > svg {
+                font-size: 2em;
+                padding: 5px;
+            }
+
+            & > svg:not(.disabled):active {
+                transform: scale(1.1);
+                background: $font-color;
+                color: $bg-color;
+                border: 2px solid transparent;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-mobile) {
+    .mobile-controls {
+        display: flex !important;
+    }
+}

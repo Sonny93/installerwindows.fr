@@ -5,7 +5,7 @@ import YouTube, { YouTubeProps } from 'react-youtube';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { AiOutlineHome } from 'react-icons/ai';
 
-import styles from '../../styles/videos.module.scss';
+import styles from './VideoPlayer.module.scss';
 
 const options: YouTubeProps['opts'] = {
     width: '853',
@@ -20,44 +20,26 @@ const options: YouTubeProps['opts'] = {
 }
 
 export default function VideoPlayer({
-    videos,
     currentVideo,
-    deviceType,
     handleChangeVideo,
     canGoNext,
     canGoPrevious
 }: {
-    videos: Video[];
     currentVideo: Video;
-    deviceType: string;
-    handleChangeVideo: (currentVideoId: string, videos: Video[], direction: 'next' | 'keep' | 'previous') => void;
+    handleChangeVideo: (currentVideoId: string, direction: 'previous' | 'next') => void;
     canGoPrevious: boolean;
     canGoNext: boolean;
 }) {
     const [playerLoaded, setPlayerLoaded] = useState<boolean>(false);
 
-    const onLeftArrowClick = () => canGoPrevious ? handleChangeVideo(currentVideo.videoId, videos, 'previous') : null;
-    const onRightArrowClick = () => canGoNext ? handleChangeVideo(currentVideo.videoId, videos, 'next') : null;
+    const onLeftArrowClick = () => handleChangeVideo(currentVideo.videoId, 'previous');
+    const onRightArrowClick = () => handleChangeVideo(currentVideo.videoId, 'next');
 
     const playerOnReady = () => setPlayerLoaded(true);
 
     const classNameWrapper = `${styles['wrapper-video-player']} ${playerLoaded ? styles['loaded'] : ''}`;
-    if (deviceType !== 'mobile') {
-        return (<>
-            <div className={classNameWrapper}>
-                <div className={styles['player-video']}>
-                    <YouTube
-                        videoId={currentVideo.videoId}
-                        opts={options}
-                        containerClassName={styles['video-player-container']}
-                        onReady={playerOnReady}
-                    />
-                </div>
-            </div>
-        </>);
-    }
     return (<>
-        <div className={classNameWrapper + ' ' + styles['mobile']}>
+        <div className={classNameWrapper}>
             <div className={styles['player-video']}>
                 <YouTube
                     videoId={currentVideo.videoId}
