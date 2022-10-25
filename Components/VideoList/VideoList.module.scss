@@ -10,7 +10,7 @@
 .video-list-mobile {
     height: auto;
     width: 100%;
-    display: flex;
+    display: none;
     gap: 15px;
     align-items: center;
     justify-content: space-between;
@@ -24,19 +24,44 @@
     height: 100%;
     width: 100%;
     display: flex;
-    gap: 15px;
+    gap: 5px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     overflow: auto;
 
     & .video-item {
+        cursor: pointer;
         width: 100%;
         aspect-ratio: 16/9;
+        padding: 5px;
+        border: 1px solid transparent;
         flex: 1;
         display: flex;
         align-items: center;
         flex-direction: column;
+        transition: 0.15s;
+
+        &:hover {
+            border: 1px solid $gray-border-color;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        &.selected {
+            border: 1px solid $main-color;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        & img {
+            height: auto;
+            width: 100%;
+            aspect-ratio: 16/9;
+            transition: 0.15s;
+        }
+
+        & .title {
+            padding: 5px 0;
+        }
     }
 }
 
@@ -73,7 +98,6 @@ button.button-list {
 }
 
 @media screen and (max-width: $media-mobile) {
-    // faire css pour afficher video list desktop si desktop sinon video list mobile
     .video-list-desktop {
         display: none;
     }

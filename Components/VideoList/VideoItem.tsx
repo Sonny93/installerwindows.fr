@@ -13,7 +13,7 @@ export default function VideoItem({
     video: Video;
     currentVideo: Video;
     videos: Video[];
-    handleChangeVideo: (currentVideoId: string, videos: Video[], direction: 'next' | 'keep' | 'previous') => void;
+    handleChangeVideo: (currentVideoId: string, direction?: 'next' | 'previous') => void;
     onClick?: Function;
 }) {
     const { videoId, title } = video;
@@ -24,7 +24,7 @@ export default function VideoItem({
             onClick();
 
         if (currentVideo.videoId !== videoId)
-            handleChangeVideo(videoId, videos, 'keep');
+            handleChangeVideo(videoId);
     }
 
     const className = `${styles['video-item']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
