@@ -3,7 +3,7 @@
 
 .video-list-desktop {
     height: 100%;
-    width: 250px;
+    width: 275px;
     animation: 0.5s fadein both;
 }
 
@@ -24,7 +24,7 @@
     height: 100%;
     width: 100%;
     display: flex;
-    gap: 5px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -34,8 +34,9 @@
         cursor: pointer;
         width: 100%;
         aspect-ratio: 16/9;
-        padding: 5px;
-        border: 1px solid transparent;
+        padding: 15px;
+        padding-bottom: 2px;
+        border: 1px solid $smooth-border-color;
         flex: 1;
         display: flex;
         align-items: center;
@@ -43,12 +44,14 @@
         transition: 0.15s;
 
         &:hover {
-            border: 1px solid $gray-border-color;
+            border: 1px solid transparent;
+            box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.5);
             background-color: rgba(0, 0, 0, 0.5);
         }
 
         &.selected {
-            border: 1px solid $main-color;
+            border: 1px solid transparent;
+            border-bottom: 3px solid $main-color;
             background-color: rgba(0, 0, 0, 0.5);
         }
 
@@ -60,6 +63,8 @@
         }
 
         & .title {
+            width: 100%;
+            text-align: center;
             padding: 5px 0;
         }
     }
