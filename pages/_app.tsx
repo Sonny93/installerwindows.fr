@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import ReactTooltip from 'react-tooltip';
+import Head from 'next/head'
+    ;
 
 import { DefaultSeo } from 'next-seo';
 
@@ -13,7 +15,6 @@ import NeedHelp from '../Components/NeedHelp/NeedHelp';
 
 // Fichiers CSS globaux
 import '../styles/index.scss';
-import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter();
