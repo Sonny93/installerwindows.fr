@@ -4,64 +4,65 @@
 @import "./media-queries.scss";
 
 .App {
-	opacity: 0;
-	height: 100%;
-	width: 80vw;
-	padding: 25px;
-	margin-bottom: 50px;
-	display: flex;
-	gap: 25px;
-	flex-direction: column;
-	transition: 0.15s;
-	animation: 0.5s fadein both;
+    opacity: 0;
+    height: 100%;
+    width: 80vw;
+    padding: 25px;
+    margin-bottom: 50px;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    transition: 0.15s;
+    animation: 0.5s fadein both;
 
-	& .content-wrapper {
-		display: flex;
-		justify-content: center;
-		gap: 35px;
-		flex-direction: row;
+    & .content-wrapper {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 35px;
+        flex-direction: row;
 
-		& aside {
-			height: 100%;
-		}
+        & aside {
+            height: 100%;
+        }
 
-		& main {
-			height: 100%;
-			width: 100%;
-			display: flex;
-			flex: 1;
-			align-items: center;
-			flex-direction: column;
-		}
-	}
+        & main {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex: 1;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
 
-	& .carousel-item {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+    & .carousel-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: $media-medium-desktop) {
-	.App {
-		width: 90vw;
-	}
+    .App {
+        width: 90vw;
+    }
 }
 
 @media screen and (max-width: $media-small-desktop) {
-	.App {
-		width: 100%;
-		padding: 15px;
-	}
+    .App {
+        width: 100%;
+        padding: 15px;
+    }
 }
 
 @media screen and (max-width: $media-mobile) {
-	.App {
-		gap: 10px;
+    .App {
+        gap: 10px;
 
-		& .content-wrapper {
-			gap: 10px;
-			flex-direction: column-reverse;
-		}
-	}
+        & .content-wrapper {
+            gap: 10px;
+            flex-direction: column-reverse;
+        }
+    }
 }

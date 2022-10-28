@@ -42,7 +42,6 @@ export default function VideoList({
                     {videos.map((video, key) => (
                         <VideoItem
                             video={video}
-                            videos={videos}
                             currentVideo={currentVideo}
                             handleChangeVideo={handleChangeVideo}
                             key={key}
@@ -71,7 +70,6 @@ export default function VideoList({
                             {videos.map((video, key) => (
                                 <VideoItem
                                     video={video}
-                                    videos={videos}
                                     currentVideo={currentVideo}
                                     handleChangeVideo={handleChangeVideo}
                                     key={key}
