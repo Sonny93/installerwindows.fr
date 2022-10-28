@@ -15,6 +15,11 @@
     animation: 0.5s fadein both;
 
     & .markdown-gh {
+        & > * {
+            word-break: break-word;
+            margin: 1em 0;
+        }
+
         & h1,
         & h2 {
             border-bottom: 0.5px solid $smooth-border-color;
@@ -22,18 +27,32 @@
             transition: 0.15s;
         }
 
-        & p {
-            word-break: break-word;
-            margin: 1em 0;
-        }
-
         & a {
             width: fit-content;
             font-weight: 400;
         }
 
-        & ul li {
-            margin-bottom: 15px;
+        & ul {
+            padding-left: 2em;
+
+            & li {
+                list-style: disc;
+                margin-bottom: 15px;
+            }
+        }
+
+        & blockquote {
+            border-left: 5px solid $smooth-border-color;
+            padding-left: 20px;
+
+            & :first-child {
+                color: orange;
+            }
+
+            & :nth-child(2) {
+                color: $font-grey-color;
+                font-style: italic;
+            }
         }
     }
 

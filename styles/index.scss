@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
 @import "./colors.scss";
 
 * {
@@ -14,7 +15,7 @@ body {
 	width: 100%;
 	color: #fff;
 	background-color: $bg-color;
-	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-style: normal;
 }
 
@@ -42,8 +43,8 @@ hr {
 
 ul,
 li {
-	padding: 0;
 	margin: 0;
+	padding: 0;
 	list-style: none;
 }
 
@@ -99,6 +100,10 @@ a:not(.reset) {
 	&:focus:after {
 		transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
 	}
+}
+
+strong {
+	font-weight: 500;
 }
 
 /* width */
