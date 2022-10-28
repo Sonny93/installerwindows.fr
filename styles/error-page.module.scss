@@ -7,7 +7,6 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     animation: fadein 250ms both;
 
@@ -44,6 +43,7 @@
 
         & hr {
             width: 50px;
+            margin: 20px 0;
             border: 1px solid $black-border-color;
         }
     }

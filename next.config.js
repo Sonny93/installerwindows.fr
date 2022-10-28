@@ -1,30 +1,24 @@
-const withPWA = require('next-pwa');
-const runtimeCaching = require('next-pwa/cache');
+const withPWA = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
 
 module.exports = withPWA({
     pwa: {
-        dest: 'public',
+        dest: "public",
         register: true,
         skipWaiting: true,
         runtimeCaching,
-        disable: process.env.NODE_ENV === 'development'
+        disable: process.env.NODE_ENV === "development",
     },
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
-            use: ['@svgr/webpack']
+            use: ["@svgr/webpack"],
         });
 
         return config;
     },
     images: {
-        domains: ['i.ytimg.com', 'i.imgur.com'],
-        formats: ['image/webp']
-    },
-    experimental: {
-        images: {
-            allowFutureImage: true
-        }
-    },
-    optimizeFonts: true
+        domains: ["i.ytimg.com", "i.imgur.com"],
+        formats: ["image/webp"],
+    }
 });

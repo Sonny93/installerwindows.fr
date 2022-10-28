@@ -1,18 +1,16 @@
 import React from 'react';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 import styles from './VideoList.module.scss';
 
 export default function VideoItem({
     video,
-    videos,
     currentVideo,
     handleChangeVideo,
     onClick
 }: {
     video: Video;
     currentVideo: Video;
-    videos: Video[];
     handleChangeVideo: (currentVideoId: string, direction?: 'next' | 'previous') => void;
     onClick?: Function;
 }) {

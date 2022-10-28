@@ -85,3 +85,4 @@ build/
 /public/fallback-*
 /public/sw.js
 /public/workbox-*
+.vscode
