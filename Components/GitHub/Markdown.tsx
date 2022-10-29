@@ -3,12 +3,12 @@ import Link from "next/link";
 import {
     AnchorHTMLAttributes,
     ClassAttributes,
-    ImgHTMLAttributes,
+    ImgHTMLAttributes
 } from "react";
 
 import ReactMarkdown from "react-markdown";
+import { ReactMarkdownProps } from "react-markdown/lib/complex-types";
 import rehypeRaw from "rehype-raw";
-import { ReactMarkdownProps } from "react-markdown/src/ast-to-react";
 
 const DOMAIN_URL = "https://installerwindows.fr";
 const YOUTUBE_DOMAIN = "https://www.youtube.com/";
@@ -22,7 +22,6 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
     return (
         <>
             <ReactMarkdown
-                // @ts-ignore
                 rehypePlugins={[rehypeRaw]}
                 linkTarget="_blank"
                 components={{
@@ -62,7 +61,6 @@ const A_Builder = ({ href, children }: CustomAComponentsProps) => {
             </>
         );
     }
-    console.log(path, videoId, href)
 
     return (
         <>

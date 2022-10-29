@@ -51,7 +51,7 @@ export default function VideoPlayer({
                     <YouTube
                         videoId={currentVideo.videoId}
                         opts={options}
-                        containerClassName={styles["video-player-container"]}
+                        className={styles["video-player-container"]}
                         onReady={playerOnReady}
                     />
                 </div>
