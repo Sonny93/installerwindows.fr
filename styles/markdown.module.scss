@@ -1,4 +1,5 @@
 @use "./keyframes.scss";
+@import "./colors.scss";
 
 .App {
     width: 1110px;
@@ -14,16 +15,16 @@
     animation: 0.5s fadein both;
 
     & .markdown-gh {
-        & h1,
-        & h2 {
-            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
-            margin: 35px 0 0;
-            transition: 0.15s;
-        }
-
-        & p {
+        & > * {
             word-break: break-word;
             margin: 1em 0;
+        }
+
+        & h1,
+        & h2 {
+            border-bottom: 0.5px solid $smooth-border-color;
+            margin: 35px 0 0;
+            transition: 0.15s;
         }
 
         & a {
@@ -31,15 +32,34 @@
             font-weight: 400;
         }
 
-        & ul li {
-            margin-bottom: 15px;
+        & ul {
+            padding-left: 2em;
+
+            & li {
+                list-style: disc;
+                margin-bottom: 15px;
+            }
+        }
+
+        & blockquote {
+            border-left: 5px solid $smooth-border-color;
+            padding-left: 20px;
+
+            & :first-child {
+                color: orange;
+            }
+
+            & :nth-child(2) {
+                color: $font-grey-color;
+                font-style: italic;
+            }
         }
     }
 
     & code.source {
         font-size: 0.85em;
-        background-color: #161a1f;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: $dark-bg-color;
+        border: 1px solid $smooth-border-color;
         padding: 15px;
 
         & > div {
