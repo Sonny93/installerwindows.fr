@@ -64,5 +64,9 @@
             gap: 10px;
             flex-direction: column-reverse;
         }
+
+        & aside {
+            height: fit-content;
+        }
     }
 }
