@@ -1,228 +1,177 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Router from 'next/router';
+import { NextSeo } from "next-seo";
+import Router from "next/router";
+import { useEffect, useState } from "react";
 
-import toastr from 'toastr';
-import 'toastr/build/toastr.css';
+import toastr from "toastr";
+import "toastr/build/toastr.css";
 
-import Meta from '../../Components/Meta/Meta';
-import VideoPlayer from '../../Components/VideoPlayer/VideoPlayer';
-import VideoList from '../../Components/VideoList/VideoList';
+import Meta from "../../Components/Meta/Meta";
+import Navbar from "../../Components/Navbar/Navbar";
+import VideoList from "../../Components/VideoList/VideoList";
+import VideoPlayer from "../../Components/VideoPlayer/VideoPlayer";
 
-import { getIndexByVideoId, getVideos } from '../../Utils/index';
-import styles from '../../styles/videos.module.scss';
-import { NextSeo } from 'next-seo';
+import { getIndexByVideoId, getVideos } from "../../Utils/index";
 
-const CAROUSEL_QUERIES = {
-	'extra-large-desktop': {
-		breakpoint: { max: 5000, min: 1920 },
-		items: 7,
-		slidesToSlide: 7
-	},
-	'full-hd-desktop': {
-		breakpoint: { max: 1920, min: 1700 },
-		items: 6,
-		slidesToSlide: 6
-	},
-	'large-desktop': {
-		breakpoint: { max: 1700, min: 1440 },
-		items: 5,
-		slidesToSlide: 5
-	},
-	'medium-desktop': {
-		breakpoint: { max: 1440, min: 1175 },
-		items: 4,
-		slidesToSlide: 4
-	},
-	'small-desktop': {
-		breakpoint: { max: 1175, min: 1070 },
-		items: 3,
-		slidesToSlide: 3
-	},
-	'tablet': {
-		breakpoint: { max: 1070, min: 900 },
-		items: 3,
-		slidesToSlide: 3
-	},
-	'mobile': {
-		breakpoint: { max: 900, min: 0 },
-		items: 2,
-		slidesToSlide: 2
-	}
-}
+import styles from "../../styles/videos.module.scss";
 
-export default function Videos({ videos, video }: { videos: Video[]; video: Video; }) {
-	const [currentVideo, setCurrentVideo] = useState<Video>(video);
-	const [canGoPrevious, setGoPrevious] = useState<boolean>(false);
-	const [canGoNext, setGoNext] = useState<boolean>(false);
+export default function Videos({
+    videos,
+    video,
+}: {
+    videos: Video[];
+    video: Video;
+}) {
+    const [currentVideo, setCurrentVideo] = useState<Video>(video);
+    const [canGoPrevious, setGoPrevious] = useState<boolean>(false);
+    const [canGoNext, setGoNext] = useState<boolean>(false);
 
-	const [deviceType, setDeviceType] = useState<string>(null);
-	const carouselRef = useRef(null);
+    useEffect(() => {
+        const index = getIndexByVideoId(currentVideo.videoId, videos);
+        if (index === -1) {
+            return;
+        }
 
-	useEffect(() => {
-		handleResize(deviceType, setDeviceType);
-		window.addEventListener('resize', () => handleResize(deviceType, setDeviceType), false);
-		return () => window.removeEventListener('resize', () => handleResize(deviceType, setDeviceType), false);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+        if (index > 0) {
+            setGoPrevious(true);
+        } else {
+            setGoPrevious(false);
+        }
 
-	useEffect(() => {
-		const index = getIndexByVideoId(currentVideo.videoId, videos);
-		if (index === -1) {
-			return;
-		}
+        if (index < videos.length - 1) {
+            setGoNext(true);
+        } else {
+            setGoNext(false);
+        }
+    }, [currentVideo, videos]);
 
-		if (index > 0) {
-			setGoPrevious(true);
-		} else {
-			setGoPrevious(false);
-		}
+    const handleChangeVideo = (
+        currentVideoId: string = "",
+        direction: "previous" | "next"
+    ) => {
+        const videoIndex = getIndexByVideoId(currentVideoId, videos);
+        if (!currentVideoId || videoIndex === -1) {
+            return toastr.error("Vidéo introuvable", "Erreur");
+        }
 
-		if (index < videos.length - 1) {
-			setGoNext(true);
-		} else {
-			setGoNext(false);
-		}
-	}, [currentVideo, videos]);
+        let video: Video;
+        switch (direction) {
+            case "previous":
+                if (!canGoPrevious) {
+                    return toastr.error(
+                        "Impossible de charger la vidéo précédente"
+                    );
+                }
 
-	const handleChangeVideo = (currentVideoId: string, videos: Video[], direction: 'previous' | 'next' | 'keep' = 'keep'): Video => {
-		if (!videos || videos.length === 0) {
-			console.error('missing param "videos"');
-			return null;
-		}
+                video = videos[videoIndex - 1];
+                break;
 
-		const currentIndex = getIndexByVideoId(currentVideoId, videos);
-		if (currentIndex === -1) {
-			toastr.error('Vidéo introuvable', 'Erreur');
-			return null;
-		}
+            case "next":
+                if (!canGoNext) {
+                    return toastr.error(
+                        "Impossible de charger la vidéo suivante"
+                    );
+                }
 
-		const device = CAROUSEL_QUERIES[deviceType];
-		let index = currentIndex;
-		if (direction === 'next') {
-			if (index + 1 <= videos.length - 1) {
-				index += 1;
-			}
+                video = videos[videoIndex + 1];
+                break;
 
-			if (index % device.items === 0) {
-				carouselRef.current?.next();
-			}
-		} else if (direction === 'previous') {
-			if (index - 1 >= 0) {
-				index -= 1;
-			}
+            default:
+                video = videos[videoIndex];
+                break;
+        }
 
-			if (index % device.items === 0) {
-				carouselRef.current?.previous();
-			}
-		}
+        setCurrentVideo(video);
+        Router.push(`/videos/${video.videoId}`);
+    };
 
-		const video = videos[index];
-		setCurrentVideo(video);
-		Router.push(`/videos/${video.videoId}`);
-
-		return video;
-	}
-
-	return (<>
-		<NextSeo
-			title={currentVideo.title}
-			description={currentVideo.description}
-			openGraph={{
-				type: 'image',
-				url: '/videos/' + video.videoId,
-				images: [{
-					url: `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`
-				}]
-			}}
-		/>
-		<div className={styles['App']}>
-			<div className={styles['block-wrapper']}>
-				<div className={styles['block']}>
-					<VideoList
-						carouselQueries={CAROUSEL_QUERIES}
-						videos={videos}
-						currentVideo={currentVideo}
-						deviceType={deviceType}
-						carouselRef={carouselRef}
-						handleChangeVideo={handleChangeVideo}
-					/>
-				</div>
-			</div>
-			<div className={styles['block-wrapper']}>
-				<div className={styles['block']}>
-					<VideoPlayer
-						videos={videos}
-						currentVideo={currentVideo}
-						deviceType={deviceType}
-						handleChangeVideo={handleChangeVideo}
-						canGoPrevious={canGoPrevious}
-						canGoNext={canGoNext}
-					/>
-				</div>
-			</div>
-			<div className={styles['block-wrapper']}>
-				<div className={styles['block']}>
-					<Meta video={currentVideo} />
-				</div>
-			</div>
-		</div>
-	</>);
+    return (
+        <>
+            <NextSeo
+                title={currentVideo.title}
+                description={currentVideo.description}
+                openGraph={{
+                    type: "image",
+                    url: "/videos/" + video.videoId,
+                    images: [
+                        {
+                            url: `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`,
+                        },
+                    ],
+                }}
+            />
+            <div className={styles["App"]}>
+                <Navbar shadowEnable={false} />
+                <div className={styles["content-wrapper"]}>
+                    <main>
+                        <VideoPlayer
+                            currentVideo={currentVideo}
+                            handleChangeVideo={handleChangeVideo}
+                            canGoPrevious={canGoPrevious}
+                            canGoNext={canGoNext}
+                        />
+                        <Meta video={currentVideo} />
+                    </main>
+                    <aside>
+                        <VideoList
+                            videos={videos}
+                            currentVideo={currentVideo}
+                            handleChangeVideo={handleChangeVideo}
+                        />
+                    </aside>
+                </div>
+            </div>
+        </>
+    );
 }
 
 export async function getServerSideProps({ query }) {
-	const videoId = query?.videoId?.[0] as undefined | string;
-	const videos = await getVideos();
+    const videoId = query?.videoId?.[0] as string;
+    const videos = await getVideos();
 
-	if (videos.length < 1) {
-		return { // Aucune vidéo
-			redirect: {
-				permanent: false,
-				destination: '/novideo'
-			},
-			props: {}
-		}
-	}
+    // Aucune vidéo disponible
+    if (videos.length < 1) {
+        return {
+            // Aucune vidéo
+            redirect: {
+                permanent: false,
+                destination: "/novideo",
+            },
+            props: {},
+        };
+    }
 
-	if (!videoId) {
-		const firstVideo = videos[0];
-		return { // Redirige vers la première vidéo 
-			redirect: {
-				permanent: false,
-				destination: `/videos/${firstVideo.videoId}`
-			},
-			props: {
-				videos: JSON.parse(JSON.stringify(videos)),
-				video: JSON.parse(JSON.stringify(firstVideo))
-			}
-		}
-	}
+    // Redirige vers la première vidéo
+    if (!videoId) {
+        const firstVideo = videos[0];
+        return {
+            redirect: {
+                permanent: false,
+                destination: `/videos/${firstVideo.videoId}`,
+            },
+            props: {
+                videos: JSON.parse(JSON.stringify(videos)),
+                video: JSON.parse(JSON.stringify(firstVideo)),
+            },
+        };
+    }
 
-	const currentVideo = videos.find(v => v.videoId === videoId);
-	if (!currentVideo) {
-		return { // Vidéo introuvable
-			redirect: {
-				permanent: false,
-				destination: '/'
-			},
-			props: {}
-		}
-	}
+    // Vidéo introuvable
+    const currentVideo = videos.find((v) => v.videoId === videoId);
+    if (!currentVideo) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/",
+            },
+            props: {},
+        };
+    }
 
-	return { // OK
-		props: {
-			videos: JSON.parse(JSON.stringify(videos)),
-			video: JSON.parse(JSON.stringify(currentVideo))
-		}
-	}
-}
-
-const handleResize = (currentDeviceType: string, setDeviceType) => {
-	for (const [key, { breakpoint }] of Object.entries(CAROUSEL_QUERIES)) {
-		const { matches } = window.matchMedia(`(min-width:${breakpoint.min}px)`);
-		if (!matches || currentDeviceType === key)
-			continue;
-
-		setDeviceType(key);
-		break;
-	}
+    // OK
+    return {
+        props: {
+            videos: JSON.parse(JSON.stringify(videos)),
+            video: JSON.parse(JSON.stringify(currentVideo)),
+        },
+    };
 }

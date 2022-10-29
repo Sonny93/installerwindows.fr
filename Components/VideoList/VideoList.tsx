@@ -1,82 +1,84 @@
-import React, { useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
-import Carousel, { ResponsiveType } from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import VideoItem from "./VideoItem";
+import styles from "./VideoList.module.scss";
 
-import styles from '../../styles/videos.module.scss';
-import VideoItem from './VideoItem';
+const MOBILE_MEDIA_QUERY = 900;
 
 export default function VideoList({
-    carouselQueries,
     videos,
     currentVideo,
-    deviceType,
-    carouselRef,
-    handleChangeVideo
+    handleChangeVideo,
 }: {
-    carouselQueries: ResponsiveType;
     videos: Video[];
     currentVideo: Video;
-    deviceType: string;
-    carouselRef: React.Ref<any>;
-    handleChangeVideo: (currentVideoId: string, videos: Video[], direction: 'next' | 'keep' | 'previous') => void;
+    handleChangeVideo: (
+        currentVideoId: string,
+        direction?: "next" | "previous"
+    ) => void;
 }) {
-    const [showModal, setShowModal] = useState<boolean>(false);
-    const handleOpenModal = () => setShowModal(true);
-    const handleCloseModal = () => setShowModal(false);
+    const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
-    if (deviceType !== 'mobile') {
-        return (<>
-            <div className={styles['video-list']}>
-                <Carousel
-                    responsive={carouselQueries}
-                    itemClass={styles['carousel-item']}
-                    deviceType={deviceType}
-                    ssr={true}
-                    showDots={true}
-                    shouldResetAutoplay={false}
-                    swipeable={true}
-                    draggable={true}
-                    ref={carouselRef}
-                >
+    const handleOpenModal = () => setModalOpen(true);
+    const handleCloseModal = () => setModalOpen(false);
+
+    const handleResize = useCallback(
+        ({ target }) =>
+            target.innerWidth === MOBILE_MEDIA_QUERY
+                ? handleCloseModal()
+                : null,
+        []
+    );
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [handleResize]);
+
+    return (
+        <>
+            <div className={styles["video-list-desktop"]}>
+                <ul className={styles["video-list"]}>
                     {videos.map((video, key) => (
                         <VideoItem
                             video={video}
-                            videos={videos}
                             currentVideo={currentVideo}
                             handleChangeVideo={handleChangeVideo}
                             key={key}
                         />
                     ))}
-                </Carousel>
+                </ul>
             </div>
-        </>);
-    }
-
-    return (<>
-        <div className={styles['button-list-container']}>
-            <button className={styles['button-list']} onClick={handleOpenModal}>
-                Afficher les vidéos
-            </button>
-        </div>
-        {showModal && (<div className={styles['modal']}>
-            <div className={styles['button-list-container']}>
-                <button className={styles['button-list']} onClick={handleCloseModal}>
-                    Fermer les vidéos
+            <div className={styles["video-list-mobile"]}>
+                <button
+                    type="button"
+                    className={styles["button-list"]}
+                    onClick={handleOpenModal}
+                >
+                    Afficher les vidéos
                 </button>
+                {isModalOpen && (
+                    <div className={styles["modal"]}>
+                        <button
+                            type="button"
+                            className={styles["button-list"]}
+                            onClick={handleCloseModal}
+                        >
+                            Fermer les vidéos
+                        </button>
+                        <ul className={styles["video-list"]}>
+                            {videos.map((video, key) => (
+                                <VideoItem
+                                    video={video}
+                                    currentVideo={currentVideo}
+                                    handleChangeVideo={handleChangeVideo}
+                                    key={key}
+                                />
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </div>
-            <div className={styles['video-list-mobile']}>
-                {videos.map((video, key) => (
-                    <VideoItem
-                        video={video}
-                        videos={videos}
-                        currentVideo={currentVideo}
-                        handleChangeVideo={handleChangeVideo}
-                        onClick={handleCloseModal}
-                        key={key}
-                    />
-                ))}
-            </div>
-        </div>)}
-    </>);
+        </>
+    );
 }

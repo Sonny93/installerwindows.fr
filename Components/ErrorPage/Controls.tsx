@@ -1,25 +1,13 @@
-import Link from 'next/link';
-import styles from '../../styles/error-page.module.scss';
+import Link from "next/link";
+import styles from "../../styles/error-page.module.scss";
 
 export default function Controls() {
     return (
-        <div className={styles['controls']}>
-            <Link href={'/'}>
-                <a>
-                    ⟵ Page d'accueil
-                </a>
-            </Link>
+        <div className={styles["controls"]}>
+            <Link href={"/"}>⟵ Page d'accueil</Link>
             <hr />
-            <Link href={'/videos'}>
-                <a>
-                    Guide en version vidéo
-                </a>
-            </Link>
-            <Link href={'/texte'}>
-                <a>
-                    Guide en version texte
-                </a>
-            </Link>
+            <Link href={"/videos"}>Guide en version vidéo</Link>
+            <Link href={"/texte"}>Guide en version texte</Link>
         </div>
-    )
+    );
 }

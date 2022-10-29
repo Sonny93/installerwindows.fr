@@ -1,19 +1,17 @@
 import React from 'react';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
-import styles from '../../styles/videos.module.scss';
+import styles from './VideoList.module.scss';
 
 export default function VideoItem({
     video,
-    videos,
     currentVideo,
     handleChangeVideo,
     onClick
 }: {
     video: Video;
     currentVideo: Video;
-    videos: Video[];
-    handleChangeVideo: (currentVideoId: string, videos: Video[], direction: 'next' | 'keep' | 'previous') => void;
+    handleChangeVideo: (currentVideoId: string, direction?: 'next' | 'previous') => void;
     onClick?: Function;
 }) {
     const { videoId, title } = video;
@@ -24,12 +22,12 @@ export default function VideoItem({
             onClick();
 
         if (currentVideo.videoId !== videoId)
-            handleChangeVideo(videoId, videos, 'keep');
+            handleChangeVideo(videoId);
     }
 
-    const className = `${styles['box']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
+    const className = `${styles['video-item']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
     return (<>
-        <div className={className} onClick={onItemClick}>
+        <li className={className} onClick={onItemClick}>
             <Image
                 height={140}
                 width={250}
@@ -38,6 +36,6 @@ export default function VideoItem({
                 alt='Miniature YTB'
             />
             <div className={styles['title']}>{title}</div>
-        </div>
+        </li>
     </>);
 }
