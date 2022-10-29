@@ -1,31 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
 @import "./colors.scss";
 
 * {
-	outline: none;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 html,
 body {
-	height: 100%;
-	width: 100%;
-	color: #fff;
-	background-color: $bg-color;
-	font-family: "Roboto", sans-serif;
-	font-style: normal;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    background-color: $bg-color;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
 }
 
 #__next {
-	height: 100%;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	flex: 1;
-	flex-direction: column;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
 }
 
 h1,
@@ -34,103 +34,103 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: 400;
+    font-weight: 400;
 }
 
 hr {
-	border: 1px solid $gray-border-color;
+    border: 1px solid $gray-border-color;
 }
 
 ul,
 li {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 a {
-	position: relative;
-	text-decoration: none;
-	word-wrap: break-word;
-	color: $main-color;
-	background: transparent;
-	border: none;
+    position: relative;
+    text-decoration: none;
+    word-wrap: break-word;
+    color: $main-color;
+    background: transparent;
+    border: none;
 }
 
 a:not(.reset) {
-	padding-bottom: 4px;
+    padding-bottom: 4px;
 
-	&:before,
-	&:after {
-		content: "";
-		position: absolute;
-		bottom: 2px;
-		left: 0;
-		right: 0;
-		height: 2px;
-		background-color: $main-color;
-	}
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $main-color;
+    }
 
-	&:before {
-		opacity: 0;
-		transform: translateY(-8px);
-		transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
-	}
+    &:before {
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+    }
 
-	&:after {
-		opacity: 0;
-		transform: translateY(4px);
-		transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-	}
+    &:after {
+        opacity: 0;
+        transform: translateY(4px);
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+    }
 
-	&:hover:before,
-	&:hover:after,
-	&:focus:before,
-	&:focus:after {
-		opacity: 1;
-		transform: translateY(0);
-	}
+    &:hover:before,
+    &:hover:after,
+    &:focus:before,
+    &:focus:after {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-	&:hover:before,
-	&:focus:before {
-		transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-	}
+    &:hover:before,
+    &:focus:before {
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+    }
 
-	&:hover:after,
-	&:focus:after {
-		transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
-	}
+    &:hover:after,
+    &:focus:after {
+        transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
+    }
 }
 
 strong {
-	font-weight: 500;
+    font-weight: 500;
 }
 
 /* width */
 ::-webkit-scrollbar {
-	width: 7px;
+    width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: $scrollbar-track-color;
-	border-radius: 2px;
+    background: $scrollbar-track-color;
+    border-radius: 2px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: $scrollbar-thumb-color;
-	border-radius: 2px;
+    background: $scrollbar-thumb-color;
+    border-radius: 2px;
 
-	&:hover {
-		background: $scrollbar-thumb-hover-color;
-	}
+    &:hover {
+        background: $scrollbar-thumb-hover-color;
+    }
 }
 
 /* Image home page */
 @media screen and (max-width: 900px) {
-	img#img-header {
-		height: auto;
-		width: 100%;
-	}
+    img#img-header {
+        height: auto;
+        width: 100%;
+    }
 }
