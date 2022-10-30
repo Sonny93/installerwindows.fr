@@ -8,14 +8,9 @@ const MOBILE_MEDIA_QUERY = 900;
 export default function VideoList({
     videos,
     currentVideo,
-    handleChangeVideo,
 }: {
     videos: Video[];
     currentVideo: Video;
-    handleChangeVideo: (
-        currentVideoId: string,
-        direction?: "next" | "previous"
-    ) => void;
 }) {
     const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -43,7 +38,6 @@ export default function VideoList({
                         <VideoItem
                             video={video}
                             currentVideo={currentVideo}
-                            handleChangeVideo={handleChangeVideo}
                             key={key}
                         />
                     ))}
@@ -71,7 +65,6 @@ export default function VideoList({
                                 <VideoItem
                                     video={video}
                                     currentVideo={currentVideo}
-                                    handleChangeVideo={handleChangeVideo}
                                     key={key}
                                 />
                             ))}

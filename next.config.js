@@ -1,3 +1,4 @@
+const BundleAnalyzer = require('@next/bundle-analyzer');
 const NextPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 
@@ -7,6 +8,10 @@ const withPWA = NextPWA({
     skipWaiting: true,
     runtimeCaching,
     disable: process.env.NODE_ENV === "development",
+});
+
+const withBundleAnalyzer = BundleAnalyzer({
+    enabled: false // process.env.NODE_ENV === "production"
 });
 
 const config = {
@@ -25,4 +30,4 @@ const config = {
     optimizeFonts: false
 };
 
-module.exports = withPWA(config);
+module.exports = withBundleAnalyzer(withPWA(config));

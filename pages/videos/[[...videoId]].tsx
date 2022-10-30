@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
-import Router from "next/router";
-import { useEffect, useState } from "react";
+import Router, { useRouter } from "next/router";
+import { useEffect, useMemo, useState } from "react";
 
 import toastr from "toastr";
 import "toastr/build/toastr.css";
@@ -21,28 +21,27 @@ export default function Videos({
     videos: Video[];
     video: Video;
 }) {
+    const { query } = useRouter();
     const [currentVideo, setCurrentVideo] = useState<Video>(video);
-    const [canGoPrevious, setGoPrevious] = useState<boolean>(false);
-    const [canGoNext, setGoNext] = useState<boolean>(false);
+    const canGoPrevious = useMemo<boolean>(
+        () => getIndexByVideoId(currentVideo.videoId, videos) > 0,
+        [currentVideo.videoId, videos]
+    );
+    const canGoNext = useMemo<boolean>(
+        () => getIndexByVideoId(currentVideo.videoId, videos) < videos.length - 1,
+        [currentVideo.videoId, videos]
+    );
 
     useEffect(() => {
-        const index = getIndexByVideoId(currentVideo.videoId, videos);
-        if (index === -1) {
+        const videoId = query.videoId[0];
+        if (videoId === currentVideo.videoId)
             return;
-        }
 
-        if (index > 0) {
-            setGoPrevious(true);
-        } else {
-            setGoPrevious(false);
+        const video = videos.find((v) => v.videoId === videoId);
+        if (video) {
+            setCurrentVideo(video);
         }
-
-        if (index < videos.length - 1) {
-            setGoNext(true);
-        } else {
-            setGoNext(false);
-        }
-    }, [currentVideo, videos]);
+    }, [currentVideo.videoId, query.videoId, videos]);
 
     const handleChangeVideo = (
         currentVideoId: string = "",
@@ -57,9 +56,7 @@ export default function Videos({
         switch (direction) {
             case "previous":
                 if (!canGoPrevious) {
-                    return toastr.error(
-                        "Impossible de charger la vidéo précédente"
-                    );
+                    return toastr.error("Impossible de charger la vidéo précédente");
                 }
 
                 video = videos[videoIndex - 1];
@@ -67,9 +64,7 @@ export default function Videos({
 
             case "next":
                 if (!canGoNext) {
-                    return toastr.error(
-                        "Impossible de charger la vidéo suivante"
-                    );
+                    return toastr.error("Impossible de charger la vidéo suivante");
                 }
 
                 video = videos[videoIndex + 1];
@@ -115,7 +110,6 @@ export default function Videos({
                         <VideoList
                             videos={videos}
                             currentVideo={currentVideo}
-                            handleChangeVideo={handleChangeVideo}
                         />
                     </aside>
                 </div>
