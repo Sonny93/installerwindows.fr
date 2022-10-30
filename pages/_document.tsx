@@ -12,7 +12,7 @@ export default function Document() {
             </Head>
             <body>
                 <noscript>
-                    Vous devez activer JavaScript pour utiliser ce site
+                    JavaScript recommandé pour une navigation optimale
                 </noscript>
                 <Main />
                 <NextScript />

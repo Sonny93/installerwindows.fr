@@ -1,41 +1,31 @@
-import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from './VideoList.module.scss';
 
 export default function VideoItem({
     video,
-    currentVideo,
-    handleChangeVideo,
-    onClick
+    currentVideo
 }: {
     video: Video;
     currentVideo: Video;
-    handleChangeVideo: (currentVideoId: string, direction?: 'next' | 'previous') => void;
-    onClick?: Function;
 }) {
     const { videoId, title } = video;
     const miniatureUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
-    const onItemClick = () => {
-        if (onClick)
-            onClick();
-
-        if (currentVideo.videoId !== videoId)
-            handleChangeVideo(videoId);
-    }
-
     const className = `${styles['video-item']} ${currentVideo.videoId === videoId ? styles['selected'] : ''}`;
     return (<>
-        <li className={className} onClick={onItemClick}>
-            <Image
-                height={140}
-                width={250}
-                priority={true}
-                src={miniatureUrl}
-                alt='Miniature YTB'
-            />
-            <div className={styles['title']}>{title}</div>
+        <li className={className}>
+            <Link href={`/videos/${videoId}`} className='reset'>
+                <Image
+                    height={140}
+                    width={250}
+                    priority={true}
+                    src={miniatureUrl}
+                    alt='Miniature YTB'
+                />
+                <div className={styles['title']}>{title}</div>
+            </Link>
         </li>
     </>);
 }
