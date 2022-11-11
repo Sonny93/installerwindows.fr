@@ -9,6 +9,8 @@ import ReactMarkdown from "react-markdown";
 import { ReactMarkdownProps } from "react-markdown/lib/complex-types";
 import rehypeRaw from "rehype-raw";
 
+import styles from './markdown.module.scss';
+
 const DOMAIN_URL = "https://installerwindows.fr";
 const YOUTUBE_DOMAIN = "https://www.youtube.com/";
 const YOUTUBE_SHORT_DOMAIN = "https://youtu.be/";
@@ -40,7 +42,7 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
 
     const handleScrollToElement = (chapter: Chapter) => {
         window.scroll({
-            top: chapter.rect.top + scrollOffset,
+            top: (chapter.rect.top + chapter.rect.height) ?? 0 + scrollOffset,
             behavior: 'smooth'
         });
     }
@@ -52,7 +54,7 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
         useEffect(() => {
             if (ref?.current !== null) {
                 const rect = ref?.current?.getBoundingClientRect();
-                addChapter({ name: text, rect })
+                addChapter({ name: text, rect });
             }
         }, [children, ref, text]);
 
@@ -63,10 +65,10 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
 
     return (
         <div style={{ display: 'flex', gap: '15px' }}>
-            <ul className="chapters" style={{ height: 'fit-content', minWidth: '250px', position: 'sticky', top: '100px', marginTop: '50px' }} ref={listRef}>
+            <ul className={styles['chapters']} ref={listRef}>
                 {chapters.map((chapter, index) => (
                     <li key={index + 1} onClick={() => handleScrollToElement(chapter)}>
-                        {index + 1}. {chapter.name}
+                        {chapter.name} <span className={styles['number']}>- {index + 1}</span>
                     </li>
                 ))}
             </ul>
