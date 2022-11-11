@@ -1,0 +1,33 @@
+@import "../../styles/colors.scss";
+
+.chapters {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    width: fit-content;
+    padding-right: 20px;
+    border-right: 1px solid $smooth-border-color;
+    margin-top: 50px;
+    margin-right: 10px;
+    display: flex;
+    gap: 25px;
+    align-items: flex-end;
+    flex-direction: column;
+
+    & > li {
+        cursor: pointer;
+        width: fit-content;
+        font-size: 0.85em;
+        white-space: nowrap;
+        border-bottom: 1px solid transparent;
+        transition: 0.15s;
+
+        & .number {
+            color: $main-color;
+        }
+
+        &:hover {
+            border-bottom: 1px solid $main-color;
+        }
+    }
+}
