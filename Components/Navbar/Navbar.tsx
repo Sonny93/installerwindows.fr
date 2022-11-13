@@ -20,12 +20,9 @@ export default function Navbar({ shadowEnable = true }: { shadowEnable?: boolean
         <>
             <nav className={styles['navbar'] + (showShadow ? ` ${styles['shadow']}` : '')}>
                 <div className={styles['brand']}>
-                    <Link href={'/'}>Installerwindows.fr</Link>
+                    <Link href={'/'}>Accueil</Link>
                 </div>
                 <ul className={styles['links']}>
-                    <li>
-                        <Link href={'/'}>Accueil</Link>
-                    </li>
                     <li>
                         <Link href={'/videos'}>Vidéos</Link>
                     </li>
