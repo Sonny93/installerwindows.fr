@@ -2,7 +2,7 @@ import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import {
     AnchorHTMLAttributes,
-    ClassAttributes, ImgHTMLAttributes, useEffect, useMemo, useRef, useState
+    ClassAttributes, ImgHTMLAttributes, RefObject, useEffect, useRef, useState
 } from "react";
 
 import ReactMarkdown from "react-markdown";
@@ -17,7 +17,7 @@ const YOUTUBE_SHORT_DOMAIN = "https://youtu.be/";
 
 interface Chapter {
     name: string;
-    rect: DOMRect;
+    ref: RefObject<HTMLHeadingElement>;
 }
 
 interface MarkdownProps {
@@ -25,12 +25,6 @@ interface MarkdownProps {
     innerClassName?: string;
 }
 export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
-    const listRef = useRef<HTMLUListElement>(null);
-
-    const scrollOffset = useMemo(() => {
-        const rect = listRef.current?.getBoundingClientRect();
-        return rect?.top ?? 0;
-    }, []);
     const [chapters, setChapters] = useState<Chapter[]>([]);
 
     const addChapter = (newChapter: Chapter) => {
@@ -41,31 +35,38 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
     };
 
     const handleScrollToElement = (chapter: Chapter) => {
-        window.scroll({
-            top: (chapter.rect.top + chapter.rect.height) ?? 0 + scrollOffset,
-            behavior: 'smooth'
-        });
+        console.log(chapter, { ref: chapter.ref.current });
+        // chapter.ref.current.scrollIntoView();
     }
 
     const TitleBuilder = ({ children, level }) => {
-        const ref = useRef<HTMLHeadingElement>();
+        const ref = useRef<HTMLHeadingElement>(undefined);
         const text = children?.[0] as string;
 
         useEffect(() => {
-            if (ref?.current !== null) {
-                const rect = ref?.current?.getBoundingClientRect();
-                addChapter({ name: text, rect });
+            console.log('là', ref.current?.textContent);
+            if (!ref.current?.textContent) {
+                return;
             }
-        }, [children, ref, text]);
+            setTimeout(() => {
+                console.log({ current: ref.current });
+                if (ref.current?.textContent === 'Bibliothèques C++') {
+                    ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 1000);
+            addChapter({ name: text, ref });
+        }, [text]);
 
         return level === 1 ?
             <h1 ref={ref}>{text}</h1> :
             <h2 ref={ref}>{text}</h2>;
     }
 
+    console.log(chapters);
+
     return (
         <div style={{ display: 'flex', gap: '15px' }}>
-            <ul className={styles['chapters']} ref={listRef}>
+            <ul className={styles['chapters']}>
                 {chapters.map((chapter, index) => (
                     <li key={index + 1} onClick={() => handleScrollToElement(chapter)}>
                         {chapter.name} <span className={styles['number']}>- {index + 1}</span>
