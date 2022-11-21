@@ -6,6 +6,8 @@
     margin: 0;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth !important;
+    scroll-margin-top: 100px;
 }
 
 html,
@@ -66,12 +68,13 @@ a {
     position: relative;
     text-decoration: none;
     word-wrap: break-word;
-    color: $main-color;
+    color: $font-color;
     background: transparent;
     border: none;
 }
 
 a:not(.reset) {
+    color: $main-color;
     padding-bottom: 4px;
 
     &:before,

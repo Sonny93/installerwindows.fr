@@ -6,7 +6,7 @@ import styles from './Navbar.module.scss';
 export default function Navbar({ shadowEnable = true }: { shadowEnable?: boolean }) {
     const [showShadow, setShowShadow] = useState<boolean>(false);
 
-    const handleScroll = ({ target }) => setShowShadow(window.scrollY !== 0);
+    const handleScroll = () => setShowShadow(window.scrollY !== 0);
     useEffect(() => {
         if (!shadowEnable) {
             return window.removeEventListener('scroll', handleScroll);
@@ -20,9 +20,12 @@ export default function Navbar({ shadowEnable = true }: { shadowEnable?: boolean
         <>
             <nav className={styles['navbar'] + (showShadow ? ` ${styles['shadow']}` : '')}>
                 <div className={styles['brand']}>
-                    <Link href={'/'}>Accueil</Link>
+                    <Link href={'/'}>Installerwindows.fr</Link>
                 </div>
                 <ul className={styles['links']}>
+                    <li>
+                        <Link href={'/'}>Accueil</Link>
+                    </li>
                     <li>
                         <Link href={'/videos'}>Vidéos</Link>
                     </li>
