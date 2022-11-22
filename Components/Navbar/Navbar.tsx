@@ -24,9 +24,6 @@ export default function Navbar({ shadowEnable = true }: { shadowEnable?: boolean
                 </div>
                 <ul className={styles['links']}>
                     <li>
-                        <Link href={'/'}>Accueil</Link>
-                    </li>
-                    <li>
                         <Link href={'/videos'}>Vidéos</Link>
                     </li>
                     <li>
