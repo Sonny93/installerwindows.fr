@@ -20,6 +20,14 @@ body {
     font-style: normal;
 }
 
+.reset {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    color: $font-color;
+    background-color: $bg-color;
+}
+
 #__next {
     height: 100%;
     width: 100%;
@@ -146,6 +154,10 @@ strong {
 
 /* Image home page */
 @media screen and (max-width: 900px) {
+    * {
+        scroll-margin-top: 50px;
+    }
+
     img#img-header {
         height: auto;
         width: 100%;

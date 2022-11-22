@@ -8,37 +8,35 @@ import Source from './Source';
 import styles from '../../styles/markdown.module.scss';
 
 export default function MarkdownPage({
-	content,
-	url,
-	urlRaw,
-	pageTitle
+    content,
+    url,
+    urlRaw,
+    pageTitle,
 }: {
-	content: string;
-	url: string;
-	urlRaw: string;
-	pageTitle: string;
+    content: string;
+    url: string;
+    urlRaw: string;
+    pageTitle: string;
 }) {
-	if (!content) {
-		return (<>
-			<NextSeo title={pageTitle} />
-			<div className={styles['App']}>
-				<Navbar />
-				<NoMarkdown />
-			</div>
-		</>);
-	}
+    if (!content) {
+        return (
+            <>
+                <NextSeo title={pageTitle} />
+                <div className={styles['App']}>
+                    <Navbar />
+                    <NoMarkdown />
+                </div>
+            </>
+        );
+    }
 
-	return (<>
-		<div className={styles['App']}>
-			<Navbar />
-			<Markdown
-				markdown={content}
-				innerClassName={styles['markdown-gh']}
-			/>
-			<Source
-				url={url}
-				raw={urlRaw}
-			/>
-		</div>
-	</>);
+    return (
+        <>
+            <div className={styles['App']}>
+                <Navbar />
+                <Markdown markdown={content} innerClassName={styles['markdown-gh']} />
+                <Source url={url} raw={urlRaw} />
+            </div>
+        </>
+    );
 }

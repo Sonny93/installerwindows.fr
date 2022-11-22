@@ -11,6 +11,8 @@ import {
 import ReactMarkdown from 'react-markdown';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 import rehypeRaw from 'rehype-raw';
+
+import Menu from '../Menu/Menu';
 import Chapters from './Chapters';
 
 const DOMAIN_URL = 'https://installerwindows.fr';
@@ -45,14 +47,20 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
         const Title = `h${level}` as keyof JSX.IntrinsicElements;
         return (
             <Title style={{ cursor: 'pointer' }} id={id}>
-                <Link className='reset' href={`#${id}`}>{text}</Link>
+                <Link className="reset" href={`#${id}`}>
+                    {text}
+                </Link>
             </Title>
         );
     };
 
     return (
-        <div style={{ display: 'flex', gap: '15px' }}>
-            {chapters.length > 0 && <Chapters chapters={chapters} />}
+        <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            {chapters.length > 0 && (
+                <Menu>
+                    <Chapters chapters={chapters} />
+                </Menu>
+            )}
             <div className="markdown-content">
                 <ReactMarkdown
                     rehypePlugins={[rehypeRaw]}
