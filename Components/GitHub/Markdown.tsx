@@ -5,15 +5,18 @@ import {
     ClassAttributes,
     ImgHTMLAttributes,
     useEffect,
-    useState,
+    useState
 } from 'react';
 
 import ReactMarkdown from 'react-markdown';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 import rehypeRaw from 'rehype-raw';
 
-import Menu from '../Menu/Menu';
+import Modal from '../Modal/Modal';
+import useModal from '../Modal/useModal';
 import Chapters from './Chapters';
+
+import styles from './markdown.module.scss';
 
 const DOMAIN_URL = 'https://installerwindows.fr';
 const YOUTUBE_DOMAIN = 'https://www.youtube.com/';
@@ -29,6 +32,7 @@ interface MarkdownProps {
     innerClassName?: string;
 }
 export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
+    const { isShowing, toggle, close: closeModal } = useModal();
     const [chapters, setChapters] = useState<Chapter[]>([]);
 
     const addChapter = (newChapter: Chapter) => {
@@ -55,11 +59,19 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
     };
 
     return (
-        <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        <div className={styles['page-wrapper']}>
             {chapters.length > 0 && (
-                <Menu>
-                    <Chapters chapters={chapters} />
-                </Menu>
+                <>
+                    <div className={styles['chapters-wrapper-desktop']}>
+                        <Chapters chapters={chapters} onSelect={closeModal} />
+                    </div>
+                    <div className={styles['chapters-wrapper-mobile']}>
+                        <button className='reset' onClick={toggle}>Voir les chapitres</button>
+                        <Modal isShowing={isShowing} hide={toggle} header='Chapitres'>
+                            <Chapters chapters={chapters} onSelect={closeModal} />
+                        </Modal>
+                    </div>
+                </>
             )}
             <div className="markdown-content">
                 <ReactMarkdown

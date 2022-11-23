@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { AiOutlineHome } from "react-icons/ai";
 import { useEffect, useState } from 'react';
 
 import styles from './Navbar.module.scss';
@@ -23,6 +24,11 @@ export default function Navbar({ shadowEnable = true }: { shadowEnable?: boolean
                     <Link href={'/'}>Installerwindows.fr</Link>
                 </div>
                 <ul className={styles['links']}>
+                    <li>
+                        <Link href={'/'} style={{ fontSize: '1.25em' }}>
+                            <AiOutlineHome />
+                        </Link>
+                    </li>
                     <li>
                         <Link href={'/videos'}>Vidéos</Link>
                     </li>
