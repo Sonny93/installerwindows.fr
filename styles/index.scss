@@ -6,6 +6,8 @@
     margin: 0;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth !important;
+    scroll-margin-top: 100px;
 }
 
 html,
@@ -16,6 +18,15 @@ body {
     background-color: $bg-color;
     font-family: "Open sans", sans-serif; // Import in HTML file (font not loaded with css import in prod build)
     font-style: normal;
+}
+
+.reset {
+    font-size: 1em;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    color: $font-color;
+    background-color: $bg-color;
 }
 
 #__next {
@@ -66,12 +77,13 @@ a {
     position: relative;
     text-decoration: none;
     word-wrap: break-word;
-    color: $main-color;
+    color: $font-color;
     background: transparent;
     border: none;
 }
 
 a:not(.reset) {
+    color: $main-color;
     padding-bottom: 4px;
 
     &:before,
@@ -143,6 +155,10 @@ strong {
 
 /* Image home page */
 @media screen and (max-width: 900px) {
+    * {
+        scroll-margin-top: 50px;
+    }
+
     img#img-header {
         height: auto;
         width: 100%;

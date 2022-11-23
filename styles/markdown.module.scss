@@ -1,11 +1,12 @@
 @use "./keyframes.scss";
 @import "./colors.scss";
+@import "./media-queries.scss";
 
 .App {
-    width: 1110px;
+    width: $media-medium-desktop;
     font-size: 1.2em;
     font-weight: 300;
-    padding: 15px;
+    padding: 1em;
     margin-bottom: 65px;
     display: flex;
     justify-content: center;
@@ -71,14 +72,14 @@
     }
 }
 
-@media screen and (max-width: 1130px) {
+@media screen and (max-width: calc($media-medium-desktop + 20px)) {
     .App {
         width: 100%;
     }
 }
 
 /* Mobile */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $media-mobile) {
     .App img#img-header {
         width: 100%;
     }

@@ -6,8 +6,8 @@
 .App {
     opacity: 0;
     height: 100%;
-    width: 80vw;
-    padding: 25px;
+    width: 95vw;
+    padding: 1em;
     margin-bottom: 50px;
     display: flex;
     gap: 25px;
@@ -16,7 +16,6 @@
     animation: 0.5s fadein both;
 
     & .content-wrapper {
-        height: 100%;
         display: flex;
         justify-content: center;
         gap: 35px;
@@ -40,12 +39,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-}
-
-@media screen and (max-width: $media-medium-desktop) {
-    .App {
-        width: 90vw;
     }
 }
 

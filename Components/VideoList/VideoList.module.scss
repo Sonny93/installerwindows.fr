@@ -48,7 +48,7 @@
 
         &.selected {
             border: 1px solid transparent;
-            border-bottom: 3px solid $main-color;
+            border-left: 1px solid $main-color;
             background-color: rgba(0, 0, 0, 0.5);
         }
 
