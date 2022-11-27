@@ -12,11 +12,13 @@ export default function MarkdownPage({
     url,
     urlRaw,
     pageTitle,
+    disableChapters,
 }: {
     content: string;
     url: string;
     urlRaw: string;
     pageTitle: string;
+    disableChapters?: boolean;
 }) {
     if (!content) {
         return (
@@ -34,7 +36,11 @@ export default function MarkdownPage({
         <>
             <div className={styles['App']}>
                 <Navbar />
-                <Markdown markdown={content} innerClassName={styles['markdown-gh']} />
+                <Markdown
+                    markdown={content}
+                    innerClassName={styles['markdown-gh']}
+                    disableChapters={disableChapters}
+                />
                 <Source url={url} raw={urlRaw} />
             </div>
         </>

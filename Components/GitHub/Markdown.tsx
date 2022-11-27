@@ -5,7 +5,7 @@ import {
     ClassAttributes,
     ImgHTMLAttributes,
     useEffect,
-    useState
+    useState,
 } from 'react';
 
 import ReactMarkdown from 'react-markdown';
@@ -30,8 +30,9 @@ export interface Chapter {
 interface MarkdownProps {
     markdown: string;
     innerClassName?: string;
+    disableChapters?: boolean;
 }
-export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
+export default function Markdown({ markdown, innerClassName, disableChapters }: MarkdownProps) {
     const { isShowing, toggle, close: closeModal } = useModal();
     const [chapters, setChapters] = useState<Chapter[]>([]);
 
@@ -60,14 +61,16 @@ export default function Markdown({ markdown, innerClassName }: MarkdownProps) {
 
     return (
         <div className={styles['page-wrapper']}>
-            {chapters.length > 0 && (
+            {chapters.length > 0 && !disableChapters && (
                 <>
                     <div className={styles['chapters-wrapper-desktop']}>
                         <Chapters chapters={chapters} onSelect={closeModal} />
                     </div>
                     <div className={styles['chapters-wrapper-mobile']}>
-                        <button className='reset' onClick={toggle}>Voir les chapitres</button>
-                        <Modal isShowing={isShowing} hide={toggle} header='Chapitres'>
+                        <button className="reset" onClick={toggle}>
+                            Voir les chapitres
+                        </button>
+                        <Modal isShowing={isShowing} hide={toggle} header="Chapitres">
                             <Chapters chapters={chapters} onSelect={closeModal} />
                         </Modal>
                     </div>
