@@ -15,8 +15,8 @@ export default function MarkdownPage({
     disableChapters,
 }: {
     content: string;
-    url: string;
-    urlRaw: string;
+    url?: string;
+    urlRaw?: string;
     pageTitle: string;
     disableChapters?: boolean;
 }) {
