@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 
+import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import Markdown from './Markdown';
 import NoMarkdown from './NoMarkdown';
@@ -42,6 +43,7 @@ export default function MarkdownPage({
                     disableChapters={disableChapters}
                 />
                 <Source url={url} raw={urlRaw} />
+                <Footer />
             </div>
         </>
     );

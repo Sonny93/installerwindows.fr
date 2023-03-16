@@ -1,26 +1,21 @@
-import { NextSeo } from "next-seo";
-import Router, { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { NextSeo } from 'next-seo';
+import Router, { useRouter } from 'next/router';
+import { useEffect, useMemo, useState } from 'react';
 
-import toastr from "toastr";
-import "toastr/build/toastr.css";
+import toastr from 'toastr';
+import 'toastr/build/toastr.css';
 
-import Meta from "../../Components/Meta/Meta";
-import Navbar from "../../Components/Navbar/Navbar";
-import VideoList from "../../Components/VideoList/VideoList";
-import VideoPlayer from "../../Components/VideoPlayer/VideoPlayer";
+import Meta from '../../Components/Meta/Meta';
+import Navbar from '../../Components/Navbar/Navbar';
+import VideoList from '../../Components/VideoList/VideoList';
+import VideoPlayer from '../../Components/VideoPlayer/VideoPlayer';
 
-import { getIndexByVideoId, getVideos } from "../../Utils/index";
+import { getIndexByVideoId, getVideos } from '../../Utils/index';
 
-import styles from "../../styles/videos.module.scss";
+import styles from '../../styles/videos.module.scss';
+import Footer from '../../Components/Footer/Footer';
 
-export default function Videos({
-    videos,
-    video,
-}: {
-    videos: Video[];
-    video: Video;
-}) {
+export default function Videos({ videos, video }: { videos: Video[]; video: Video }) {
     const { query } = useRouter();
     const [currentVideo, setCurrentVideo] = useState<Video>(video);
     const canGoPrevious = useMemo<boolean>(
@@ -34,8 +29,7 @@ export default function Videos({
 
     useEffect(() => {
         const videoId = query.videoId[0];
-        if (videoId === currentVideo.videoId)
-            return;
+        if (videoId === currentVideo.videoId) return;
 
         const video = videos.find((v) => v.videoId === videoId);
         if (video) {
@@ -43,28 +37,25 @@ export default function Videos({
         }
     }, [currentVideo.videoId, query.videoId, videos]);
 
-    const handleChangeVideo = (
-        currentVideoId: string = "",
-        direction: "previous" | "next"
-    ) => {
+    const handleChangeVideo = (currentVideoId: string = '', direction: 'previous' | 'next') => {
         const videoIndex = getIndexByVideoId(currentVideoId, videos);
         if (!currentVideoId || videoIndex === -1) {
-            return toastr.error("Vidéo introuvable", "Erreur");
+            return toastr.error('Vidéo introuvable', 'Erreur');
         }
 
         let video: Video;
         switch (direction) {
-            case "previous":
+            case 'previous':
                 if (!canGoPrevious) {
-                    return toastr.error("Impossible de charger la vidéo précédente");
+                    return toastr.error('Impossible de charger la vidéo précédente');
                 }
 
                 video = videos[videoIndex - 1];
                 break;
 
-            case "next":
+            case 'next':
                 if (!canGoNext) {
-                    return toastr.error("Impossible de charger la vidéo suivante");
+                    return toastr.error('Impossible de charger la vidéo suivante');
                 }
 
                 video = videos[videoIndex + 1];
@@ -85,8 +76,8 @@ export default function Videos({
                 title={currentVideo.title}
                 description={currentVideo.description}
                 openGraph={{
-                    type: "image",
-                    url: "/videos/" + video.videoId,
+                    type: 'image',
+                    url: '/videos/' + video.videoId,
                     images: [
                         {
                             url: `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`,
@@ -94,9 +85,9 @@ export default function Videos({
                     ],
                 }}
             />
-            <div className={styles["App"]}>
+            <div className={styles['App']}>
                 <Navbar shadowEnable={false} />
-                <div className={styles["content-wrapper"]}>
+                <div className={styles['content-wrapper']}>
                     <main>
                         <VideoPlayer
                             currentVideo={currentVideo}
@@ -107,12 +98,10 @@ export default function Videos({
                         <Meta video={currentVideo} />
                     </main>
                     <aside>
-                        <VideoList
-                            videos={videos}
-                            currentVideo={currentVideo}
-                        />
+                        <VideoList videos={videos} currentVideo={currentVideo} />
                     </aside>
                 </div>
+                <Footer />
             </div>
         </>
     );
@@ -128,7 +117,7 @@ export async function getServerSideProps({ query }) {
             // Aucune vidéo
             redirect: {
                 permanent: false,
-                destination: "/novideo",
+                destination: '/novideo',
             },
             props: {},
         };
@@ -155,7 +144,7 @@ export async function getServerSideProps({ query }) {
         return {
             redirect: {
                 permanent: false,
-                destination: "/",
+                destination: '/',
             },
             props: {},
         };

@@ -155,7 +155,6 @@ function IMG_Builder({
         height,
         width,
         style: { verticalAlign: 'middle', marginRight: '0' },
-        layout: 'raw',
         className,
         src,
         alt,
