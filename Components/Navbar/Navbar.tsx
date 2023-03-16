@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 
 import styles from './Navbar.module.scss';
@@ -33,7 +33,7 @@ export default function Navbar({ shadowEnable = true }: { shadowEnable?: boolean
                         <Link href={'/videos'}>Vidéos</Link>
                     </li>
                     <li>
-                        <Link href={'/texte'}>Guide Textuel</Link>
+                        <Link href={'/guides'}>Guides</Link>
                     </li>
                     <li>
                         <Link

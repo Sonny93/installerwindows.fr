@@ -1,0 +1,13 @@
+{
+    "guides": [
+        {
+            "title": "Windows 11",
+            "slug": "windows-11",
+            "github": {
+                "source": "https://github.com/Piwielle/windows_11/blob/main/Guide/README.md",
+                "raw": "https://raw.githubusercontent.com/Piwielle/windows_11/main/Guide/README.md"
+            },
+            "isDraft": false
+        }
+    ]
+}
