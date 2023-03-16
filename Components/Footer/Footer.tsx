@@ -1,11 +1,10 @@
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 import styles from './footer.module.scss';
 
 export default function Footer() {
     const session = useSession();
-    console.log(session);
 
     return (
         <footer className={styles['footer']}>
@@ -21,7 +20,12 @@ export default function Footer() {
                     <Link href={'/cgu'}>CGU</Link>
                 </li>
                 {session.data ? (
-                    <li>{session.data?.user?.name}</li>
+                    <>
+                        <li>{session.data?.user?.name}</li>
+                        <li onClick={() => signOut()} style={{ color: 'salmon' }}>
+                            Déconnexion
+                        </li>
+                    </>
                 ) : (
                     <li>
                         <Link href={'/signin'}>Connexion</Link>

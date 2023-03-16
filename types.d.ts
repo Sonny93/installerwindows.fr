@@ -22,6 +22,7 @@ enum VideoStatus {
 
 interface DbType {
     guides: Guide[];
+    admin_accounts: string[];
 }
 interface Guide {
     title: string;

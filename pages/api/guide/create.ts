@@ -11,6 +11,7 @@ type DataError = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data | DataError>) {
+    // TODO: ajouter authentification
     const { title, slug, githubSource, githubRawSource, isDraft } = req.body;
 
     try {

@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
+import { db } from '../../../lib/db';
 
 export const authOptions = {
     providers: [
@@ -12,11 +13,28 @@ export const authOptions = {
     callbacks: {
         async signIn({ account: accountParam, profile }) {
             console.log(
-                'Connexion via',
-                accountParam.provider,
+                'User',
                 accountParam.providerAccountId,
                 profile.email,
-                profile.name
+                profile.name,
+                'try to connect via',
+                accountParam.provider
+            );
+
+            const userIndex = db.data.admin_accounts.findIndex(
+                (userId) => userId === accountParam.providerAccountId
+            );
+            if (userIndex === -1) {
+                return false;
+            }
+
+            console.log(
+                'User',
+                accountParam.providerAccountId,
+                profile.email,
+                profile.name,
+                'connected via',
+                accountParam.provider
             );
 
             return true;
