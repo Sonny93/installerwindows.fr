@@ -1,0 +1,21 @@
+@import "../../styles/colors.scss";
+@import "../../styles/media-queries.scss";
+
+.guide-create {
+    width: $media-medium-desktop;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    & form {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: calc($media-medium-desktop + 20px)) {
+    .guide-create {
+        width: 100%;
+    }
+}

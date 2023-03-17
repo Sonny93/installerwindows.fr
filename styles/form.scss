@@ -1,0 +1,84 @@
+form {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form .form-radio-container {
+    width: 100%;
+
+    & p {
+        width: 100%;
+    }
+
+    & .form-radio-btn {
+        width: 100%;
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+
+        & label {
+            cursor: pointer;
+            width: 100%;
+        }
+    }
+}
+
+form .form-field {
+    width: 100%;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    & label {
+        font-size: 0.95em;
+        color: #ccc;
+    }
+
+    & input,
+    & textarea,
+    & label,
+    & button,
+    & select,
+    & .legend {
+        width: 100%;
+    }
+
+    & .legend {
+        font-size: 0.85em;
+        text-align: justify;
+        color: #999;
+    }
+}
+
+textarea,
+select,
+input {
+    padding: 0.75em;
+    border: 1px solid #dadce0;
+    border-radius: 3px;
+}
+
+button {
+    cursor: pointer;
+    font-size: 0.85em;
+    color: #fff;
+    padding: 1em;
+    background: #105b97;
+    border: 1px solid #105b97;
+    border-radius: 0.3em;
+    transition: 0.15s;
+
+    &:disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
+
+    &:not(:disabled):hover {
+        box-shadow: #3f88c5 0 0 7px 3px;
+    }
+}

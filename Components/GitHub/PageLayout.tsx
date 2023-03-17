@@ -35,6 +35,7 @@ export default function MarkdownPage({
 
     return (
         <>
+            <NextSeo title={pageTitle} />
             <div className={styles['App']}>
                 <Navbar />
                 <Markdown

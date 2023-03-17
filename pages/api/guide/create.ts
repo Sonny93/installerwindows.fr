@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '../../../lib/db';
+import { _db, getGuides } from '../../../lib/db';
 
 type Data = {
     guide: Guide;
@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const { title, slug, githubSource, githubRawSource, isDraft } = req.body;
 
     try {
-        await db.data.guides.push({
+        await _db.data.guides.push({
             title,
             slug,
             github: {
@@ -24,9 +24,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             },
             isDraft,
         });
-        await db.write();
+        await _db.write();
 
-        const guide = await db.data.guides.find((guide) => guide.slug === slug);
+        const guide = (await getGuides()).find((guide) => guide.slug === slug);
         if (!guide) {
             throw new Error('Unable to find guide ' + slug);
         }

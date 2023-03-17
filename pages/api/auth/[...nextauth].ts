@@ -1,6 +1,7 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
-import { db } from '../../../lib/db';
+
+import { getAdmins } from '../../../lib/db';
 
 export const authOptions = {
     providers: [
@@ -21,7 +22,7 @@ export const authOptions = {
                 accountParam.provider
             );
 
-            const userIndex = db.data.admin_accounts.findIndex(
+            const userIndex = (await getAdmins()).findIndex(
                 (userId) => userId === accountParam.providerAccountId
             );
             if (userIndex === -1) {

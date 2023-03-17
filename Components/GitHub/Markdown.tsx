@@ -76,7 +76,7 @@ export default function Markdown({ markdown, innerClassName, disableChapters }: 
                     </div>
                 </>
             )}
-            <div className="markdown-content">
+            <div className={styles['markdown-content']}>
                 <ReactMarkdown
                     rehypePlugins={[rehypeRaw]}
                     linkTarget="_blank"

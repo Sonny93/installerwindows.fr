@@ -1,5 +1,5 @@
 import MarkdownPage from '../../Components/GitHub/PageLayout';
-import { db } from '../../lib/db';
+import { getGuides } from '../../lib/db';
 import { downloadMarkdown } from '../../Utils';
 
 interface PageGuideProps {
@@ -20,13 +20,13 @@ export default function PageGuide({ guide, guideSlug, markdown }: PageGuideProps
 
 export async function getServerSideProps(context) {
     const guideSlug = context.query.guideSlug?.[0] || '';
-    const guide = db.data.guides.find(({ slug }) => slug === guideSlug);
+    const guide = (await getGuides()).find(({ slug }) => slug === guideSlug);
 
     if (!guide || guide.isDraft) {
         return {
             redirect: {
                 permanent: false,
-                destination: '/404',
+                destination: '/guides',
             },
             props: {},
         };

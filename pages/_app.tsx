@@ -14,6 +14,7 @@ import NeedHelp from '../Components/NeedHelp/NeedHelp';
 
 // Fichiers CSS globaux
 import '../styles/index.scss';
+import '../styles/form.scss';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     const router = useRouter();

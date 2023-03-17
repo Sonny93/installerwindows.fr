@@ -24,7 +24,7 @@ const config = {
         return config;
     },
     images: {
-        domains: ['i.ytimg.com', 'i.imgur.com'],
+        domains: ['i.ytimg.com', 'i.imgur.com', 'raw.githubusercontent.com'],
         formats: ['image/webp'],
     },
     optimizeFonts: false,

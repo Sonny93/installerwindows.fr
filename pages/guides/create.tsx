@@ -1,117 +1,148 @@
 import { FormEvent, useState } from 'react';
+
 import Footer from '../../Components/Footer/Footer';
 import Navbar from '../../Components/Navbar/Navbar';
 
-export default function PageCreateGuide() {
-    const [isDraft, setIsDraft] = useState<boolean>(true);
+import styles from './guide-create.module.scss';
 
-    const getFieldValue = (formData: FormData, key: string) =>
-        (formData.get(key) || '').toString().trim();
+export default function PageCreateGuide() {
+    const [guide, setGuide] = useState<Guide>(undefined);
+
+    const [title, setTitle] = useState<string>('');
+    const [slug, setSlug] = useState<string>('');
+    const [githubSource, setGithubSource] = useState<string>('');
+    const [githubRawSource, setGithubRawSource] = useState<string>('');
+    const [isDraft, setIsDraft] = useState<boolean>(false);
+
+    const trimify = (str: string = '') => str.trim();
     const slugify = (str: string = '') =>
         str
             .normalize('NFD')
-            .replaceAll(/[\u0300-\u036f]/g, '')
-            .replaceAll("'", '')
-            .replaceAll('"', '')
-            .replaceAll("'", '')
             .replaceAll(' ', '-')
+            .replaceAll(/[\u0300-\u036f'"=\(\)&_]/g, '')
+            .replace(/^-+|-+(?=-|$)/g, '')
             .toLowerCase();
 
     const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
-        const formData = new FormData(event.currentTarget);
-
         try {
-            const title = getFieldValue(formData, 'title');
-            console.log(title);
-            if (!title || title === '') {
+            const titleTrimed = trimify(title);
+            if (!titleTrimed || titleTrimed === '') {
                 throw new Error('Missing guide title');
             }
 
-            const slug = slugify(getFieldValue(formData, 'slug'));
-            if (!slug || slug === '') {
-                throw new Error('Missing guide slug');
+            const slugTrimed = trimify(slug);
+            console.log(slugTrimed, slug);
+            if (!slugTrimed || slugTrimed === '') {
+                setSlug(slugify(titleTrimed));
             }
 
-            const githubSource = getFieldValue(formData, 'github-source');
-            if (!githubSource || githubSource === '') {
+            const githubSourceTrimed = trimify(githubSource);
+            if (!githubSourceTrimed || githubSourceTrimed === '') {
                 throw new Error('Missing github source');
             }
 
-            const githubRawSource = getFieldValue(formData, 'github-raw-source');
-            if (!githubRawSource || githubRawSource === '') {
+            const githubRawSourceTrimed = trimify(githubRawSource);
+            if (!githubRawSourceTrimed || githubRawSourceTrimed === '') {
                 throw new Error('Missing github raw source ');
             }
 
-            console.log(title, slug, githubSource, githubRawSource, isDraft);
             const request = await fetch(`/api/guide/create`, {
                 method: 'post',
                 body: JSON.stringify({
-                    title,
-                    slug,
-                    githubSource,
-                    githubRawSource,
+                    title: titleTrimed,
+                    slug: slugTrimed,
+                    githubSource: githubSourceTrimed,
+                    githubRawSource: githubRawSourceTrimed,
                     isDraft,
                 }),
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            const response = await request.json();
+
+            const data = await request.json();
             if (request.ok) {
-                console.log(response);
+                console.log(data);
+                setGuide(data?.guide);
             } else {
-                console.error(response);
+                alert('Une erreur est survenue lors de la création du guide');
             }
         } catch (error: any) {
             console.warn(error);
         }
     };
     return (
-        <div>
+        <div className={styles['guide-create']}>
             <Navbar />
             <form onSubmit={handleSubmitForm}>
                 <h1>Ajouter un guide</h1>
-                <div className="field">
+                <div className="form-field">
                     <label htmlFor="title">Titre</label>
-                    <input type="text" placeholder="Titre" name="title" id="title" />
+                    <input
+                        type="text"
+                        placeholder="Titre"
+                        name="title"
+                        id="title"
+                        onChange={({ target }) => setTitle(target.value)}
+                        onBlur={({ target }) => {
+                            if (trimify(slug) === '') {
+                                setSlug(slugify(target.value));
+                            }
+                        }}
+                        value={title}
+                    />
                 </div>
-                <div className="field">
-                    <label htmlFor="slug">Slug</label>
-                    <input type="text" placeholder="Slug" name="slug" id="slug" />
+                <div className="form-field">
+                    <label htmlFor="slug">Slug (ex: {slugify('Mon super guide de test')})</label>
+                    <input
+                        type="text"
+                        placeholder="Slug"
+                        name="slug"
+                        id="slug"
+                        onChange={({ target }) => setSlug(target.value)}
+                        onBlur={({ target }) => setSlug(slugify(target.value))}
+                        value={slug}
+                    />
                 </div>
-                <div className="field">
+                <div className="form-field">
                     <label htmlFor="github-source">Source Github</label>
                     <input
                         type="text"
                         placeholder="Source Github"
                         name="github-source"
                         id="github-source"
+                        onChange={({ target }) => setGithubSource(target.value)}
+                        value={githubSource}
                     />
                 </div>
-                <div className="field">
+                <div className="form-field">
                     <label htmlFor="github-raw-source">Source Github Raw</label>
                     <input
                         type="text"
                         placeholder="Source Github Raw"
                         name="github-raw-source"
                         id="github-raw-source"
+                        onChange={({ target }) => setGithubRawSource(target.value)}
+                        value={githubRawSource}
                     />
                 </div>
-                <div className="field">
-                    <input
-                        type="checkbox"
-                        name="is-draft"
-                        id="is-draft"
-                        onChange={(event) => setIsDraft(event.target.checked)}
-                        checked={isDraft}
-                    />
-                    <label htmlFor="is-draft">brouillon?</label>
+                <div className="form-radio-container">
+                    <div className="form-radio-btn">
+                        <input
+                            type="checkbox"
+                            name="is-draft"
+                            id="is-draft"
+                            onChange={(event) => setIsDraft(event.target.checked)}
+                            checked={isDraft}
+                        />
+                        <label htmlFor="is-draft">brouillon?</label>
+                    </div>
                 </div>
-                <div className="field">
-                    <button type="submit">Ajouter guide</button>
+                <div className="form-field">
+                    <button type="submit">Ajouter le guide</button>
                 </div>
+                {guide && <pre className="form-field">{JSON.stringify(guide, null, 2)}</pre>}
             </form>
             <Footer />
         </div>
