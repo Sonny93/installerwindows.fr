@@ -1,22 +1,31 @@
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { getServerSession } from 'next-auth/next';
 import { getProviders, signIn } from 'next-auth/react';
+import { FaDiscord } from 'react-icons/fa';
+
 import Footer from '../Components/Footer/Footer';
 import Navbar from '../Components/Navbar/Navbar';
+
 import { authOptions } from './api/auth/[...nextauth]';
+
+import styles from '../styles/signin.module.scss';
 
 export default function SignIn({
     providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
-        <div>
+        <div className={styles['signin']}>
             <Navbar />
-            <h1>Se connecter</h1>
-            {Object.values(providers).map((provider) => (
-                <div key={provider.name}>
-                    <button onClick={() => signIn(provider.id)}>{provider.name}</button>
-                </div>
-            ))}
+            <main>
+                <h1>Se connecter</h1>
+                {Object.values(providers).map((provider) => (
+                    <div key={provider.name}>
+                        <button onClick={() => signIn(provider.id)}>
+                            Se connecter via <FaDiscord /> {provider.name}
+                        </button>
+                    </div>
+                ))}
+            </main>
             <Footer />
         </div>
     );

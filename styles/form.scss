@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 form {
     display: flex;
     gap: 1em;
@@ -68,8 +70,8 @@ button {
     font-size: 0.85em;
     color: #fff;
     padding: 1em;
-    background: #105b97;
-    border: 1px solid #105b97;
+    background: $btn-color;
+    border: 1px solid $btn-color;
     border-radius: 0.3em;
     transition: 0.15s;
 
