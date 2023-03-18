@@ -3,6 +3,7 @@ import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { hotjar } from 'react-hotjar';
 
 import nProgress from 'nprogress';
@@ -13,8 +14,8 @@ import ErrorBoundary from '../Components/ErrorBoundary';
 import NeedHelp from '../Components/NeedHelp/NeedHelp';
 
 // Fichiers CSS globaux
-import '../styles/index.scss';
 import '../styles/form.scss';
+import '../styles/index.scss';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     const router = useRouter();
@@ -66,6 +67,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                 />
                 <Component {...pageProps} />
                 <NeedHelp />
+                <Toaster
+                    position="top-center"
+                    toastOptions={{ style: { wordBreak: 'break-all' } }}
+                />
             </ErrorBoundary>
         </SessionProvider>
     );

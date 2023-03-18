@@ -1,50 +1,74 @@
-import { FormEvent, useState } from 'react';
+import { GetServerSidePropsContext } from 'next';
+import { getServerSession } from 'next-auth';
+import { FormEvent, useMemo, useState } from 'react';
+import toast from 'react-hot-toast';
+
+import { authOptions } from '../api/auth/[...nextauth]';
 
 import Footer from '../../Components/Footer/Footer';
 import Navbar from '../../Components/Navbar/Navbar';
 
+import { isGithubUrl, isGithubUserContentUrl, isStringEmpty, slugify, trimify } from '../../Utils';
+
+import Link from 'next/link';
 import styles from './guide-create.module.scss';
 
 export default function PageCreateGuide() {
-    const [guide, setGuide] = useState<Guide>(undefined);
-
     const [title, setTitle] = useState<string>('');
     const [slug, setSlug] = useState<string>('');
     const [githubSource, setGithubSource] = useState<string>('');
     const [githubRawSource, setGithubRawSource] = useState<string>('');
     const [isDraft, setIsDraft] = useState<boolean>(false);
 
-    const trimify = (str: string = '') => str.trim();
-    const slugify = (str: string = '') =>
-        str
-            .normalize('NFD')
-            .replaceAll(' ', '-')
-            .replaceAll(/[\u0300-\u036f'"=\(\)&_]/g, '')
-            .replace(/^-+|-+(?=-|$)/g, '')
-            .toLowerCase();
+    const [guide, setGuide] = useState<Guide>(undefined);
+    const [isLoading, setLoading] = useState<boolean>(false);
+
+    const canSubmit = useMemo<boolean>(() => {
+        const titleTrimed = trimify(title);
+        const slugTrimed = trimify(slug);
+        const githubSourceTrimed = trimify(githubSource);
+        const githubRawSourceTrimed = trimify(githubRawSource);
+
+        return (
+            !isStringEmpty(titleTrimed) &&
+            !isStringEmpty(slugTrimed) &&
+            !isStringEmpty(githubSourceTrimed) &&
+            isGithubUrl(githubSourceTrimed) &&
+            !isStringEmpty(githubRawSourceTrimed) &&
+            isGithubUserContentUrl(githubRawSourceTrimed) &&
+            !isLoading &&
+            !guide
+        );
+    }, [githubRawSource, githubSource, guide, isLoading, slug, title]);
 
     const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setLoading(true);
+
         try {
             const titleTrimed = trimify(title);
-            if (!titleTrimed || titleTrimed === '') {
-                throw new Error('Missing guide title');
+            if (isStringEmpty(titleTrimed)) {
+                throw new Error('Titre du guide manquant');
             }
 
             const slugTrimed = trimify(slug);
-            console.log(slugTrimed, slug);
-            if (!slugTrimed || slugTrimed === '') {
+            if (isStringEmpty(slugTrimed)) {
                 setSlug(slugify(titleTrimed));
             }
 
             const githubSourceTrimed = trimify(githubSource);
-            if (!githubSourceTrimed || githubSourceTrimed === '') {
-                throw new Error('Missing github source');
+            if (isStringEmpty(githubSourceTrimed) || !isGithubUrl(githubSourceTrimed)) {
+                throw new Error('Un lien Github est requis\n(ex: https://github.com/user/repo)');
             }
 
             const githubRawSourceTrimed = trimify(githubRawSource);
-            if (!githubRawSourceTrimed || githubRawSourceTrimed === '') {
-                throw new Error('Missing github raw source ');
+            if (
+                isStringEmpty(githubRawSourceTrimed) ||
+                !isGithubUserContentUrl(githubRawSourceTrimed)
+            ) {
+                throw new Error(
+                    'Un lien githubusercontent est requis\n(ex: https://raw.githubusercontent.com/user/repo/file)'
+                );
             }
 
             const request = await fetch(`/api/guide/create`, {
@@ -63,13 +87,17 @@ export default function PageCreateGuide() {
 
             const data = await request.json();
             if (request.ok) {
-                console.log(data);
+                toast.success('Guide créé avec succès');
                 setGuide(data?.guide);
             } else {
-                alert('Une erreur est survenue lors de la création du guide');
+                console.error(request, data);
+                throw new Error('Une erreur est survenue lors de la création du guide');
             }
         } catch (error: any) {
             console.warn(error);
+            toast.error(error?.message || 'Une erreur est survenue lors de la création du guide');
+        } finally {
+            setLoading(false);
         }
     };
     return (
@@ -140,11 +168,24 @@ export default function PageCreateGuide() {
                     </div>
                 </div>
                 <div className="form-field">
-                    <button type="submit">Ajouter le guide</button>
+                    <button type="submit" disabled={!canSubmit}>
+                        Ajouter le guide
+                    </button>
                 </div>
-                {guide && <pre className="form-field">{JSON.stringify(guide, null, 2)}</pre>}
+                {guide && <Link href={`/guide/${guide.slug}`}>Lien vers le guide</Link>}
             </form>
             <Footer />
         </div>
     );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const session = await getServerSession(context.req, context.res, authOptions);
+    if (!session) {
+        return { redirect: { destination: '/' } };
+    }
+
+    return {
+        props: {},
+    };
 }
