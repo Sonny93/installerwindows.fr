@@ -1,3 +1,5 @@
+@import "../../styles/media-queries.scss";
+
 footer.footer {
     height: auto;
     width: 100%;
@@ -17,4 +19,17 @@ footer ul.links {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+}
+
+@media screen and (max-width: calc($media-medium-desktop + 20px)) {
+    footer.footer {
+        gap: 0.25em;
+        align-items: center;
+        flex-direction: column;
+
+        & .links {
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+    }
 }

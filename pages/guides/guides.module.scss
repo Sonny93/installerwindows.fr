@@ -16,6 +16,11 @@
         gap: 1em;
         align-items: center;
         flex-direction: column;
+
+        & p {
+            font-size: 0.8em;
+            text-align: center;
+        }
     }
 }
 

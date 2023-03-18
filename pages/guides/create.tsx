@@ -103,77 +103,81 @@ export default function PageCreateGuide() {
     return (
         <div className={styles['guide-create']}>
             <Navbar />
-            <form onSubmit={handleSubmitForm}>
-                <h1>Ajouter un guide</h1>
-                <div className="form-field">
-                    <label htmlFor="title">Titre</label>
-                    <input
-                        type="text"
-                        placeholder="Titre"
-                        name="title"
-                        id="title"
-                        onChange={({ target }) => setTitle(target.value)}
-                        onBlur={({ target }) => {
-                            if (trimify(slug) === '') {
-                                setSlug(slugify(target.value));
-                            }
-                        }}
-                        value={title}
-                    />
-                </div>
-                <div className="form-field">
-                    <label htmlFor="slug">Slug (ex: {slugify('Mon super guide de test')})</label>
-                    <input
-                        type="text"
-                        placeholder="Slug"
-                        name="slug"
-                        id="slug"
-                        onChange={({ target }) => setSlug(target.value)}
-                        onBlur={({ target }) => setSlug(slugify(target.value))}
-                        value={slug}
-                    />
-                </div>
-                <div className="form-field">
-                    <label htmlFor="github-source">Source Github</label>
-                    <input
-                        type="text"
-                        placeholder="Source Github"
-                        name="github-source"
-                        id="github-source"
-                        onChange={({ target }) => setGithubSource(target.value)}
-                        value={githubSource}
-                    />
-                </div>
-                <div className="form-field">
-                    <label htmlFor="github-raw-source">Source Github Raw</label>
-                    <input
-                        type="text"
-                        placeholder="Source Github Raw"
-                        name="github-raw-source"
-                        id="github-raw-source"
-                        onChange={({ target }) => setGithubRawSource(target.value)}
-                        value={githubRawSource}
-                    />
-                </div>
-                <div className="form-radio-container">
-                    <div className="form-radio-btn">
+            <main>
+                <form onSubmit={handleSubmitForm}>
+                    <h1>Ajouter un guide</h1>
+                    <div className="form-field">
+                        <label htmlFor="title">Titre</label>
                         <input
-                            type="checkbox"
-                            name="is-draft"
-                            id="is-draft"
-                            onChange={(event) => setIsDraft(event.target.checked)}
-                            checked={isDraft}
+                            type="text"
+                            placeholder="Titre"
+                            name="title"
+                            id="title"
+                            onChange={({ target }) => setTitle(target.value)}
+                            onBlur={({ target }) => {
+                                if (trimify(slug) === '') {
+                                    setSlug(slugify(target.value));
+                                }
+                            }}
+                            value={title}
                         />
-                        <label htmlFor="is-draft">brouillon?</label>
                     </div>
-                </div>
-                <div className="form-field">
-                    <button type="submit" disabled={!canSubmit}>
-                        Ajouter le guide
-                    </button>
-                </div>
-                {guide && <Link href={`/guide/${guide.slug}`}>Lien vers le guide</Link>}
-            </form>
+                    <div className="form-field">
+                        <label htmlFor="slug">
+                            Slug (ex: {slugify('Mon super guide de test')})
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Slug"
+                            name="slug"
+                            id="slug"
+                            onChange={({ target }) => setSlug(target.value)}
+                            onBlur={({ target }) => setSlug(slugify(target.value))}
+                            value={slug}
+                        />
+                    </div>
+                    <div className="form-field">
+                        <label htmlFor="github-source">Source Github</label>
+                        <input
+                            type="text"
+                            placeholder="Source Github"
+                            name="github-source"
+                            id="github-source"
+                            onChange={({ target }) => setGithubSource(target.value)}
+                            value={githubSource}
+                        />
+                    </div>
+                    <div className="form-field">
+                        <label htmlFor="github-raw-source">Source Github Raw</label>
+                        <input
+                            type="text"
+                            placeholder="Source Github Raw"
+                            name="github-raw-source"
+                            id="github-raw-source"
+                            onChange={({ target }) => setGithubRawSource(target.value)}
+                            value={githubRawSource}
+                        />
+                    </div>
+                    <div className="form-radio-container">
+                        <div className="form-radio-btn">
+                            <input
+                                type="checkbox"
+                                name="is-draft"
+                                id="is-draft"
+                                onChange={(event) => setIsDraft(event.target.checked)}
+                                checked={isDraft}
+                            />
+                            <label htmlFor="is-draft">brouillon?</label>
+                        </div>
+                    </div>
+                    <div className="form-field">
+                        <button type="submit" disabled={!canSubmit}>
+                            Ajouter le guide
+                        </button>
+                    </div>
+                    {guide && <Link href={`/guide/${guide.slug}`}>Lien vers le guide</Link>}
+                </form>
+            </main>
             <Footer />
         </div>
     );

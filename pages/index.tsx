@@ -14,7 +14,6 @@ export default function Home({ markdown }: { markdown: string }) {
                 content={markdown}
                 url={MARKDOWN_URL}
                 urlRaw={MARKDOWN_URL_RAW}
-                pageTitle={'Installerwindows.fr'}
                 disableChapters={true}
             />
         </>

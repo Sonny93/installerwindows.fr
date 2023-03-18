@@ -18,13 +18,13 @@ export default function MarkdownPage({
     content: string;
     url?: string;
     urlRaw?: string;
-    pageTitle: string;
+    pageTitle?: string;
     disableChapters?: boolean;
 }) {
     if (!content) {
         return (
             <>
-                <NextSeo title={pageTitle} />
+                {pageTitle && <NextSeo title={pageTitle} />}
                 <div className={styles['App']}>
                     <Navbar />
                     <NoMarkdown />
@@ -35,7 +35,7 @@ export default function MarkdownPage({
 
     return (
         <>
-            <NextSeo title={pageTitle} />
+            {pageTitle && <NextSeo title={pageTitle} />}
             <div className={styles['App']}>
                 <Navbar />
                 <Markdown

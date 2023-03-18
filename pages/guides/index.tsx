@@ -1,4 +1,5 @@
 import { useSession } from 'next-auth/react';
+import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
 import Footer from '../../Components/Footer/Footer';
@@ -15,6 +16,7 @@ export default function PageGuides({ guides }: PageGuidesProps) {
 
     return (
         <div className={styles['guides']}>
+            <NextSeo title={'Guides'} />
             <Navbar />
             <main>
                 <h1 style={{ textAlign: 'center' }}>Guides</h1>
