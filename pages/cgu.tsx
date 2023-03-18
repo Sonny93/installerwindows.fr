@@ -14,10 +14,10 @@ export async function getServerSideProps() {
 
 const markdown = `# Conditions Générales d'Utilisation
 
-Nous vous remercions de visiter notre site Web installerwindows.fr et nous vous prions de lire attentivement les conditions générales d'utilisation ci-dessous.
+Nous vous remercions de visiter notre site Web [installerwindows.fr](https://installerwindows.fr) et nous vous prions de lire attentivement les conditions générales d'utilisation ci-dessous.
 
 ## Introduction
-Le site installerwindows.fr est destiné à fournir des informations utiles aux utilisateurs souhaitant installer ou réinstaller le système d'exploitation Windows sur leur ordinateur. En utilisant notre site Web, vous acceptez les présentes conditions générales d'utilisation.
+Le site [installerwindows.fr](https://installerwindows.fr) est destiné à fournir des informations utiles aux utilisateurs souhaitant installer ou réinstaller le système d'exploitation Windows sur leur ordinateur. En utilisant notre site Web, vous acceptez les présentes conditions générales d'utilisation.
 
 ## Cookies
 Notre site Web utilise des cookies pour améliorer votre expérience de navigation. Les cookies sont des fichiers texte stockés sur votre ordinateur ou votre appareil mobile lorsque vous accédez à un site Web. Les cookies nous aident à comprendre comment vous utilisez notre site Web et nous permettent d'améliorer votre expérience de navigation.
@@ -36,8 +36,8 @@ Le contenu de notre site Web est protégé par les lois sur la propriété intel
 Nous nous réservons le droit de modifier les présentes conditions générales d'utilisation à tout moment. Il est de votre responsabilité de vérifier régulièrement les conditions générales pour vous assurer que vous êtes au courant de tout changement.
 
 ## Contactez-nous
-Si vous avez des questions ou des préoccupations concernant les présentes conditions générales d'utilisation ou l'utilisation des cookies sur notre site Web, veuillez nous contacter à l'adresse suivante : [adresse email].
+Si vous avez des questions ou des préoccupations concernant les présentes conditions générales d'utilisation ou l'utilisation des cookies sur notre site Web, veuillez nous contacter via le serveur discord suivant : [https://discord.com/invite/informatique](https://discord.com/invite/informatique).
 
 Cordialement,
 
-L'équipe d'installerwindows.fr`;
+L'équipe d'[installerwindows.fr](https://installerwindows.fr)`;
