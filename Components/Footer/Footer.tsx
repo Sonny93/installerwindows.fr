@@ -9,10 +9,19 @@ export default function Footer() {
     return (
         <footer className={styles['footer']}>
             <p>
-                Réalisé avec ❤️ par <Link href={'https://sonny.dev/'}>Sonny</Link> &{' '}
-                <Link href={'https://github.com/Asthox'}>Asthox</Link>
+                Réalisé avec ❤️ par{' '}
+                <Link href={'https://sonny.dev/'} target="_blank" rel="noreferrer">
+                    Sonny
+                </Link>{' '}
+                &{' '}
+                <Link href={'https://github.com/Asthox'} target="_blank" rel="noreferrer">
+                    Asthox
+                </Link>
             </p>
             <ul className={styles['links']}>
+                <li>
+                    <Link href={'/videos'}>Vidéos</Link>
+                </li>
                 <li>
                     <Link href={'/guides'}>Guides</Link>
                 </li>
@@ -22,7 +31,10 @@ export default function Footer() {
                 {session.data ? (
                     <>
                         <li>{session.data?.user?.name}</li>
-                        <li onClick={() => signOut()} style={{ color: 'salmon' }}>
+                        <li
+                            onClick={() => signOut()}
+                            style={{ color: 'salmon', cursor: 'pointer' }}
+                        >
                             Déconnexion
                         </li>
                     </>

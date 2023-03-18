@@ -1,11 +1,13 @@
+@import "../../styles/colors.scss";
+
 a.ineedhelp {
     user-select: none;
     position: fixed;
     right: 15px;
     bottom: 15px;
     text-decoration: none;
-    color: #fff;
-    background-color: #3f88c5;
+    color: $font-color;
+    background-color: $btn-color;
     padding: 10px;
     border-radius: 50%;
     display: flex;
@@ -28,7 +30,7 @@ a.ineedhelp {
 @keyframes pulse-black {
     0% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 #3f88c5;
+        box-shadow: 0 0 0 0 $main-color;
     }
 
     70% {
