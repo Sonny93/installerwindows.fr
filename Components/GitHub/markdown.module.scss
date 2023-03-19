@@ -5,11 +5,11 @@
     position: sticky;
     top: 100px;
     height: fit-content;
-    width: fit-content;
+    width: 350px;
+    max-width: 350px;
     padding-right: 20px;
     border-right: 1px solid $smooth-border-color;
-    margin-top: 50px;
-    margin-right: 10px;
+    margin: 50px 10px 50px 0;
     display: flex;
     gap: 25px;
     align-items: flex-end;
@@ -21,12 +21,18 @@
         counter-increment: chapters-counter;
 
         cursor: pointer;
-        width: fit-content;
+        width: 100%;
         font-size: 0.85em;
         font-weight: 200;
+        text-align: right;
         white-space: nowrap;
         border-bottom: 1px solid transparent;
         transition: 0.15s;
+
+        & a {
+            width: fit-content;
+            display: inline-block;
+        }
 
         & .number {
             color: $main-color;
@@ -48,6 +54,10 @@
     position: relative;
     display: flex;
     gap: 15px;
+}
+
+.markdown-content {
+    width: calc(100% - 375px);
 }
 
 .chapters-wrapper-mobile {

@@ -35,3 +35,8 @@ interface Guide {
 
     isDraft: boolean;
 }
+
+interface Chapter {
+    id: string;
+    name: string;
+}

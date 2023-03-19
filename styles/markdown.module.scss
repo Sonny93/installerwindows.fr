@@ -19,6 +19,7 @@
         & > * {
             word-break: break-word;
             margin: 1em 0;
+            max-width: 100%;
         }
 
         & h1,
@@ -26,6 +27,20 @@
             border-bottom: 0.5px solid $smooth-border-color;
             margin: 35px 0 0;
             transition: 0.15s;
+        }
+
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5,
+        & h6 {
+            &,
+            & > a {
+                display: flex;
+                gap: 0.25em;
+                align-items: center;
+            }
         }
 
         & a {
@@ -56,12 +71,24 @@
                 font-weight: 400;
             }
         }
+
+        & code {
+            width: 100%;
+            line-height: 1.5em;
+            background: $dark-bg-color;
+            border: 1px solid $smooth-border-color;
+            border-radius: 3px;
+            padding: 1em;
+            display: block;
+            overflow-x: auto;
+        }
     }
 
     & code.source {
         font-size: 0.85em;
         background-color: $dark-bg-color;
         border: 1px solid $smooth-border-color;
+        border-radius: 3px;
         padding: 15px;
 
         & > div {

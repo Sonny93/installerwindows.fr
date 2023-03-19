@@ -92,3 +92,19 @@ export function isGithubUserContentUrl(str: string = '') {
 export function isStringEmpty(str: string = '') {
     return !str || str === '';
 }
+
+export function getPathFromUrl(url: string = null, domain: string = null) {
+    if (!url || !domain) return url;
+    const path = url.split(domain)[1];
+    return path;
+}
+
+export function getVideoIdFromPath(path: string = null) {
+    if (!path) return path;
+    const videoId = path.startsWith('watch?v=') ? path.split('watch?v=')[1] : path;
+    return videoId;
+}
+
+export function buildIdFromText(text: string) {
+    return text.trim().toLowerCase().replace(' ', '+');
+}

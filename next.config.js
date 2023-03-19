@@ -14,6 +14,7 @@ const withBundleAnalyzer = BundleAnalyzer({
     enabled: false, // process.env.NODE_ENV === "production"
 });
 
+/** @type {import('next').NextConfig} */
 const config = {
     webpack(config) {
         config.module.rules.push({
