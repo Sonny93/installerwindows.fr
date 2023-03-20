@@ -56,7 +56,8 @@
     gap: 15px;
 }
 
-.markdown-content {
+.chapters-wrapper-mobile ~ .markdown-content,
+.chapters-wrapper-desktop ~ .markdown-content {
     width: calc(100% - 375px);
 }
 
