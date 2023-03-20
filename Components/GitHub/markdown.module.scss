@@ -11,7 +11,7 @@
     border-right: 1px solid $smooth-border-color;
     margin: 50px 10px 50px 0;
     display: flex;
-    gap: 25px;
+    gap: 0.75em;
     align-items: flex-end;
     flex-direction: column;
 
@@ -24,28 +24,33 @@
         width: 100%;
         font-size: 0.85em;
         font-weight: 200;
-        text-align: right;
-        white-space: nowrap;
-        border-bottom: 1px solid transparent;
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5em;
         transition: 0.15s;
 
         & a {
             width: fit-content;
+            border-bottom: 1px solid transparent;
             display: inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &:hover {
+                border-bottom: 1px solid $main-color;
+            }
         }
 
         & .number {
             color: $main-color;
         }
 
-        &:hover {
-            border-bottom: 1px solid $main-color;
-        }
-
         &::after {
             content: " - " counter(chapters-counter);
             color: $main-color;
             font-weight: bold;
+            white-space: nowrap;
         }
     }
 }

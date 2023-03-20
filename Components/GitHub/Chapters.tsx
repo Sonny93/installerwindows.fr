@@ -1,7 +1,5 @@
 import Link from 'next/link';
 
-import { Chapter } from './Markdown';
-
 import styles from './markdown.module.scss';
 
 interface ChaptersProps {
@@ -11,13 +9,25 @@ interface ChaptersProps {
 export default function Chapters({ chapters, onSelect }: ChaptersProps) {
     return (
         <ul className={styles['chapters']}>
-            {chapters.map(({ id, name }, index) => (
-                <li key={index}>
-                    <Link href={`#${id}`} className="reset" onClick={(event) => onSelect && onSelect(event, { id, name })}>
-                        {name}
-                    </Link>
-                </li>
+            {chapters.map((chapter) => (
+                <Chapter chapter={chapter} onSelect={onSelect} key={chapter.id} />
             ))}
         </ul>
+    );
+}
+
+function Chapter({ chapter, onSelect }: { chapter: Chapter; onSelect: ChaptersProps['onSelect'] }) {
+    const { id, name } = chapter;
+    return (
+        <li>
+            <Link
+                href={`#${id}`}
+                className="reset"
+                onClick={(event) => onSelect && onSelect(event, { id, name })}
+                title={name}
+            >
+                {name}
+            </Link>
+        </li>
     );
 }
