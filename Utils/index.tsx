@@ -106,5 +106,5 @@ export function getVideoIdFromPath(path: string = null) {
 }
 
 export function buildIdFromText(text: string) {
-    return text.trim().toLowerCase().replace(' ', '+');
+    return text.trim().toLowerCase().replaceAll(' ', '-');
 }
