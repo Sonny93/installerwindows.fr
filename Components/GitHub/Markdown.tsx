@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
-import MarkdownAnchor from './MarkdownElements/MarkdownAnchor';
+import MarkdownLink from './MarkdownElements/MarkdownLink';
 import MarkdownImage from './MarkdownElements/MarkdownImage';
 import MarkdownTitle from './MarkdownElements/MarkdownTitle';
 
@@ -52,7 +52,7 @@ export default function Markdown({ markdown, innerClassName, disableChapters }: 
                     rehypePlugins={[rehypeRaw]}
                     linkTarget="_blank"
                     components={{
-                        a: MarkdownAnchor,
+                        a: MarkdownLink,
                         img: MarkdownImage,
                         h1: MarkdownTitleBuilder,
                         h2: MarkdownTitleBuilder,

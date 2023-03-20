@@ -4,7 +4,7 @@ import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 
 import { getPathFromUrl, getVideoIdFromPath } from '../../../Utils';
 
-const DOMAIN_URL = 'https://installerwindows.fr';
+const DOMAIN_URL = 'http://localhost:3000';
 const YOUTUBE_DOMAIN = 'https://www.youtube.com/';
 const YOUTUBE_SHORT_DOMAIN = 'https://youtu.be/';
 
@@ -12,13 +12,13 @@ type CustomAComponentsProps = ClassAttributes<HTMLAnchorElement> &
     AnchorHTMLAttributes<HTMLAnchorElement> &
     ReactMarkdownProps;
 
-export default function MarkdownAnchor({ href, children }: CustomAComponentsProps) {
+export default function MarkdownLink({ href, children }: CustomAComponentsProps) {
     if (href.startsWith('javascript:')) {
         return <>{children}</>;
     }
 
-    const path = getPathFromUrl(href, DOMAIN_URL);
-    if (path) {
+    const path = getPathFromUrl(href, DOMAIN_URL) || href;
+    if (path || href.startsWith('#')) {
         return <Link href={path}>{children}</Link>;
     }
 
