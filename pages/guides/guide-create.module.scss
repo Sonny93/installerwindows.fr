@@ -1,5 +1,6 @@
 @import "../../styles/colors.scss";
 @import "../../styles/media-queries.scss";
+@import "../../styles/keyframes.scss";
 
 .guide-create {
     width: $media-medium-desktop;
@@ -10,6 +11,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    opacity: 0;
+    animation: 0.5s fadein both;
 
     & main {
         width: 100%;
@@ -25,12 +28,14 @@
     }
 }
 
-@media screen and (max-width: calc($media-mobile + 20px)) {
+@media screen and (max-width: calc($media-medium-desktop + 20px)) {
     .guide-create {
         width: 100%;
+    }
+}
 
-        & main form {
-            width: 100%;
-        }
+@media screen and (max-width: calc($media-mobile + 20px)) {
+    .guide-create main form {
+        width: 100%;
     }
 }

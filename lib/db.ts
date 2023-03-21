@@ -12,7 +12,7 @@ _db.read();
 
 async function getGuides() {
     await _db.read();
-    return await _db.data.guides;
+    return await _db.data.guides.reverse();
 }
 
 async function getAdmins() {
