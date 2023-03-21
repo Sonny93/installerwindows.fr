@@ -4,9 +4,9 @@ import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 
 import { getPathFromUrl, getVideoIdFromPath } from '../../../Utils';
 
-const DOMAIN_URL = 'http://localhost:3000';
-const YOUTUBE_DOMAIN = 'https://www.youtube.com/';
-const YOUTUBE_SHORT_DOMAIN = 'https://youtu.be/';
+const DOMAIN_URL = 'https://installerwindows.fr';
+const YOUTUBE_DOMAIN = 'https://www.youtube.com';
+const YOUTUBE_SHORT_DOMAIN = 'https://youtu.be';
 
 type CustomAComponentsProps = ClassAttributes<HTMLAnchorElement> &
     AnchorHTMLAttributes<HTMLAnchorElement> &

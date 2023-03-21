@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ClassAttributes, useEffect } from 'react';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
-import { buildIdFromText } from '../../../Utils';
+import { slugify } from '../../../Utils';
 
 type CustomTitleComponentsProps = ClassAttributes<HTMLHeadingElement> &
     ReactMarkdownProps & {
@@ -11,7 +11,7 @@ type CustomTitleComponentsProps = ClassAttributes<HTMLHeadingElement> &
 
 export default function MarkdownTitle({ children, level, addChapter }: CustomTitleComponentsProps) {
     const texts = children.filter((item) => typeof item === 'string').join(' ');
-    const id = buildIdFromText(texts);
+    const id = slugify(texts);
 
     useEffect(() => addChapter({ id, name: texts }));
 
