@@ -1,12 +1,17 @@
+import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { FaPencilAlt } from 'react-icons/fa';
+import { RxCross2 } from 'react-icons/rx';
+
 import Footer from '../../Components/Footer/Footer';
 import Navbar from '../../Components/Navbar/Navbar';
 import { getGuides } from '../../lib/db';
+import { authOptions } from '../api/auth/[...nextauth]';
 
 import styles from './guides.module.scss';
 
@@ -25,14 +30,8 @@ export default function PageGuides({ guides }: PageGuidesProps) {
             <Navbar />
             <main>
                 <h1 style={{ textAlign: 'center' }}>Guides</h1>
-                <ul className={styles['guide-list']}>
-                    {guides.length > 0 ? (
-                        guides.map((guide: Guide) => <GuideItem guide={guide} key={guide.slug} />)
-                    ) : (
-                        <p>Aucun guide disponible</p>
-                    )}
-                </ul>
                 {session.data && <Link href={'/guides/create'}>Ajouter un guide</Link>}
+                {guides.length > 0 ? <GuideList guides={guides} /> : <p>Aucun guide disponible</p>}
                 <p style={{ textAlign: 'center' }}>
                     Vous souhaitez proposer un nouveau guide ou faire un retour ?<br />
                     <Link
@@ -58,30 +57,61 @@ export default function PageGuides({ guides }: PageGuidesProps) {
     );
 }
 
+function GuideList({ guides }: { guides: Guide[] }) {
+    return (
+        <ul className={styles['guide-list']}>
+            {guides.map((guide: Guide) => (
+                <GuideItem guide={guide} key={guide.slug} />
+            ))}
+        </ul>
+    );
+}
+
 function GuideItem({ guide }: { guide: Guide }) {
     const defaultImageUrl = '/images/guides/default.png';
+    const { slug, title, thumbnail, isDraft } = guide;
 
-    const { slug, title, thumbnail } = guide;
+    const session = useSession();
     const [imageSource, setImageSource] = useState<string>(thumbnail || defaultImageUrl);
 
     return (
         <li className={styles['guide-item']}>
-            <Link href={`/guide/${slug}`} className={'reset'}>
+            <Link href={`/guide/${slug}`} className={`reset ${styles['link']}`}>
                 <Image
                     src={imageSource}
                     onError={() => setImageSource(defaultImageUrl)}
-                    alt="Default Guide Thumbnail"
                     width={350}
                     height={197}
                     priority
+                    alt="Default Guide Thumbnail"
                 />
                 <span>{title}</span>
+                {guide.isDraft}
             </Link>
+            {session.data?.user && (
+                <>
+                    {isDraft && <div className={styles['is-draft']}>Brouillon</div>}
+                    <div className={styles['controls']}>
+                        <Link href={`/guides/edit/${slug}`} className={`reset ${styles['edit']}`}>
+                            <FaPencilAlt />
+                        </Link>
+                        <Link
+                            href={`/guides/delete/${slug}`}
+                            className={`reset ${styles['delete']}`}
+                        >
+                            <RxCross2 />
+                        </Link>
+                    </div>
+                </>
+            )}
         </li>
     );
 }
 
-export async function getServerSideProps() {
-    const guides = (await getGuides()).filter(({ isDraft }) => !isDraft);
-    return { props: { guides } };
+export async function getServerSideProps({ req, res }) {
+    const session = await getServerSession(req, res, authOptions);
+    const guides = await getGuides();
+
+    const guidesFiltered = session ? guides : guides.filter(({ isDraft }) => !isDraft);
+    return { props: { guides: guidesFiltered } };
 }
