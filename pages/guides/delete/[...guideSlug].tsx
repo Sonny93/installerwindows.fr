@@ -53,8 +53,8 @@ export default function GuideDelete({ guide }: { guide: Guide }) {
         <div className={styles['guide-delete']}>
             <Navbar />
             <main>
-                <h1>Supprimer un guide</h1>
                 <form onSubmit={handleDeleteGuide}>
+                    <h1>Supprimer un guide</h1>
                     <div className="form-field">
                         <label htmlFor="title">Titre</label>
                         <input
@@ -81,7 +81,7 @@ export default function GuideDelete({ guide }: { guide: Guide }) {
                         <label htmlFor="github-source">Miniature</label>
                         <input
                             type="text"
-                            placeholder="Miniatiature"
+                            placeholder="Miniature"
                             name="thumbnail"
                             id="thumbnail"
                             value={thumbnail}

@@ -163,7 +163,7 @@ export default function PageCreateGuide() {
                         <label htmlFor="github-source">Miniature</label>
                         <input
                             type="text"
-                            placeholder="Miniatiature"
+                            placeholder="Miniature"
                             name="thumbnail"
                             id="thumbnail"
                             onChange={({ target }) => setThumbnail(target.value)}
