@@ -12,38 +12,36 @@ export default function MarkdownPage({
     content,
     url,
     urlRaw,
-    pageTitle,
+    pageTitle = undefined,
+    pageDescription = undefined,
     disableChapters,
 }: {
     content: string;
     url?: string;
     urlRaw?: string;
     pageTitle?: string;
+    pageDescription?: string;
     disableChapters?: boolean;
 }) {
-    if (!content) {
-        return (
-            <>
-                {pageTitle && <NextSeo title={pageTitle} />}
-                <div className={styles['App']}>
-                    <Navbar />
-                    <NoMarkdown />
-                </div>
-            </>
-        );
-    }
-
     return (
         <>
-            {pageTitle && <NextSeo title={pageTitle} />}
+            {(pageTitle || pageDescription) && (
+                <NextSeo title={pageTitle} description={pageDescription} />
+            )}
             <div className={styles['App']}>
                 <Navbar />
-                <Markdown
-                    markdown={content}
-                    innerClassName={styles['markdown-gh']}
-                    disableChapters={disableChapters}
-                />
-                <Source url={url} raw={urlRaw} />
+                {content ? (
+                    <>
+                        <Markdown
+                            markdown={content}
+                            innerClassName={styles['markdown-gh']}
+                            disableChapters={disableChapters}
+                        />
+                        <Source url={url} raw={urlRaw} />
+                    </>
+                ) : (
+                    <NoMarkdown />
+                )}
                 <Footer />
             </div>
         </>

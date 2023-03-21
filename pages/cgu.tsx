@@ -1,7 +1,13 @@
 import MarkdownPage from '../Components/GitHub/PageLayout';
 
 export default function CGU({ markdown }: { markdown: string }) {
-    return <MarkdownPage content={markdown} pageTitle={'CGU'} />;
+    return (
+        <MarkdownPage
+            content={markdown}
+            pageTitle={'CGU'}
+            pageDescription={"Conditions Générales d'Utilisation"}
+        />
+    );
 }
 
 export async function getServerSideProps() {
