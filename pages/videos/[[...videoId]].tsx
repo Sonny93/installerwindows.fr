@@ -10,7 +10,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import VideoList from '../../Components/VideoList/VideoList';
 import VideoPlayer from '../../Components/VideoPlayer/VideoPlayer';
 
-import { getIndexByVideoId, getVideos } from '../../Utils/index';
+import { buildYTBThumbnailUrl, getIndexByVideoId, getVideos } from '../../Utils/index';
 
 import styles from '../../styles/videos.module.scss';
 import Footer from '../../Components/Footer/Footer';
@@ -80,7 +80,7 @@ export default function Videos({ videos, video }: { videos: Video[]; video: Vide
                     url: '/videos/' + video.videoId,
                     images: [
                         {
-                            url: `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`,
+                            url: buildYTBThumbnailUrl(video.videoId),
                         },
                     ],
                 }}

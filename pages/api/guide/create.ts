@@ -1,9 +1,15 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession, Session } from 'next-auth';
+import { getServerSession } from 'next-auth';
 
 import { getGuides, _db } from '../../../lib/db';
-import { isGithubUrl, isGithubUserContentUrl, isStringEmpty, trimify } from '../../../Utils';
+import {
+    isGithubUrl,
+    isGithubUserContentUrl,
+    isImgurUrl,
+    isStringEmpty,
+    trimify,
+} from '../../../Utils';
 import { authOptions } from '../auth/[...nextauth]';
 
 type Data = {
@@ -21,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             throw new Error('Vous devez être connecté pour effectuer cette action');
         }
 
-        const { title, slug, githubSource, githubRawSource, isDraft = false } = req.body;
+        const { title, slug, thumbnail, githubSource, githubRawSource, isDraft = false } = req.body;
 
         const titleTrimed = trimify(title);
         if (isStringEmpty(titleTrimed)) {
@@ -31,6 +37,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         const slugTrimed = trimify(slug);
         if (isStringEmpty(slugTrimed)) {
             throw new Error('Slug du guide manquant');
+        }
+
+        const thumbnailTrimed = trimify(thumbnail);
+        if (!isStringEmpty(thumbnail) && !isImgurUrl(thumbnailTrimed)) {
+            throw new Error('Un lien imgur est requis\n(ex: https://i.imgur.com/example.png)');
         }
 
         const githubSourceTrimed = trimify(githubSource);
@@ -49,11 +60,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
 
         await _db.data.guides.push({
-            title,
-            slug,
+            title: titleTrimed,
+            slug: slugTrimed,
+            thumbnail: thumbnailTrimed,
             github: {
-                source: githubSource,
-                raw: githubRawSource,
+                source: githubSourceTrimed,
+                raw: githubRawSourceTrimed,
             },
             isDraft,
         });

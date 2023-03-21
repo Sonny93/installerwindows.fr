@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import { getServerSession } from 'next-auth';
+import Link from 'next/link';
 import { FormEvent, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -8,14 +9,21 @@ import { authOptions } from '../api/auth/[...nextauth]';
 import Footer from '../../Components/Footer/Footer';
 import Navbar from '../../Components/Navbar/Navbar';
 
-import { isGithubUrl, isGithubUserContentUrl, isStringEmpty, slugify, trimify } from '../../Utils';
+import {
+    isGithubUrl,
+    isGithubUserContentUrl,
+    isImgurUrl,
+    isStringEmpty,
+    slugify,
+    trimify,
+} from '../../Utils';
 
-import Link from 'next/link';
 import styles from './guide-create.module.scss';
 
 export default function PageCreateGuide() {
     const [title, setTitle] = useState<string>('');
     const [slug, setSlug] = useState<string>('');
+    const [thumbnail, setThumbnail] = useState<string>('');
     const [githubSource, setGithubSource] = useState<string>('');
     const [githubRawSource, setGithubRawSource] = useState<string>('');
     const [isDraft, setIsDraft] = useState<boolean>(false);
@@ -26,20 +34,27 @@ export default function PageCreateGuide() {
     const canSubmit = useMemo<boolean>(() => {
         const titleTrimed = trimify(title);
         const slugTrimed = trimify(slug);
+        const thumbnailTrimed = trimify(thumbnail);
         const githubSourceTrimed = trimify(githubSource);
         const githubRawSourceTrimed = trimify(githubRawSource);
 
+        const isThumbnailSourceOk = !isStringEmpty(thumbnailTrimed)
+            ? isImgurUrl(thumbnailTrimed)
+            : true;
+        const isGituhbSourceOk =
+            !isStringEmpty(githubSourceTrimed) && isGithubUrl(githubSourceTrimed);
+        const isGituhbSourceRawOk =
+            !isStringEmpty(githubRawSourceTrimed) && isGithubUserContentUrl(githubRawSourceTrimed);
         return (
             !isStringEmpty(titleTrimed) &&
             !isStringEmpty(slugTrimed) &&
-            !isStringEmpty(githubSourceTrimed) &&
-            isGithubUrl(githubSourceTrimed) &&
-            !isStringEmpty(githubRawSourceTrimed) &&
-            isGithubUserContentUrl(githubRawSourceTrimed) &&
+            isThumbnailSourceOk &&
+            isGituhbSourceOk &&
+            isGituhbSourceRawOk &&
             !isLoading &&
             !guide
         );
-    }, [githubRawSource, githubSource, guide, isLoading, slug, title]);
+    }, [githubRawSource, githubSource, guide, isLoading, slug, thumbnail, title]);
 
     const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -54,6 +69,13 @@ export default function PageCreateGuide() {
             const slugTrimed = trimify(slug);
             if (isStringEmpty(slugTrimed)) {
                 setSlug(slugify(titleTrimed));
+            }
+
+            const thumbnailTrimed = trimify(thumbnail);
+            if (!isStringEmpty(thumbnail) && !isImgurUrl(thumbnailTrimed)) {
+                throw new Error('Un lien imgur est requis\n(ex: https://i.imgur.com/example.png)');
+            } else {
+                setThumbnail(thumbnailTrimed);
             }
 
             const githubSourceTrimed = trimify(githubSource);
@@ -76,6 +98,7 @@ export default function PageCreateGuide() {
                 body: JSON.stringify({
                     title: titleTrimed,
                     slug: slugTrimed,
+                    thumbnail: thumbnailTrimed,
                     githubSource: githubSourceTrimed,
                     githubRawSource: githubRawSourceTrimed,
                     isDraft,
@@ -134,6 +157,17 @@ export default function PageCreateGuide() {
                             onChange={({ target }) => setSlug(target.value)}
                             onBlur={({ target }) => setSlug(slugify(target.value))}
                             value={slug}
+                        />
+                    </div>
+                    <div className="form-field">
+                        <label htmlFor="github-source">Miniature</label>
+                        <input
+                            type="text"
+                            placeholder="Miniatiature"
+                            name="thumbnail"
+                            id="thumbnail"
+                            onChange={({ target }) => setThumbnail(target.value)}
+                            value={thumbnail}
                         />
                     </div>
                     <div className="form-field">

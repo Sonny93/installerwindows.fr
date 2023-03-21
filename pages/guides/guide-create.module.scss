@@ -25,7 +25,7 @@
     }
 }
 
-@media screen and (max-width: calc($media-medium-desktop + 20px)) {
+@media screen and (max-width: calc($media-mobile + 20px)) {
     .guide-create {
         width: 100%;
 

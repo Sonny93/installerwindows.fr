@@ -27,6 +27,7 @@ interface DbType {
 interface Guide {
     title: string;
     slug: string;
+    thumbnail: string;
 
     github: {
         source: string;

@@ -89,6 +89,10 @@ export function isGithubUserContentUrl(str: string = '') {
     return str.match(/(http(s)?):\/\/raw\.githubusercontent\.com\/\w+\/(.+|)(?:\.git)?/);
 }
 
+export function isImgurUrl(str: string = '') {
+    return str.match(/(http(s)?):\/\/(i\.)?imgur\.com\/\w+(\.\w+)?/);
+}
+
 export function isStringEmpty(str: string = '') {
     return !str || str === '';
 }
@@ -105,6 +109,6 @@ export function getVideoIdFromPath(path: string = null) {
     return videoId;
 }
 
-export function buildIdFromText(text: string) {
-    return text.trim().toLowerCase().replaceAll(' ', '-');
+export function buildYTBThumbnailUrl(videoId: string = '') {
+    return `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
 }

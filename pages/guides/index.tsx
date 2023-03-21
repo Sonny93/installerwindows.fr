@@ -1,6 +1,8 @@
 import { useSession } from 'next-auth/react';
 import { NextSeo } from 'next-seo';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import Footer from '../../Components/Footer/Footer';
 import Navbar from '../../Components/Navbar/Navbar';
@@ -16,17 +18,16 @@ export default function PageGuides({ guides }: PageGuidesProps) {
 
     return (
         <div className={styles['guides']}>
-            <NextSeo title={'Guides'} />
+            <NextSeo
+                title={'Guides'}
+                description="Tous les guides pour (ré)installer Windows 10/11 au propre et faire des optimisations saines pour votre machine."
+            />
             <Navbar />
             <main>
                 <h1 style={{ textAlign: 'center' }}>Guides</h1>
-                <ul style={{ paddingLeft: '2em', flex: '1' }}>
+                <ul className={styles['guide-list']}>
                     {guides.length > 0 ? (
-                        guides.map(({ slug, title, isDraft }) => (
-                            <li key={slug} style={{ listStyle: 'disc', marginBottom: '15px' }}>
-                                {!isDraft && <Link href={`/guide/${slug}`}>{title}</Link>}
-                            </li>
-                        ))
+                        guides.map((guide: Guide) => <GuideItem guide={guide} key={guide.slug} />)
                     ) : (
                         <p>Aucun guide disponible</p>
                     )}
@@ -39,7 +40,7 @@ export default function PageGuides({ guides }: PageGuidesProps) {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        Rejoingez le serveur Discord
+                        Rejoignez le serveur Discord
                     </Link>{' '}
                     et faites une proposition dans le salon{' '}
                     <Link
@@ -54,6 +55,29 @@ export default function PageGuides({ guides }: PageGuidesProps) {
             </main>
             <Footer />
         </div>
+    );
+}
+
+function GuideItem({ guide }: { guide: Guide }) {
+    const defaultImageUrl = '/images/guides/default.png';
+
+    const { slug, title, thumbnail } = guide;
+    const [imageSource, setImageSource] = useState<string>(thumbnail || defaultImageUrl);
+
+    return (
+        <li className={styles['guide-item']}>
+            <Link href={`/guide/${slug}`} className={'reset'}>
+                <Image
+                    src={imageSource}
+                    onError={() => setImageSource(defaultImageUrl)}
+                    alt="Default Guide Thumbnail"
+                    width={350}
+                    height={197}
+                    priority
+                />
+                <span>{title}</span>
+            </Link>
+        </li>
     );
 }
 
