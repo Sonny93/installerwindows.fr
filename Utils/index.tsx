@@ -82,15 +82,17 @@ export function isUrl(str: string = '') {
 }
 
 export function isGithubUrl(str: string = '') {
-    return str.match(/(http(s)?):\/\/github\.com\/\w+\/(.+|)(?:\.git)?/);
+    return str.match(/(http(s)?):\/\/github\.com\/\w+\/(.+|)(?:\.git)?/) ? true : false;
 }
 
 export function isGithubUserContentUrl(str: string = '') {
-    return str.match(/(http(s)?):\/\/raw\.githubusercontent\.com\/\w+\/(.+|)(?:\.git)?/);
+    return str.match(/(http(s)?):\/\/raw\.githubusercontent\.com\/\w+\/(.+|)(?:\.git)?/)
+        ? true
+        : false;
 }
 
 export function isImgurUrl(str: string = '') {
-    return str.match(/(http(s)?):\/\/(i\.)?imgur\.com\/\w+(\.\w+)?/);
+    return str.match(/(http(s)?):\/\/(i\.)?imgur\.com\/\w+(\.\w+)?/) ? true : false;
 }
 
 export function isStringEmpty(str: string = '') {

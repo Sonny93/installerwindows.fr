@@ -16,10 +16,10 @@ import {
     isStringEmpty,
     slugify,
     trimify,
-} from '../../Utils';
 } from '../../utils';
 
 import styles from './guide-create.module.scss';
+import { postRequest } from '../../utils/request';
 
 export default function PageCreateGuide() {
     const [title, setTitle] = useState<string>('');
@@ -63,6 +63,7 @@ export default function PageCreateGuide() {
 
         try {
             const titleTrimed = trimify(title);
+            setTitle(titleTrimed);
             if (isStringEmpty(titleTrimed)) {
                 throw new Error('Titre du guide manquant');
             }
@@ -70,21 +71,24 @@ export default function PageCreateGuide() {
             const slugTrimed = trimify(slug);
             if (isStringEmpty(slugTrimed)) {
                 setSlug(slugify(titleTrimed));
+            } else {
+                setSlug(slugTrimed);
             }
 
             const thumbnailTrimed = trimify(thumbnail);
+            setThumbnail(thumbnailTrimed);
             if (!isStringEmpty(thumbnail) && !isImgurUrl(thumbnailTrimed)) {
                 throw new Error('Un lien imgur est requis\n(ex: https://i.imgur.com/example.png)');
-            } else {
-                setThumbnail(thumbnailTrimed);
             }
 
             const githubSourceTrimed = trimify(githubSource);
+            setGithubSource(githubSourceTrimed);
             if (isStringEmpty(githubSourceTrimed) || !isGithubUrl(githubSourceTrimed)) {
                 throw new Error('Un lien Github est requis\n(ex: https://github.com/user/repo)');
             }
 
             const githubRawSourceTrimed = trimify(githubRawSource);
+            setGithubRawSource(githubRawSourceTrimed);
             if (
                 isStringEmpty(githubRawSourceTrimed) ||
                 !isGithubUserContentUrl(githubRawSourceTrimed)
@@ -94,29 +98,16 @@ export default function PageCreateGuide() {
                 );
             }
 
-            const request = await fetch(`/api/guide/create`, {
-                method: 'post',
-                body: JSON.stringify({
-                    title: titleTrimed,
-                    slug: slugTrimed,
-                    thumbnail: thumbnailTrimed,
-                    githubSource: githubSourceTrimed,
-                    githubRawSource: githubRawSourceTrimed,
-                    isDraft,
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+            const { guide } = await postRequest('/api/guide/create', {
+                title: titleTrimed,
+                slug: slugTrimed,
+                thumbnail: thumbnailTrimed,
+                githubSource: githubSourceTrimed,
+                githubRawSource: githubRawSourceTrimed,
+                isDraft,
             });
-
-            const data = await request.json();
-            if (request.ok) {
-                toast.success('Guide créé avec succès');
-                setGuide(data?.guide);
-            } else {
-                console.error(request, data);
-                throw new Error('Une erreur est survenue lors de la création du guide');
-            }
+            toast.success('Guide créé avec succès');
+            setGuide(guide);
         } catch (error: any) {
             console.warn(error);
             toast.error(error?.message || 'Une erreur est survenue lors de la création du guide');
