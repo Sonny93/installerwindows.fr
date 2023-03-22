@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ClassAttributes, useEffect } from 'react';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
-import { slugify } from '../../../Utils';
+import { slugify } from '../../../utils';
 
 type CustomTitleComponentsProps = ClassAttributes<HTMLHeadingElement> &
     ReactMarkdownProps & {

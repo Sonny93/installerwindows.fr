@@ -9,7 +9,7 @@ import {
     isImgurUrl,
     isStringEmpty,
     trimify,
-} from '../../../Utils';
+} from '../../../utils';
 import { authOptions } from '../auth/[...nextauth]';
 
 type Data = {

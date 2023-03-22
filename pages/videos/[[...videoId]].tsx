@@ -10,7 +10,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import VideoList from '../../Components/VideoList/VideoList';
 import VideoPlayer from '../../Components/VideoPlayer/VideoPlayer';
 
-import { buildYTBThumbnailUrl, getIndexByVideoId, getVideos } from '../../Utils/index';
+import { buildYTBThumbnailUrl, getIndexByVideoId, getVideos } from '../../utils/index';
 
 import styles from '../../styles/videos.module.scss';
 import Footer from '../../Components/Footer/Footer';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { urlify } from '../Utils/index';
+import { urlify } from '../utils/index';
 
 export default class ErrorBoundary extends React.Component {
 	constructor(props) {

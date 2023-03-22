@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { buildYTBThumbnailUrl } from '../../Utils';
+import { buildYTBThumbnailUrl } from '../../utils';
 
 import styles from './VideoList.module.scss';
 

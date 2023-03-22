@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { AnchorHTMLAttributes, ClassAttributes } from 'react';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 
-import { getPathFromUrl, getVideoIdFromPath } from '../../../Utils';
+import { getPathFromUrl, getVideoIdFromPath } from '../../../utils';
 
 const DOMAIN_URL = 'https://installerwindows.fr';
 const YOUTUBE_DOMAIN = 'https://www.youtube.com';

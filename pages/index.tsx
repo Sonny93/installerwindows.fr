@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MarkdownPage from '../Components/GitHub/PageLayout';
-import { downloadMarkdown } from '../Utils';
+import { downloadMarkdown } from '../utils';
 
 const MARKDOWN_URL: string = 'https://github.com/Piwielle/windows_11/blob/main/README.md';
 const MARKDOWN_URL_RAW: string =

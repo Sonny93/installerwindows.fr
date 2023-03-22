@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import MarkdownPage from '../../Components/GitHub/PageLayout';
 import { getGuides } from '../../lib/db';
-import { downloadMarkdown } from '../../Utils';
+import { downloadMarkdown } from '../../utils';
 import { authOptions } from '../api/auth/[...nextauth]';
 
 interface PageGuideProps {

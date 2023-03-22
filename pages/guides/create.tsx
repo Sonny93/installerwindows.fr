@@ -17,6 +17,7 @@ import {
     slugify,
     trimify,
 } from '../../Utils';
+} from '../../utils';
 
 import styles from './guide-create.module.scss';
 
