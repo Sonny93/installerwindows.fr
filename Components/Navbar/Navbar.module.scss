@@ -17,11 +17,12 @@
 
     &.shadow {
         position: sticky;
-        top: 15px;
+        top: 0;
         padding: 0 1em;
-        border-radius: 3px;
+        border-radius: 0 0 3px 3px;
         background-color: rgba($color: $dark-bg-color, $alpha: 0.95);
         border: 1px solid $smooth-border-color;
+        border-top: 0;
         backdrop-filter: blur(20px);
     }
 

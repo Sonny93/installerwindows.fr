@@ -3,6 +3,7 @@
 @import "./media-queries.scss";
 
 .App {
+    position: relative;
     width: $media-medium-desktop;
     font-size: 1.2em;
     font-weight: 300;
