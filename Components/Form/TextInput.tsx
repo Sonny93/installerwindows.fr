@@ -4,12 +4,16 @@ export default function TextInput({
     value,
     onChange,
     onBlur,
+    readOnly = false,
+    disabled = false,
 }: {
     name: string;
     placeholder?: string;
     value?: string;
     onChange?: (target: EventTarget & HTMLInputElement) => void;
     onBlur?: (target: EventTarget & HTMLInputElement) => void;
+    readOnly?: boolean;
+    disabled?: boolean;
 }) {
     return (
         <input
@@ -20,7 +24,8 @@ export default function TextInput({
             onChange={(event) => onChange && onChange(event.target)}
             onBlur={(event) => onBlur && onBlur(event.target)}
             value={value}
-            readOnly={!onChange}
+            readOnly={readOnly || !onChange}
+            disabled={disabled}
         />
     );
 }

@@ -38,7 +38,8 @@ form .form-field {
     & label,
     & button,
     & select,
-    & .legend {
+    & .legend,
+    & .field-error {
         width: 100%;
     }
 
@@ -46,6 +47,12 @@ form .form-field {
         font-size: 0.85em;
         text-align: justify;
         color: #999;
+    }
+
+    & .field-error {
+        font-size: 0.85em;
+        text-align: justify;
+        color: $danger-color;
     }
 }
 

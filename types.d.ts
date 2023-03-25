@@ -36,6 +36,7 @@ interface Guide {
 
     isDraft: boolean;
 }
+type GuideFormValues = Guide;
 
 interface Chapter {
     id: string;

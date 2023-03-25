@@ -72,8 +72,8 @@
                         }
 
                         &.delete:hover {
-                            background-color: $danger-color;
-                            box-shadow: 0 0 4px 1px rgba($color: $danger-color, $alpha: 0.75);
+                            background-color: $dark-danger-color;
+                            box-shadow: 0 0 4px 1px rgba($color: $dark-danger-color, $alpha: 0.75);
                         }
                     }
                 }

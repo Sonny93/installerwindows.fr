@@ -2,14 +2,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getServerSession } from 'next-auth';
 
-import { getGuides, _db } from '../../../lib/db';
-import {
-    isGithubUrl,
-    isGithubUserContentUrl,
-    isImgurUrl,
-    isStringEmpty,
-    trimify,
-} from '../../../utils';
+import { pushGuide } from '../../../lib/db';
+import { verifyGuideForm } from '../../../utils/api';
+import { findGuideBySlug } from '../../../utils/db';
 import { authOptions } from '../auth/[...nextauth]';
 
 type Data = {
@@ -27,55 +22,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             throw new Error('Vous devez être connecté pour effectuer cette action');
         }
 
-        const { title, slug, thumbnail, githubSource, githubRawSource, isDraft = false } = req.body;
+        const guide = verifyGuideForm(req.body);
 
-        const titleTrimed = trimify(title);
-        if (isStringEmpty(titleTrimed)) {
-            throw new Error('Titre du guide manquant');
+        const guideExist = await findGuideBySlug(guide.slug);
+        console.log(guide.slug);
+        if (guideExist) {
+            throw new Error('Guide with slug ' + guide.slug + ' already exist');
         }
 
-        const slugTrimed = trimify(slug);
-        if (isStringEmpty(slugTrimed)) {
-            throw new Error('Slug du guide manquant');
-        }
-
-        const thumbnailTrimed = trimify(thumbnail);
-        if (!isStringEmpty(thumbnail) && !isImgurUrl(thumbnailTrimed)) {
-            throw new Error('Un lien imgur est requis\n(ex: https://i.imgur.com/example.png)');
-        }
-
-        const githubSourceTrimed = trimify(githubSource);
-        if (isStringEmpty(githubSourceTrimed) || !isGithubUrl(githubSourceTrimed)) {
-            throw new Error('Un lien Github est requis\n(ex: https://github.com/user/repo)');
-        }
-
-        const githubRawSourceTrimed = trimify(githubRawSource);
-        if (
-            isStringEmpty(githubRawSourceTrimed) ||
-            !isGithubUserContentUrl(githubRawSourceTrimed)
-        ) {
-            throw new Error(
-                'Un lien githubusercontent est requis\n(ex: https://raw.githubusercontent.com/user/repo/file)'
-            );
-        }
-
-        await _db.data.guides.push({
-            title: titleTrimed,
-            slug: slugTrimed,
-            thumbnail: thumbnailTrimed,
-            github: {
-                source: githubSourceTrimed,
-                raw: githubRawSourceTrimed,
-            },
-            isDraft,
-        });
-        await _db.write();
-
-        const guide = (await getGuides()).find((guide) => guide.slug === slug);
-        if (!guide) {
-            throw new Error('Unable to find guide ' + slug);
-        }
-
+        pushGuide(guide);
         res.status(200).json({ guide });
     } catch (error: any) {
         console.error(error);

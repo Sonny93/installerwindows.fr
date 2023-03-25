@@ -26,11 +26,11 @@
             width: 500px;
 
             & button[type="submit"] {
-                background-color: $danger-color;
-                border: 1px solid $danger-color;
+                background-color: $dark-danger-color;
+                border: 1px solid $dark-danger-color;
 
                 &:hover {
-                    box-shadow: 0 0 4px 1px $danger-color;
+                    box-shadow: 0 0 4px 1px $dark-danger-color;
                 }
             }
         }

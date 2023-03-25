@@ -1,17 +1,47 @@
-import { useMemo, useState } from 'react';
-import { slugify } from '../../utils';
+import { FormEvent, ReactNode, useEffect, useMemo, useState } from 'react';
+import toast from 'react-hot-toast';
+
 import CheckboxInput from './CheckboxInput';
 import FormField from './FormField';
 import Submit from './Submit';
 
+import {
+    isGithubUrl,
+    isGithubUserContentUrl,
+    isImgurUrl,
+    isStringEmpty,
+    slugify,
+    trimify,
+} from '../../utils/string';
+import TextInput from './TextInput';
+
 export default function GuideForm({
-    defaultValues,
+    defaultValues = {
+        title: '',
+        slug: '',
+        thumbnail: '',
+        github: {
+            source: '',
+            raw: '',
+        },
+        isDraft: false,
+    },
     onSubmit,
-    canSubmit,
+    onValuesChange,
+    canSubmit = true,
+    canEdit = true,
+    isLoading = false,
+    isSubmitted = false,
+    children,
 }: {
-    defaultValues: Guide;
-    onSubmit: any;
-    canSubmit: boolean;
+    defaultValues?: GuideFormValues;
+    onSubmit: (values: GuideFormValues) => void;
+    onValuesChange?: (values: GuideFormValues) => void;
+    canSubmit?: boolean;
+    canEdit?: boolean;
+    isLoading?: boolean;
+    isSubmitted?: boolean;
+    children?: ReactNode;
 }) {
     const [title, setTitle] = useState<Guide['title']>(defaultValues.title);
     const [slug, setSlug] = useState<Guide['slug']>(defaultValues.slug);
@@ -24,95 +54,177 @@ export default function GuideForm({
     );
     const [isDraft, setDraft] = useState<Guide['isDraft']>(defaultValues.isDraft);
 
-    const fieldsTrimed = useMemo<string[]>(
-        () => [title, slug, thumbnail, githubSource, githubRawSource].map(trimify),
-        [githubRawSource, githubSource, slug, thumbnail, title]
+    const fieldsTrimed = useMemo<GuideFormValues>(
+        () => ({
+            title: trimify(title),
+            slug: trimify(slug),
+            thumbnail: trimify(thumbnail),
+            github: {
+                source: trimify(githubSource),
+                raw: trimify(githubRawSource),
+            },
+            isDraft: isDraft,
+        }),
+        [githubRawSource, githubSource, isDraft, slug, thumbnail, title]
     );
+
+    useEffect(() => onValuesChange && onValuesChange(fieldsTrimed));
+
+    const canSubmitForm = useMemo<boolean>(() => {
+        const {
+            title: titleTrimed,
+            slug: slugTrimed,
+            thumbnail: thumbnailTrimed,
+            github: { source: githubSourceTrimed, raw: githubRawSourceTrimed },
+        } = fieldsTrimed;
+
+        const isTitleOk = !isStringEmpty(titleTrimed);
+        const isSlugOk = !isStringEmpty(slugTrimed);
+        const isThumbnailSourceOk = !isStringEmpty(thumbnailTrimed)
+            ? isImgurUrl(thumbnailTrimed)
+            : true;
+        const isGituhbSourceOk =
+            !isStringEmpty(githubSourceTrimed) && isGithubUrl(githubSourceTrimed);
+        const isGituhbSourceRawOk =
+            !isStringEmpty(githubRawSourceTrimed) && isGithubUserContentUrl(githubRawSourceTrimed);
+        return (
+            isTitleOk &&
+            isSlugOk &&
+            isThumbnailSourceOk &&
+            isGituhbSourceOk &&
+            isGituhbSourceRawOk &&
+            canSubmit &&
+            !isLoading &&
+            !isSubmitted
+        );
+    }, [canSubmit, fieldsTrimed, isLoading, isSubmitted]);
+
+    const checkBeforeSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        try {
+            const titleTrimed = trimify(title);
+            setTitle(titleTrimed);
+            if (isStringEmpty(titleTrimed)) {
+                throw new Error('Titre du guide manquant');
+            }
+
+            const slugTrimed = trimify(slug);
+            if (isStringEmpty(slugTrimed)) {
+                setSlug(slugify(titleTrimed));
+            } else {
+                setSlug(slugTrimed);
+            }
+
+            const thumbnailTrimed = trimify(thumbnail);
+            setThumbnail(thumbnailTrimed);
+            if (!isStringEmpty(thumbnail) && !isImgurUrl(thumbnailTrimed)) {
+                throw new Error('Un lien imgur est requis\n(ex: https://i.imgur.com/example.png)');
+            }
+
+            const githubSourceTrimed = trimify(githubSource);
+            setGithubSource(githubSourceTrimed);
+            if (isStringEmpty(githubSourceTrimed) || !isGithubUrl(githubSourceTrimed)) {
+                throw new Error('Un lien Github est requis\n(ex: https://github.com/user/repo)');
+            }
+
+            const githubRawSourceTrimed = trimify(githubRawSource);
+            setGithubRawSource(githubRawSourceTrimed);
+            if (
+                isStringEmpty(githubRawSourceTrimed) ||
+                !isGithubUserContentUrl(githubRawSourceTrimed)
+            ) {
+                throw new Error(
+                    'Un lien githubusercontent est requis\n(ex: https://raw.githubusercontent.com/user/repo/file)'
+                );
+            }
+
+            onSubmit({
+                title: titleTrimed,
+                slug: slugTrimed,
+                thumbnail: thumbnailTrimed,
+                github: {
+                    source: githubSourceTrimed,
+                    raw: githubRawSourceTrimed,
+                },
+                isDraft,
+            });
+        } catch (error: any) {
+            console.warn(error);
+            toast.error(error?.message || 'Une erreur est survenue lors de la création du guide');
+        }
+    };
+
     return (
-        <form onSubmit={onSubmit}>
-            <h1>Ajouter un guide</h1>
-            <div className="form-field">
-                <label htmlFor="title">Titre</label>
-                <input
-                    type="text"
-                    placeholder="Titre"
+        <form onSubmit={checkBeforeSubmit}>
+            <FormField label="Titre" name="title">
+                <TextInput
                     name="title"
-                    id="title"
-                    onChange={({ target }) => setTitle(target.value)}
-                    onBlur={({ target }) => {
+                    placeholder="Titre"
+                    value={title}
+                    onChange={({ value }) => setTitle(value)}
+                    onBlur={({ value }) => {
                         if (trimify(slug) === '') {
-                            setSlug(slugify(target.value));
+                            setSlug(slugify(value));
                         }
                     }}
-                    value={title}
+                    readOnly={!canEdit}
+                    disabled={isSubmitted}
                 />
-            </div>
-            <div className="form-field">
-                <label htmlFor="slug">Slug (ex: {slugify('Mon super guide de test')})</label>
-                <input
-                    type="text"
-                    placeholder="Slug"
+            </FormField>
+            <FormField label={`Slug (ex: ${slugify('Mon super guide')})`} name="slug">
+                <TextInput
                     name="slug"
-                    id="slug"
-                    onChange={({ target }) => setSlug(target.value)}
-                    onBlur={({ target }) => setSlug(slugify(target.value))}
+                    placeholder={slugify('Mon super guide')}
                     value={slug}
+                    onChange={({ value }) => setSlug(value)}
+                    onBlur={({ value }) => setSlug(slugify(value))}
+                    readOnly={!canEdit}
+                    disabled={isSubmitted}
                 />
-            </div>
-            <div className="form-field">
-                <label htmlFor="github-source">Miniature</label>
-                <input
-                    type="text"
-                    placeholder="Miniature"
+            </FormField>
+            <FormField label="Miniature (optionnel)" name="thumbnail">
+                <TextInput
                     name="thumbnail"
-                    id="thumbnail"
-                    onChange={({ target }) => setThumbnail(target.value)}
+                    placeholder="Lien miniature"
                     value={thumbnail}
+                    onChange={({ value }) => setThumbnail(value)}
+                    readOnly={!canEdit}
+                    disabled={isSubmitted}
                 />
-            </div>
-            <div className="form-field">
-                <label htmlFor="github-source">Source Github</label>
-                <input
-                    type="text"
-                    placeholder="Source Github"
+            </FormField>
+            <FormField label="Source Github" name="github-source">
+                <TextInput
                     name="github-source"
-                    id="github-source"
-                    onChange={({ target }) => setGithubSource(target.value)}
+                    placeholder="Lien Github"
                     value={githubSource}
+                    onChange={({ value }) => setGithubSource(value)}
+                    readOnly={!canEdit}
+                    disabled={isSubmitted}
                 />
-            </div>
-            <div className="form-field">
-                <label htmlFor="github-raw-source">Source Github Raw</label>
-                <input
-                    type="text"
-                    placeholder="Source Github Raw"
-                    name="github-raw-source"
-                    id="github-raw-source"
-                    onChange={({ target }) => setGithubRawSource(target.value)}
+            </FormField>
+            <FormField label="Source Github Raw" name="github-source-raw">
+                <TextInput
+                    name="github-source-raw"
+                    placeholder="Lien vers le fichier brut (raw)"
                     value={githubRawSource}
+                    onChange={({ value }) => setGithubRawSource(value)}
+                    readOnly={!canEdit}
+                    disabled={isSubmitted}
                 />
-            </div>
-            <div className="form-radio-container">
-                <div className="form-radio-btn">
-                    <input
-                        type="checkbox"
-                        name="is-draft"
-                        id="is-draft"
-                        onChange={(event) => setIsDraft(event.target.checked)}
-                        checked={isDraft}
-                    />
-                    <label htmlFor="is-draft">brouillon?</label>
-                </div>
-            </div>
+            </FormField>
             <FormField label="Brouillon" name="is-draft" inline reverse>
                 <CheckboxInput
                     name="is-draft"
                     checked={isDraft}
                     onChange={({ checked }) => setDraft(checked)}
+                    readOnly={!canEdit}
+                    disabled={isSubmitted}
                 />
             </FormField>
+            {children && children}
             <FormField name="submit-form">
-                <Submit label="Ajouter le guide" disabled={!canSubmit} />
+                <Submit label="Valider" disabled={!canSubmitForm} />
             </FormField>
         </form>
     );

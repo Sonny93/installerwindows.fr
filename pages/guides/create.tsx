@@ -1,113 +1,35 @@
 import { GetServerSidePropsContext } from 'next';
 import { getServerSession } from 'next-auth';
-import Link from 'next/link';
-import { FormEvent, useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { authOptions } from '../api/auth/[...nextauth]';
-
 import Footer from '../../Components/Footer/Footer';
+import GuideForm from '../../Components/Form/GuideForm';
 import Navbar from '../../Components/Navbar/Navbar';
 
-import {
-    isGithubUrl,
-    isGithubUserContentUrl,
-    isImgurUrl,
-    isStringEmpty,
-    slugify,
-    trimify,
-} from '../../utils';
+import { redirectWithoutClientCache } from '../../utils/client';
+import { postRequest } from '../../utils/request';
+import { authOptions } from '../api/auth/[...nextauth]';
 
 import styles from './guide-create.module.scss';
-import { postRequest } from '../../utils/request';
 
 export default function PageCreateGuide() {
-    const [title, setTitle] = useState<string>('');
-    const [slug, setSlug] = useState<string>('');
-    const [thumbnail, setThumbnail] = useState<string>('');
-    const [githubSource, setGithubSource] = useState<string>('');
-    const [githubRawSource, setGithubRawSource] = useState<string>('');
-    const [isDraft, setIsDraft] = useState<boolean>(false);
+    const router = useRouter();
 
     const [guide, setGuide] = useState<Guide>(undefined);
     const [isLoading, setLoading] = useState<boolean>(false);
 
-    const canSubmit = useMemo<boolean>(() => {
-        const titleTrimed = trimify(title);
-        const slugTrimed = trimify(slug);
-        const thumbnailTrimed = trimify(thumbnail);
-        const githubSourceTrimed = trimify(githubSource);
-        const githubRawSourceTrimed = trimify(githubRawSource);
-
-        const isThumbnailSourceOk = !isStringEmpty(thumbnailTrimed)
-            ? isImgurUrl(thumbnailTrimed)
-            : true;
-        const isGituhbSourceOk =
-            !isStringEmpty(githubSourceTrimed) && isGithubUrl(githubSourceTrimed);
-        const isGituhbSourceRawOk =
-            !isStringEmpty(githubRawSourceTrimed) && isGithubUserContentUrl(githubRawSourceTrimed);
-        return (
-            !isStringEmpty(titleTrimed) &&
-            !isStringEmpty(slugTrimed) &&
-            isThumbnailSourceOk &&
-            isGituhbSourceOk &&
-            isGituhbSourceRawOk &&
-            !isLoading &&
-            !guide
-        );
-    }, [githubRawSource, githubSource, guide, isLoading, slug, thumbnail, title]);
-
-    const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleSubmitForm = async (values: GuideFormValues) => {
         setLoading(true);
 
         try {
-            const titleTrimed = trimify(title);
-            setTitle(titleTrimed);
-            if (isStringEmpty(titleTrimed)) {
-                throw new Error('Titre du guide manquant');
-            }
-
-            const slugTrimed = trimify(slug);
-            if (isStringEmpty(slugTrimed)) {
-                setSlug(slugify(titleTrimed));
-            } else {
-                setSlug(slugTrimed);
-            }
-
-            const thumbnailTrimed = trimify(thumbnail);
-            setThumbnail(thumbnailTrimed);
-            if (!isStringEmpty(thumbnail) && !isImgurUrl(thumbnailTrimed)) {
-                throw new Error('Un lien imgur est requis\n(ex: https://i.imgur.com/example.png)');
-            }
-
-            const githubSourceTrimed = trimify(githubSource);
-            setGithubSource(githubSourceTrimed);
-            if (isStringEmpty(githubSourceTrimed) || !isGithubUrl(githubSourceTrimed)) {
-                throw new Error('Un lien Github est requis\n(ex: https://github.com/user/repo)');
-            }
-
-            const githubRawSourceTrimed = trimify(githubRawSource);
-            setGithubRawSource(githubRawSourceTrimed);
-            if (
-                isStringEmpty(githubRawSourceTrimed) ||
-                !isGithubUserContentUrl(githubRawSourceTrimed)
-            ) {
-                throw new Error(
-                    'Un lien githubusercontent est requis\n(ex: https://raw.githubusercontent.com/user/repo/file)'
-                );
-            }
-
-            const { guide } = await postRequest('/api/guide/create', {
-                title: titleTrimed,
-                slug: slugTrimed,
-                thumbnail: thumbnailTrimed,
-                githubSource: githubSourceTrimed,
-                githubRawSource: githubRawSourceTrimed,
-                isDraft,
-            });
-            toast.success('Guide créé avec succès');
+            const data = await postRequest('/api/guide/create', values);
+            const guide = data?.guide as Guide;
             setGuide(guide);
+
+            toast.success('Guide créé avec succès');
+            redirectWithoutClientCache(router, `/guide/${guide.slug}`);
         } catch (error: any) {
             console.warn(error);
             toast.error(error?.message || 'Une erreur est survenue lors de la création du guide');
@@ -115,94 +37,18 @@ export default function PageCreateGuide() {
             setLoading(false);
         }
     };
+
     return (
         <div className={styles['guide-create']}>
             <Navbar />
             <main>
-                <form onSubmit={handleSubmitForm}>
-                    <h1>Ajouter un guide</h1>
-                    <div className="form-field">
-                        <label htmlFor="title">Titre</label>
-                        <input
-                            type="text"
-                            placeholder="Titre"
-                            name="title"
-                            id="title"
-                            onChange={({ target }) => setTitle(target.value)}
-                            onBlur={({ target }) => {
-                                if (trimify(slug) === '') {
-                                    setSlug(slugify(target.value));
-                                }
-                            }}
-                            value={title}
-                        />
-                    </div>
-                    <div className="form-field">
-                        <label htmlFor="slug">
-                            Slug (ex: {slugify('Mon super guide de test')})
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Slug"
-                            name="slug"
-                            id="slug"
-                            onChange={({ target }) => setSlug(target.value)}
-                            onBlur={({ target }) => setSlug(slugify(target.value))}
-                            value={slug}
-                        />
-                    </div>
-                    <div className="form-field">
-                        <label htmlFor="github-source">Miniature</label>
-                        <input
-                            type="text"
-                            placeholder="Miniature"
-                            name="thumbnail"
-                            id="thumbnail"
-                            onChange={({ target }) => setThumbnail(target.value)}
-                            value={thumbnail}
-                        />
-                    </div>
-                    <div className="form-field">
-                        <label htmlFor="github-source">Source Github</label>
-                        <input
-                            type="text"
-                            placeholder="Source Github"
-                            name="github-source"
-                            id="github-source"
-                            onChange={({ target }) => setGithubSource(target.value)}
-                            value={githubSource}
-                        />
-                    </div>
-                    <div className="form-field">
-                        <label htmlFor="github-raw-source">Source Github Raw</label>
-                        <input
-                            type="text"
-                            placeholder="Source Github Raw"
-                            name="github-raw-source"
-                            id="github-raw-source"
-                            onChange={({ target }) => setGithubRawSource(target.value)}
-                            value={githubRawSource}
-                        />
-                    </div>
-                    <div className="form-radio-container">
-                        <div className="form-radio-btn">
-                            <input
-                                type="checkbox"
-                                name="is-draft"
-                                id="is-draft"
-                                onChange={(event) => setIsDraft(event.target.checked)}
-                                checked={isDraft}
-                            />
-                            <label htmlFor="is-draft">brouillon?</label>
-                        </div>
-                    </div>
-                    <div className="form-field">
-                        <button type="submit" disabled={!canSubmit}>
-                            Ajouter le guide
-                        </button>
-                    </div>
-                    {guide && <Link href={`/guide/${guide.slug}`}>Lien vers le guide</Link>}
-                </form>
+                <h1>Nouveau guide</h1>
+                <GuideForm
+                    onSubmit={handleSubmitForm}
+                    canSubmit={!guide}
+                    isLoading={isLoading}
+                    isSubmitted={!!guide}
+                />
             </main>
             <Footer />
         </div>
