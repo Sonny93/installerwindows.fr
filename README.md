@@ -1,31 +1,32 @@
-# installerwindows.fr
+# Installerwindows.fr
 
-Front-end installerwindows.fr
+Installerwindows.fr est un site avec différents guides pour apprendre à (ré)installer Windows 10/11 au propre et faire des optimisations saines pour votre machine. Il s'agit d'un guide complet, que vous devriez pouvoir suivre quel que soit votre niveau en informatique.
 
--   Next.JS@13
--   React@18.2
--   Typescript@4.8.4
--   SASS@1.55
+## Technologies
 
-# install
+Le site se base sur ces technologies pour fonctionner.
 
-Pour installer les packages :
+Next.JS (React), Typescript, SASS
+
+## Installer les dépendances
+
+Commande pour installer les dépendances
 
 ```
 npm install
 ```
 
-# dev
+## Lancer localement le site (dev)
 
-Pour démarrer le front en environnement de dév
+Commande pour lancer le site en local dans un environnement de dév
 
 ```
 npm run dev
 ```
 
-# build
+## Lancer localement le site (prod)
 
-Pour démarrer le front en environnement de prod
+Commande pour lancer le site en local dans un environnement de prod
 
 ```
 npm run build
