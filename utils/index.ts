@@ -1,5 +1,3 @@
-import { NextRouter } from 'next/router';
-
 export function urlify(text) {
     return text.replace(
         /(https?:\/\/[^\s]+)/g,
