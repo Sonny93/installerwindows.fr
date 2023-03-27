@@ -91,6 +91,9 @@
         border: 1px solid $smooth-border-color;
         border-radius: 3px;
         padding: 15px;
+        display: flex;
+        gap: 0.5em;
+        flex-direction: column;
 
         & > div {
             text-overflow: ellipsis;

@@ -4,7 +4,6 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import Markdown from './Markdown';
 import NoMarkdown from './NoMarkdown';
-import Source from './Source';
 
 import styles from '../../styles/markdown.module.scss';
 
@@ -31,14 +30,13 @@ export default function MarkdownPage({
             <div className={styles['App']}>
                 <Navbar />
                 {content ? (
-                    <>
-                        <Markdown
-                            markdown={content}
-                            innerClassName={styles['markdown-gh']}
-                            disableChapters={disableChapters}
-                        />
-                        <Source url={url} raw={urlRaw} />
-                    </>
+                    <Markdown
+                        markdown={content}
+                        innerClassName={styles['markdown-gh']}
+                        disableChapters={disableChapters}
+                        source={url}
+                        raw={urlRaw}
+                    />
                 ) : (
                     <NoMarkdown />
                 )}

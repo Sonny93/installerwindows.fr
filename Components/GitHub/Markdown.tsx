@@ -2,13 +2,14 @@ import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
-import MarkdownLink from './MarkdownElements/MarkdownLink';
 import MarkdownImage from './MarkdownElements/MarkdownImage';
+import MarkdownLink from './MarkdownElements/MarkdownLink';
 import MarkdownTitle from './MarkdownElements/MarkdownTitle';
 
 import Modal from '../Modal/Modal';
 import useModal from '../Modal/useModal';
 import Chapters from './Chapters';
+import Source from './Source';
 
 import styles from './markdown.module.scss';
 
@@ -16,8 +17,16 @@ interface MarkdownProps {
     markdown: string;
     innerClassName?: string;
     disableChapters?: boolean;
+    source: string;
+    raw: string;
 }
-export default function Markdown({ markdown, innerClassName, disableChapters }: MarkdownProps) {
+export default function Markdown({
+    markdown,
+    innerClassName,
+    disableChapters,
+    source,
+    raw,
+}: MarkdownProps) {
     const { isShowing, toggle, close: closeModal } = useModal();
     const [chapters, setChapters] = useState<Chapter[]>([]);
 
@@ -61,6 +70,7 @@ export default function Markdown({ markdown, innerClassName, disableChapters }: 
                 >
                     {markdown}
                 </ReactMarkdown>
+                <Source url={source} raw={raw} />
             </div>
         </div>
     );
