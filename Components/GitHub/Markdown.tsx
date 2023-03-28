@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
@@ -11,6 +12,7 @@ import useModal from '../Modal/useModal';
 import Chapters from './Chapters';
 import Source from './Source';
 
+import Stats from '../Stats/Stats';
 import styles from './markdown.module.scss';
 
 interface MarkdownProps {
@@ -36,8 +38,18 @@ export default function Markdown({
             return chapter ? chapters : [...chapters, newChapter];
         });
     };
+    const handleResize = useCallback(() => {
+        if (window.matchMedia('(min-width: 900px)').matches && isShowing) {
+            closeModal();
+        }
+    }, [closeModal, isShowing]);
 
     const MarkdownTitleBuilder = (args) => <MarkdownTitle addChapter={addChapter} {...args} />;
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [handleResize]);
 
     return (
         <div className={styles['page-wrapper']}>

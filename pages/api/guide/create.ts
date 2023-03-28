@@ -25,7 +25,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         const guide = verifyGuideForm(req.body);
 
         const guideExist = await findGuideBySlug(guide.slug);
-        console.log(guide.slug);
         if (guideExist) {
             throw new Error('Guide with slug ' + guide.slug + ' already exist');
         }
