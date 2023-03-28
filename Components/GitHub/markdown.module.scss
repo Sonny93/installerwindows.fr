@@ -20,7 +20,6 @@
     & li {
         counter-increment: chapters-counter;
 
-        cursor: pointer;
         width: 100%;
         font-size: 0.85em;
         font-weight: 200;
@@ -36,6 +35,11 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+            transition: 0.25s;
+
+            &.chapter-active {
+                color: $main-color;
+            }
 
             &:hover {
                 border-bottom: 1px solid $main-color;

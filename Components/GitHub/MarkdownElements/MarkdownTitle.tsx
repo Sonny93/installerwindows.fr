@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { ClassAttributes, useEffect } from 'react';
+import { ClassAttributes, createRef, useEffect, useRef } from 'react';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 
 import { slugify } from '../../../utils/string';
 
 type CustomTitleComponentsProps = ClassAttributes<HTMLHeadingElement> &
     ReactMarkdownProps & {
-        level: any;
-        addChapter: ({ id, name }: { id: string; name: string }) => void;
+        level: number;
+        addChapter: ({ id, name }: Chapter) => void;
     };
 
 export default function MarkdownTitle({ children, level, addChapter }: CustomTitleComponentsProps) {
@@ -18,7 +18,7 @@ export default function MarkdownTitle({ children, level, addChapter }: CustomTit
 
     const Title = `h${level}` as keyof JSX.IntrinsicElements;
     return (
-        <Title style={{ cursor: 'pointer' }} id={id}>
+        <Title id={id}>
             <Link className="reset" href={`#${id}`}>
                 {children}
             </Link>
