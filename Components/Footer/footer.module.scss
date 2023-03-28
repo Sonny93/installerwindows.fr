@@ -8,17 +8,33 @@ footer.footer {
     margin-top: 2em;
     padding-top: 1em;
     display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: space-between;
     flex-direction: row;
-}
 
-footer ul.links {
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+    & ul {
+        width: 30%;
+        display: flex;
+        gap: 0.5em;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        & > * {
+            width: 100%;
+        }
+    }
+
+    & ul.links {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: calc($media-medium-desktop + 20px)) {
