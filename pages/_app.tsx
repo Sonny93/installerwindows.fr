@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                 <DefaultSeo
                     titleTemplate="Installerwindows.fr — %s"
                     defaultTitle="Installerwindows.fr"
-                    description="Un guide d'installation et d'optimisation complet et sans risques"
+                    description="Guides pour (ré)installer Windows 10/11 au propre et faire des optimisations saines pour votre machine. Il s'agit de guides complets, que vous devriez pouvoir suivre quel que soit votre niveau en informatique."
                     openGraph={{
                         type: 'website',
                         locale: 'fr_FR',
@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                                 url: 'https://installerwindows.fr/icon-192x192.png',
                             },
                         ],
-                        site_name: 'Guide Windows',
+                        site_name: 'Guides Windows',
                     }}
                 />
                 <Component {...pageProps} />
