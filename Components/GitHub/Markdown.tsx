@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
@@ -83,6 +82,7 @@ export default function Markdown({
                     {markdown}
                 </ReactMarkdown>
                 <Source url={source} raw={raw} />
+                <Stats markdownContent={markdown} />
             </div>
         </div>
     );

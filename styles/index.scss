@@ -63,7 +63,9 @@ h6 {
 }
 
 hr {
-    border: 1px solid $gray-border-color;
+    width: 100%;
+    border: 0;
+    border-top: 1px solid $smooth-border-color;
 }
 
 ul,

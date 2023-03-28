@@ -42,3 +42,7 @@ interface Chapter {
     id: string;
     name: string;
 }
+
+interface ChapterWithHTMLElement extends Chapter {
+    element: HTMLElement;
+}

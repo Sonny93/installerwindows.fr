@@ -9,7 +9,7 @@
     max-width: 350px;
     padding-right: 20px;
     border-right: 1px solid $smooth-border-color;
-    margin: 50px 10px 50px 0;
+    margin: 1em 10px 0 0;
     display: flex;
     gap: 0.75em;
     align-items: flex-end;
@@ -18,15 +18,26 @@
     counter-reset: chapters-counter;
 
     & li {
-        counter-increment: chapters-counter;
-
         width: 100%;
         font-size: 0.85em;
         font-weight: 200;
         display: flex;
+        align-items: center;
         justify-content: flex-end;
         gap: 0.5em;
         transition: 0.15s;
+    }
+
+    & li.info {
+        text-align: right;
+
+        & svg {
+            font-size: 1.75em;
+        }
+    }
+
+    & li.chapter {
+        counter-increment: chapters-counter;
 
         & a {
             width: fit-content;
@@ -98,15 +109,24 @@
         align-items: flex-start;
         border: 0;
         margin: 0;
+        padding: 0;
         gap: 15px;
 
         & li {
             font-size: 1em;
+            justify-content: flex-start;
+        }
 
+        & li.info {
+            text-align: left;
+        }
+
+        & li.chapter {
             &::before {
                 content: counter(chapters-counter) " - ";
                 color: $main-color;
-                // font-weight: bold;
+                font-weight: bold;
+                white-space: nowrap;
             }
 
             &::after {
