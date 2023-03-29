@@ -1,5 +1,5 @@
 import React from 'react';
-import { urlify } from '../../utils/index';
+import { urlify } from '../../utils/string';
 
 import styles from './Meta.module.scss';
 

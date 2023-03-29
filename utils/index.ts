@@ -1,10 +1,3 @@
-export function urlify(text) {
-    return text.replace(
-        /(https?:\/\/[^\s]+)/g,
-        (url) => `<a href="${url}" class="link-anim" rel="noreferrer" target="_blank">${url}</a>`
-    );
-}
-
 export async function downloadMarkdown(url: string): Promise<string> {
     const response = await fetch(url);
     if (response.status !== 200) {

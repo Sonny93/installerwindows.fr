@@ -1,4 +1,4 @@
-import { urlify } from '../../utils';
+import { urlify } from '../../utils/string';
 import styles from '../../styles/markdown.module.scss';
 
 export default function Source({ url, raw }: { url?: string; raw?: string }) {

@@ -1,4 +1,4 @@
-import { urlify } from '../../utils';
+import { urlify } from '../../utils/string';
 
 export default function NoMarkdown() {
     return (
