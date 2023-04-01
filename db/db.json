@@ -1,16 +1,36 @@
 {
-    "guides": [
-        {
-            "title": "Windows 11",
-            "slug": "windows-11",
-            "github": {
-                "source": "https://github.com/Piwielle/windows_11/blob/main/Guide/README.md",
-                "raw": "https://raw.githubusercontent.com/Piwielle/windows_11/main/Guide/README.md"
-            },
-            "isDraft": false
-        }
-    ],
-    "admin_accounts": [
-        "257285655388880896"
-    ]
+  "guides": [
+    {
+      "title": "Windows 11",
+      "slug": "windows-11",
+      "github": {
+        "source": "https://github.com/Piwielle/windows_11/blob/main/Guide/README.md",
+        "raw": "https://raw.githubusercontent.com/Piwielle/windows_11/main/Guide/README.md"
+      },
+      "isDraft": false
+    },
+    {
+      "title": "Optimisafions",
+      "slug": "optimisations",
+      "thumbnail": "",
+      "github": {
+        "source": "https://github.com/Piwielle/windows_11/blob/main/Optis/README.md",
+        "raw": "https://raw.githubusercontent.com/Piwielle/windows_11/main/Optis/README.md"
+      },
+      "isDraft": false
+    },
+    {
+      "title": "Windows 10",
+      "slug": "windows-10",
+      "thumbnail": "",
+      "github": {
+        "source": "https://github.com/Piwielle/windows_10/blob/master/README.md",
+        "raw": "https://raw.githubusercontent.com/Piwielle/windows_10/master/README.md"
+      },
+      "isDraft": false
+    }
+  ],
+  "admin_accounts": [
+    "257285655388880896"
+  ]
 }

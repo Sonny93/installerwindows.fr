@@ -12,6 +12,8 @@ services:
         container_name: Installerwindows.fr
         image: installerwindows-front
         restart: 'always'
+        volumes:
+            - ../db:/usr/app/db
         env_file:
             - ../.env
         networks:
@@ -26,7 +28,7 @@ services:
         env_file:
             - ../.env
         environment:
-            DATABASE_URL: postgresql://umami-iw-user:umami-iw-pwd@umami_db:5432/umami-iw
+            DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@umami_db:5432/${POSTGRES_DB}
             DATABASE_TYPE: postgresql
         depends_on:
             - umami_db
