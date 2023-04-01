@@ -50,6 +50,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             systemctl --user stop container-iw-front.service
-            podman rm iw-front
             podman pull --authfile /etc/containers/auth.json docker.io/ctrlfdocker/installerwindows:latest
             systemctl --user start container-iw-front.service
