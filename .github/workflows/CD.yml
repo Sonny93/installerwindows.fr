@@ -19,6 +19,7 @@ jobs:
         uses: docker/metadata-action@v4.3.0
         with:
           images: ctrlfdocker/installerwindows
+          flavor: latest=true
           tags: |
             type=sha,prefix=
       -
