@@ -20,7 +20,7 @@ jobs:
         with:
           images: ctrlfdocker/installerwindows
           tags: |
-            type=sha
+            type=sha,prefix=
       -
         name: Login to DockerHub
         uses: docker/login-action@v2.1.0
