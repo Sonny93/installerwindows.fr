@@ -52,3 +52,5 @@ jobs:
             systemctl --user stop container-iw-front.service
             podman pull --authfile /etc/containers/auth.json docker.io/ctrlfdocker/installerwindows:latest
             systemctl --user start container-iw-front.service
+            podman exec -it iw-front /bin/bash
+            DOCKER_IMAGE_TAG=${{ github.sha }}
