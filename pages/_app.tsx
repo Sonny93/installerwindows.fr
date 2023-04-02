@@ -17,17 +17,18 @@ import NeedHelp from '../Components/NeedHelp/NeedHelp';
 import '../styles/form.scss';
 import '../styles/index.scss';
 
+const HJID = process.env.NEXT_PUBLIC_HOTJAR_HJID || '';
+const HJSV = process.env.NEXT_PUBLIC_HOTJAR_HJSV || '';
+
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     const router = useRouter();
 
     useEffect(() => {
-        const hjid = parseInt(process.env.NEXT_PUBLIC_HOTJAR_HJID || '', 10);
-        const hjsv = parseInt(process.env.NEXT_PUBLIC_HOTJAR_HJSV || '', 10);
-        if (!hjid || !hjsv) {
-            return console.warn('Missing hjid or hjsv');
+        if (!HJID || !HJSV) {
+            return console.warn('Missing HJID or HJSV');
         }
 
-        hotjar.initialize(hjid, hjsv);
+        hotjar.initialize(Number(HJID), Number(HJSV));
     }, []);
 
     useEffect(() => {
