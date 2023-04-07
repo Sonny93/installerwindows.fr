@@ -3,7 +3,7 @@
     "version": "2.10.0",
     "private": true,
     "dependencies": {
-        "@next/bundle-analyzer": "^13.2.4",
+        "@next/bundle-analyzer": "^13.3.0",
         "@svgr/webpack": "^7.0.0",
         "lowdb": "^5.1.0",
         "next": "^13.2.4",
