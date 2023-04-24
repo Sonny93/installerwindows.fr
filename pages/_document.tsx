@@ -19,7 +19,7 @@ export default function Document() {
                         async
                         defer
                         data-website-id={WEBSITE_ID}
-                        src={`${SCRIPT_ORIGIN}/umami.js`}
+                        src={`${SCRIPT_ORIGIN}/script.js`}
                     />
                 )}
             </Head>
