@@ -1,4 +1,5 @@
 @import "./colors.scss";
+@import "./media-queries.scss";
 
 * {
   outline: none;
@@ -164,8 +165,54 @@ strong {
   }
 }
 
+// TODO: move ?
+#guide-w11,
+#guide-w10 {
+  float: left;
+  padding: 1.5em;
+  width: 50%;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+
+  & > h2 {
+    margin-top: 0;
+  }
+
+  & p {
+    text-align: justify;
+  }
+
+  & ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+    &,
+    & li {
+      list-style: none;
+
+      & a {
+        color: $font-color;
+        font-size: 0.9em;
+        border-radius: 0.25em;
+        padding: 0.5em 0.75em;
+        background-color: $btn-color;
+        list-style: none;
+        transition: 0.15s;
+
+        &:hover {
+          background-color: $main-color;
+        }
+      }
+    }
+  }
+}
+
 /* Image home page */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $media-mobile) {
   * {
     scroll-margin-top: 50px;
   }
@@ -173,5 +220,18 @@ strong {
   img#img-header {
     height: auto;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: $media-small-desktop) {
+  #guide-w11,
+  #guide-w10 {
+    float: unset;
+    padding: 0;
+    width: 100%;
+
+    & & ul {
+      justify-content: start;
+    }
   }
 }
