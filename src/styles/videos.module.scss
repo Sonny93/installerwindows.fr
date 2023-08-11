@@ -1,0 +1,65 @@
+@use "./keyframes.scss";
+
+@import "./colors.scss";
+@import "./media-queries.scss";
+
+.App {
+  opacity: 0;
+  height: 100%;
+  width: 95vw;
+  padding: 1em;
+  margin-bottom: 50px;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  transition: 0.15s;
+  animation: 0.5s fadein both;
+
+  & .content-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-direction: row;
+
+    & aside {
+      height: 100%;
+    }
+
+    & main {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  & .carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: $media-small-desktop) {
+  .App {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: $media-mobile) {
+  .App {
+    gap: 10px;
+
+    & .content-wrapper {
+      gap: 10px;
+      flex-direction: column-reverse;
+    }
+
+    & aside {
+      height: fit-content !important;
+    }
+  }
+}

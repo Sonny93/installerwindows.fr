@@ -1,46 +1,46 @@
-version: '3.8'
+version: "3.8"
 
 volumes:
-    umami-db-data:
+  umami-db-data:
 
 networks:
-    installerwindows_net:
-        name: installerwindows_net
+  installerwindows_net:
+    name: installerwindows_net
 
 services:
-    installerwindows_srv:
-        container_name: Installerwindows.fr
-        image: installerwindows-front
-        restart: 'always'
-        volumes:
-            - ../db:/usr/app/db
-        env_file:
-            - ../.env
-        networks:
-            - installerwindows_net
-        ports:
-            - 3000:3000
+  installerwindows_srv:
+    container_name: Installerwindows.fr
+    image: installerwindows-front
+    restart: "always"
+    volumes:
+      - ../db:/usr/app/db
+    env_file:
+      - ../.env
+    networks:
+      - installerwindows_net
+    ports:
+      - 3000:3000
 
-    umami:
-        image: ghcr.io/umami-software/umami:postgresql-latest
-        ports:
-            - 4000:3000
-        env_file:
-            - ../.env
-        environment:
-            DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@umami_db:5432/${POSTGRES_DB}
-            DATABASE_TYPE: postgresql
-        depends_on:
-            - umami_db
-        restart: always
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    ports:
+      - 4000:3000
+    env_file:
+      - ../.env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@umami_db:5432/${POSTGRES_DB}
+      DATABASE_TYPE: postgresql
+    depends_on:
+      - umami_db
+    restart: always
 
-    umami_db:
-        image: postgres:12-alpine
-        env_file:
-            - ../.env
-        volumes:
-            - ./sql/schema.postgresql.sql:/docker-entrypoint-initdb.d/schema.postgresql.sql:ro
-            - umami-db-data:/var/lib/postgresql/data
-        restart: always
-        depends_on:
-            - installerwindows_srv
+  umami_db:
+    image: postgres:12-alpine
+    env_file:
+      - ../.env
+    volumes:
+      - ./sql/schema.postgresql.sql:/docker-entrypoint-initdb.d/schema.postgresql.sql:ro
+      - umami-db-data:/var/lib/postgresql/data
+    restart: always
+    depends_on:
+      - installerwindows_srv
