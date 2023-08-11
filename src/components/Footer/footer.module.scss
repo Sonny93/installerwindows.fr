@@ -1,0 +1,35 @@
+@import "styles/media-queries.scss";
+
+footer.footer {
+  height: auto;
+  width: 100%;
+  font-size: 0.85em;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2em;
+  padding-top: 1em;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+footer ul.links {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+@media screen and (max-width: calc($media-medium-desktop + 20px)) {
+  footer.footer {
+    gap: 0.25em;
+    align-items: center;
+    flex-direction: column;
+
+    & .links {
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+  }
+}

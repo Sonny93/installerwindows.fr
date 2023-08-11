@@ -1,0 +1,134 @@
+@import "styles/colors.scss";
+@import "styles/media-queries.scss";
+@import "styles/keyframes.scss";
+
+.guides {
+  width: $media-medium-desktop;
+  font-size: 1.2em;
+  padding: 1em;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  animation: 0.5s fadein both;
+
+  & main {
+    display: flex;
+    flex: 1;
+    gap: 2em;
+    align-items: center;
+    flex-direction: column;
+
+    & .guide-list {
+      display: flex;
+      flex: 1;
+      gap: 2em;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      & .guide-item {
+        position: relative;
+
+        & .is-draft {
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 0.75em;
+          background-color: $dark-bg-color;
+          padding: 0.5em;
+          border: 1px solid $smooth-border-color;
+          border-radius: 3px;
+          transform: translate(0.5em, -50%);
+          transition: 0.15s;
+        }
+
+        & .controls {
+          position: absolute;
+          top: 0;
+          right: 0;
+          display: none;
+          gap: 0.25em;
+          align-items: center;
+          justify-content: center;
+          transform: translate(-0.5em, -50%);
+          transition: 0.15s;
+          animation: 0.25s fadeInFromTop;
+
+          & a {
+            font-size: 0.85em;
+            background-color: $bg-color;
+            padding: 0.75em;
+            border: 1px solid $smooth-border-color;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.15s;
+
+            &.edit:hover {
+              background-color: $btn-color;
+              box-shadow: 0 0 4px 1px rgba($color: $btn-color, $alpha: 0.75);
+            }
+
+            &.delete:hover {
+              background-color: $dark-danger-color;
+              box-shadow: 0 0 4px 1px rgba($color: $dark-danger-color, $alpha: 0.75);
+            }
+          }
+        }
+
+        &:hover .controls {
+          display: flex;
+        }
+
+        & a.link {
+          border: 1px solid $smooth-border-color;
+          border-radius: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          transition: 0.15s;
+          overflow: hidden;
+
+          & img {
+            border-radius: 3px;
+          }
+
+          & span {
+            padding: 0.75em;
+          }
+
+          &:hover {
+            background: $dark-bg-color;
+            border-bottom: 1px solid transparent;
+          }
+        }
+      }
+    }
+
+    & p {
+      font-size: 0.8em;
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: calc($media-medium-desktop + 20px)) {
+  .guides {
+    width: 100%;
+  }
+}
+
+@keyframes fadeInFromTop {
+  0% {
+    opacity: 0;
+    transform: translate(-0.5em, -100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-0.5em, -50%);
+  }
+}

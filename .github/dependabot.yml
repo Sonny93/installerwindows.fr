@@ -1,6 +1,5 @@
 version: 2
 updates:
-
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -14,7 +13,7 @@ updates:
       interval: "daily"
     ignore:
       - dependency-name: "node-fetch"
-      
+
   # Maintain dependencies for docker
   - package-ecosystem: "docker"
     directory: "/docker"
