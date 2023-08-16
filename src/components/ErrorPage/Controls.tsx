@@ -6,8 +6,8 @@ export default function Controls() {
     <div className={styles["controls"]}>
       <Link href={"/"}>⟵ Page d'accueil</Link>
       <hr />
-      <Link href={"/videos"}>Guide en version vidéo</Link>
-      <Link href={"/texte"}>Guide en version texte</Link>
+      <Link href={"/videos"}>Guide vidéo</Link>
+      <Link href={"/guides"}>Voir les guides textuels</Link>
     </div>
   );
 }
