@@ -13,9 +13,9 @@ services:
     image: installerwindows-front
     restart: "always"
     volumes:
-      - ../db:/usr/app/db
+      - ./db:/usr/app/db
     env_file:
-      - ../.env
+      - ./.env
     networks:
       - installerwindows_net
     ports:
@@ -26,7 +26,7 @@ services:
     ports:
       - 4000:3000
     env_file:
-      - ../.env
+      - ./.env
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@umami_db:5432/${POSTGRES_DB}
       DATABASE_TYPE: postgresql
@@ -37,9 +37,8 @@ services:
   umami_db:
     image: postgres:12-alpine
     env_file:
-      - ../.env
+      - ./.env
     volumes:
-      - ./sql/schema.postgresql.sql:/docker-entrypoint-initdb.d/schema.postgresql.sql:ro
       - umami-db-data:/var/lib/postgresql/data
     restart: always
     depends_on:
