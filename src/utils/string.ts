@@ -23,6 +23,11 @@ export function slugify(str: string = "") {
     .toLowerCase();
 }
 
+export function pluralize (word: string, quantity: number) {
+	if (quantity === 0) return ''
+	return `${quantity} ${word}${quantity > 1 ? 's' : ''}`
+}
+
 export function isUrl(str: string = "") {
   return str.match(
     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,

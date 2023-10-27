@@ -1,17 +1,15 @@
+import Modal from "components/Modal/Modal";
+import useModal from "components/Modal/useModal";
+import useEstimatedReadTime from "hooks/useEstimatedReadTime";
 import { useCallback, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-
+import { pluralize } from "utils/string";
+import Chapters from "./Chapters";
 import MarkdownImage from "./MarkdownElements/MarkdownImage";
 import MarkdownLink from "./MarkdownElements/MarkdownLink";
 import MarkdownTitle from "./MarkdownElements/MarkdownTitle";
-
-import Modal from "components/Modal/Modal";
-import useModal from "components/Modal/useModal";
-import Stats from "components/Stats/Stats";
-import Chapters from "./Chapters";
 import Source from "./Source";
-
 import styles from "./markdown.module.scss";
 
 interface MarkdownProps {
@@ -30,6 +28,7 @@ export default function Markdown({
 }: MarkdownProps) {
   const { isShowing, toggle, close: closeModal } = useModal();
   const [chapters, setChapters] = useState<Chapter[]>([]);
+  const readTimeEstimation = useEstimatedReadTime(markdown);
 
   const addChapter = (newChapter: Chapter) => {
     setChapters((chapters) => {
@@ -70,6 +69,9 @@ export default function Markdown({
         </>
       )}
       <div className={styles["markdown-content"]}>
+        <p style={{ fontSize: '.85em', marginTop: '20px' }}>
+          Estimation temps de lecture : ~{pluralize('minute', readTimeEstimation)}
+        </p>
         <ReactMarkdown
           rehypePlugins={[rehypeRaw]}
           linkTarget="_blank"
@@ -84,7 +86,6 @@ export default function Markdown({
           {markdown}
         </ReactMarkdown>
         <Source url={source} raw={raw} />
-        <Stats markdownContent={markdown} />
       </div>
     </div>
   );

@@ -30,6 +30,7 @@ const config = {
       "i.imgur.com",
       "raw.githubusercontent.com",
       "cdn.discordapp.com",
+      "github.com",
     ],
     formats: ["image/webp"],
   },
