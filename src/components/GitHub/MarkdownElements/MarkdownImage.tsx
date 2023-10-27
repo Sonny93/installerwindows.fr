@@ -1,6 +1,7 @@
-import Image, { ImageProps } from "next/image";
-import { ClassAttributes, ImgHTMLAttributes } from "react";
-import { ReactMarkdownProps } from "react-markdown/lib/complex-types";
+import Modal from 'components/Modal/Modal';
+import useToggle from 'hooks/useToggle';
+import { ClassAttributes, ImgHTMLAttributes } from 'react';
+import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 
 type CustomImgComponentsProps = ClassAttributes<HTMLImageElement> &
   ImgHTMLAttributes<HTMLImageElement> &
@@ -8,40 +9,44 @@ type CustomImgComponentsProps = ClassAttributes<HTMLImageElement> &
 
 export default function MarkdownImage({
   src,
-  height = 20,
-  width = 20,
   id,
   className,
-  alt = "Logo",
+  alt = 'Logo',
 }: CustomImgComponentsProps) {
+  const { toggled, close, toggle } = useToggle();
+
   let props = {
-    height,
-    width,
-    style: { verticalAlign: "middle", marginRight: "0" },
+    style: { verticalAlign: 'middle', marginRight: '0', height: 'auto', maxWidth: '100%' },
     className,
     src,
     alt,
     id,
-    priority: true,
-  } as ImageProps;
+  } as ImgHTMLAttributes<HTMLImageElement>;
 
-  if (className === "img-logo-discord") {
+  if (className === 'img-logo-discord' || className === 'img-logo-ytb') {
     props = {
       ...props,
-      height: 25,
-      width: 25,
-      style: { verticalAlign: "middle", marginRight: "2px" },
-      alt: alt || "Logo Discord",
+      style: {
+        verticalAlign: 'middle',
+        marginRight: '2px',
+        height: '25px',
+        width: className === 'img-logo-discord' ? '25px' : '35px',
+      },
+      alt: alt || (className === 'img-logo-discord' ? 'Logo Discord' : 'Logo YouTube'),
     };
-  } else if (className === "img-logo-ytb") {
-    props = {
-      ...props,
-      height: 25,
-      width: 35,
-      style: { verticalAlign: "middle", marginRight: "2px" },
-      alt: alt || "Logo YouTube",
-    };
+
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img {...props} alt={props.alt} />;
   }
 
-  return <Image {...props} alt={props.alt} />;
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img {...props} alt={props.alt} className="image-hover" onClick={() => toggle(true)} />
+      <Modal isShowing={toggled} hide={close} footer={props.alt} noHeightLimit>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img {...props} alt={props.alt} />
+      </Modal>
+    </>
+  );
 }

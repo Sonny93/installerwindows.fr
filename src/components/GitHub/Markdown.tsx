@@ -1,16 +1,16 @@
-import Modal from "components/Modal/Modal";
-import useModal from "components/Modal/useModal";
-import useEstimatedReadTime from "hooks/useEstimatedReadTime";
-import { useCallback, useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import { pluralize } from "utils/string";
-import Chapters from "./Chapters";
-import MarkdownImage from "./MarkdownElements/MarkdownImage";
-import MarkdownLink from "./MarkdownElements/MarkdownLink";
-import MarkdownTitle from "./MarkdownElements/MarkdownTitle";
-import Source from "./Source";
-import styles from "./markdown.module.scss";
+import Modal from 'components/Modal/Modal';
+import useModal from 'components/Modal/useModal';
+import useEstimatedReadTime from 'hooks/useEstimatedReadTime';
+import { useCallback, useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import { pluralize } from 'utils/string';
+import Chapters from './Chapters';
+import MarkdownImage from './MarkdownElements/MarkdownImage';
+import MarkdownLink from './MarkdownElements/MarkdownLink';
+import MarkdownTitle from './MarkdownElements/MarkdownTitle';
+import Source from './Source';
+import styles from './markdown.module.scss';
 
 interface MarkdownProps {
   markdown: string;
@@ -37,28 +37,26 @@ export default function Markdown({
     });
   };
   const handleResize = useCallback(() => {
-    if (window.matchMedia("(min-width: 900px)").matches && isShowing) {
+    if (window.matchMedia('(min-width: 900px)').matches && isShowing) {
       closeModal();
     }
   }, [closeModal, isShowing]);
 
-  const MarkdownTitleBuilder = (args) => (
-    <MarkdownTitle addChapter={addChapter} {...args} />
-  );
+  const MarkdownTitleBuilder = (args) => <MarkdownTitle addChapter={addChapter} {...args} />;
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [handleResize]);
 
   return (
-    <div className={styles["page-wrapper"]}>
+    <div className={styles['page-wrapper']}>
       {chapters.length > 0 && !disableChapters && (
         <>
-          <div className={styles["chapters-wrapper-desktop"]}>
+          <div className={styles['chapters-wrapper-desktop']}>
             <Chapters chapters={chapters} onSelect={closeModal} />
           </div>
-          <div className={styles["chapters-wrapper-mobile"]}>
+          <div className={styles['chapters-wrapper-mobile']}>
             <button className="reset" onClick={toggle}>
               Voir les chapitres
             </button>
@@ -68,13 +66,12 @@ export default function Markdown({
           </div>
         </>
       )}
-      <div className={styles["markdown-content"]}>
+      <div className={styles['markdown-content']}>
         <p style={{ fontSize: '.85em', marginTop: '20px' }}>
           Estimation temps de lecture : ~{pluralize('minute', readTimeEstimation)}
         </p>
         <ReactMarkdown
           rehypePlugins={[rehypeRaw]}
-          linkTarget="_blank"
           components={{
             a: MarkdownLink,
             img: MarkdownImage,

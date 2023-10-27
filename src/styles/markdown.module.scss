@@ -1,6 +1,6 @@
-@use "./keyframes.scss";
-@import "./colors.scss";
-@import "./media-queries.scss";
+@use './keyframes.scss';
+@import './colors.scss';
+@import './media-queries.scss';
 
 .App {
   position: relative;
@@ -21,7 +21,6 @@
       word-break: break-word;
       margin: 1em 0;
       max-width: 100%;
-      width: 100%;
     }
 
     & h1,

@@ -1,5 +1,6 @@
-@import "./colors.scss";
-@import "./media-queries.scss";
+@import './colors.scss';
+@import './media-queries.scss';
+@import './keyframes.scss';
 
 * {
   outline: none;
@@ -17,8 +18,18 @@ body {
   width: 100%;
   color: #fff;
   background-color: $bg-color;
-  font-family: "Open sans", sans-serif; // Import in HTML file (font not loaded with css import in prod build)
+  font-family: 'Open sans', sans-serif; // Import in HTML file (font not loaded with css import in prod build)
   font-style: normal;
+}
+
+body {
+  overflow: auto;
+  scrollbar-gutter: stable both-edges;
+
+  &.lock-scroll {
+    scrollbar-gutter: unset;
+    overflow: hidden;
+  }
 }
 
 .reset {
@@ -91,7 +102,7 @@ a:not(.reset) {
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 2px;
     left: 0;
@@ -103,17 +114,13 @@ a:not(.reset) {
   &:before {
     opacity: 0;
     transform: translateY(-8px);
-    transition:
-      transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity 0s;
+    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
   }
 
   &:after {
     opacity: 0;
     transform: translateY(4px);
-    transition:
-      transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity 0.2s;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
   }
 
   &:hover:before,
@@ -126,16 +133,12 @@ a:not(.reset) {
 
   &:hover:before,
   &:focus:before {
-    transition:
-      transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity 0.2s;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
   }
 
   &:hover:after,
   &:focus:after {
-    transition:
-      transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity 0s 0.2s;
+    transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
   }
 }
 
@@ -208,6 +211,17 @@ strong {
         }
       }
     }
+  }
+}
+
+.image-hover {
+  cursor: pointer;
+  margin-top: 0.35em;
+
+  &:hover {
+    outline: dashed 2px $btn-color;
+    box-shadow: $smooth-shadow;
+    animation: lightbox-hover 0.6s ease infinite forwards;
   }
 }
 

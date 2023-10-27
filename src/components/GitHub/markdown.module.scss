@@ -1,5 +1,5 @@
-@import "styles/colors.scss";
-@import "styles/media-queries.scss";
+@import 'styles/colors.scss';
+@import 'styles/media-queries.scss';
 
 .chapters {
   position: sticky;
@@ -62,7 +62,7 @@
     }
 
     &::after {
-      content: " - " counter(chapters-counter);
+      content: ' - ' counter(chapters-counter);
       color: $main-color;
       font-weight: bold;
       white-space: nowrap;
@@ -90,6 +90,11 @@
 @media screen and (max-width: $media-mobile) {
   .page-wrapper {
     flex-direction: column;
+  }
+
+  .chapters {
+    max-width: unset;
+    width: 100%;
   }
 
   .chapters-wrapper-mobile ~ .markdown-content,
@@ -123,14 +128,14 @@
 
     & li.chapter {
       &::before {
-        content: counter(chapters-counter) " - ";
+        content: counter(chapters-counter) ' - ';
         color: $main-color;
         font-weight: bold;
         white-space: nowrap;
       }
 
       &::after {
-        content: "";
+        content: '';
       }
     }
   }

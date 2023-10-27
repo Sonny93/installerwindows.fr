@@ -1,5 +1,6 @@
-@import "styles/colors.scss";
-@import "styles/keyframes.scss";
+@import 'styles/colors.scss';
+@import 'styles/keyframes.scss';
+@import 'styles/media-queries.scss';
 
 .modal-overlay {
   z-index: 1040;
@@ -32,9 +33,9 @@
   height: fit-content;
   max-width: 100%;
   background: $bg-color;
-  padding: 1rem;
+  padding: 1rem 1em 0.5em;
   border-radius: 5px 5px 0 0;
-  margin: 0 1em;
+  margin: 0 1em 1em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +62,24 @@
 }
 
 .modal-body {
+  min-width: 500px;
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+
+  & img {
+    max-height: 85dvh;
+    max-width: 85dvw;
+    width: 100%;
+  }
+}
+
+.modal-footer {
+  margin-top: 0.5em;
+}
+
+@media screen and (max-width: $media-mobile) {
+  .modal-body {
+    min-width: unset;
+  }
 }
