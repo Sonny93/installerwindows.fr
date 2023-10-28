@@ -21,7 +21,6 @@
       word-break: break-word;
       margin: 1em 0;
       max-width: 100%;
-      width: 100%;
     }
 
     & h1,
@@ -37,6 +36,8 @@
     & h4,
     & h5,
     & h6 {
+      width: 100%;
+
       &,
       & > a {
         display: flex;
