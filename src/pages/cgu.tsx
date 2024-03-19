@@ -1,10 +1,10 @@
-import MarkdownPage from "components/GitHub/PageLayout";
+import MarkdownPage from 'components/GitHub/PageLayout';
 
 export default function CGU({ markdown }: { markdown: string }) {
   return (
     <MarkdownPage
       content={markdown}
-      pageTitle={"CGU"}
+      pageTitle={'CGU'}
       pageDescription={"Conditions Générales d'Utilisation"}
     />
   );
@@ -28,9 +28,7 @@ Le site [installerwindows.fr](https://installerwindows.fr) est destiné à fourn
 ## Cookies
 Notre site Web utilise des cookies pour améliorer votre expérience de navigation. Les cookies sont des fichiers texte stockés sur votre ordinateur ou votre appareil mobile lorsque vous accédez à un site Web. Les cookies nous aident à comprendre comment vous utilisez notre site Web et nous permettent d'améliorer votre expérience de navigation.
 
-Nous utilisons également Hotjar, un outil d'analyse Web qui utilise des cookies pour collecter des informations sur la façon dont les utilisateurs naviguent sur notre site Web. Les cookies Hotjar collectent des informations telles que l'adresse IP de l'utilisateur, la taille de l'écran, le type d'appareil, le navigateur utilisé et les pages visitées. Ces informations sont utilisées pour améliorer l'expérience de l'utilisateur sur notre site Web.
-
-En utilisant notre site Web, vous consentez à l'utilisation des cookies et à la collecte d'informations par Hotjar.
+En utilisant notre site Web, vous consentez à l'utilisation des cookies.
 
 ## Responsabilité
 Nous nous efforçons de fournir des informations exactes et à jour sur notre site Web. Toutefois, nous ne pouvons garantir l'exactitude, l'exhaustivité ou la pertinence des informations fournies. Nous ne sommes pas responsables des dommages directs ou indirects résultant de l'utilisation de notre site Web ou de l'impossibilité d'utiliser notre site Web.
