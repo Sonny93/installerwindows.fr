@@ -1,13 +1,13 @@
-const BundleAnalyzer = require("@next/bundle-analyzer");
-const NextPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
+const BundleAnalyzer = require('@next/bundle-analyzer');
+const NextPWA = require('next-pwa');
+const runtimeCaching = require('next-pwa/cache');
 
 const withPWA = NextPWA({
-  dest: "public",
+  dest: 'public',
   register: true,
   skipWaiting: true,
   runtimeCaching,
-  disable: process.env.NODE_ENV === "development",
+  disable: process.env.NODE_ENV === 'development',
 });
 
 const withBundleAnalyzer = BundleAnalyzer({
@@ -19,20 +19,20 @@ const config = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
+      use: ['@svgr/webpack'],
     });
 
     return config;
   },
   images: {
-    domains: [
-      "i.ytimg.com",
-      "i.imgur.com",
-      "raw.githubusercontent.com",
-      "cdn.discordapp.com",
-      "github.com",
+    remotePatterns: [
+      { hostname: 'i.ytimg.com' },
+      { hostname: 'i.imgur.com' },
+      { hostname: 'raw.githubusercontent.com' },
+      { hostname: 'cdn.discordapp.com' },
+      { hostname: 'github.com' },
     ],
-    formats: ["image/webp"],
+    formats: ['image/webp'],
   },
   optimizeFonts: false,
 };

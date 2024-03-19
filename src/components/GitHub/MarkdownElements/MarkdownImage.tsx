@@ -1,11 +1,11 @@
 import Modal from 'components/Modal/Modal';
 import useToggle from 'hooks/useToggle';
 import { ClassAttributes, ImgHTMLAttributes } from 'react';
-import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
+import { ExtraProps } from 'react-markdown';
 
 type CustomImgComponentsProps = ClassAttributes<HTMLImageElement> &
   ImgHTMLAttributes<HTMLImageElement> &
-  ReactMarkdownProps;
+  ExtraProps;
 
 export default function MarkdownImage({
   src,
