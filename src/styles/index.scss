@@ -16,10 +16,11 @@ html,
 body {
   height: 100%;
   width: 100%;
-  color: #fff;
+  color: #ccc;
   background-color: $bg-color;
-  font-family: 'Open sans', sans-serif; // Import in HTML file (font not loaded with css import in prod build)
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
   font-style: normal;
+  font-weight: 100;
 }
 
 body {
@@ -71,6 +72,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: #fff;
   font-weight: 400;
 }
 
