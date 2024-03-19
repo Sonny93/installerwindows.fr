@@ -6,9 +6,9 @@ import { JSONFileSync } from "lowdb/node";
 import { findGuideIndexBySlugOrThrow } from "utils/db";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const file = new JSONFileSync<DbType>(join(__dirname, "../../db", "db.json"));
+const file = new JSONFileSync<DbType>(join(__dirname, '../../db', 'db.json'));
 
-const _db = new LowSync(file);
+const _db = new LowSync(file, { admin_accounts: [], guides: [] });
 _db.read();
 
 async function getGuides() {
@@ -21,14 +21,14 @@ async function pushGuide(guide: Guide) {
   await _db.write();
 }
 
-async function updateGuide(guideSlug: Guide["slug"], guide: Guide) {
+async function updateGuide(guideSlug: Guide['slug'], guide: Guide) {
   const guideIndex = await findGuideIndexBySlugOrThrow(guideSlug);
 
   _db.data.guides[guideIndex] = guide;
   await _db.write();
 }
 
-async function deleteGuide(guideSlug: Guide["slug"]) {
+async function deleteGuide(guideSlug: Guide['slug']) {
   const guideIndex = await findGuideIndexBySlugOrThrow(guideSlug);
 
   _db.data.guides.splice(guideIndex, 1);
