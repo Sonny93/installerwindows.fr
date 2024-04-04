@@ -1,6 +1,6 @@
 {
   "name": "installerwindows.fr",
-  "version": "2.12.1",
+  "version": "2.12.2",
   "private": true,
   "dependencies": {
     "@next/bundle-analyzer": "^14.1.3",
