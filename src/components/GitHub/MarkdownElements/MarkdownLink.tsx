@@ -13,10 +13,6 @@ type CustomAComponentsProps = ClassAttributes<HTMLAnchorElement> &
   ExtraProps;
 
 export default function MarkdownLink({ href, children }: CustomAComponentsProps) {
-  if (href.startsWith('javascript:')) {
-    return <>{children}</>;
-  }
-
   const path = getPathFromUrl(href, DOMAIN_URL) || href;
   if (path || href.startsWith('#')) {
     return <Link href={path}>{children}</Link>;
@@ -27,6 +23,10 @@ export default function MarkdownLink({ href, children }: CustomAComponentsProps)
   );
   if (videoId) {
     return <Link href={`/videos/${videoId}`}>{children}</Link>;
+  }
+
+  if (!href.startsWith('http')) {
+    return <>{children}</>;
   }
 
   return (
