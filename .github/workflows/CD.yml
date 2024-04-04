@@ -1,9 +1,8 @@
-name: CD
+name: CI/CD prod
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: published
 
 jobs:
   build_and_push:
@@ -16,10 +15,11 @@ jobs:
       - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5.5.1
+        flavor: latest=true
         with:
           images: ctrlfdocker/installerwindows
           tags: |
-            type=sha,prefix=
+            type=semver,pattern={{version}}
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
