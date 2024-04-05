@@ -22,7 +22,7 @@
     "sass": "^1.72.0",
     "sharp": "^0.33.2",
     "toastr": "^2.1.4",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.4"
   },
   "scripts": {
     "dev": "next dev",
