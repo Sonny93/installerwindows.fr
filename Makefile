@@ -3,3 +3,6 @@ build:
 
 start:
 	docker-compose --env-file .env -f docker-compose.yml up -d
+
+release:
+	npx release-it
