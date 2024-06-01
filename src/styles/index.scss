@@ -122,25 +122,21 @@ a:not(.reset) {
   &:after {
     opacity: 0;
     transform: translateY(4px);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.15s;
   }
 
   &:hover:before,
-  &:hover:after,
-  &:focus:before,
-  &:focus:after {
+  &:hover:after {
     opacity: 1;
     transform: translateY(0);
   }
 
-  &:hover:before,
-  &:focus:before {
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+  &:hover:before {
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.15s;
   }
 
-  &:hover:after,
-  &:focus:after {
-    transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
+  &:hover:after {
+    transition: transform 0s 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.15s;
   }
 }
 
@@ -219,12 +215,6 @@ strong {
 .image-hover {
   cursor: pointer;
   margin-top: 0.35em;
-
-  &:hover {
-    outline: dashed 2px $btn-color;
-    box-shadow: $smooth-shadow;
-    animation: lightbox-hover 0.6s ease infinite forwards;
-  }
 }
 
 /* Image home page */
