@@ -1,5 +1,3 @@
-version: "3.8"
-
 volumes:
   umami-db-data:
 
@@ -11,7 +9,7 @@ services:
   installerwindows_srv:
     container_name: Installerwindows.fr
     image: installerwindows-front
-    restart: "always"
+    restart: 'always'
     volumes:
       - ./db:/usr/app/db
     env_file:

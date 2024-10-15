@@ -1,8 +1,11 @@
 build:
-	docker build -f Dockerfile -t installerwindows-front .
+	docker build -t installerwindows-front .
 
 start:
-	docker-compose --env-file .env -f docker-compose.yml up -d
+	docker compose up -d
+
+prod: build
+	@docker compose up -d --wait
 
 release:
 	npx release-it
