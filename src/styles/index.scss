@@ -1,6 +1,7 @@
 @import './colors.scss';
 @import './media-queries.scss';
 @import './keyframes.scss';
+@import './fonts/poppins/import.scss';
 
 * {
   outline: none;
@@ -10,6 +11,7 @@
   margin: 0;
   scroll-behavior: smooth !important;
   scroll-margin-top: 100px;
+  font-family: 'Poppins', sans-serif;
 }
 
 html,
@@ -18,9 +20,9 @@ body {
   width: 100%;
   color: #ccc;
   background-color: $bg-color;
-  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 body {
