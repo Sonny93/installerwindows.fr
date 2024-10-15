@@ -13,7 +13,7 @@ Next.JS (React), Typescript, SASS
 Commande pour installer les dépendances
 
 ```shell
-npm install
+pnpm install
 ```
 
 ## Lancer localement le site (dev)
@@ -21,7 +21,7 @@ npm install
 Commande pour lancer le site en local dans un environnement de dév
 
 ```shell
-npm run dev
+pnpm run dev
 ```
 
 ## Lancer localement le site (prod)
@@ -29,8 +29,8 @@ npm run dev
 Commande pour lancer le site en local dans un environnement de prod
 
 ```shell
-npm run build
-npm start
+pnpm run build
+pnpm start
 ```
 
 ## Publier une nouvelle release
