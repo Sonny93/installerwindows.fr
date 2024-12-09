@@ -37,6 +37,7 @@ const config: NextConfig = {
   sassOptions: {
     silenceDeprecations: ['legacy-js-api'],
   },
+  output: 'standalone',
 };
 
 export default withBundleAnalyzer(withPWA(config));
