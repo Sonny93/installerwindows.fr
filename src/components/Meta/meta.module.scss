@@ -1,5 +1,6 @@
-@import "styles/videos.module.scss";
-@import "styles/media-queries.scss";
+@use "styles/videos.module.scss" as *;
+@use "styles/media-queries.scss" as *;
+@use "styles/colors" as *;
 
 .meta {
   height: auto;

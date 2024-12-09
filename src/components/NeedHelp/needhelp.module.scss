@@ -1,4 +1,4 @@
-@import "styles/colors.scss";
+@use "styles/colors.scss" as *;
 
 a.ineedhelp {
   user-select: none;

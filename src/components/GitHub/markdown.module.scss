@@ -1,5 +1,5 @@
-@import 'styles/colors.scss';
-@import 'styles/media-queries.scss';
+@use "styles/colors.scss" as *;
+@use "styles/media-queries.scss" as *;
 
 .chapters {
   position: sticky;

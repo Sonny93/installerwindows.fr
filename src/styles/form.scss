@@ -1,4 +1,5 @@
-@import "./colors.scss";
+@use "./colors.scss" as *;
+@use "sass:math";
 
 form {
   display: flex;
@@ -86,7 +87,7 @@ button:not(.reset) {
 
 .switch {
   $width: 2em;
-  $height: $width / 2;
+  $height: math.div($width, 2);
   $color-on: $main-color;
   $color-off: $font-color;
 

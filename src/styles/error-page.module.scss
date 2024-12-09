@@ -1,5 +1,5 @@
-@use './keyframes.scss';
-@import './colors.scss';
+@use "./keyframes.scss" as *;
+@use "./colors.scss" as *;
 
 .App {
   height: 100%;

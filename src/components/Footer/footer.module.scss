@@ -1,4 +1,4 @@
-@import "styles/media-queries.scss";
+@use "styles/media-queries.scss" as *;
 
 footer.footer {
   height: auto;

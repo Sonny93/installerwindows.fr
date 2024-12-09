@@ -1,7 +1,7 @@
-@import './colors.scss';
-@import './media-queries.scss';
-@import './keyframes.scss';
-@import './fonts/poppins/import.scss';
+@use "./colors.scss" as *;
+@use "./media-queries.scss" as *;
+@use "./keyframes.scss" as *;
+@use "./fonts/poppins/import.scss" as *;
 
 * {
   outline: none;

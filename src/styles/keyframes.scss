@@ -1,4 +1,4 @@
-@import './colors.scss';
+@use './colors.scss' as c;
 
 @keyframes fadein {
   0% {
@@ -27,10 +27,10 @@
 @keyframes lightbox-hover {
   0% {
     outline-offset: 0;
-    outline: solid 5px $btn-color;
+    outline: solid 5px c.$btn-color;
   }
   80% {
     outline-offset: 10px;
-    outline: solid 0 rgba($color: $btn-color, $alpha: 0.5);
+    outline: solid 0 rgba($color: c.$btn-color, $alpha: 0.5);
   }
 }

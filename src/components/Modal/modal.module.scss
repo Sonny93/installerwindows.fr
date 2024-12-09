@@ -1,6 +1,6 @@
-@import 'styles/colors.scss';
-@import 'styles/keyframes.scss';
-@import 'styles/media-queries.scss';
+@use "styles/colors.scss" as *;
+@use "styles/keyframes.scss" as *;
+@use "styles/media-queries.scss" as *;
 
 .modal-overlay {
   z-index: 1040;

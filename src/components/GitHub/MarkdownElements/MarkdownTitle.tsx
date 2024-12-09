@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ClassAttributes, useEffect } from 'react';
+import { ClassAttributes, useEffect, type JSX } from 'react';
 import { ExtraProps } from 'react-markdown';
 
 import { slugify } from 'utils/string';

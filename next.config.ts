@@ -1,6 +1,7 @@
-const BundleAnalyzer = require('@next/bundle-analyzer');
-const NextPWA = require('next-pwa');
-const runtimeCaching = require('next-pwa/cache');
+import BundleAnalyzer from '@next/bundle-analyzer';
+import type { NextConfig } from 'next';
+import NextPWA from 'next-pwa';
+import runtimeCaching from 'next-pwa/cache';
 
 const withPWA = NextPWA({
   dest: 'public',
@@ -14,8 +15,7 @@ const withBundleAnalyzer = BundleAnalyzer({
   enabled: false, // process.env.NODE_ENV === "production"
 });
 
-/** @type {import('next').NextConfig} */
-const config = {
+const config: NextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -34,7 +34,9 @@ const config = {
     ],
     formats: ['image/webp'],
   },
-  optimizeFonts: false,
+  sassOptions: {
+    silenceDeprecations: ['legacy-js-api'],
+  },
 };
 
-module.exports = withBundleAnalyzer(withPWA(config));
+export default withBundleAnalyzer(withPWA(config));

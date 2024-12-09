@@ -1,5 +1,5 @@
-@import "./colors.scss";
-@import "./media-queries.scss";
+@use "./colors.scss" as *;
+@use "./media-queries.scss" as *;
 
 .signin {
   width: $media-medium-desktop;

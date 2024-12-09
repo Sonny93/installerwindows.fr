@@ -1,7 +1,7 @@
-@use "./keyframes.scss";
+@use "./keyframes.scss" as *;
 
-@import "./colors.scss";
-@import "./media-queries.scss";
+@use "./colors.scss" as *;
+@use "./media-queries.scss" as *;
 
 .App {
   opacity: 0;

@@ -1,6 +1,6 @@
-@use './keyframes.scss';
-@import './colors.scss';
-@import './media-queries.scss';
+@use "./keyframes.scss" as *;
+@use "./colors.scss" as *;
+@use "./media-queries.scss" as *;
 
 .App {
   position: relative;
