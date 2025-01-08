@@ -32,7 +32,7 @@ export function MarkdownTitle({
 
 	const titleOrder = Number(node?.tagName.toLowerCase().replace('h', '')) ?? 1;
 	return (
-		<Title component={Link} order={titleOrder as TitleOrder} id={id}>
+		<Title order={titleOrder as TitleOrder} id={id}>
 			<Link href={`#${id}`}>{children}</Link>
 		</Title>
 	);
