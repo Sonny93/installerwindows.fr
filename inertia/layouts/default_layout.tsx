@@ -2,19 +2,16 @@ import { projectName } from '#config/project';
 import { Link, usePage } from '@inertiajs/react';
 import {
 	Box,
-	Burger,
 	Drawer,
-	Group,
 	NavLink,
 	rem,
 	ScrollArea,
-	Text,
 	useMantineTheme,
 } from '@mantine/core';
 import { useHeadroom, useMediaQuery } from '@mantine/hooks';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import { TbHome2, TbSettings } from 'react-icons/tb';
-import { ThemeSwitcher } from '~/components/generics/theme_switcher';
+import { FloatingNavbar } from '~/components/generics/floating_navbar';
 import { BaseLayout } from './base_layout';
 
 const DefaultLayout = ({ children }: PropsWithChildren) => (
@@ -27,8 +24,8 @@ export default DefaultLayout;
 
 function Layout({ children }: PropsWithChildren) {
 	const theme = useMantineTheme();
-	const [opened, setOpened] = useState(false);
-	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+	const [opened, setOpened] = useState(true);
+	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, false);
 	const pinned = useHeadroom({ fixedAt: 120 });
 
 	useEffect(() => {
@@ -64,51 +61,45 @@ function Layout({ children }: PropsWithChildren) {
 
 	return (
 		<>
-			<Box
-				style={{
-					position: 'sticky',
-					top: 0,
-					left: 0,
-					right: 0,
-					padding: 'var(--mantine-spacing-xs)',
-					height: rem(60),
-					zIndex: 999999,
-					transform: `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
-					transition: 'transform 400ms ease',
-					backgroundColor: 'var(--mantine-color-body)',
-				}}
-			>
-				<Group justify="space-between">
-					<Group>
-						{isMobile && (
-							<Burger opened={opened} onClick={() => setOpened(!opened)} />
-						)}
-						<Text>{projectName}</Text>
-					</Group>
+			{/* Top navbar */}
+			<FloatingNavbar
+				isMobile={isMobile!}
+				pinned={pinned}
+				opened={opened}
+				setOpened={setOpened}
+			/>
 
-					<ThemeSwitcher />
-				</Group>
-			</Box>
+			{/* Page content */}
 			<Box
 				style={{
-					display: 'flex',
 					minHeight: '100vh',
-					width: '1200px',
 					maxWidth: '100%',
+					width: '1200px',
 					margin: '0 auto',
+					marginBlock: rem(60),
+					display: 'flex',
 				}}
 			>
+				{/* Content */}
+				<Box
+					style={{
+						height: '100%',
+						width: '100%',
+						flex: 1,
+						paddingInline: '1rem',
+					}}
+				>
+					{children}
+				</Box>
+
+				{/* Sidebar */}
 				{!isMobile && (
-					<Box
-						style={{ borderRight: `1px solid ${theme.colors.gray[3]}` }}
-						w={250}
-						maw="250px"
-						p="md"
-					>
+					<Box w={250} maw="250px" p="md">
 						<NavMenu />
 					</Box>
 				)}
 
+				{/* Mobile drawer */}
 				<Drawer
 					opened={opened}
 					onClose={() => setOpened(false)}
@@ -118,18 +109,6 @@ function Layout({ children }: PropsWithChildren) {
 				>
 					<NavMenu />
 				</Drawer>
-
-				<Box
-					style={{
-						height: '100%',
-						width: '100%',
-						flex: 1,
-						padding: '1rem',
-						overflow: 'auto',
-					}}
-				>
-					{children}
-				</Box>
 			</Box>
 		</>
 	);
