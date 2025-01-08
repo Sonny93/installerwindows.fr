@@ -11,7 +11,11 @@ type CustomTitleComponentsProps = ClassAttributes<HTMLHeadingElement> &
 		children: string;
 	};
 
-export default function MarkdownTitle({
+export const MarkdownTitleBuilder = (args: any) => (
+	<MarkdownTitle addChapter={() => {}} {...args} />
+);
+
+export function MarkdownTitle({
 	children,
 	addChapter,
 	node,
