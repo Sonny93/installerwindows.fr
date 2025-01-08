@@ -1,6 +1,12 @@
+@import './fonts/poppins/import.css';
+
+* {
+	scroll-behavior: smooth !important;
+}
+
 /* For light mode */
 :root[data-mantine-color-scheme='light'] {
-	--mantine-color-body: var(--mantine-color-gray-1) !important;
+	--mantine-color-body: #f0eef6 !important;
 }
 
 /* For dark mode */
