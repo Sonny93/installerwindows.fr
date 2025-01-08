@@ -4,6 +4,7 @@
 import { projectName } from '#config/project';
 import { resolvePageComponent } from '@adonisjs/inertia/helpers';
 import { createInertiaApp } from '@inertiajs/react';
+import '@mantine/core/styles.css';
 import { hydrateRoot } from 'react-dom/client';
 import '../css/app.css';
 
