@@ -20,6 +20,15 @@ const customTheme = createTheme({
 	primaryColor: 'blue',
 	fontFamily: 'Poppins, sans-serif',
 	respectReducedMotion: true,
+	components: {
+		Button: {
+			styles: {
+				root: {
+					fontWeight: '400',
+				},
+			},
+		},
+	},
 	headings: {
 		fontWeight: '400',
 

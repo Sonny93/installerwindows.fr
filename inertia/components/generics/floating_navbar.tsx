@@ -13,6 +13,7 @@ import {
 import { useHeadroom, useMediaQuery } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { ClientOnly } from '~/components/generics/client_only';
+import { HelpButton } from '~/components/generics/help_button';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import { ThemeSwitcher } from '~/components/generics/theme_switcher';
 
@@ -81,6 +82,7 @@ export function FloatingNavbar() {
 
 				{!isMobile && (
 					<Group>
+						<HelpButton />
 						{showLinks}
 						<ClientOnly>
 							<ThemeSwitcher />
