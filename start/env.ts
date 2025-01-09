@@ -35,4 +35,12 @@ export default await Env.create(new URL('../', import.meta.url), {
 	DB_USER: Env.schema.string(),
 	DB_PASSWORD: Env.schema.string.optional(),
 	DB_DATABASE: Env.schema.string(),
+
+	/*
+  |----------------------------------------------------------
+  | Variables for configuring youtube api
+  |----------------------------------------------------------
+  */
+	YOUTUBE_API_KEY: Env.schema.string(),
+	YOUTUBE_PLAYLIST_ID: Env.schema.string(),
 });

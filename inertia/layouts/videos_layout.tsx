@@ -3,13 +3,13 @@ import { PropsWithChildren } from 'react';
 import { FloatingNavbar } from '~/components/generics/floating_navbar';
 import { BaseLayout } from './base_layout';
 
-const DefaultLayout = ({ children }: PropsWithChildren) => (
+const VideosLayout = ({ children }: PropsWithChildren) => (
 	<BaseLayout>
 		<Layout>{children}</Layout>
 	</BaseLayout>
 );
 
-export default DefaultLayout;
+export default VideosLayout;
 
 const Layout = ({ children }: PropsWithChildren) => (
 	<>
@@ -21,7 +21,7 @@ const Layout = ({ children }: PropsWithChildren) => (
 			style={{
 				minHeight: '100vh',
 				maxWidth: '100%',
-				width: '1200px',
+				width: '1500px',
 				margin: '0 auto',
 				marginBlock: rem(60),
 				display: 'flex',

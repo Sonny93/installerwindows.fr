@@ -82,6 +82,7 @@
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-icons": "^5.4.0",
+		"react-player": "^2.16.0",
 		"reflect-metadata": "^0.2.2",
 		"rehype-autolink-headings": "^7.1.0",
 		"rehype-raw": "^7.0.0",
