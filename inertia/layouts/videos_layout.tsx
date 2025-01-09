@@ -2,6 +2,7 @@ import { Box, rem } from '@mantine/core';
 import { PropsWithChildren } from 'react';
 import { FloatingNavbar } from '~/components/generics/floating_navbar';
 import { BaseLayout } from './base_layout';
+import { Footer } from '~/components/generics/footer/footer';
 
 const VideosLayout = ({ children }: PropsWithChildren) => (
 	<BaseLayout>
@@ -39,5 +40,8 @@ const Layout = ({ children }: PropsWithChildren) => (
 				{children}
 			</Box>
 		</Box>
+
+		{/* Footer */}
+		<Footer />
 	</>
 );

@@ -1,6 +1,9 @@
 import { primaryColor } from '#config/project';
-import { createTheme, MantineProvider, rem } from '@mantine/core';
-import { PropsWithChildren } from 'react';
+import { PageProps } from '@adonisjs/inertia/types';
+import { usePage } from '@inertiajs/react';
+import { createTheme, MantineProvider, Notification, rem } from '@mantine/core';
+import { PropsWithChildren, useState } from 'react';
+import { TbX } from 'react-icons/tb';
 
 const customTheme = createTheme({
 	colors: {
@@ -46,6 +49,20 @@ const customTheme = createTheme({
 	},
 });
 
-export const BaseLayout = ({ children }: PropsWithChildren) => (
-	<MantineProvider theme={customTheme}>{children}</MantineProvider>
-);
+export function BaseLayout({ children }: PropsWithChildren) {
+	const { props } = usePage<PageProps & { flash: string }>();
+	const [opened, setOpened] = useState<boolean>(!!props.flash);
+	return (
+		<MantineProvider theme={customTheme}>
+			{opened && (
+				<Notification
+					icon={<TbX />}
+					color="red"
+					title={props.flash}
+					onClose={() => setOpened(false)}
+				/>
+			)}
+			{children}
+		</MantineProvider>
+	);
+}

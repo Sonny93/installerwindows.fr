@@ -1,4 +1,4 @@
-import { projectName } from '#config/project';
+import { editorName, editorYtbUrl, projectName } from '#config/project';
 import {
 	Box,
 	Burger,
@@ -20,8 +20,8 @@ const links = [
 	{ label: 'Vidéos', href: '/videos', external: false },
 	{ label: 'Guides', href: '/guides', external: false },
 	{
-		label: '@Piwi',
-		href: 'https://www.youtube.com/c/Piwi_youtube',
+		label: editorName,
+		href: editorYtbUrl,
 		external: true,
 	},
 ];
