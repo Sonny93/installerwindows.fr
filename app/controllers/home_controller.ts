@@ -14,8 +14,9 @@ export default class HomeController {
 		const markdown = await this.githubService.getHtmlFromUrl(
 			'https://raw.githubusercontent.com/Piwielle/windows_11/master/README.md'
 		);
-		const { html, toc } =
-			await this.markdownService.markdownToHtmlWithToc(markdown);
-		return inertia.render('home', { html, toc });
+		// const { html, toc } =
+		// 	await this.markdownService.markdownToHtmlWithToc(markdown);
+		const html = await this.markdownService.markdownToHtml(markdown);
+		return inertia.render('home', { html });
 	}
 }

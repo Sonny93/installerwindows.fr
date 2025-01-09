@@ -55,4 +55,14 @@ export class MarkdownService {
 
 		return { html: file.toString(), toc };
 	}
+
+	async markdownToHtml(markdown: string): Promise<string> {
+		const file = await unified()
+			.use(remarkParse)
+			.use(remarkRehype, { allowDangerousHtml: true })
+			.use(rehypeRaw)
+			.use(rehypeStringify, { allowDangerousHtml: true })
+			.process(markdown);
+		return file.toString();
+	}
 }

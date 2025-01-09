@@ -12,13 +12,14 @@ import './markdown.css';
 
 interface MarkdownProps {
 	html: string;
-	toc: TocItem[];
+	toc?: TocItem[];
 }
 
 export function MarkdownBuilder({ html, toc }: MarkdownProps) {
-	const [activeId, setActiveId] = useState<string | null>(null);
+	const [activeId, setActiveId] = useState<string | null>(toc?.[0]?.id ?? null);
 
 	useEffect(() => {
+		if (!toc) return;
 		const headings = toc.map((item) => document.getElementById(item.id));
 		const handleScroll = () => {
 			const visibleHeading = headings.find(
@@ -33,7 +34,6 @@ export function MarkdownBuilder({ html, toc }: MarkdownProps) {
 		};
 
 		document.addEventListener('scroll', handleScroll);
-		setActiveId(headings[0]?.id ?? null);
 
 		return () => document.removeEventListener('scroll', handleScroll);
 	}, [toc]);
@@ -44,29 +44,31 @@ export function MarkdownBuilder({ html, toc }: MarkdownProps) {
 				style={{ width: 0, flex: 1, lineHeight: 1.5 }}
 				dangerouslySetInnerHTML={{ __html: html }}
 			/>
-			<Box
-				style={{
-					position: 'sticky',
-					top: 60,
-					width: '250px',
-				}}
-			>
-				<Stack gap="xs">
-					<Title order={3}>Sommaire</Title>
-					{toc.map((item) => (
-						<Anchor
-							href={`#${item.id}`}
-							c={activeId === item.id ? 'blue' : 'inherit'}
-							style={{
-								fontSize: 'var(--mantine-font-size-sm)',
-							}}
-							key={item.id}
-						>
-							{item.text}
-						</Anchor>
-					))}
-				</Stack>
-			</Box>
+			{toc && (
+				<Box
+					style={{
+						position: 'sticky',
+						top: 60,
+						width: '250px',
+					}}
+				>
+					<Stack gap="xs">
+						<Title order={3}>Sommaire</Title>
+						{toc.map((item) => (
+							<Anchor
+								href={`#${item.id}`}
+								c={activeId === item.id ? 'blue' : 'inherit'}
+								style={{
+									fontSize: 'var(--mantine-font-size-sm)',
+								}}
+								key={item.id}
+							>
+								{item.text}
+							</Anchor>
+						))}
+					</Stack>
+				</Box>
+			)}
 		</Flex>
 	);
 }
