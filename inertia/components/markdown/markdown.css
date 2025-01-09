@@ -21,9 +21,12 @@ img#img-header {
 	width: 100%;
 }
 
+#guide-w11 {
+	float: left;
+}
+
 #guide-w11,
 #guide-w10 {
-	float: left;
 	padding: 1.5em;
 	width: 50%;
 	display: flex;
