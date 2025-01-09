@@ -1,21 +1,36 @@
+import { defaultTableFields } from '#database/default_table_fields';
 import { BaseSchema } from '@adonisjs/lucid/schema';
 
-export default class extends BaseSchema {
-	protected tableName = 'users';
+export default class CreateUsersTable extends BaseSchema {
+	static tableName = 'users';
 
 	async up() {
-		this.schema.createTable(this.tableName, (table) => {
-			table.increments('id').notNullable();
-			table.string('full_name').nullable();
-			table.string('email', 254).notNullable().unique();
-			table.string('password').notNullable();
+		const exists = await this.schema.hasTable(CreateUsersTable.tableName);
+		if (exists) {
+			return console.warn(
+				`Table ${CreateUsersTable.tableName} already exists.`
+			);
+		}
 
-			table.timestamp('created_at').notNullable();
-			table.timestamp('updated_at').nullable();
+		this.schema.createTable(CreateUsersTable.tableName, (table) => {
+			table.string('email', 254).notNullable().unique();
+			table.string('name', 254).notNullable();
+			table.string('nick_name', 254).nullable();
+			table.text('avatar_url').notNullable();
+			table.boolean('is_admin').defaultTo(0).notNullable();
+
+			table.json('token').nullable();
+			table.string('provider_id').notNullable();
+			table
+				.enum('provider_type', ['discord'])
+				.notNullable()
+				.defaultTo('discord');
+
+			defaultTableFields(table);
 		});
 	}
 
 	async down() {
-		this.schema.dropTable(this.tableName);
+		this.schema.dropTable(CreateUsersTable.tableName);
 	}
 }

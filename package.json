@@ -62,6 +62,7 @@
 		"vite": "^6.0.7"
 	},
 	"dependencies": {
+		"@adonisjs/ally": "^5.0.2",
 		"@adonisjs/auth": "^9.3.0",
 		"@adonisjs/cache": "1.0.0-6",
 		"@adonisjs/core": "^6.17.0",

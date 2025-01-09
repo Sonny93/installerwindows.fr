@@ -1,30 +1,34 @@
-import { DateTime } from 'luxon';
-import hash from '@adonisjs/core/services/hash';
-import { compose } from '@adonisjs/core/helpers';
-import { BaseModel, column } from '@adonisjs/lucid/orm';
-import { withAuthFinder } from '@adonisjs/auth/mixins/lucid';
+import AppBaseModel from '#models/app_base_model';
+import type { DiscordToken } from '@adonisjs/ally/types';
+import { column, computed } from '@adonisjs/lucid/orm';
 
-const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
-	uids: ['email'],
-	passwordColumnName: 'password',
-});
-
-export default class User extends compose(BaseModel, AuthFinder) {
-	@column({ isPrimary: true })
-	declare id: number;
-
-	@column()
-	declare fullName: string | null;
-
+export default class User extends AppBaseModel {
 	@column()
 	declare email: string;
 
 	@column({ serializeAs: null })
-	declare password: string;
+	declare name: string;
 
-	@column.dateTime({ autoCreate: true })
-	declare createdAt: DateTime;
+	@column({ serializeAs: null })
+	declare nickName: string;
 
-	@column.dateTime({ autoCreate: true, autoUpdate: true })
-	declare updatedAt: DateTime | null;
+	@column()
+	declare avatarUrl: string;
+
+	@column()
+	declare isAdmin: boolean;
+
+	@column({ serializeAs: null })
+	declare token?: DiscordToken;
+
+	@column({ serializeAs: null })
+	declare providerId: number;
+
+	@column({ serializeAs: null })
+	declare providerType: 'discord';
+
+	@computed()
+	get fullname() {
+		return this.nickName || this.name;
+	}
 }

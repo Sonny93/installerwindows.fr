@@ -19,17 +19,17 @@ export default await Env.create(new URL('../', import.meta.url), {
 	LOG_LEVEL: Env.schema.string(),
 
 	/*
-  |----------------------------------------------------------
-  | Variables for configuring session package
-  |----------------------------------------------------------
-  */
+|----------------------------------------------------------
+| Variables for configuring session package
+|----------------------------------------------------------
+*/
 	SESSION_DRIVER: Env.schema.enum(['cookie', 'memory'] as const),
 
 	/*
-  |----------------------------------------------------------
-  | Variables for configuring database connection
-  |----------------------------------------------------------
-  */
+|----------------------------------------------------------
+| Variables for configuring database connection
+|----------------------------------------------------------
+*/
 	DB_HOST: Env.schema.string({ format: 'host' }),
 	DB_PORT: Env.schema.number(),
 	DB_USER: Env.schema.string(),
@@ -37,10 +37,19 @@ export default await Env.create(new URL('../', import.meta.url), {
 	DB_DATABASE: Env.schema.string(),
 
 	/*
-  |----------------------------------------------------------
-  | Variables for configuring youtube api
-  |----------------------------------------------------------
-  */
+|----------------------------------------------------------
+| Variables for configuring youtube api
+|----------------------------------------------------------
+*/
 	YOUTUBE_API_KEY: Env.schema.string(),
 	YOUTUBE_PLAYLIST_ID: Env.schema.string(),
+
+	/*
+  |----------------------------------------------------------
+  | Variables for configuring ally package
+  |----------------------------------------------------------
+  */
+	DISCORD_CLIENT_ID: Env.schema.string(),
+	DISCORD_CLIENT_SECRET: Env.schema.string(),
+	DISCORD_CLIENT_CALLBACK_URL: Env.schema.string(),
 });
