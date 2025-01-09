@@ -1,7 +1,5 @@
 import { projectName } from '#config/project';
-import { Link } from '@inertiajs/react';
 import {
-	Anchor,
 	Box,
 	Burger,
 	Drawer,
@@ -15,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { ClientOnly } from '~/components/generics/client_only';
 import { HelpButton } from '~/components/generics/help_button';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
+import { InternalLink } from '~/components/generics/links/internal_link';
 import { ThemeSwitcher } from '~/components/generics/theme_switcher';
 
 const links = [
@@ -36,9 +35,9 @@ const showLinks = links.map((link) => {
 		);
 	}
 	return (
-		<Anchor component={Link} href={link.href} key={link.label}>
+		<InternalLink href={link.href} key={link.label}>
 			{link.label}
-		</Anchor>
+		</InternalLink>
 	);
 });
 
@@ -75,9 +74,9 @@ export function FloatingNavbar() {
 					{isMobile && (
 						<Burger opened={opened} onClick={() => setOpened(!opened)} />
 					)}
-					<Anchor component={Link} style={{ fontSize: rem(24) }} href="/">
+					<InternalLink style={{ fontSize: rem(24) }} href="/">
 						{projectName}
-					</Anchor>
+					</InternalLink>
 				</Group>
 
 				{!isMobile && (

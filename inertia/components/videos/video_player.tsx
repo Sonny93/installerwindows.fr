@@ -19,7 +19,12 @@ export function VideoPlayer({ url }: YoutubePlayerProps) {
 				aspectRatio: '16/9',
 			}}
 		>
-			<LoadingOverlay visible={loading} />
+			<LoadingOverlay
+				overlayProps={{
+					bg: 'var(--mantine-color-body)',
+				}}
+				visible={loading}
+			/>
 			<YoutubePlayer
 				height="auto"
 				width="100%"
