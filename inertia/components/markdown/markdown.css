@@ -1,0 +1,17 @@
+blockquote {
+	font-size: var(--mantine-font-size-sm) !important;
+	font-weight: var(--mantine-font-weight-normal) !important;
+}
+
+code {
+	background-color: unset !important;
+}
+
+img {
+	vertical-align: bottom;
+	border-radius: var(--mantine-radius-sm);
+}
+
+strong {
+	font-weight: 500 !important;
+}
