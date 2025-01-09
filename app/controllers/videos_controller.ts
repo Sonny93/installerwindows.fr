@@ -1,5 +1,6 @@
 import { YoutubeService } from '#services/youtube_service';
 import env from '#start/env';
+import { videoValidator } from '#validators/video_validator';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
 
@@ -9,8 +10,18 @@ export default class VideosController {
 
 	constructor(private youtubeService: YoutubeService) {}
 
-	async index({ inertia }: HttpContext) {
+	async index({ request, inertia, response }: HttpContext) {
+		const {
+			params: { videoId },
+		} = await request.validateUsing(videoValidator);
+
 		const videos = await this.youtubeService.getPlaylist(this.#playlistId);
-		return inertia.render('videos', { videos });
+		const currentVideo = videos.find((v) => v.id === videoId);
+
+		if (!currentVideo) {
+			return response.redirect(`/videos/${videos[0].id}`);
+		}
+
+		return inertia.render('videos', { videos, currentVideo });
 	}
 }

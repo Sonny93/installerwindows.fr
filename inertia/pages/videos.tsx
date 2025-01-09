@@ -1,4 +1,4 @@
-import { Videos } from '#shared/types/index';
+import { Video, Videos } from '#shared/types/index';
 import { Box, Flex, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { ReactNode } from 'react';
@@ -10,8 +10,9 @@ import VideosLayout from '~/layouts/videos_layout';
 
 interface VideosPageProps {
 	videos: Videos;
+	currentVideo: Video;
 }
-function VideosPage({ videos }: VideosPageProps) {
+function VideosPage({ videos, currentVideo }: VideosPageProps) {
 	const theme = useMantineTheme();
 	const isSmallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
@@ -23,23 +24,23 @@ function VideosPage({ videos }: VideosPageProps) {
 			direction={isSmallScreen ? 'column' : 'row'}
 		>
 			{videos.at(0) && (
-				<Stack gap="lg">
+				<Stack gap="lg" w="100%">
 					<ClientOnly>
-						<VideoPlayer url={videos[0].url} />
+						<VideoPlayer url={currentVideo.url} />
 					</ClientOnly>
 					<VideoMeta
-						title={videos[0].title}
-						description={videos[0].description}
+						title={currentVideo.title}
+						description={currentVideo.description}
 					/>
 				</Stack>
 			)}
 
 			{!isSmallScreen ? (
 				<Box w="100%" maw={350}>
-					<VideoList videos={videos} />
+					<VideoList videos={videos} activeVideoId={currentVideo.id} />
 				</Box>
 			) : (
-				<VideoList videos={videos} />
+				<VideoList videos={videos} activeVideoId={currentVideo.id} />
 			)}
 		</Flex>
 	);
