@@ -1,14 +1,16 @@
 import { TocItem } from '#shared/types/index';
 import {
-	Anchor,
 	Box,
 	Flex,
-	Stack,
-	Title,
+	Group,
+	Text,
 	TypographyStylesProvider,
 } from '@mantine/core';
+import cx from 'clsx';
 import { useEffect, useState } from 'react';
+import { TbListSearch } from 'react-icons/tb';
 import './markdown.css';
+import classes from './markdown_toc.module.css';
 
 interface MarkdownProps {
 	html: string;
@@ -21,22 +23,46 @@ export function MarkdownBuilder({ html, toc }: MarkdownProps) {
 	useEffect(() => {
 		if (!toc) return;
 		const headings = toc.map((item) => document.getElementById(item.id));
+
 		const handleScroll = () => {
-			const visibleHeading = headings.find(
-				(heading) =>
-					heading &&
-					heading.getBoundingClientRect().top >= 0 &&
-					heading.getBoundingClientRect().top < window.innerHeight / 3
-			);
-			if (visibleHeading) {
-				setActiveId(visibleHeading.id);
+			let currentActiveId = null;
+
+			for (let i = 0; i < headings.length; i++) {
+				const heading = headings[i];
+				if (heading) {
+					const { top, bottom } = heading.getBoundingClientRect();
+
+					if (bottom > 0 && top < window.innerHeight) {
+						currentActiveId = heading.id;
+						break;
+					}
+				}
+			}
+
+			if (currentActiveId !== activeId) {
+				setActiveId(currentActiveId);
 			}
 		};
 
 		document.addEventListener('scroll', handleScroll);
+		handleScroll();
 
 		return () => document.removeEventListener('scroll', handleScroll);
-	}, [toc]);
+	}, [toc, activeId]);
+
+	const items = toc?.map((item) => (
+		<Box<'a'>
+			component="a"
+			href={`#${item.id}`}
+			key={item.id}
+			className={cx(classes.link, {
+				[classes.linkActive]: activeId === item.id,
+			})}
+			style={{ paddingLeft: 'var(--mantine-spacing-md)' }}
+		>
+			{item.text}
+		</Box>
+	));
 
 	return (
 		<Flex align="flex-start" gap="xl" w="100%">
@@ -52,21 +78,11 @@ export function MarkdownBuilder({ html, toc }: MarkdownProps) {
 						width: '250px',
 					}}
 				>
-					<Stack gap="xs">
-						<Title order={3}>Sommaire</Title>
-						{toc.map((item) => (
-							<Anchor
-								href={`#${item.id}`}
-								c={activeId === item.id ? 'blue' : 'inherit'}
-								style={{
-									fontSize: 'var(--mantine-font-size-sm)',
-								}}
-								key={item.id}
-							>
-								{item.text}
-							</Anchor>
-						))}
-					</Stack>
+					<Group mb="md">
+						<TbListSearch size={18} />
+						<Text>Table des matières</Text>
+					</Group>
+					{items}
 				</Box>
 			)}
 		</Flex>
