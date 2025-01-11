@@ -4,6 +4,12 @@
 	scroll-behavior: smooth !important;
 }
 
+#app {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
 /* For light mode */
 :root[data-mantine-color-scheme='light'] {
 	--mantine-color-body: #f0eef6 !important;

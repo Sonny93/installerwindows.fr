@@ -62,7 +62,7 @@ export function FloatingNavbar() {
 				left: 0,
 				right: 0,
 				height: rem(60),
-				backgroundColor: 'var(--mantine-color-body)',
+				backgroundColor: 'light-dark(var(--mantine-color-gray-0), #1b2028)',
 				paddingInline: 'var(--mantine-spacing-lg)',
 				paddingBlock: 'var(--mantine-spacing-sm)',
 				transform: `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,

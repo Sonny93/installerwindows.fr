@@ -1,8 +1,8 @@
 import { Box, rem } from '@mantine/core';
 import { PropsWithChildren } from 'react';
 import { FloatingNavbar } from '~/components/generics/floating_navbar';
-import { BaseLayout } from './base_layout';
 import { Footer } from '~/components/generics/footer/footer';
+import { BaseLayout } from './base_layout';
 
 const DefaultLayout = ({ children }: PropsWithChildren) => (
 	<BaseLayout>
@@ -20,12 +20,11 @@ const Layout = ({ children }: PropsWithChildren) => (
 		{/* Page content */}
 		<Box
 			style={{
-				minHeight: '100vh',
 				maxWidth: '100%',
 				width: '1200px',
 				margin: '0 auto',
 				marginBlock: rem(60),
-				display: 'flex',
+				flex: 1,
 			}}
 		>
 			{/* Content */}

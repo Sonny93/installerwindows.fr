@@ -78,7 +78,7 @@ export function Footer() {
 
 	return (
 		<footer className={classes.footer}>
-			<Container className={classes.inner}>
+			<Container className={classes.inner} size="xl">
 				<div className={classes.logo}>
 					<Text className={classes.title}>{projectName}</Text>
 					<Text size="xs" c="dimmed" className={classes.description} mb="md">
@@ -89,7 +89,7 @@ export function Footer() {
 				</div>
 				<div className={classes.groups}>{groups}</div>
 			</Container>
-			<Container className={classes.afterFooter}>
+			<Container className={classes.afterFooter} size="xl">
 				<Text c="dimmed" size="sm">
 					Réalisé avec ❤️ par <Anchor href={devUrl}>{devName}</Anchor>,
 					rédaction par <Anchor href={editorYtbUrl}>{editorName}</Anchor>
