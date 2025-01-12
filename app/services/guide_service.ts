@@ -1,5 +1,5 @@
 import Guide from '#models/guide';
-import { getGithubRawUrl } from '#shared/utils/index';
+import { validateAndTransformMarkdownUrl } from '#shared/utils/index';
 
 type CrudGuideData = {
 	title: string;
@@ -10,7 +10,7 @@ type CrudGuideData = {
 
 export class GuideService {
 	async createGuide({ githubUrl, ...data }: CrudGuideData) {
-		const githubRawUrl = getGithubRawUrl(githubUrl);
+		const githubRawUrl = validateAndTransformMarkdownUrl(githubUrl);
 		return await Guide.create({
 			...data,
 			githubRawUrl,
@@ -26,7 +26,7 @@ export class GuideService {
 	}
 
 	async updateGuide(guide: Guide, data: CrudGuideData) {
-		const githubRawUrl = getGithubRawUrl(data.githubUrl);
+		const githubRawUrl = validateAndTransformMarkdownUrl(data.githubUrl);
 		return await guide.merge({ ...data, githubRawUrl }).save();
 	}
 

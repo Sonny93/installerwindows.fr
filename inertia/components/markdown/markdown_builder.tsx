@@ -1,6 +1,8 @@
 import { TocItem } from '#shared/types/index';
+import { transformRawToGithubUrl } from '#shared/utils/index';
 import {
 	Box,
+	Button,
 	Flex,
 	Group,
 	Text,
@@ -9,15 +11,17 @@ import {
 import cx from 'clsx';
 import { useEffect, useState } from 'react';
 import { TbListSearch } from 'react-icons/tb';
+import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
 import './markdown.css';
 import classes from './markdown_toc.module.css';
 
 interface MarkdownProps {
 	html: string;
 	toc?: TocItem[];
+	githubRawUrl?: string;
 }
 
-export function MarkdownBuilder({ html, toc }: MarkdownProps) {
+export function MarkdownBuilder({ html, toc, githubRawUrl }: MarkdownProps) {
 	const [activeId, setActiveId] = useState<string | null>(toc?.[0]?.id ?? null);
 
 	useEffect(() => {
@@ -74,7 +78,7 @@ export function MarkdownBuilder({ html, toc }: MarkdownProps) {
 				<Box
 					style={{
 						position: 'sticky',
-						top: 60,
+						top: 75,
 						width: '250px',
 					}}
 				>
@@ -83,6 +87,17 @@ export function MarkdownBuilder({ html, toc }: MarkdownProps) {
 						<Text>Table des matières</Text>
 					</Group>
 					{items}
+					<Group mt="md">
+						<Button
+							variant="outline"
+							size="xs"
+							fullWidth
+							component={ExternalLinkUnstyled}
+							href={githubRawUrl && transformRawToGithubUrl(githubRawUrl)}
+						>
+							Contribuer
+						</Button>
+					</Group>
 				</Box>
 			)}
 		</Flex>

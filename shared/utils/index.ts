@@ -13,17 +13,15 @@ export const urlify = (text: string) => {
 	);
 };
 
-export const getGithubRawUrl = (url: string): string => {
-	const githubRepoRegex =
-		/^https?:\/\/(www\.)?github\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/blob\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
+const githubRepoRegex =
+	/^https?:\/\/(www\.)?github\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/blob\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
+const rawContentRegex =
+	/^https?:\/\/(www\.)?raw\.githubusercontent\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
 
-	const rawContentRegex =
-		/^https?:\/\/(www\.)?raw\.githubusercontent\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
-
+export function validateAndTransformMarkdownUrl(url: string): string {
 	const githubMatch = url.match(githubRepoRegex);
 	if (githubMatch) {
 		const { owner, repo, branch, path } = githubMatch.groups!;
-
 		return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
 	}
 
@@ -32,4 +30,18 @@ export const getGithubRawUrl = (url: string): string => {
 	}
 
 	throw new Error("L'URL fournie n'est pas un fichier markdown GitHub valide.");
-};
+}
+
+export function transformRawToGithubUrl(url: string): string {
+	const rawMatch = url.match(rawContentRegex);
+	if (rawMatch) {
+		const { owner, repo, branch, path } = rawMatch.groups!;
+		return `https://github.com/${owner}/${repo}/blob/${branch}/${path}`;
+	}
+
+	if (githubRepoRegex.test(url)) {
+		return url;
+	}
+
+	throw new Error("L'URL fournie n'est pas un fichier GitHub valide.");
+}

@@ -1,5 +1,5 @@
 import { CacheService } from '#services/cache_service';
-import { getGithubRawUrl } from '#shared/utils/index';
+import { validateAndTransformMarkdownUrl } from '#shared/utils/index';
 import { inject } from '@adonisjs/core';
 
 @inject()
@@ -20,7 +20,7 @@ export class GithubService {
 	}
 
 	protected async getRawContentFromUrl(url: string) {
-		const rawUrl = getGithubRawUrl(url);
+		const rawUrl = validateAndTransformMarkdownUrl(url);
 		const response = await fetch(rawUrl);
 		return response.text();
 	}
