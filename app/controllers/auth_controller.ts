@@ -52,7 +52,7 @@ export default class AuthController {
 
 	async logout(ctx: HttpContext) {
 		await ctx.auth.use('web').logout();
-		this.redirectWithFlash(ctx, 'Déconnexion réussie');
+		ctx.response.redirect('/');
 	}
 
 	private redirectWithFlash(ctx: HttpContext, flash: string) {
