@@ -10,8 +10,10 @@ type CrudGuideData = {
 export class GuideService {
 	async createGuide({ githubUrl, ...data }: CrudGuideData) {
 		const githubRawUrl = validateAndTransformMarkdownUrl(githubUrl);
+		const slug = slugify(data.title);
 		return await Guide.create({
 			...data,
+			slug,
 			githubRawUrl,
 		});
 	}
