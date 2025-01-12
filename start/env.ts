@@ -52,4 +52,6 @@ export default await Env.create(new URL('../', import.meta.url), {
 	DISCORD_CLIENT_ID: Env.schema.string(),
 	DISCORD_CLIENT_SECRET: Env.schema.string(),
 	DISCORD_CLIENT_CALLBACK_URL: Env.schema.string(),
+
+	USERS_IDS: Env.schema.string(),
 });

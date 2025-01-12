@@ -1,4 +1,5 @@
 import User from '#models/user';
+import env from '#start/env';
 import type { HttpContext } from '@adonisjs/core/http';
 
 export default class AuthController {
@@ -29,6 +30,12 @@ export default class AuthController {
 			avatarUrl,
 			token,
 		} = await provider.user();
+
+		const usersIds = env.get('USERS_IDS').split(',');
+		if (!usersIds.includes(providerId)) {
+			return this.redirectWithFlash(ctx, 'Accès refusé');
+		}
+
 		const user = await User.updateOrCreate(
 			{
 				email,
