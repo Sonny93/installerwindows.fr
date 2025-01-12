@@ -1,7 +1,6 @@
 .footer {
-	margin-top: 120px;
-	padding-top: calc(var(--mantine-spacing-xl) * 2);
-	padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+	padding-block: var(--mantine-spacing-xl);
+	padding-inline: var(--mantine-spacing-lg);
 	background-color: light-dark(var(--mantine-color-gray-0), #1b2028);
 	border-top: 1px solid light-dark(var(--mantine-color-gray-2), #1b2028);
 }
@@ -77,8 +76,7 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-top: var(--mantine-spacing-xl);
-	padding-top: var(--mantine-spacing-xl);
-	padding-bottom: var(--mantine-spacing-xl);
+	padding-top: var(--mantine-spacing-xs);
 	border-top: 1px solid
 		light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
 
