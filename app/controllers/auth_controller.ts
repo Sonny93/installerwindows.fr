@@ -23,7 +23,6 @@ export default class AuthController {
 		}
 
 		const {
-			email,
 			id: providerId,
 			name,
 			nickName,
@@ -38,17 +37,15 @@ export default class AuthController {
 
 		const user = await User.updateOrCreate(
 			{
-				email,
+				providerId,
 			},
 			{
-				email,
 				providerId,
 				name,
 				nickName,
 				avatarUrl,
 				token,
 				providerType: 'discord',
-				isAdmin: false,
 			}
 		);
 
@@ -63,8 +60,8 @@ export default class AuthController {
 	}
 
 	private redirectWithFlash(ctx: HttpContext, flash: string) {
-		const userEmail = ctx.auth.user?.email;
-		ctx.logger.info(`${userEmail && `[${userEmail}] `}${flash.toLowerCase()}`);
+		const userName = ctx.auth.user?.fullname;
+		ctx.logger.info(`${userName && `[${userName}] `}${flash.toLowerCase()}`);
 		ctx.session.flash('flash', flash);
 		ctx.response.redirect('/');
 	}

@@ -3,9 +3,6 @@ import type { DiscordToken } from '@adonisjs/ally/types';
 import { column, computed } from '@adonisjs/lucid/orm';
 
 export default class User extends AppBaseModel {
-	@column()
-	declare email: string;
-
 	@column({ serializeAs: null })
 	declare name: string;
 
@@ -14,9 +11,6 @@ export default class User extends AppBaseModel {
 
 	@column()
 	declare avatarUrl: string;
-
-	@column()
-	declare isAdmin: boolean;
 
 	@column({ serializeAs: null })
 	declare token?: DiscordToken;

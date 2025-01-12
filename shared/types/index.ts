@@ -5,10 +5,8 @@ type CommonBase = {
 };
 
 export type User = CommonBase & {
-	email: string;
 	fullname: string;
 	avatarUrl: string;
-	isAdmin: boolean;
 	lastSeenAt: string;
 };
 
