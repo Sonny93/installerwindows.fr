@@ -21,6 +21,10 @@ img#img-header {
 	width: 100%;
 }
 
+li:not(:last-child) {
+	margin-bottom: 0.5em;
+}
+
 #guide-w11 {
 	float: left;
 }

@@ -2,6 +2,7 @@
 
 * {
 	scroll-behavior: smooth !important;
+	scroll-margin-top: rem(60);
 }
 
 #app {

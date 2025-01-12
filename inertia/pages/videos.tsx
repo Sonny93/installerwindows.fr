@@ -1,12 +1,10 @@
 import { Video, Videos } from '#shared/types/index';
 import { Box, Flex, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { ReactNode } from 'react';
 import { ClientOnly } from '~/components/generics/client_only';
 import { VideoList } from '~/components/videos/video_list';
 import { VideoMeta } from '~/components/videos/video_meta';
 import { VideoPlayer } from '~/components/videos/video_player';
-import VideosLayout from '~/layouts/videos_layout';
 
 interface VideosPageProps {
 	videos: Videos;
@@ -46,5 +44,4 @@ function VideosPage({ videos, currentVideo }: VideosPageProps) {
 	);
 }
 
-VideosPage.layout = (page: ReactNode) => <VideosLayout children={page} />;
 export default VideosPage;

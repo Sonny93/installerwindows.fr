@@ -21,7 +21,7 @@ const Layout = ({ children }: PropsWithChildren) => (
 		<Box
 			style={{
 				maxWidth: '100%',
-				width: '1200px',
+				width: '1500px',
 				margin: '0 auto',
 				marginBlock: rem(60),
 				flex: 1,
