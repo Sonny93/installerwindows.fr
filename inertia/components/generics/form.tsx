@@ -2,23 +2,29 @@ import { useForm } from '@inertiajs/react';
 import { Button, Group, Stack, TextInput, Title } from '@mantine/core';
 import { ChangeEvent, FormEvent } from 'react';
 
-type Field = {
+export type Field = {
 	label: string;
 	name: string;
 	description?: string;
 	required?: boolean;
 	placeholder?: string;
+	value?: string;
 };
 
-interface FormProps {
+export interface FormProps {
 	title: string;
 	fields: Field[];
 	formUrl: string;
-	formMethod: 'post' | 'put';
+	formMethod?: 'post' | 'put';
 }
-export function Form({ title, fields, formUrl, formMethod }: FormProps) {
+export function Form({
+	title,
+	fields,
+	formUrl,
+	formMethod = 'post',
+}: FormProps) {
 	const defaultValues = fields.reduce<Record<string, string>>((acc, field) => {
-		acc[field.name] = '';
+		acc[field.name] = field.value ?? '';
 		return acc;
 	}, {});
 	const {

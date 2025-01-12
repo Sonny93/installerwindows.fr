@@ -1,9 +1,8 @@
 import Guide from '#models/guide';
-import { validateAndTransformMarkdownUrl } from '#shared/utils/index';
+import { slugify, validateAndTransformMarkdownUrl } from '#shared/utils/index';
 
 type CrudGuideData = {
 	title: string;
-	slug: string;
 	thumbnail: string;
 	githubUrl: string;
 };
@@ -25,9 +24,10 @@ export class GuideService {
 		return await Guide.query().orderBy('created_at', 'desc');
 	}
 
-	async updateGuide(guide: Guide, data: CrudGuideData) {
-		const githubRawUrl = validateAndTransformMarkdownUrl(data.githubUrl);
-		return await guide.merge({ ...data, githubRawUrl }).save();
+	async updateGuide(guide: Guide, { githubUrl, ...data }: CrudGuideData) {
+		const githubRawUrl = validateAndTransformMarkdownUrl(githubUrl);
+		const slug = slugify(data.title);
+		return await guide.merge({ ...data, slug, githubRawUrl }).save();
 	}
 
 	async deleteGuide(guide: Guide) {

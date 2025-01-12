@@ -1,5 +1,6 @@
 import { TocItem } from '#shared/types/index';
 import { transformRawToGithubUrl } from '#shared/utils/index';
+import { Link } from '@inertiajs/react';
 import {
 	Box,
 	Button,
@@ -12,16 +13,24 @@ import cx from 'clsx';
 import { useEffect, useState } from 'react';
 import { TbListSearch } from 'react-icons/tb';
 import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
+import useUser from '~/hooks/use_user';
 import './markdown.css';
 import classes from './markdown_toc.module.css';
 
 interface MarkdownProps {
 	html: string;
 	toc?: TocItem[];
+	slug?: string;
 	githubRawUrl?: string;
 }
 
-export function MarkdownBuilder({ html, toc, githubRawUrl }: MarkdownProps) {
+export function MarkdownBuilder({
+	html,
+	toc,
+	slug,
+	githubRawUrl,
+}: MarkdownProps) {
+	const { isAuthenticated } = useUser();
 	const [activeId, setActiveId] = useState<string | null>(toc?.[0]?.id ?? null);
 
 	useEffect(() => {
@@ -88,7 +97,7 @@ export function MarkdownBuilder({ html, toc, githubRawUrl }: MarkdownProps) {
 					</Group>
 					{items}
 					{githubRawUrl && (
-						<Group mt="md">
+						<Group mt="md" gap="xs">
 							<Button
 								variant="outline"
 								size="xs"
@@ -98,6 +107,29 @@ export function MarkdownBuilder({ html, toc, githubRawUrl }: MarkdownProps) {
 							>
 								Contribuer
 							</Button>
+							{isAuthenticated && slug && (
+								<>
+									<Button
+										variant="light"
+										size="xs"
+										fullWidth
+										component={Link}
+										href={`/guides/edit/${slug}`}
+									>
+										Modifier
+									</Button>
+									<Button
+										variant="light"
+										size="xs"
+										color="red"
+										fullWidth
+										component={Link}
+										href={`/guides/delete/${slug}`}
+									>
+										Supprimer
+									</Button>
+								</>
+							)}
 						</Group>
 					)}
 				</Box>

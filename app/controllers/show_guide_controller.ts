@@ -23,6 +23,7 @@ export default class ShowGuideController {
 		return inertia.render('guides/show', {
 			...htmlAndToc,
 			githubRawUrl: guide.githubRawUrl,
+			slug: guide.slug,
 		});
 	}
 }

@@ -9,6 +9,7 @@ const CreateGuidesController = () =>
 	import('#controllers/create_guides_controller');
 const ShowGuideController = () => import('#controllers/show_guide_controller');
 const CguController = () => import('#controllers/cgu_controller');
+const EditGuideController = () => import('#controllers/edit_guide_controller');
 
 router.get('/', [HomeController, 'render']).as('home');
 router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
@@ -24,6 +25,13 @@ router
 				router
 					.post('/new', [CreateGuidesController, 'execute'])
 					.as('guides.create');
+
+				router
+					.get('/edit/:slug', [EditGuideController, 'render'])
+					.as('guides.edit-view');
+				router
+					.put('/edit/:slug', [EditGuideController, 'execute'])
+					.as('guides.edit');
 			})
 			.middleware([middleware.auth()]);
 		router.get('/', [GuidesController, 'index']).as('guides');

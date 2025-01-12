@@ -4,6 +4,7 @@ import { MarkdownBuilder } from '~/components/markdown/markdown_builder';
 interface ShowGuidePageProps {
 	html: string;
 	toc: TocItem[];
+	slug: string;
 	githubRawUrl: string;
 }
 
