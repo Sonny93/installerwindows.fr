@@ -46,10 +46,7 @@ const dataGroups = [
 	},
 	{
 		title: 'Legal',
-		links: [
-			{ label: 'Mentions légales', link: '/legal' },
-			{ label: 'Politique de confidentialité', link: '/privacy' },
-		],
+		links: [{ label: "Conditions Générales d'Utilisation", link: '/cgu' }],
 	},
 ];
 

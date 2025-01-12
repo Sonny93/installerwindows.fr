@@ -87,17 +87,19 @@ export function MarkdownBuilder({ html, toc, githubRawUrl }: MarkdownProps) {
 						<Text>Table des matières</Text>
 					</Group>
 					{items}
-					<Group mt="md">
-						<Button
-							variant="outline"
-							size="xs"
-							fullWidth
-							component={ExternalLinkUnstyled}
-							href={githubRawUrl && transformRawToGithubUrl(githubRawUrl)}
-						>
-							Contribuer
-						</Button>
-					</Group>
+					{githubRawUrl && (
+						<Group mt="md">
+							<Button
+								variant="outline"
+								size="xs"
+								fullWidth
+								component={ExternalLinkUnstyled}
+								href={transformRawToGithubUrl(githubRawUrl)}
+							>
+								Contribuer
+							</Button>
+						</Group>
+					)}
 				</Box>
 			)}
 		</Flex>

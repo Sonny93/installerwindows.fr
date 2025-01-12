@@ -8,9 +8,11 @@ const GuidesController = () => import('#controllers/guides_controller');
 const CreateGuidesController = () =>
 	import('#controllers/create_guides_controller');
 const ShowGuideController = () => import('#controllers/show_guide_controller');
+const CguController = () => import('#controllers/cgu_controller');
 
 router.get('/', [HomeController, 'render']).as('home');
 router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
+router.get('/cgu', [CguController, 'render']).as('cgu');
 
 router
 	.group(() => {
