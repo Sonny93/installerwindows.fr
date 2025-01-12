@@ -13,17 +13,23 @@ export const urlify = (text: string) => {
 	);
 };
 
-export const getGithubRawUrl = (url: string) => {
-	const isRaw = url.includes('raw.githubusercontent.com');
-	const isGithubFile = url.includes('github.com');
+export const getGithubRawUrl = (url: string): string => {
+	const githubRepoRegex =
+		/^https?:\/\/(www\.)?github\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/blob\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
 
-	if (!isRaw && !isGithubFile) {
-		throw new Error('Invalid Github URL');
+	const rawContentRegex =
+		/^https?:\/\/(www\.)?raw\.githubusercontent\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
+
+	const githubMatch = url.match(githubRepoRegex);
+	if (githubMatch) {
+		const { owner, repo, branch, path } = githubMatch.groups!;
+
+		return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
 	}
 
-	if (isRaw) {
+	if (rawContentRegex.test(url)) {
 		return url;
 	}
 
-	return url.replace('github.com', 'raw.githubusercontent.com');
+	throw new Error("L'URL fournie n'est pas un fichier markdown GitHub valide.");
 };
