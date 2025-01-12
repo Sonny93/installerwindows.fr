@@ -76,6 +76,7 @@
 		"@inertiajs/react": "^2.0.0",
 		"@mantine/core": "^7.15.3",
 		"@mantine/hooks": "^7.15.3",
+		"@mantine/modals": "^7.15.3",
 		"@vinejs/vine": "^3.0.0",
 		"clsx": "^2.1.1",
 		"edge.js": "^6.2.0",

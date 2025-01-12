@@ -4,12 +4,14 @@ import router from '@adonisjs/core/services/router';
 const HomeController = () => import('#controllers/home_controller');
 const VideosController = () => import('#controllers/videos_controller');
 const AuthController = () => import('#controllers/auth_controller');
+const CguController = () => import('#controllers/cgu_controller');
 const GuidesController = () => import('#controllers/guides_controller');
 const CreateGuidesController = () =>
 	import('#controllers/create_guides_controller');
 const ShowGuideController = () => import('#controllers/show_guide_controller');
-const CguController = () => import('#controllers/cgu_controller');
 const EditGuideController = () => import('#controllers/edit_guide_controller');
+const DeleteGuideController = () =>
+	import('#controllers/delete_guide_controller');
 
 router.get('/', [HomeController, 'render']).as('home');
 router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
@@ -30,8 +32,12 @@ router
 					.get('/edit/:slug', [EditGuideController, 'render'])
 					.as('guides.edit-view');
 				router
-					.put('/edit/:slug', [EditGuideController, 'execute'])
+					.put('/:slug', [EditGuideController, 'execute'])
 					.as('guides.edit');
+
+				router
+					.delete('/:slug', [DeleteGuideController, 'execute'])
+					.as('guides.delete');
 			})
 			.middleware([middleware.auth()]);
 		router.get('/', [GuidesController, 'index']).as('guides');

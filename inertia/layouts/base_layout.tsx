@@ -2,6 +2,7 @@ import { primaryColor } from '#config/project';
 import { PageProps } from '@adonisjs/inertia/types';
 import { usePage } from '@inertiajs/react';
 import { createTheme, MantineProvider, Notification, rem } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 import { PropsWithChildren, useState } from 'react';
 import { TbX } from 'react-icons/tb';
 
@@ -62,7 +63,7 @@ export function BaseLayout({ children }: PropsWithChildren) {
 					onClose={() => setOpened(false)}
 				/>
 			)}
-			{children}
+			<ModalsProvider>{children}</ModalsProvider>
 		</MantineProvider>
 	);
 }

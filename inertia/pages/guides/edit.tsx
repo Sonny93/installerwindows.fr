@@ -9,7 +9,7 @@ interface EditGuidesProps {
 const EditGuides = ({ guide }: EditGuidesProps) => (
 	<GuideForm
 		title="Modifier un guide"
-		formUrl={`/guides/edit/${guide.slug}`}
+		formUrl={`/guides/${guide.slug}`}
 		formMethod="put"
 		values={{
 			title: guide.title,

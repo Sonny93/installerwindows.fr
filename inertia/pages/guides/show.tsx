@@ -1,5 +1,5 @@
 import { TocItem } from '#shared/types/index';
-import { MarkdownBuilder } from '~/components/markdown/markdown_builder';
+import { MarkdownBuilder } from '~/components/markdown/builder/markdown_builder';
 
 interface ShowGuidePageProps {
 	html: string;
