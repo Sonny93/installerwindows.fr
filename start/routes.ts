@@ -7,6 +7,7 @@ const AuthController = () => import('#controllers/auth_controller');
 const GuidesController = () => import('#controllers/guides_controller');
 const CreateGuidesController = () =>
 	import('#controllers/create_guides_controller');
+const ShowGuideController = () => import('#controllers/show_guide_controller');
 
 router.get('/', [HomeController, 'render']).as('home');
 router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
@@ -23,7 +24,10 @@ router
 					.as('guides.create');
 			})
 			.middleware([middleware.auth()]);
-		router.get('/:guideId?', [GuidesController, 'index']).as('guides');
+		router.get('/', [GuidesController, 'index']).as('guides');
+		router
+			.get('/:guideSlug', [ShowGuideController, 'render'])
+			.as('guides.show');
 	})
 	.prefix('/guides');
 

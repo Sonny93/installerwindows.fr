@@ -18,7 +18,7 @@ export class GuideService {
 	}
 
 	async getGuideBySlug(slug: string) {
-		return await Guide.query().where('slug', slug).first();
+		return await Guide.query().where('slug', slug).firstOrFail();
 	}
 
 	async getAllGuides() {
