@@ -4,11 +4,28 @@ import router from '@adonisjs/core/services/router';
 const HomeController = () => import('#controllers/home_controller');
 const VideosController = () => import('#controllers/videos_controller');
 const AuthController = () => import('#controllers/auth_controller');
+const GuidesController = () => import('#controllers/guides_controller');
+const CreateGuidesController = () =>
+	import('#controllers/create_guides_controller');
 
 router.get('/', [HomeController, 'render']).as('home');
 router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
 
-const ROUTES_PREFIX = '/auth';
+router
+	.group(() => {
+		router
+			.group(() => {
+				router
+					.get('/new', [CreateGuidesController, 'render'])
+					.as('guides.create-view');
+				router
+					.post('/new', [CreateGuidesController, 'execute'])
+					.as('guides.create');
+			})
+			.middleware([middleware.auth()]);
+		router.get('/:guideId?', [GuidesController, 'index']).as('guides');
+	})
+	.prefix('/guides');
 
 router
 	.group(() => {
@@ -31,4 +48,4 @@ router
 			})
 			.middleware([middleware.auth()]);
 	})
-	.prefix(ROUTES_PREFIX);
+	.prefix('/auth');

@@ -1,4 +1,5 @@
 import { CacheService } from '#services/cache_service';
+import { getGithubRawUrl } from '#shared/utils/index';
 import { inject } from '@adonisjs/core';
 
 @inject()
@@ -18,23 +19,8 @@ export class GithubService {
 		return cachedHtml;
 	}
 
-	async getRawUrlFromGithubUrl(url: string) {
-		const isRaw = url.includes('raw.githubusercontent.com');
-		const isGithubFile = url.includes('github.com');
-
-		if (!isRaw && !isGithubFile) {
-			throw new Error('Invalid Github URL');
-		}
-
-		if (isRaw) {
-			return url;
-		}
-
-		return url.replace('github.com', 'raw.githubusercontent.com');
-	}
-
 	protected async getRawContentFromUrl(url: string) {
-		const rawUrl = await this.getRawUrlFromGithubUrl(url);
+		const rawUrl = getGithubRawUrl(url);
 		const response = await fetch(rawUrl);
 		return response.text();
 	}

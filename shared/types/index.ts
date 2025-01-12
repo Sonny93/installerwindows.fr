@@ -31,6 +31,15 @@ export type Video = {
 	url: string;
 };
 
+export type Guide = CommonBase & {
+	title: string;
+	slug: string;
+	thumbnail: string;
+	githubRawUrl: string;
+};
+
+export type Guides = Guide[];
+
 export type Videos = Video[];
 
 type Auth =
