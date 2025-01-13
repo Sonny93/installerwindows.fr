@@ -15,6 +15,7 @@
 	<!-- Open Graph -->
 	<meta property="og:site_name" content="Installerwindows.fr" />
 	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://installerwindows.fr" />
 	@if (title)
 		<meta property="og:title" content="{{ title }}" />
 	@else
@@ -29,6 +30,24 @@
 		<meta property="og:image" content="{{ thumbnail }}" />
 	@else
 		<meta property="og:image" content="/images/icon-512x512.png" />
+	@endif
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://installerwindows.fr">
+	@if (title)
+		<meta name="twitter:title" content="{{ title }}">
+	@else
+		<meta name="twitter:title" content="Installerwindows.fr">
+	@endif
+	@if (description)
+		<meta name="twitter:description" content="{{ description }}">
+	@else
+		<meta name="twitter:description" content="Guides pour (ré)installer Windows 10/11 au propre et faire des optimisations saines pour votre machine. Il s'agit de guides complets, que vous devriez pouvoir suivre quel que soit votre niveau en informatique.">
+	@endif
+	@if (thumbnail)
+		<meta name="twitter:image" content="{{ thumbnail }}">
+	@else
+		<meta name="twitter:image" content="/images/icon-512x512.png">
 	@endif
 
   <link rel="manifest" href="/manifest.json" />
