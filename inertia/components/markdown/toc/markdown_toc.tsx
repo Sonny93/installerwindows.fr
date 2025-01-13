@@ -80,6 +80,13 @@ export function MarkdownToc({ toc, slug, githubRawUrl }: MarkdownTocProps) {
 			<Text>Table des matières</Text>
 		</Group>
 	);
+
+	useEffect(() => {
+		if (isMobile) {
+			handler.open();
+		}
+	}, [isMobile]);
+
 	return (
 		<>
 			{!isMobile && (
@@ -111,25 +118,27 @@ export function MarkdownToc({ toc, slug, githubRawUrl }: MarkdownTocProps) {
 			<Drawer opened={opened} onClose={handler.close} title={tocHeader}>
 				{items}
 			</Drawer>
-			<Portal>
-				<Button
-					onClick={handler.open}
-					variant="outline"
-					size="xs"
-					style={{
-						position: 'fixed',
-						left: '50%',
-						bottom: pinned ? rem(16) : rem(-100),
-						width: `calc(100% - ${rem(16)} * 2)`,
-						backgroundColor: 'var(--mantine-color-body)',
-						transition: 'all 0.2s ease-in-out',
-						transform: 'translateX(-50%)',
-					}}
-				>
-					<TbListSearch size={18} />
-					<Text>Table des matières</Text>
-				</Button>
-			</Portal>
+			{isMobile && (
+				<Portal>
+					<Button
+						onClick={handler.open}
+						variant="outline"
+						size="xs"
+						style={{
+							position: 'fixed',
+							left: '50%',
+							bottom: pinned ? rem(16) : rem(-100),
+							width: `calc(100% - ${rem(16)} * 2)`,
+							backgroundColor: 'var(--mantine-color-body)',
+							transition: 'all 0.2s ease-in-out',
+							transform: 'translateX(-50%)',
+						}}
+					>
+						<TbListSearch size={18} />
+						<Text>Table des matières</Text>
+					</Button>
+				</Portal>
+			)}
 		</>
 	);
 }
