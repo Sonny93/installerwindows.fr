@@ -6,7 +6,7 @@ Installerwindows.fr est un site avec différents guides pour apprendre à (ré)i
 
 Le site se base sur ces technologies pour fonctionner.
 
-Next.JS (React), Typescript, SASS
+Adonis.js (React via Inertia), Typescript, Mantine
 
 ## Installer les dépendances
 
@@ -21,6 +21,8 @@ pnpm install
 Commande pour lancer le site en local dans un environnement de dév
 
 ```shell
+make dev
+# ou
 pnpm run dev
 ```
 
@@ -29,6 +31,8 @@ pnpm run dev
 Commande pour lancer le site en local dans un environnement de prod
 
 ```shell
+make prod # docker compose up -d --build --wait
+# ou
 pnpm run build
 pnpm start
 ```
@@ -44,6 +48,6 @@ npx release-it
 #### YouTube API key
 
 > https://console.cloud.google.com/apis/dashboard
-> Search bar -> YouTube Data v3
+> Rechercher -> YouTube Data v3
 > https://console.cloud.google.com/apis/credentials
-> Create credentials -> API Key
+> Créer des identifiants -> API Key
