@@ -22,6 +22,13 @@ export default class VideosController {
 			return response.redirect(`/videos/${videos[0].id}`);
 		}
 
-		return inertia.render('videos', { videos, currentVideo });
+		return inertia.render(
+			'videos',
+			{ videos, currentVideo },
+			{
+				title: currentVideo.title,
+				description: currentVideo.description,
+			}
+		);
 	}
 }

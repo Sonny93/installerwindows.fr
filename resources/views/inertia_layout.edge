@@ -4,8 +4,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title inertia>Installerwindows.fr</title>
+	<meta name="title" content="Installerwindows.fr">
+	@if (description)
+		<meta name="description" content="{{ description }}">
+	@else
+		<meta name="description" content="Guides pour (ré)installer Windows 10/11 au propre et faire des optimisations saines pour votre machine. Il s'agit de guides complets, que vous devriez pouvoir suivre quel que soit votre niveau en informatique.">
+	@endif
+
+	<!-- Open Graph -->
+	<meta property="og:site_name" content="Installerwindows.fr" />
+	<meta property="og:type" content="website" />
+	@if (title)
+		<meta property="og:title" content="{{ title }}" />
+	@else
+		<meta property="og:title" content="Installerwindows.fr" />
+	@endif
+	@if (description)
+		<meta property="og:description" content="{{ description }}" />
+	@else
+		<meta property="og:description" content="Guides pour (ré)installer Windows 10/11 au propre et faire des optimisations saines pour votre machine. Il s'agit de guides complets, que vous devriez pouvoir suivre quel que soit votre niveau en informatique." />
+	@endif
+	@if (thumbnail)
+		<meta property="og:image" content="{{ thumbnail }}" />
+	@else
+		<meta property="og:image" content="/images/icon-512x512.png" />
+	@endif
+
   <link rel="manifest" href="/manifest.json" />
 	<link rel="apple-touch-icon" href="/images/icon-192x192.png" />
 	<link rel="icon" href="/images/icon-192x192.png" />

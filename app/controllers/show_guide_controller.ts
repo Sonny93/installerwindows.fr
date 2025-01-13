@@ -20,10 +20,17 @@ export default class ShowGuideController {
 		);
 		const htmlAndToc =
 			await this.markdownService.markdownToHtmlWithToc(markdown);
-		return inertia.render('guides/show', {
-			...htmlAndToc,
-			githubRawUrl: guide.githubRawUrl,
-			slug: guide.slug,
-		});
+		return inertia.render(
+			'guides/show',
+			{
+				...htmlAndToc,
+				githubRawUrl: guide.githubRawUrl,
+				slug: guide.slug,
+			},
+			{
+				title: guide.title,
+				thumbnail: guide.thumbnail,
+			}
+		);
 	}
 }
