@@ -1,43 +1,79 @@
-volumes:
-  umami-db-data:
-
-networks:
-  installerwindows_net:
-    name: installerwindows_net
-
+name: installerwindows.fr
 services:
-  installerwindows_srv:
-    container_name: Installerwindows.fr
-    image: installerwindows-front
-    restart: 'always'
-    volumes:
-      - ./db:/usr/app/db
-    env_file:
-      - ./.env
-    networks:
-      - installerwindows_net
-    ports:
-      - 3000:3000
-
-  umami:
-    image: ghcr.io/umami-software/umami:postgresql-latest
-    ports:
-      - 4000:3000
-    env_file:
-      - ./.env
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    restart: always
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@umami_db:5432/${POSTGRES_DB}
-      DATABASE_TYPE: postgresql
-    depends_on:
-      - umami_db
-    restart: always
-
-  umami_db:
-    image: postgres:12-alpine
-    env_file:
-      - ./.env
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready', '-U', '${DB_USER}']
     volumes:
-      - umami-db-data:/var/lib/postgresql/data
+      - postgres-volume:/var/lib/postgresql/data
+    ports:
+      - '${DB_PORT}:5432'
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:8
     restart: always
+    entrypoint: /bin/sh -c "chmod 0600 /pgpass; /entrypoint.sh;"
+    healthcheck:
+      test: ['CMD', 'wget', '-O', '-', 'http://localhost:80/misc/ping']
+      interval: 2s
+      timeout: 10s
+      retries: 30
+    env_file: .env
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=myemail@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=a12345678
+      - PGADMIN_CONFIG_SERVER_MODE=False
+      - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
     depends_on:
-      - installerwindows_srv
+      - postgres
+    ports:
+      - '5050:80'
+    user: root
+    configs:
+      - source: servers.json
+        target: /pgadmin4/servers.json
+      - source: pgpass
+        target: /pgpass
+
+  installerwindows.fr:
+    container_name: installerwindows.fr
+    restart: always
+    build:
+      context: .
+    environment:
+      - DB_HOST=postgres
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - ${PORT}:3333
+
+volumes:
+  postgres-volume:
+
+configs:
+  pgpass:
+    content: postgres:${DB_PORT}:*:${DB_USER}:${DB_PASSWORD}
+  servers.json:
+    content: |
+      {"Servers": {"1": {
+        "Group": "Servers",
+        "Name": "project",
+        "Host": "postgres",
+        "Port": ${DB_PORT},
+        "MaintenanceDB": "${DB_DATABASE}",
+        "Username": "${DB_USER}",
+        "PassFile": "/pgpass",
+        "SSLMode": "prefer"
+      }}}

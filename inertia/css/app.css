@@ -1,0 +1,22 @@
+@import './fonts/poppins/import.css';
+
+* {
+	scroll-behavior: smooth !important;
+	scroll-margin-top: rem(60);
+}
+
+#app {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* For light mode */
+:root[data-mantine-color-scheme='light'] {
+	--mantine-color-body: #f0eef6 !important;
+}
+
+/* For dark mode */
+:root[data-mantine-color-scheme='dark'] {
+	--mantine-color-body: #222831 !important;
+}

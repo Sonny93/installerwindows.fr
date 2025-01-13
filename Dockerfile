@@ -1,56 +1,44 @@
-# syntax=docker.io/docker/dockerfile:1
+# Source : https://github.com/adonisjs-community/adonis-packages/blob/main/Dockerfile
 
-FROM node:22-alpine3.18 AS base
+FROM node:22.11-alpine3.20 AS base
 
-# Install dependencies only when needed
+RUN apk --no-cache add curl
+RUN corepack enable
+
+# All deps stage
 FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
+ADD package.json pnpm-lock.yaml ./
+RUN pnpm install --ignore-scripts
 
-# Install dependencies based on the preferred package manager
-COPY package.json pnpm-lock.yaml* ./
-RUN corepack enable pnpm
-RUN pnpm i --frozen-lockfile;
-
-# Rebuild the source code only when needed
-FROM base AS builder
+# Production only deps stage
+FROM base AS production-deps
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+ADD package.json pnpm-lock.yaml ./
+RUN pnpm install --ignore-scripts --prod
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED=1
-
-RUN corepack enable pnpm
-RUN pnpm run build
-
-# Production image, copy all the files and run next
-FROM base AS runner
+# Build stage
+FROM base AS build
 WORKDIR /app
+COPY --from=deps /app/node_modules /app/node_modules
+ADD . .
+RUN node ace build
+
+# Production stage
+FROM base
 
 ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV LOG_LEVEL=debug
+ENV CACHE_VIEWS=false
+ENV SESSION_DRIVER=cookie
+ENV PORT=$PORT
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+WORKDIR /app
+COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=build /app/build /app
 
-COPY --from=builder /app/public ./public
+# Expose port
+EXPOSE $PORT
 
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-
-EXPOSE 3000
-
-ENV PORT=3000
-
-# server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
-ENV HOSTNAME="0.0.0.0"
-CMD ["node", "server.js"]
+# Start app
+CMD node bin/console.js migration:run --force && node bin/server.js
