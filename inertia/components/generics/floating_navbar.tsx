@@ -56,7 +56,6 @@ export function FloatingNavbar() {
 	return (
 		<Box
 			style={{
-				zIndex: 999999,
 				position: 'sticky',
 				top: 0,
 				left: 0,

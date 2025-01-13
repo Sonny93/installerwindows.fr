@@ -1,3 +1,7 @@
+* {
+	word-break: break-word;
+}
+
 blockquote {
 	font-size: var(--mantine-font-size-sm) !important;
 	font-weight: var(--mantine-font-weight-normal) !important;
