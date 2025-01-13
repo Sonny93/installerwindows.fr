@@ -8,8 +8,8 @@ import {
 	rem,
 	useMantineTheme,
 } from '@mantine/core';
-import { useHeadroom, useMediaQuery } from '@mantine/hooks';
-import { useEffect, useState } from 'react';
+import { useDisclosure, useHeadroom, useMediaQuery } from '@mantine/hooks';
+import { useEffect } from 'react';
 import { ClientOnly } from '~/components/generics/client_only';
 import { HelpButton } from '~/components/generics/help_button';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
@@ -26,30 +26,32 @@ const links = [
 	},
 ];
 
-const showLinks = links.map((link) => {
-	if (link.external) {
-		return (
-			<ExternalLinkStyled href={link.href} key={link.label}>
-				{link.label}
-			</ExternalLinkStyled>
-		);
-	}
-	return (
-		<InternalLink href={link.href} key={link.label}>
-			{link.label}
-		</InternalLink>
-	);
-});
-
 export function FloatingNavbar() {
 	const theme = useMantineTheme();
-	const [opened, setOpened] = useState(false);
+	const [opened, handler] = useDisclosure(false);
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, false);
 	const pinned = useHeadroom({ fixedAt: 120 });
 
+	const showLinks = links.map((link) => {
+		const onClick = () => handler.close();
+		if (link.external) {
+			return (
+				<ExternalLinkStyled href={link.href} key={link.label} onClick={onClick}>
+					{link.label}
+				</ExternalLinkStyled>
+			);
+		}
+
+		return (
+			<InternalLink href={link.href} key={link.label} onClick={onClick}>
+				{link.label}
+			</InternalLink>
+		);
+	});
+
 	useEffect(() => {
 		if (opened && !isMobile) {
-			setOpened(false);
+			handler.close();
 		}
 	}, [isMobile]);
 
@@ -70,9 +72,7 @@ export function FloatingNavbar() {
 		>
 			<Group justify="space-between">
 				<Group>
-					{isMobile && (
-						<Burger opened={opened} onClick={() => setOpened(!opened)} />
-					)}
+					{isMobile && <Burger opened={opened} onClick={handler.toggle} />}
 					<InternalLink style={{ fontSize: rem(24) }} href="/">
 						{projectName}
 					</InternalLink>
@@ -92,7 +92,7 @@ export function FloatingNavbar() {
 			{/* Mobile drawer */}
 			<Drawer
 				opened={opened}
-				onClose={() => setOpened(false)}
+				onClose={handler.close}
 				padding="md"
 				title={projectName}
 				zIndex={999999}
