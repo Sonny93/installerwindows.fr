@@ -45,8 +45,11 @@ const dataGroups = [
 		],
 	},
 	{
-		title: 'Legal',
-		links: [{ label: "Conditions Générales d'Utilisation", link: '/cgu' }],
+		title: 'Autre',
+		links: [
+			{ label: "Conditions Générales d'Utilisation", link: '/cgu' },
+			{ label: 'Statut des services', link: '/status' },
+		],
 	},
 ];
 

@@ -2,6 +2,8 @@ import { middleware } from '#start/kernel';
 import router from '@adonisjs/core/services/router';
 
 const HomeController = () => import('#controllers/home_controller');
+const HealthChecksController = () =>
+	import('#controllers/health_checks_controller');
 const VideosController = () => import('#controllers/videos_controller');
 const AuthController = () => import('#controllers/auth_controller');
 const CguController = () => import('#controllers/cgu_controller');
@@ -16,6 +18,7 @@ const DeleteGuideController = () =>
 router.get('/', [HomeController, 'render']).as('home');
 router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
 router.get('/cgu', [CguController, 'render']).as('cgu');
+router.get('/status', [HealthChecksController, 'render']).as('status');
 
 router
 	.group(() => {
