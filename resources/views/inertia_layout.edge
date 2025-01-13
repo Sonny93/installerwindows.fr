@@ -32,7 +32,12 @@
 		<meta property="og:image" content="/images/icon-512x512.png" />
 	@endif
 
-	<meta name="twitter:card" content="summary_large_image">
+	<!-- Twitter -->
+	@if (thumbnail)
+		<meta name="twitter:card" content="summary_large_image">
+	@else
+		<meta name="twitter:card" content="summary">
+	@endif
 	<meta property="twitter:url" content="https://installerwindows.fr">
 	@if (title)
 		<meta name="twitter:title" content="{{ title }}">
