@@ -82,8 +82,8 @@ export function MarkdownToc({ toc, slug, githubRawUrl }: MarkdownTocProps) {
 	);
 
 	useEffect(() => {
-		if (isMobile) {
-			handler.open();
+		if (!isMobile) {
+			handler.close();
 		}
 	}, [isMobile]);
 
