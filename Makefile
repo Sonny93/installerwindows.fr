@@ -13,3 +13,6 @@ prod:
 down:
 	@-docker compose down
 	@-docker compose -f dev.compose.yml down
+
+release:
+	@npx release-it
