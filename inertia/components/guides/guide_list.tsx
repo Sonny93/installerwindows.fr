@@ -7,7 +7,7 @@ interface GuideListProps {
 }
 
 export const GuideList = ({ guides }: GuideListProps) => (
-	<Flex gap="xs">
+	<Flex gap="xs" wrap="wrap" justify="center">
 		{guides.map((guide) => (
 			<GuideCard guide={guide} />
 		))}
