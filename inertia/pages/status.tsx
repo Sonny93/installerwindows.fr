@@ -13,7 +13,7 @@ const StatusPage = ({ services, status }: StatusPageProps) => (
 		<Table>
 			<Table.Caption>
 				{status
-					? 'Toutes les services sont en ligne'
+					? 'Tous les services sont en ligne'
 					: 'Un ou plusieurs services sont en panne'}
 			</Table.Caption>
 			<Table.Thead>
