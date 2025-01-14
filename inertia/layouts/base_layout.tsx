@@ -54,7 +54,7 @@ export function BaseLayout({ children }: PropsWithChildren) {
 	const { props } = usePage<PageProps & { flash: string }>();
 	const [opened, setOpened] = useState<boolean>(!!props.flash);
 	return (
-		<MantineProvider theme={customTheme}>
+		<MantineProvider theme={customTheme} defaultColorScheme="dark">
 			{opened && (
 				<Notification
 					icon={<TbX />}
