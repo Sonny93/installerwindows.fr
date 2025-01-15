@@ -11,13 +11,13 @@ interface GuidesPageProps {
 export default function GuidesPage({ guides }: GuidesPageProps) {
 	const { isAuthenticated } = useUser();
 	return (
-		<Stack>
+		<Stack align="center">
 			<Title order={1}>Guides</Title>
 			{guides.length === 0 && <Text>Aucun guide trouvé</Text>}
-			{guides.length > 0 && <GuideList guides={guides} />}
 			{isAuthenticated && (
 				<InternalLink href="/guides/new">Ajouter un guide</InternalLink>
 			)}
+			{guides.length > 0 && <GuideList guides={guides} />}
 		</Stack>
 	);
 }
