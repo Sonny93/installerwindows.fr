@@ -59,6 +59,10 @@
 	<link rel="apple-touch-icon" href="/images/icon-192x192.png" />
 	<link rel="icon" href="/images/icon-192x192.png" />
 
+	@if (umamiUrl && umamiWebsiteId)
+		<script async defer data-website-id="{{ umamiWebsiteId }}" src="{{ umamiUrl }}/script.js" />
+	@endif
+
   @viteReactRefresh()
   @inertiaHead()
   @vite(['inertia/app/app.tsx', `inertia/pages/${page.component}.tsx`])

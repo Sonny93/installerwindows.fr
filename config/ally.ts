@@ -5,7 +5,7 @@ const allyConfig = defineConfig({
 	discord: services.discord({
 		clientId: env.get('DISCORD_CLIENT_ID'),
 		clientSecret: env.get('DISCORD_CLIENT_SECRET'),
-		callbackUrl: env.get('DISCORD_CLIENT_CALLBACK_URL'),
+		callbackUrl: env.get('APP_URL') + '/auth/callback',
 		scopes: ['identify'],
 	}),
 });
