@@ -20,6 +20,11 @@ router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
 router.get('/cgu', [CguController, 'render']).as('cgu');
 router.get('/status', [HealthChecksController, 'render']).as('status');
 
+// redirect /guide/:slug to /guides/:slug
+router.get('/guide/:slug', (ctx) =>
+	ctx.response.redirect(`/guides/${ctx.params.slug}`)
+);
+
 router
 	.group(() => {
 		router
