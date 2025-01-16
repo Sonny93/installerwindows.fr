@@ -1,6 +1,8 @@
 export const projectName = 'Installerwindows.fr';
 export const primaryColor = '#3f88c5';
 export const helpUrl = 'https://discord.gg/informatique';
+export const discordSuggestionChannelUrl =
+	'https://discord.com/channels/475253577288253440/1036644757524451478';
 export const projectGithubUrl =
 	'https://github.com/Sonny93/installerwindows.fr';
 export const projectGithubReleasesUrl =

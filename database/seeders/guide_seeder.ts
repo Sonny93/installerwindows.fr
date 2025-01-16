@@ -23,7 +23,7 @@ export default class extends BaseSeeder {
 			return {
 				title,
 				slug: slugify(title),
-				thumbnail: 'https://picsum.photos/350?random=' + index,
+				thumbnail: 'https://picsum.photos/348/196?random=' + index,
 				githubRawUrl: url,
 			};
 		});
