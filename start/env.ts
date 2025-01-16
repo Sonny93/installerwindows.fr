@@ -46,12 +46,18 @@ export default await Env.create(new URL('../', import.meta.url), {
 
 	/*
   |----------------------------------------------------------
-  | Variables for configuring ally package
+  | Variables for configuring auth
   |----------------------------------------------------------
   */
 	DISCORD_CLIENT_ID: Env.schema.string(),
 	DISCORD_CLIENT_SECRET: Env.schema.string(),
 	DISCORD_CLIENT_CALLBACK_URL: Env.schema.string(),
-
 	USERS_IDS: Env.schema.string(),
+
+	/*
+  |----------------------------------------------------------
+  | Variables for configuring app url
+  |----------------------------------------------------------
+  */
+	APP_URL: Env.schema.string(),
 });

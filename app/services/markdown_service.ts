@@ -1,4 +1,7 @@
+import { YoutubeService } from '#services/youtube_service';
 import { TocItem } from '#shared/types/index';
+import env from '#start/env';
+import { inject } from '@adonisjs/core';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
@@ -10,7 +13,12 @@ import { visit } from 'unist-util-visit';
 
 type ExtractToc = (toc: TocItem[]) => (tree: any) => void;
 
+@inject()
 export class MarkdownService {
+	private appUrl: string = env.get('APP_URL');
+
+	constructor(private youtubeService: YoutubeService) {}
+
 	extractToc: ExtractToc = (toc) => {
 		return (tree) => {
 			visit(tree, 'element', (node: any) => {
@@ -53,7 +61,8 @@ export class MarkdownService {
 			.use(rehypeStringify, { allowDangerousHtml: true })
 			.process(markdown);
 
-		return { html: file.toString(), toc };
+		const html = await this.replaceMarkdownLinks(file.toString());
+		return { html, toc };
 	}
 
 	async markdownToHtml(markdown: string): Promise<string> {
@@ -63,6 +72,30 @@ export class MarkdownService {
 			.use(rehypeRaw)
 			.use(rehypeStringify, { allowDangerousHtml: true })
 			.process(markdown);
-		return file.toString();
+
+		const html = await this.replaceMarkdownLinks(file.toString());
+		return html;
+	}
+
+	private async replaceMarkdownLinks(markdown: string): Promise<string> {
+		markdown = markdown.replace(
+			/https?:\/\/installerwindows\.fr\/([\w\-\/]+)([^\s")]*)/g,
+			(_, path) => `${this.appUrl}/${path}`
+		);
+
+		const youtubeRegex =
+			/https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/g;
+
+		const playlist = await this.youtubeService.getPlaylist();
+		const playlistVideos = playlist.map((video: { id: string }) => video.id);
+
+		markdown = markdown.replace(youtubeRegex, (match, videoId) => {
+			if (playlistVideos.includes(videoId)) {
+				return `${this.appUrl}/videos/${videoId}`;
+			}
+			return match;
+		});
+
+		return markdown;
 	}
 }

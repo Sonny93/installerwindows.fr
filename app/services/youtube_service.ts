@@ -12,6 +12,7 @@ interface VideoInfo {
 
 @inject()
 export class YoutubeService {
+	private playlistId: string = env.get('YOUTUBE_PLAYLIST_ID');
 	private apiKey: string = env.get('YOUTUBE_API_KEY');
 	private apiUrl: string = `https://www.googleapis.com/youtube/v3/playlistItems`;
 
@@ -19,14 +20,13 @@ export class YoutubeService {
 
 	/**
 	 * Fetches videos from a YouTube playlist, leveraging caching for optimization.
-	 * @param playlistId The ID of the YouTube playlist.
 	 * @returns A list of videos with their details.
 	 */
-	async getPlaylist(playlistId: string): Promise<Videos> {
+	async getPlaylist(): Promise<Videos> {
 		const videos = await this.cacheService.getOrSet({
 			ns: 'youtube',
-			key: playlistId,
-			factory: async () => this.fetchPlaylist(playlistId),
+			key: this.playlistId,
+			factory: async () => this.fetchPlaylist(this.playlistId),
 		});
 		return videos;
 	}
