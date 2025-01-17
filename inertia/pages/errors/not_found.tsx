@@ -1,13 +1,13 @@
 import { Link } from '@inertiajs/react';
 import { Button, Container, Group, Text, Title } from '@mantine/core';
-import { Illustration } from '~/components/errors/illustration';
+import { Error404 } from '~/components/errors/error_404';
 import { HelpButton } from '~/components/generics/help_button';
 import classes from '~/css/errors.module.css';
 
 const NotFound = () => (
 	<Container className={classes.root}>
 		<div className={classes.inner}>
-			<Illustration className={classes.image} />
+			<Error404 className={classes.image} />
 			<div className={classes.content}>
 				<Title className={classes.title}>Oups !</Title>
 				<Text c="dimmed" size="lg" ta="center" className={classes.description}>
