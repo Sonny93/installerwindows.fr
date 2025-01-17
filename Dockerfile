@@ -42,4 +42,4 @@ COPY --from=build /app/markdown /app/markdown
 EXPOSE $PORT
 
 # Start app
-CMD node bin/console.js migration:run --force && node bin/server.js
+CMD node --no-warnings bin/console.js migration:run --force && node --no-warnings bin/server.js
