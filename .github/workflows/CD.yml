@@ -21,6 +21,15 @@ jobs:
           tags: |
             type=semver,pattern={{version}}
 
+      - name: Save Docker tags
+        run: echo "${{ steps.docker_meta.outputs.tags }}" > docker_tags.txt
+
+      - name: Upload Docker tags artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-tags
+          path: docker_tags.txt
+
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
@@ -41,6 +50,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push
     steps:
+      - name: Download Docker tags artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docker-tags
+
+      - name: Read Docker tags
+        id: read_tags
+        run: |
+          TAG=$(cat docker_tags.txt)
+          echo "TAG=$TAG" >> $GITHUB_ENV
+
       - name: Executing remote ssh commands
         uses: appleboy/ssh-action@master
         with:
@@ -48,4 +68,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker service update installerwindows_front --with-registry-auth --image ctrlfdocker/installerwindows:${{ steps.docker_meta.outputs.tags }}
+            docker service update installerwindows_front --with-registry-auth --image ctrlfdocker/installerwindows:${{ env.TAG }}
