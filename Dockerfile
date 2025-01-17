@@ -36,6 +36,7 @@ ENV PORT=$PORT
 WORKDIR /app
 COPY --from=production-deps /app/node_modules /app/node_modules
 COPY --from=build /app/build /app
+COPY --from=build /app/markdown /app/markdown
 
 # Expose port
 EXPOSE $PORT

@@ -15,7 +15,8 @@ storage
 Dockerfile*
 docker-compose*
 .dockerignore
-*.md
+*.md # Ignore all markdown files
+!markdown/*.md # But not the markdown files in the markdown directory
 .git
 .gitignore
 
