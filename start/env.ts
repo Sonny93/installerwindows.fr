@@ -67,6 +67,6 @@ export default await Env.create(new URL('../', import.meta.url), {
   | Variables for configuring umami
   |----------------------------------------------------------
   */
-	UMAMI_URL: Env.schema.string.optionalWhen(nodeEnv === 'production'),
-	UMAMI_WEBSITE_ID: Env.schema.string.optionalWhen(nodeEnv === 'production'),
+	UMAMI_URL: Env.schema.string.optionalWhen(nodeEnv !== 'production'),
+	UMAMI_WEBSITE_ID: Env.schema.string.optionalWhen(nodeEnv !== 'production'),
 });
