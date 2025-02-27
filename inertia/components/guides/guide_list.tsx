@@ -1,6 +1,6 @@
 import { Guides } from '#shared/types/index';
 import { Flex } from '@mantine/core';
-import { GuideCard } from '~/components/guides/guide_card';
+import { GuideCard } from '~/components/guides/card/guide_card';
 
 interface GuideListProps {
 	guides: Guides;

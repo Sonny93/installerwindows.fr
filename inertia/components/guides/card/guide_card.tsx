@@ -1,17 +1,16 @@
 import { Guide } from '#shared/types/index';
 import { Link } from '@inertiajs/react';
 import { AspectRatio, Card, Image, Text, Tooltip } from '@mantine/core';
+import classes from './guide_card.module.css';
 
 interface GuideCardProps {
 	guide: Guide;
 }
 export const GuideCard = ({ guide }: GuideCardProps) => (
 	<Card
-		p="md"
-		w={350}
-		bg="transparent"
 		component={Link}
 		href={`/guides/${guide.slug}`}
+		className={classes.card}
 	>
 		<Card.Section>
 			<AspectRatio ratio={16 / 9}>
@@ -19,9 +18,9 @@ export const GuideCard = ({ guide }: GuideCardProps) => (
 			</AspectRatio>
 		</Card.Section>
 
-		<Card.Section p="sm">
+		<Card.Section className={classes.cardSection}>
 			<Tooltip label={guide.title}>
-				<Text style={{ textAlign: 'center' }} lineClamp={1}>
+				<Text className={classes.cardTitle} lineClamp={1}>
 					{guide.title}
 				</Text>
 			</Tooltip>
