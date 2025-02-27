@@ -13,49 +13,49 @@ importers:
     dependencies:
       '@adonisjs/ally':
         specifier: ^5.0.2
-        version: 5.0.2(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))
+        version: 5.0.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))
       '@adonisjs/auth':
-        specifier: ^9.3.0
-        version: 9.3.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(@japa/plugin-adonisjs@4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@japa/runner@4.1.0))
+        specifier: ^9.3.2
+        version: 9.3.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(@japa/plugin-adonisjs@4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@japa/runner@4.2.0))
       '@adonisjs/cache':
         specifier: 1.0.0-6
-        version: 1.0.0-6(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1))(knex@3.1.0(pg@8.13.1))(tslib@2.8.1)
+        version: 1.0.0-6(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3))(knex@3.1.0(pg@8.13.3))(tslib@2.8.1)
       '@adonisjs/core':
-        specifier: ^6.17.1
-        version: 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
+        specifier: ^6.17.2
+        version: 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
       '@adonisjs/cors':
         specifier: ^2.2.1
-        version: 2.2.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))
+        version: 2.2.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))
       '@adonisjs/inertia':
-        specifier: ^3.0.1
-        version: 3.0.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(@adonisjs/vite@4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))))(edge.js@6.2.0)
+        specifier: ^3.1.0
+        version: 3.1.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(@adonisjs/vite@4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/shield@8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))))(edge.js@6.2.1)
       '@adonisjs/lucid':
         specifier: ^21.6.0
-        version: 21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1)
+        version: 21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3)
       '@adonisjs/session':
-        specifier: ^7.5.0
-        version: 7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0)
+        specifier: ^7.5.1
+        version: 7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1)
       '@adonisjs/shield':
-        specifier: ^8.1.1
-        version: 8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)
+        specifier: ^8.1.2
+        version: 8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)
       '@adonisjs/static':
         specifier: ^1.1.1
-        version: 1.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))
+        version: 1.1.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))
       '@adonisjs/vite':
         specifier: ^4.0.0
-        version: 4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))
+        version: 4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/shield@8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))
       '@inertiajs/react':
-        specifier: ^2.0.0
-        version: 2.0.0(react@19.0.0)
+        specifier: ^2.0.3
+        version: 2.0.3(react@19.0.0)
       '@mantine/core':
-        specifier: ^7.15.3
-        version: 7.15.3(@mantine/hooks@7.15.3(react@19.0.0))(@types/react@19.0.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^7.17.0
+        version: 7.17.0(@mantine/hooks@7.17.0(react@19.0.0))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@mantine/hooks':
-        specifier: ^7.15.3
-        version: 7.15.3(react@19.0.0)
+        specifier: ^7.17.0
+        version: 7.17.0(react@19.0.0)
       '@mantine/modals':
-        specifier: ^7.15.3
-        version: 7.15.3(@mantine/core@7.15.3(@mantine/hooks@7.15.3(react@19.0.0))(@types/react@19.0.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@mantine/hooks@7.15.3(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^7.17.0
+        version: 7.17.0(@mantine/core@7.17.0(@mantine/hooks@7.17.0(react@19.0.0))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@mantine/hooks@7.17.0(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vinejs/vine':
         specifier: ^3.0.0
         version: 3.0.0
@@ -63,17 +63,17 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       edge.js:
-        specifier: ^6.2.0
-        version: 6.2.0
+        specifier: ^6.2.1
+        version: 6.2.1
       knex:
         specifier: ^3.1.0
-        version: 3.1.0(pg@8.13.1)
+        version: 3.1.0(pg@8.13.3)
       luxon:
         specifier: ^3.5.0
         version: 3.5.0
       pg:
-        specifier: ^8.13.1
-        version: 8.13.1
+        specifier: ^8.13.3
+        version: 8.13.3
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -81,8 +81,8 @@ importers:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
       react-icons:
-        specifier: ^5.4.0
-        version: 5.4.0(react@19.0.0)
+        specifier: ^5.5.0
+        version: 5.5.0(react@19.0.0)
       react-player:
         specifier: ^2.16.0
         version: 2.16.0(react@19.0.0)
@@ -118,41 +118,41 @@ importers:
         specifier: ^7.8.2
         version: 7.8.2(typescript@5.7.3)
       '@adonisjs/eslint-config':
-        specifier: ^2.0.0-beta.7
-        version: 2.0.0-beta.7(eslint@9.18.0)(prettier@3.4.2)(typescript@5.7.3)
+        specifier: ^2.0.0
+        version: 2.0.0(eslint@9.21.0)(prettier@3.5.2)(typescript@5.7.3)
       '@adonisjs/tsconfig':
         specifier: ^1.4.0
         version: 1.4.0
       '@japa/assert':
         specifier: ^4.0.1
-        version: 4.0.1(@japa/runner@4.1.0)
+        version: 4.0.1(@japa/runner@4.2.0)
       '@japa/plugin-adonisjs':
         specifier: ^4.0.0
-        version: 4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@japa/runner@4.1.0)
+        version: 4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@japa/runner@4.2.0)
       '@japa/runner':
-        specifier: ^4.1.0
-        version: 4.1.0
+        specifier: ^4.2.0
+        version: 4.2.0
       '@swc/core':
-        specifier: 1.10.7
-        version: 1.10.7
+        specifier: 1.11.4
+        version: 1.11.4
       '@types/luxon':
         specifier: ^3.4.2
         version: 3.4.2
       '@types/node':
-        specifier: ^22.10.5
-        version: 22.10.5
+        specifier: ^22.13.5
+        version: 22.13.5
       '@types/react':
-        specifier: ^19.0.6
-        version: 19.0.6
+        specifier: ^19.0.10
+        version: 19.0.10
       '@types/react-dom':
-        specifier: ^19.0.3
-        version: 19.0.3(@types/react@19.0.6)
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.10)
       '@vitejs/plugin-react':
         specifier: ^4.3.4
-        version: 4.3.4(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))
+        version: 4.3.4(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))
       eslint:
-        specifier: ^9.18.0
-        version: 9.18.0
+        specifier: ^9.21.0
+        version: 9.21.0
       hot-hook:
         specifier: ^0.4.0
         version: 0.4.0
@@ -160,29 +160,29 @@ importers:
         specifier: ^13.0.0
         version: 13.0.0
       postcss:
-        specifier: ^8.4.49
-        version: 8.4.49
+        specifier: ^8.5.3
+        version: 8.5.3
       postcss-preset-mantine:
         specifier: ^1.17.0
-        version: 1.17.0(postcss@8.4.49)
+        version: 1.17.0(postcss@8.5.3)
       postcss-simple-vars:
         specifier: ^7.0.1
-        version: 7.0.1(postcss@8.4.49)
+        version: 7.0.1(postcss@8.5.3)
       prettier:
-        specifier: ^3.4.2
-        version: 3.4.2
+        specifier: ^3.5.2
+        version: 3.5.2
       release-it:
-        specifier: ^18.1.1
-        version: 18.1.1(@types/node@22.10.5)(typescript@5.7.3)
+        specifier: ^18.1.2
+        version: 18.1.2(@types/node@22.13.5)(typescript@5.7.3)
       ts-node-maintained:
-        specifier: ^10.9.4
-        version: 10.9.4(@swc/core@1.10.7)(@types/node@22.10.5)(typescript@5.7.3)
+        specifier: ^10.9.5
+        version: 10.9.5(@swc/core@1.11.4)(@types/node@22.13.5)(typescript@5.7.3)
       typescript:
         specifier: ~5.7.3
         version: 5.7.3
       vite:
-        specifier: ^6.0.7
-        version: 6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))
+        specifier: ^6.2.0
+        version: 6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))
 
 packages:
 
@@ -209,16 +209,16 @@ packages:
     peerDependencies:
       typescript: ^4.0.0 || ^5.0.0
 
-  '@adonisjs/auth@9.3.0':
-    resolution: {integrity: sha512-fJ6QNiCwWuIWONgwruPrzkkMK4EOj8YoCbrdnvHh6HdMXLTyp9xPR3xbbg2BTb1ssKxAnsaaNR+HPYfGLNYacw==}
+  '@adonisjs/auth@9.3.2':
+    resolution: {integrity: sha512-ZaOeSEsCMZkXlfS3YYp2fXh6Eri/uq87mHmhW/uN8/Iww7VlpJbaacGokwHk1gBvU3hScYNVYwiazn3jkcNygw==}
     engines: {node: '>=18.16.0'}
     peerDependencies:
       '@adonisjs/core': ^6.11.0
       '@adonisjs/lucid': ^20.0.0 || ^21.0.1
       '@adonisjs/session': ^7.4.1
-      '@japa/api-client': ^2.0.3
+      '@japa/api-client': ^2.0.3 || ^3.0.0
       '@japa/browser-client': ^2.0.3
-      '@japa/plugin-adonisjs': ^3.0.1
+      '@japa/plugin-adonisjs': ^3.0.1 || ^4.0.0
     peerDependenciesMeta:
       '@adonisjs/lucid':
         optional: true
@@ -231,11 +231,11 @@ packages:
       '@japa/plugin-adonisjs':
         optional: true
 
-  '@adonisjs/bodyparser@10.0.2':
-    resolution: {integrity: sha512-dkbn+DK5B1dODTwk5367gHPhaD4ZIoGon/jvq47iX2cnHjk3a0SyQrBEjoFhnrNkVOJZ76I3OJ3oixqgMcE+yA==}
+  '@adonisjs/bodyparser@10.0.3':
+    resolution: {integrity: sha512-rgnAE+w7/+8tlCG+GxT8/99TLyccMFHtUyIP99K4YbSg0af6kTHrbXOJkKE8YHKU8cFwECybu3uZOoIoHOYLyQ==}
     engines: {node: '>=18.16.0'}
     peerDependencies:
-      '@adonisjs/http-server': ^7.0.2
+      '@adonisjs/http-server': ^7.4.0
 
   '@adonisjs/cache@1.0.0-6':
     resolution: {integrity: sha512-pv5HqQGZa4k2ePFXi8mzzw1h3aDeY4ZhKEIBpIA5w7T9VkUpd3WeNgrcTxq2LsSX0MmL+rupoGeUDX0Yya1FOg==}
@@ -255,8 +255,8 @@ packages:
     resolution: {integrity: sha512-NXjFqDHNGRTZ1EnA4zr20GFEt7qw/JvZ4ZV8/PzFyVc7dPoFprpoyE3bw7kmlKHhcQdBbF7YXCGB4q+HQUnqiQ==}
     engines: {node: '>=18.16.0'}
 
-  '@adonisjs/core@6.17.1':
-    resolution: {integrity: sha512-OrusoHVqksT0dY+ma5Mn1l9pLn69vDOqkVTW/8y6Ry3F9TupicLghiuVNn8CQbdWcC9I8FvphmTRIWHqqg7vuQ==}
+  '@adonisjs/core@6.17.2':
+    resolution: {integrity: sha512-POT5COID8Z3j37+Dd7Y1EfG01Q6+HPY/tGcSb0Y97W2VIPkFjqcW2ooTE4wFT09u7coNohtXJa19a0feMz9ncw==}
     engines: {node: '>=20.6.0'}
     hasBin: true
     peerDependencies:
@@ -295,8 +295,8 @@ packages:
     resolution: {integrity: sha512-sYvcJMbLSqwFWH0WtTTLddxkyXzERZl+8TEkXlMiIFaAZveq9h5eC4SQ+L5ILe9FHHiHVfmHsYF6LlAfcsIG1w==}
     engines: {node: '>=18.16.0'}
 
-  '@adonisjs/eslint-config@2.0.0-beta.7':
-    resolution: {integrity: sha512-WTB4auU115ytr8qKG6KNNxn51dX0efY15Wkvib+hHwD0CC2sSZca3Lb1X4zdJob3G9wT9fY6lq9+HQ4SS+DXBw==}
+  '@adonisjs/eslint-config@2.0.0':
+    resolution: {integrity: sha512-u7xxPmYQ66cmVet6OjOR9yQsHC7h/ZhDXPb4w0UACsXKfKxL4VRsiYsI+/E5xwsfB3dmT/yWO6UrTx7auCLSJg==}
     peerDependencies:
       eslint: ^9.9.0
       prettier: ^3.3.3
@@ -344,14 +344,14 @@ packages:
       '@adonisjs/fold': ^10.0.1
       '@adonisjs/logger': ^6.0.1
 
-  '@adonisjs/inertia@3.0.1':
-    resolution: {integrity: sha512-4yANT28aW3aycejhEgrdsfrXT6fXshO9wrZy4DIUZ7aZ0EI/HyseXP90q46W3m/NxdLN3cI9eWmsWzeM13aeWg==}
+  '@adonisjs/inertia@3.1.0':
+    resolution: {integrity: sha512-BbuZyba7pVjN40AiyPNzOd0ArIikFsvPLz80Vs1Z2KUBsRR1qlIpH/tKiCsLgswFsSDeWYQwed97jUpvRG/tjw==}
     engines: {node: '>=20.6.0'}
     peerDependencies:
       '@adonisjs/core': ^6.9.1
       '@adonisjs/session': ^7.4.0
       '@adonisjs/vite': ^4.0.0
-      '@japa/api-client': ^2.0.0
+      '@japa/api-client': ^2.0.0 || ^3.0.0
       edge.js: ^6.0.0
     peerDependenciesMeta:
       '@japa/api-client':
@@ -390,15 +390,15 @@ packages:
     resolution: {integrity: sha512-7Ml87uoufDQmpjRZYbJeRTk0/WcD4DllJ96L1r2IWF/jZIsryiVN5o+7Xd7fHlRzd8iapAbs32Tq4a6fVI6UKA==}
     engines: {node: '>=18.16.0'}
 
-  '@adonisjs/session@7.5.0':
-    resolution: {integrity: sha512-H5fFrkE/yFSWP/XD8eyWLyUVbtIqTcw9QBP1me4d9vnl4mao4jHrmnNA8rwtzsEFdXu/UgWdH4kljh1G9PDzWw==}
+  '@adonisjs/session@7.5.1':
+    resolution: {integrity: sha512-b1E0W/1nnJfAq3Gv8yPywgsxJ7uzzOBJxxulonXI4t1eSdvJzZGNrFScfVLOcjTwlxwrEFA847tULIQxgR4Spw==}
     engines: {node: '>=18.16.0'}
     peerDependencies:
       '@adonisjs/core': ^6.6.0
       '@adonisjs/redis': ^8.0.1 || ^9.0.0
       '@aws-sdk/client-dynamodb': ^3.658.0
       '@aws-sdk/util-dynamodb': ^3.658.0
-      '@japa/api-client': ^2.0.3
+      '@japa/api-client': ^2.0.3 || ^3.0.0
       '@japa/browser-client': ^2.0.3
       edge.js: ^6.0.2
     peerDependenciesMeta:
@@ -415,14 +415,14 @@ packages:
       edge.js:
         optional: true
 
-  '@adonisjs/shield@8.1.1':
-    resolution: {integrity: sha512-b/rIypxfG8HKPRvWYJo7qhvAlvYCFXn7/A7eb/QI/PQV4fMmW4iF9tAykxl5peu4WJCHCwXwR3Y6/j0VerQcmQ==}
+  '@adonisjs/shield@8.1.2':
+    resolution: {integrity: sha512-ksC3KMTnGVYyjos/PM7WMQ/mUNhDuxvpFqNd2YAgPEWYVc+kr3WTTkaRrC7srl6jFmbOOv4R4aQ9RIvo1S0pjg==}
     engines: {node: '>=18.16.0'}
     peerDependencies:
       '@adonisjs/core': ^6.2.0
       '@adonisjs/i18n': ^2.0.0
       '@adonisjs/session': ^7.0.0
-      '@japa/api-client': ^2.0.2
+      '@japa/api-client': ^2.0.2 || ^3.0.0
       edge.js: ^6.0.1
     peerDependenciesMeta:
       '@adonisjs/i18n':
@@ -569,152 +569,152 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@esbuild/aix-ppc64@0.24.2':
-    resolution: {integrity: sha512-thpVCb/rhxE/BnMLQ7GReQLLN8q9qbHmI55F4489/ByVg2aQaQ6kbcLb6FHkocZzQhxc4gx0sCk0tJkKBFzDhA==}
+  '@esbuild/aix-ppc64@0.25.0':
+    resolution: {integrity: sha512-O7vun9Sf8DFjH2UtqK8Ku3LkquL9SZL8OLY1T5NZkA34+wG3OQF7cl4Ql8vdNzM6fzBbYfLaiRLIOZ+2FOCgBQ==}
     engines: {node: '>=18'}
     cpu: [ppc64]
     os: [aix]
 
-  '@esbuild/android-arm64@0.24.2':
-    resolution: {integrity: sha512-cNLgeqCqV8WxfcTIOeL4OAtSmL8JjcN6m09XIgro1Wi7cF4t/THaWEa7eL5CMoMBdjoHOTh/vwTO/o2TRXIyzg==}
+  '@esbuild/android-arm64@0.25.0':
+    resolution: {integrity: sha512-grvv8WncGjDSyUBjN9yHXNt+cq0snxXbDxy5pJtzMKGmmpPxeAmAhWxXI+01lU5rwZomDgD3kJwulEnhTRUd6g==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [android]
 
-  '@esbuild/android-arm@0.24.2':
-    resolution: {integrity: sha512-tmwl4hJkCfNHwFB3nBa8z1Uy3ypZpxqxfTQOcHX+xRByyYgunVbZ9MzUUfb0RxaHIMnbHagwAxuTL+tnNM+1/Q==}
+  '@esbuild/android-arm@0.25.0':
+    resolution: {integrity: sha512-PTyWCYYiU0+1eJKmw21lWtC+d08JDZPQ5g+kFyxP0V+es6VPPSUhM6zk8iImp2jbV6GwjX4pap0JFbUQN65X1g==}
     engines: {node: '>=18'}
     cpu: [arm]
     os: [android]
 
-  '@esbuild/android-x64@0.24.2':
-    resolution: {integrity: sha512-B6Q0YQDqMx9D7rvIcsXfmJfvUYLoP722bgfBlO5cGvNVb5V/+Y7nhBE3mHV9OpxBf4eAS2S68KZztiPaWq4XYw==}
+  '@esbuild/android-x64@0.25.0':
+    resolution: {integrity: sha512-m/ix7SfKG5buCnxasr52+LI78SQ+wgdENi9CqyCXwjVR2X4Jkz+BpC3le3AoBPYTC9NHklwngVXvbJ9/Akhrfg==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [android]
 
-  '@esbuild/darwin-arm64@0.24.2':
-    resolution: {integrity: sha512-kj3AnYWc+CekmZnS5IPu9D+HWtUI49hbnyqk0FLEJDbzCIQt7hg7ucF1SQAilhtYpIujfaHr6O0UHlzzSPdOeA==}
+  '@esbuild/darwin-arm64@0.25.0':
+    resolution: {integrity: sha512-mVwdUb5SRkPayVadIOI78K7aAnPamoeFR2bT5nszFUZ9P8UpK4ratOdYbZZXYSqPKMHfS1wdHCJk1P1EZpRdvw==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [darwin]
 
-  '@esbuild/darwin-x64@0.24.2':
-    resolution: {integrity: sha512-WeSrmwwHaPkNR5H3yYfowhZcbriGqooyu3zI/3GGpF8AyUdsrrP0X6KumITGA9WOyiJavnGZUwPGvxvwfWPHIA==}
+  '@esbuild/darwin-x64@0.25.0':
+    resolution: {integrity: sha512-DgDaYsPWFTS4S3nWpFcMn/33ZZwAAeAFKNHNa1QN0rI4pUjgqf0f7ONmXf6d22tqTY+H9FNdgeaAa+YIFUn2Rg==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [darwin]
 
-  '@esbuild/freebsd-arm64@0.24.2':
-    resolution: {integrity: sha512-UN8HXjtJ0k/Mj6a9+5u6+2eZ2ERD7Edt1Q9IZiB5UZAIdPnVKDoG7mdTVGhHJIeEml60JteamR3qhsr1r8gXvg==}
+  '@esbuild/freebsd-arm64@0.25.0':
+    resolution: {integrity: sha512-VN4ocxy6dxefN1MepBx/iD1dH5K8qNtNe227I0mnTRjry8tj5MRk4zprLEdG8WPyAPb93/e4pSgi1SoHdgOa4w==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [freebsd]
 
-  '@esbuild/freebsd-x64@0.24.2':
-    resolution: {integrity: sha512-TvW7wE/89PYW+IevEJXZ5sF6gJRDY/14hyIGFXdIucxCsbRmLUcjseQu1SyTko+2idmCw94TgyaEZi9HUSOe3Q==}
+  '@esbuild/freebsd-x64@0.25.0':
+    resolution: {integrity: sha512-mrSgt7lCh07FY+hDD1TxiTyIHyttn6vnjesnPoVDNmDfOmggTLXRv8Id5fNZey1gl/V2dyVK1VXXqVsQIiAk+A==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [freebsd]
 
-  '@esbuild/linux-arm64@0.24.2':
-    resolution: {integrity: sha512-7HnAD6074BW43YvvUmE/35Id9/NB7BeX5EoNkK9obndmZBUk8xmJJeU7DwmUeN7tkysslb2eSl6CTrYz6oEMQg==}
+  '@esbuild/linux-arm64@0.25.0':
+    resolution: {integrity: sha512-9QAQjTWNDM/Vk2bgBl17yWuZxZNQIF0OUUuPZRKoDtqF2k4EtYbpyiG5/Dk7nqeK6kIJWPYldkOcBqjXjrUlmg==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [linux]
 
-  '@esbuild/linux-arm@0.24.2':
-    resolution: {integrity: sha512-n0WRM/gWIdU29J57hJyUdIsk0WarGd6To0s+Y+LwvlC55wt+GT/OgkwoXCXvIue1i1sSNWblHEig00GBWiJgfA==}
+  '@esbuild/linux-arm@0.25.0':
+    resolution: {integrity: sha512-vkB3IYj2IDo3g9xX7HqhPYxVkNQe8qTK55fraQyTzTX/fxaDtXiEnavv9geOsonh2Fd2RMB+i5cbhu2zMNWJwg==}
     engines: {node: '>=18'}
     cpu: [arm]
     os: [linux]
 
-  '@esbuild/linux-ia32@0.24.2':
-    resolution: {integrity: sha512-sfv0tGPQhcZOgTKO3oBE9xpHuUqguHvSo4jl+wjnKwFpapx+vUDcawbwPNuBIAYdRAvIDBfZVvXprIj3HA+Ugw==}
+  '@esbuild/linux-ia32@0.25.0':
+    resolution: {integrity: sha512-43ET5bHbphBegyeqLb7I1eYn2P/JYGNmzzdidq/w0T8E2SsYL1U6un2NFROFRg1JZLTzdCoRomg8Rvf9M6W6Gg==}
     engines: {node: '>=18'}
     cpu: [ia32]
     os: [linux]
 
-  '@esbuild/linux-loong64@0.24.2':
-    resolution: {integrity: sha512-CN9AZr8kEndGooS35ntToZLTQLHEjtVB5n7dl8ZcTZMonJ7CCfStrYhrzF97eAecqVbVJ7APOEe18RPI4KLhwQ==}
+  '@esbuild/linux-loong64@0.25.0':
+    resolution: {integrity: sha512-fC95c/xyNFueMhClxJmeRIj2yrSMdDfmqJnyOY4ZqsALkDrrKJfIg5NTMSzVBr5YW1jf+l7/cndBfP3MSDpoHw==}
     engines: {node: '>=18'}
     cpu: [loong64]
     os: [linux]
 
-  '@esbuild/linux-mips64el@0.24.2':
-    resolution: {integrity: sha512-iMkk7qr/wl3exJATwkISxI7kTcmHKE+BlymIAbHO8xanq/TjHaaVThFF6ipWzPHryoFsesNQJPE/3wFJw4+huw==}
+  '@esbuild/linux-mips64el@0.25.0':
+    resolution: {integrity: sha512-nkAMFju7KDW73T1DdH7glcyIptm95a7Le8irTQNO/qtkoyypZAnjchQgooFUDQhNAy4iu08N79W4T4pMBwhPwQ==}
     engines: {node: '>=18'}
     cpu: [mips64el]
     os: [linux]
 
-  '@esbuild/linux-ppc64@0.24.2':
-    resolution: {integrity: sha512-shsVrgCZ57Vr2L8mm39kO5PPIb+843FStGt7sGGoqiiWYconSxwTiuswC1VJZLCjNiMLAMh34jg4VSEQb+iEbw==}
+  '@esbuild/linux-ppc64@0.25.0':
+    resolution: {integrity: sha512-NhyOejdhRGS8Iwv+KKR2zTq2PpysF9XqY+Zk77vQHqNbo/PwZCzB5/h7VGuREZm1fixhs4Q/qWRSi5zmAiO4Fw==}
     engines: {node: '>=18'}
     cpu: [ppc64]
     os: [linux]
 
-  '@esbuild/linux-riscv64@0.24.2':
-    resolution: {integrity: sha512-4eSFWnU9Hhd68fW16GD0TINewo1L6dRrB+oLNNbYyMUAeOD2yCK5KXGK1GH4qD/kT+bTEXjsyTCiJGHPZ3eM9Q==}
+  '@esbuild/linux-riscv64@0.25.0':
+    resolution: {integrity: sha512-5S/rbP5OY+GHLC5qXp1y/Mx//e92L1YDqkiBbO9TQOvuFXM+iDqUNG5XopAnXoRH3FjIUDkeGcY1cgNvnXp/kA==}
     engines: {node: '>=18'}
     cpu: [riscv64]
     os: [linux]
 
-  '@esbuild/linux-s390x@0.24.2':
-    resolution: {integrity: sha512-S0Bh0A53b0YHL2XEXC20bHLuGMOhFDO6GN4b3YjRLK//Ep3ql3erpNcPlEFed93hsQAjAQDNsvcK+hV90FubSw==}
+  '@esbuild/linux-s390x@0.25.0':
+    resolution: {integrity: sha512-XM2BFsEBz0Fw37V0zU4CXfcfuACMrppsMFKdYY2WuTS3yi8O1nFOhil/xhKTmE1nPmVyvQJjJivgDT+xh8pXJA==}
     engines: {node: '>=18'}
     cpu: [s390x]
     os: [linux]
 
-  '@esbuild/linux-x64@0.24.2':
-    resolution: {integrity: sha512-8Qi4nQcCTbLnK9WoMjdC9NiTG6/E38RNICU6sUNqK0QFxCYgoARqVqxdFmWkdonVsvGqWhmm7MO0jyTqLqwj0Q==}
+  '@esbuild/linux-x64@0.25.0':
+    resolution: {integrity: sha512-9yl91rHw/cpwMCNytUDxwj2XjFpxML0y9HAOH9pNVQDpQrBxHy01Dx+vaMu0N1CKa/RzBD2hB4u//nfc+Sd3Cw==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [linux]
 
-  '@esbuild/netbsd-arm64@0.24.2':
-    resolution: {integrity: sha512-wuLK/VztRRpMt9zyHSazyCVdCXlpHkKm34WUyinD2lzK07FAHTq0KQvZZlXikNWkDGoT6x3TD51jKQ7gMVpopw==}
+  '@esbuild/netbsd-arm64@0.25.0':
+    resolution: {integrity: sha512-RuG4PSMPFfrkH6UwCAqBzauBWTygTvb1nxWasEJooGSJ/NwRw7b2HOwyRTQIU97Hq37l3npXoZGYMy3b3xYvPw==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [netbsd]
 
-  '@esbuild/netbsd-x64@0.24.2':
-    resolution: {integrity: sha512-VefFaQUc4FMmJuAxmIHgUmfNiLXY438XrL4GDNV1Y1H/RW3qow68xTwjZKfj/+Plp9NANmzbH5R40Meudu8mmw==}
+  '@esbuild/netbsd-x64@0.25.0':
+    resolution: {integrity: sha512-jl+qisSB5jk01N5f7sPCsBENCOlPiS/xptD5yxOx2oqQfyourJwIKLRA2yqWdifj3owQZCL2sn6o08dBzZGQzA==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [netbsd]
 
-  '@esbuild/openbsd-arm64@0.24.2':
-    resolution: {integrity: sha512-YQbi46SBct6iKnszhSvdluqDmxCJA+Pu280Av9WICNwQmMxV7nLRHZfjQzwbPs3jeWnuAhE9Jy0NrnJ12Oz+0A==}
+  '@esbuild/openbsd-arm64@0.25.0':
+    resolution: {integrity: sha512-21sUNbq2r84YE+SJDfaQRvdgznTD8Xc0oc3p3iW/a1EVWeNj/SdUCbm5U0itZPQYRuRTW20fPMWMpcrciH2EJw==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [openbsd]
 
-  '@esbuild/openbsd-x64@0.24.2':
-    resolution: {integrity: sha512-+iDS6zpNM6EnJyWv0bMGLWSWeXGN/HTaF/LXHXHwejGsVi+ooqDfMCCTerNFxEkM3wYVcExkeGXNqshc9iMaOA==}
+  '@esbuild/openbsd-x64@0.25.0':
+    resolution: {integrity: sha512-2gwwriSMPcCFRlPlKx3zLQhfN/2WjJ2NSlg5TKLQOJdV0mSxIcYNTMhk3H3ulL/cak+Xj0lY1Ym9ysDV1igceg==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [openbsd]
 
-  '@esbuild/sunos-x64@0.24.2':
-    resolution: {integrity: sha512-hTdsW27jcktEvpwNHJU4ZwWFGkz2zRJUz8pvddmXPtXDzVKTTINmlmga3ZzwcuMpUvLw7JkLy9QLKyGpD2Yxig==}
+  '@esbuild/sunos-x64@0.25.0':
+    resolution: {integrity: sha512-bxI7ThgLzPrPz484/S9jLlvUAHYMzy6I0XiU1ZMeAEOBcS0VePBFxh1JjTQt3Xiat5b6Oh4x7UC7IwKQKIJRIg==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [sunos]
 
-  '@esbuild/win32-arm64@0.24.2':
-    resolution: {integrity: sha512-LihEQ2BBKVFLOC9ZItT9iFprsE9tqjDjnbulhHoFxYQtQfai7qfluVODIYxt1PgdoyQkz23+01rzwNwYfutxUQ==}
+  '@esbuild/win32-arm64@0.25.0':
+    resolution: {integrity: sha512-ZUAc2YK6JW89xTbXvftxdnYy3m4iHIkDtK3CLce8wg8M2L+YZhIvO1DKpxrd0Yr59AeNNkTiic9YLf6FTtXWMw==}
     engines: {node: '>=18'}
     cpu: [arm64]
     os: [win32]
 
-  '@esbuild/win32-ia32@0.24.2':
-    resolution: {integrity: sha512-q+iGUwfs8tncmFC9pcnD5IvRHAzmbwQ3GPS5/ceCyHdjXubwQWI12MKWSNSMYLJMq23/IUCvJMS76PDqXe1fxA==}
+  '@esbuild/win32-ia32@0.25.0':
+    resolution: {integrity: sha512-eSNxISBu8XweVEWG31/JzjkIGbGIJN/TrRoiSVZwZ6pkC6VX4Im/WV2cz559/TXLcYbcrDN8JtKgd9DJVIo8GA==}
     engines: {node: '>=18'}
     cpu: [ia32]
     os: [win32]
 
-  '@esbuild/win32-x64@0.24.2':
-    resolution: {integrity: sha512-7VTgWzgMGvup6aSqDPLiW5zHaxYJGTO4OokMjIlrCtf+VpEL+cXKtCvg723iguPYI5oaUNdS+/V7OU2gvXVWEg==}
+  '@esbuild/win32-x64@0.25.0':
+    resolution: {integrity: sha512-ZENoHJBxA20C2zFzh6AI4fT6RraMzjYw4xKWemRTRmRVtN9c5DcH9r/f2ihEkMjOW5eGgrwCslG/+Y/3bL+DHQ==}
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
@@ -729,28 +729,28 @@ packages:
     resolution: {integrity: sha512-CCZCDJuduB9OUkFkY2IgppNZMi2lBQgD2qzwXkEia16cge2pijY/aXi96CJMquDMn3nJdlPV1A5KrJEXwfLNzQ==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
 
-  '@eslint/config-array@0.19.1':
-    resolution: {integrity: sha512-fo6Mtm5mWyKjA/Chy1BYTdn5mGJoDNjC7C64ug20ADsRDGrA85bN3uK3MaKbeRkRuuIEAR5N33Jr1pbm411/PA==}
+  '@eslint/config-array@0.19.2':
+    resolution: {integrity: sha512-GNKqxfHG2ySmJOBSHg7LxeUx4xpuCoFjacmlCoYWEbaPXLwvfIjixRI12xCQZeULksQb23uiA8F40w5TojpV7w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/core@0.10.0':
-    resolution: {integrity: sha512-gFHJ+xBOo4G3WRlR1e/3G8A6/KZAH6zcE/hkLRCZTi/B9avAG365QhFA8uOGzTMqgTghpn7/fSnscW++dpMSAw==}
+  '@eslint/core@0.12.0':
+    resolution: {integrity: sha512-cmrR6pytBuSMTaBweKoGMwu3EiHiEC+DoyupPmlZ0HxBJBtIxwe+j/E4XPIKNx+Q74c8lXKPwYawBf5glsTkHg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/eslintrc@3.2.0':
-    resolution: {integrity: sha512-grOjVNN8P3hjJn/eIETF1wwd12DdnwFDoyceUJLYYdkpbwq3nLi+4fqrTAONx7XDALqlL220wC/RHSC/QTI/0w==}
+  '@eslint/eslintrc@3.3.0':
+    resolution: {integrity: sha512-yaVPAiNAalnCZedKLdR21GOGILMLKPyqSLWaAjQFvYA2i/ciDi8ArYVr69Anohb6cH2Ukhqti4aFnYyPm8wdwQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/js@9.18.0':
-    resolution: {integrity: sha512-fK6L7rxcq6/z+AaQMtiFTkvbHkBLNlwyRxHpKawP0x3u9+NC6MQTnFW+AdpwC6gfHTW0051cokQgtTN2FqlxQA==}
+  '@eslint/js@9.21.0':
+    resolution: {integrity: sha512-BqStZ3HX8Yz6LvsF5ByXYrtigrV5AXADWLAGc7PH/1SxOb7/FIYYMszZZWiUou/GB9P2lXWk2SV4d+Z8h0nknw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/object-schema@2.1.5':
-    resolution: {integrity: sha512-o0bhxnL89h5Bae5T318nFoFzGy+YE5i/gGkoPAgkmTVdRKTiv3p8JHevPiPaMwoloKfEiiaHlawCqaZMqRm+XQ==}
+  '@eslint/object-schema@2.1.6':
+    resolution: {integrity: sha512-RBMg5FRL0I0gs51M/guSAj5/e14VQ4tpZnQNWwuDT66P14I43ItmPfIZRhO9fUVIPOAQXU47atlywZ/czoqFPA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/plugin-kit@0.2.5':
-    resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
+  '@eslint/plugin-kit@0.2.7':
+    resolution: {integrity: sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@faker-js/faker@9.3.0':
@@ -794,18 +794,18 @@ packages:
     resolution: {integrity: sha512-JBxkERygn7Bv/GbN5Rv8Ul6LVknS+5Bp6RgDC/O8gEBU/yeH5Ui5C/OlWrTb6qct7LjjfT6Re2NxB0ln0yYybA==}
     engines: {node: '>=18.18'}
 
-  '@humanwhocodes/retry@0.4.1':
-    resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
+  '@humanwhocodes/retry@0.4.2':
+    resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@inertiajs/core@2.0.0':
-    resolution: {integrity: sha512-2kvlk731NjwfXUku/ZoXsZNcOzx985icHtTC1dgN+8sAZtJfEg9QBrQ7sBjeLYiWtKgobJdwwpeDaexEneAtLQ==}
+  '@inertiajs/core@2.0.3':
+    resolution: {integrity: sha512-JvXzqc2XAt3WgEDMyxCyXO6bDLMCsBjFsYREU1/+3wtNTib7QKwK71+aF+MrhILpz+kRTi29TsLqnbkPHBAZjw==}
 
-  '@inertiajs/react@2.0.0':
-    resolution: {integrity: sha512-7X6TMYe7FcjG05UjRBkPYjTw/U+CrMeVDxxRolncuNYp6LmifPs1xOjTOC5M7gbpKaDEL/LuxNAX7ePJC3cbPg==}
+  '@inertiajs/react@2.0.3':
+    resolution: {integrity: sha512-eUMywEY+w4jcROiNjD7Vm+2GFapqOQmMh3OGlSat9XJB5+H7vtsQI+cvDa7oQXvt3CCv9Y/+HrKDHC/m969peA==}
     peerDependencies:
       react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -899,8 +899,8 @@ packages:
     resolution: {integrity: sha512-+vaqMiPnVaxlKH1sAwRQ80AwzlPysPKivhB8q1I2+BGe35lNrfiHKGMC52fuGAZBNuH5W2nInSCxr4cN/BTEIQ==}
     engines: {node: '>=18.16.0'}
 
-  '@japa/errors-printer@4.1.0':
-    resolution: {integrity: sha512-PdmNFcVYU//vbVeLR+lEOT8DckVgoVVx/JxuTulM/IHCEzz7zsYBY9BYEjcIxXY34nAMqLAkRSmnjUnL0tiJVA==}
+  '@japa/errors-printer@4.1.2':
+    resolution: {integrity: sha512-exl/r07ssJhEEsMdFT2sXgP1sV7Tp3mZvYUEDMXZ8YjWZPHTFLLcA7o9q9FJSSB1ITrEIbx2SWTB+2fFUaZ3NA==}
     engines: {node: '>=18.16.0'}
 
   '@japa/plugin-adonisjs@4.0.0':
@@ -920,8 +920,8 @@ packages:
       playwright:
         optional: true
 
-  '@japa/runner@4.1.0':
-    resolution: {integrity: sha512-tbKp4yuhy+LjOPEWOF9YaB9lhmqVvrcpAkkLysG2q3gKY7FFSaMaUlVc25eufuvZ7KMW+Gx03Sma05/vB4EztQ==}
+  '@japa/runner@4.2.0':
+    resolution: {integrity: sha512-e3BFn1rca/OTiagilkmRTrLVhl00iC/LrY5j4Ns/VZDONYHs9BKAbHaImxjD1zoHMEhwQEF+ce7fgMO/BK+lfg==}
     engines: {node: '>=18.16.0'}
 
   '@jest/schemas@29.6.3':
@@ -953,23 +953,23 @@ packages:
     resolution: {integrity: sha512-9I2Zn6+NJLfaGoz9jN3lpwDgAYvfGeNYdbAIjJOqzs4Tpc+VU3Jqq4IofSUBKajiDS8k9fZIg18/z13mpk1bsA==}
     engines: {node: '>=8'}
 
-  '@mantine/core@7.15.3':
-    resolution: {integrity: sha512-8IMTq5xDJDjByDUYkDNKImikASStzrnPtVumKsrEnyEY0zhAWkAe/z/+PjTUMcN44ncJ/PrXQkJ6qMaVWzSZwA==}
+  '@mantine/core@7.17.0':
+    resolution: {integrity: sha512-AU5UFewUNzBCUXIq5Jk6q402TEri7atZW61qHW6P0GufJ2W/JxGHRvgmHOVHTVIcuWQRCt9SBSqZoZ/vHs9LhA==}
     peerDependencies:
-      '@mantine/hooks': 7.15.3
+      '@mantine/hooks': 7.17.0
       react: ^18.x || ^19.x
       react-dom: ^18.x || ^19.x
 
-  '@mantine/hooks@7.15.3':
-    resolution: {integrity: sha512-rZYObhrmww3OIb4O30pDox/rc+9k3AExO0FSw13t7cfz5/Di+Ho1cChswVFAshnp81ucGEod1fiDOfuyGW7JhA==}
+  '@mantine/hooks@7.17.0':
+    resolution: {integrity: sha512-vo3K49mLy1nJ8LQNb5KDbJgnX0xwt3Y8JOF3ythjB5LEFMptdLSSgulu64zj+QHtzvffFCsMb05DbTLLpVP/JQ==}
     peerDependencies:
       react: ^18.x || ^19.x
 
-  '@mantine/modals@7.15.3':
-    resolution: {integrity: sha512-S/nu/4OcQw2sBbFVEIU1FfyiLDKVN9qOxnxhQBxaR9BFk4gEALzuU2uCorlu4f8TKUMo2kho0b0iTuYluQ07Dw==}
+  '@mantine/modals@7.17.0':
+    resolution: {integrity: sha512-4sfiFxIxMxfm2RH4jXMN+cr8tFS5AexXG4TY7TRN/ySdkiWtFVvDe5l2/KRWWeWwDUb7wQhht8Ompj5KtexlEA==}
     peerDependencies:
-      '@mantine/core': 7.15.3
-      '@mantine/hooks': 7.15.3
+      '@mantine/core': 7.17.0
+      '@mantine/hooks': 7.17.0
       react: ^18.x || ^19.x
       react-dom: ^18.x || ^19.x
 
@@ -1258,68 +1258,68 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
 
-  '@swc/core-darwin-arm64@1.10.7':
-    resolution: {integrity: sha512-SI0OFg987P6hcyT0Dbng3YRISPS9uhLX1dzW4qRrfqQdb0i75lPJ2YWe9CN47HBazrIA5COuTzrD2Dc0TcVsSQ==}
+  '@swc/core-darwin-arm64@1.11.4':
+    resolution: {integrity: sha512-Oi4lt4wqjpp80pcCh+vzvpsESJ8XXozYCE5EM/dDpr+9m2oRpkseds7Gq4ulzgdbUDPo1jJ1PonjjrKpfKY+sQ==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@swc/core-darwin-x64@1.10.7':
-    resolution: {integrity: sha512-RFIAmWVicD/l3RzxgHW0R/G1ya/6nyMspE2cAeDcTbjHi0I5qgdhBWd6ieXOaqwEwiCd0Mot1g2VZrLGoBLsjQ==}
+  '@swc/core-darwin-x64@1.11.4':
+    resolution: {integrity: sha512-Tb7ez94DXxhX5iJ5slnAlT2gwJinQk3pMnQ46Npi6adKr3ZXM5Bdk0jpRUp8XjEcgNXkQRV1DtrySgCz6YlEnQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [darwin]
 
-  '@swc/core-linux-arm-gnueabihf@1.10.7':
-    resolution: {integrity: sha512-QP8vz7yELWfop5mM5foN6KkLylVO7ZUgWSF2cA0owwIaziactB2hCPZY5QU690coJouk9KmdFsPWDnaCFUP8tg==}
+  '@swc/core-linux-arm-gnueabihf@1.11.4':
+    resolution: {integrity: sha512-p1uV+6Mi+0M+1kL7qL206ZaohomYMW7yroXSLDTJXbIylx7wG2xrUQL6AFtz2DwqDoX/E8jMNBjp+GcEy8r8Ig==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [linux]
 
-  '@swc/core-linux-arm64-gnu@1.10.7':
-    resolution: {integrity: sha512-NgUDBGQcOeLNR+EOpmUvSDIP/F7i/OVOKxst4wOvT5FTxhnkWrW+StJGKj+DcUVSK5eWOYboSXr1y+Hlywwokw==}
+  '@swc/core-linux-arm64-gnu@1.11.4':
+    resolution: {integrity: sha512-4ijX4bWf9oc7kWkT6xUhugVGzEJ7U9c7CHNmt/xhI/yWsQdfM11+HECqWh7ay3m+aaEoVdvTeU5gykeF5jSxDA==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
 
-  '@swc/core-linux-arm64-musl@1.10.7':
-    resolution: {integrity: sha512-gp5Un3EbeSThBIh6oac5ZArV/CsSmTKj5jNuuUAuEsML3VF9vqPO+25VuxCvsRf/z3py+xOWRaN2HY/rjMeZog==}
+  '@swc/core-linux-arm64-musl@1.11.4':
+    resolution: {integrity: sha512-XI+gOgcuSanejbAC5QXKTjNA3GUJi7bzHmeJbNhKpX9d349RdVwan0k9okHmhMBY7BywAg3LK0ovF9PmOLgMHg==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
 
-  '@swc/core-linux-x64-gnu@1.10.7':
-    resolution: {integrity: sha512-k/OxLLMl/edYqbZyUNg6/bqEHTXJT15l9WGqsl/2QaIGwWGvles8YjruQYQ9d4h/thSXLT9gd8bExU2D0N+bUA==}
+  '@swc/core-linux-x64-gnu@1.11.4':
+    resolution: {integrity: sha512-wyD6noaCPFayKOvl9mTxuiQoEULAagGuO0od2VkW7h4HvlgpOAZNekZYX73WEP/b+WuePNHurZ9KGpom43IzmA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
 
-  '@swc/core-linux-x64-musl@1.10.7':
-    resolution: {integrity: sha512-XeDoURdWt/ybYmXLCEE8aSiTOzEn0o3Dx5l9hgt0IZEmTts7HgHHVeRgzGXbR4yDo0MfRuX5nE1dYpTmCz0uyA==}
+  '@swc/core-linux-x64-musl@1.11.4':
+    resolution: {integrity: sha512-e2vG9gUF1BRX0BWqSEHop6u14l5BtV3VS2Pmr+oquc0Ycs/zj81xhYc3ML4ByK5OxDkAaKBWryAOKTLaJA/DVg==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
 
-  '@swc/core-win32-arm64-msvc@1.10.7':
-    resolution: {integrity: sha512-nYAbi/uLS+CU0wFtBx8TquJw2uIMKBnl04LBmiVoFrsIhqSl+0MklaA9FVMGA35NcxSJfcm92Prl2W2LfSnTqQ==}
+  '@swc/core-win32-arm64-msvc@1.11.4':
+    resolution: {integrity: sha512-rm51iljNqjCA/41gxYameuyjX1ENaTlvdxmaoPPYeUDt6hfypG93IxMJJCewaeHN9XfNxqZU7d4cupNqk+8nng==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [win32]
 
-  '@swc/core-win32-ia32-msvc@1.10.7':
-    resolution: {integrity: sha512-+aGAbsDsIxeLxw0IzyQLtvtAcI1ctlXVvVcXZMNXIXtTURM876yNrufRo4ngoXB3jnb1MLjIIjgXfFs/eZTUSw==}
+  '@swc/core-win32-ia32-msvc@1.11.4':
+    resolution: {integrity: sha512-PHy3N6zlyU8te7Umi0ggXNbcx2VUkwpE59PW9FQQy9MBZM1Qn+OEGnO/4KLWjGFABw+9CwIeaRYgq6uCi1ry6A==}
     engines: {node: '>=10'}
     cpu: [ia32]
     os: [win32]
 
-  '@swc/core-win32-x64-msvc@1.10.7':
-    resolution: {integrity: sha512-TBf4clpDBjF/UUnkKrT0/th76/zwvudk5wwobiTFqDywMApHip5O0VpBgZ+4raY2TM8k5+ujoy7bfHb22zu17Q==}
+  '@swc/core-win32-x64-msvc@1.11.4':
+    resolution: {integrity: sha512-0TiriDGl7Dr4ObfMBk07PS4Ql5hgQH0QnU3E8I+fbs45hqfwC5OrN47HOsXx4ZbEw8XYxp2NM8SGnVoTIm4J8w==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [win32]
 
-  '@swc/core@1.10.7':
-    resolution: {integrity: sha512-py91kjI1jV5D5W/Q+PurBdGsdU5TFbrzamP7zSCqLdMcHkKi3rQEM5jkQcZr0MXXSJTaayLxS3MWYTBIkzPDrg==}
+  '@swc/core@1.11.4':
+    resolution: {integrity: sha512-EHl6eNod/914xDRK4nu7gr78riK2cfi4DkAMvJt6COdaNGOnbR5eKrLe3SnRizyzzrPcxUMhflDL5hrcXS8rAQ==}
     engines: {node: '>=10'}
     peerDependencies:
       '@swc/helpers': '*'
@@ -1330,12 +1330,16 @@ packages:
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
 
-  '@swc/types@0.1.17':
-    resolution: {integrity: sha512-V5gRru+aD8YVyCOMAjMpWR1Ui577DD5KSJsHP8RAxopAH22jFz6GZd/qxqjO6MJHQhcsjvjOFXyDhyLQUnMveQ==}
+  '@swc/types@0.1.19':
+    resolution: {integrity: sha512-WkAZaAfj44kh/UFdAQcrMP1I0nwRqpt27u+08LMBYMqmQfwwMofYoMh/48NGkMMRfC4ynpfwRbJuu8ErfNloeA==}
 
   '@szmarczak/http-timer@5.0.1':
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
     engines: {node: '>=14.16'}
+
+  '@tokenizer/inflate@0.2.7':
+    resolution: {integrity: sha512-MADQgmZT1eKjp06jpI2yozxaU9uVs4GzzgSL+uEq7bVcJ9V1ZXQkeGNql1fsSI0gMy1vhvNTNbUqrx+pZfJVmg==}
+    engines: {node: '>=18'}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -1412,8 +1416,8 @@ packages:
   '@types/node@18.19.70':
     resolution: {integrity: sha512-RE+K0+KZoEpDUbGGctnGdkrLFwi1eYKTlIHNl2Um98mUkGsm1u2Ff6Ltd0e8DktTtC98uy7rSj+hO8t/QuLoVQ==}
 
-  '@types/node@22.10.5':
-    resolution: {integrity: sha512-F8Q+SeGimwOo86fiovQh8qiXfFEh2/ocYv7tU5pJ3EXMSSxk1Joj5wefpFK2fHTf/N6HKGSxIDBT9f3gCxXPkQ==}
+  '@types/node@22.13.5':
+    resolution: {integrity: sha512-+lTU0PxZXn0Dr1NBtC7Y8cR21AJr87dLLU953CWA6pMxxv/UDc7jYAY90upcrie1nRcD6XNG5HOYEDtgW5TxAg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1424,16 +1428,16 @@ packages:
   '@types/pluralize@0.0.33':
     resolution: {integrity: sha512-JOqsl+ZoCpP4e8TDke9W79FDcSgPAR0l6pixx2JHkhnRjvShyYiAYw2LVsnA7K08Y6DeOnaU6ujmENO4os/cYg==}
 
-  '@types/qs@6.9.17':
-    resolution: {integrity: sha512-rX4/bPcfmvxHDv0XjfJELTTr+iB+tn032nPILqHm5wbthUUUuVtNGGqzhya9XUxjTP8Fpr0qYgSZZKxGY++svQ==}
+  '@types/qs@6.9.18':
+    resolution: {integrity: sha512-kK7dgTYDyGqS+e2Q4aK9X3D7q234CIZ1Bv0q/7Z5IwRDoADNU81xXJK/YVyLbLTZCoIwUoDoffFeF+p/eIklAA==}
 
-  '@types/react-dom@19.0.3':
-    resolution: {integrity: sha512-0Knk+HJiMP/qOZgMyNFamlIjw9OFCsyC2ZbigmEEyXXixgre6IQpm/4V+r3qH4GC1JPvRJKInw+on2rV6YZLeA==}
+  '@types/react-dom@19.0.4':
+    resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.0.6':
-    resolution: {integrity: sha512-gIlMztcTeDgXCUj0vCBOqEuSEhX//63fW9SZtCJ+agxoQTOklwDfiEMlTWn4mR/C/UK5VHlpwsCsOyf7/hc4lw==}
+  '@types/react@19.0.10':
+    resolution: {integrity: sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -2042,16 +2046,20 @@ packages:
     resolution: {integrity: sha512-z5mNO97k8hRVpJ6Ew1qbkMTfQ44CwuWnl+ShMCrEFgD+b324CnjBS6HbiR+Wh6Wcmw9C+/XsFBHzZ+376PpD/w==}
     engines: {node: '>=18.16.0'}
 
-  edge-lexer@6.0.2:
-    resolution: {integrity: sha512-C30wqcw66JwpepLnsTqTp0P4JqKa2xEbAfNj3dPOvBYq4zybiYuhlpSzExvNUeoAAnbjgozgVTVAQ38HctyV4g==}
+  edge-error@4.0.2:
+    resolution: {integrity: sha512-jB76VYn8wapDHKHSOmP3vbKLoa77RJYsTLNmfl8+cuCD69uxZtP3h+kqV+Prw/YkYmN7yHyp4IApE15pDByk0A==}
     engines: {node: '>=18.16.0'}
 
-  edge-parser@9.0.3:
-    resolution: {integrity: sha512-E9W+9wV8QVGLZCtrgKp6k9kIncsUxmrpa/yG+vwVGPpCMBZZZZaShJXwVDHThyL2mkHkWyYvhBpPhuucgW8kiA==}
+  edge-lexer@6.0.3:
+    resolution: {integrity: sha512-/s15CNnfhZv97bsW+ZgV5rtONULYjhCDYu+usbVLqZ8UQ6b/hQUNvQSIQBXA6Gql9dm72TMBB9sb/eWM2esufg==}
     engines: {node: '>=18.16.0'}
 
-  edge.js@6.2.0:
-    resolution: {integrity: sha512-xw82TzdPngccJiFqK6FE/79vO6mUvWVvKe6OEu/VHDOf199SIOW1q022d3UIaKGXcwf60lIXZYPIRqooQuzigA==}
+  edge-parser@9.0.4:
+    resolution: {integrity: sha512-vnjzfpqpjM4Mjt9typc1zLoFpC1F6kAObfcdyA6rSy+izIPji2RaQz5jWx5s5iG9hNcuyjtNyGRCLFVfoYhWcA==}
+    engines: {node: '>=18.16.0'}
+
+  edge.js@6.2.1:
+    resolution: {integrity: sha512-me875zh6YA0V429hywgQIpHgMvQkondv5XHaP6EsL2yIBpLcBWCl7Ba1cai0SwYhp8iD0IyV3KjpxLrnW7S2Ag==}
     engines: {node: '>=18.16.0'}
 
   ee-first@1.1.1:
@@ -2121,8 +2129,8 @@ packages:
     resolution: {integrity: sha512-MZ4iQ6JwHOBQjahnjwaC1ZtIBH+2ohjamzAO3oaHcXYup7qxjF2fixyH+Q71voWHeOkI2q/TnJao/KfXYIZWbw==}
     engines: {node: '>= 0.4'}
 
-  esbuild@0.24.2:
-    resolution: {integrity: sha512-+9egpBW8I3CD5XPe0n6BfT5fxLzxrlDzqydF3aviG+9ni1lDC/OvMHcxqEFV0+LANZG5R1bFMWfUrjVsdwxJvA==}
+  esbuild@0.25.0:
+    resolution: {integrity: sha512-BXq5mqc8ltbaN34cDqWuYKyNhX8D/Z0J1xdtdQ8UcIIIyJyz+ZMKUt58tF3SrZ85jcfN/PZYhjR5uDQAYNVbuw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2188,8 +2196,8 @@ packages:
     resolution: {integrity: sha512-UyLnSehNt62FFhSwjZlHmeokpRK59rcz29j+F1/aDgbkbRTk7wIc9XzdoasMUbRNKDM0qQt/+BJ4BrpFeABemw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  eslint@9.18.0:
-    resolution: {integrity: sha512-+waTfRWQlSbpt3KWE+CjrPPYnbq9kfZIYUqapc0uBXyjTp8aYXZDsUH16m39Ryq3NjAVP4tjuF7KaukeqoCoaA==}
+  eslint@9.21.0:
+    resolution: {integrity: sha512-KjeihdFqTPhOMXTt7StsDxriV4n66ueuF/jfPNC3j/lduHwr/ijDwJMsF+wyMJethgiKi5wniIE243vi07d3pg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     hasBin: true
     peerDependencies:
@@ -2282,6 +2290,9 @@ packages:
   fastq@1.18.0:
     resolution: {integrity: sha512-QKHXPW0hD8g4UET03SdOdunzSouc9N4AuHdsX8XNcTsuz+yYFILVNIX4l9yHABMhiEI9Db0JTTIpu0wB+Y1QQw==}
 
+  fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+
   figures@6.1.0:
     resolution: {integrity: sha512-d+l3qxjSesT4V7v2fh+QnmFnUWv9lSpjarhShNTgBOfA0ttejbQUAlHLitbjkoRiDulW0OPoQPYIGhIC8ohejg==}
     engines: {node: '>=18'}
@@ -2290,8 +2301,8 @@ packages:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
     engines: {node: '>=16.0.0'}
 
-  file-type@19.6.0:
-    resolution: {integrity: sha512-VZR5I7k5wkD0HgFnMsq5hOsSc710MJMu5Nc5QYsbe38NN5iPV/XTObYLc/cpttRTf6lX538+5uO1ZQRhYibiZQ==}
+  file-type@20.4.0:
+    resolution: {integrity: sha512-+NZeExsi4G6EWaMbSmvBeCoqsj9EqNvOj1o/0uPVPW4O51FSCmxFlNEp/PitsqBMCbax4cGoaYmnUK5FLTuG4g==}
     engines: {node: '>=18'}
 
   fill-range@7.1.1:
@@ -2574,6 +2585,10 @@ packages:
 
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
+    engines: {node: '>=0.10.0'}
+
+  iconv-lite@0.6.3:
+    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
 
   ieee754@1.2.1:
@@ -2878,6 +2893,7 @@ packages:
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
@@ -3346,20 +3362,20 @@ packages:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
 
-  pg-pool@3.7.0:
-    resolution: {integrity: sha512-ZOBQForurqh4zZWjrgSwwAtzJ7QiRX0ovFkZr2klsen3Nm0aoh33Ls0fzfv3imeH/nw/O27cjdz5kzYJfeGp/g==}
+  pg-pool@3.7.1:
+    resolution: {integrity: sha512-xIOsFoh7Vdhojas6q3596mXFsR8nwBQBXX5JiV7p9buEVAGqYL4yFzclON5P9vFrpu1u7Zwl2oriyDa89n0wbw==}
     peerDependencies:
       pg: '>=8.0'
 
-  pg-protocol@1.7.0:
-    resolution: {integrity: sha512-hTK/mE36i8fDDhgDFjy6xNOG+LCorxLG3WO17tku+ij6sVHXh1jQUJ8hYAnRhNla4QVD2H8er/FOjc/+EgC6yQ==}
+  pg-protocol@1.7.1:
+    resolution: {integrity: sha512-gjTHWGYWsEgy9MsY0Gp6ZJxV24IjDqdpTW7Eh0x+WfJLFsm/TJx1MzL6T0D88mBvkpxotCQ6TwW6N+Kko7lhgQ==}
 
   pg-types@2.2.0:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
 
-  pg@8.13.1:
-    resolution: {integrity: sha512-OUir1A0rPNZlX//c7ksiu7crsGZTKSOXJPgtNiHGIlC9H0lO+NC6ZDYksSgBYY/thSWhnSRBv8w1lieNNGATNQ==}
+  pg@8.13.3:
+    resolution: {integrity: sha512-P6tPt9jXbL9HVu/SSRERNYaYG++MjnscnegFh9pPHihfoBSujsrka0hyuymMzeJKFWrcG8wvCKy8rCe8e5nDUQ==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -3436,8 +3452,8 @@ packages:
     peerDependencies:
       postcss: ^8.2.1
 
-  postcss@8.4.49:
-    resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
+  postcss@8.5.3:
+    resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres-array@2.0.0:
@@ -3464,8 +3480,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier@3.4.2:
-    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+  prettier@3.5.2:
+    resolution: {integrity: sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3525,6 +3541,10 @@ packages:
     resolution: {integrity: sha512-EJPeIn0CYrGu+hli1xilKAPXODtJ12T0sP63Ijx2/khC2JtuaN3JyNIpvmnkmaEtha9ocbG4A4cMcr+TvqvwQg==}
     engines: {node: '>=0.6'}
 
+  qs@6.14.0:
+    resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
+    engines: {node: '>=0.6'}
+
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
@@ -3543,8 +3563,8 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
-  raw-body@2.5.2:
-    resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
+  raw-body@3.0.0:
+    resolution: {integrity: sha512-RmkhL8CAyCRPXCE28MMH0z2PNWQBNk2Q09ZdxM9IOOXwxwZbN+qbWaatPkdkWIKL2ZVDImrN/pK5HTRz2PcS4g==}
     engines: {node: '>= 0.8'}
 
   rc@1.2.8:
@@ -3559,8 +3579,8 @@ packages:
   react-fast-compare@3.2.2:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
 
-  react-icons@5.4.0:
-    resolution: {integrity: sha512-7eltJxgVt7X64oHh6wSWNwwbKTCtMfK35hcjvJS0yxEAhPM8oUKdS3+kqaW1vicIltw+kR2unHaa12S9pPALoQ==}
+  react-icons@5.5.0:
+    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
     peerDependencies:
       react: '*'
 
@@ -3691,8 +3711,8 @@ packages:
   rehype-stringify@10.0.1:
     resolution: {integrity: sha512-k9ecfXHmIPuFVI61B9DeLPN0qFHfawM6RsuX48hoqlaKSF61RskNjSm1lI8PhBEM0MRdLxVVm4WmTqJQccH9mA==}
 
-  release-it@18.1.1:
-    resolution: {integrity: sha512-rC/iVKri7U/Kp/Myujmsf7HG2gPq8My/LBVB72TbZZYKD14fmgDZC4Eyn8DD7Yh2h/G/YCCsRe1QQPrjXj9Mzg==}
+  release-it@18.1.2:
+    resolution: {integrity: sha512-HOVRcicehCgoCsPFOu0iCBlEC8GDOoKS5s6ICkWmqomGEoZtRQ88D3RCsI5MciSU8vAQU+aWZW2z57NQNNb74w==}
     engines: {node: ^20.9.0 || >=22.0.0}
     hasBin: true
 
@@ -4057,8 +4077,8 @@ packages:
   ts-morph@23.0.0:
     resolution: {integrity: sha512-FcvFx7a9E8TUe6T3ShihXJLiJOiqyafzFKUO4aqIHDUCIvADdGNShcbc2W5PMr3LerXRv7mafvFZ9lRENxJmug==}
 
-  ts-node-maintained@10.9.4:
-    resolution: {integrity: sha512-Fq4c+LoWee4E0YWDBsotcBR8CB9pStBYBUuanQjXuOlLFescZ4uEODG8mdpDGGWYSCCaQXBjEgXzLIGu/NbyNw==}
+  ts-node-maintained@10.9.5:
+    resolution: {integrity: sha512-p8LJFxBTE3YZYGcOMxWKEpaY2nz55NyOg+mTDIOW/MrOIUTAAb7+UkleRu5z90P/fCVVv5pXN1/nb92G/tSNyw==}
     hasBin: true
     peerDependencies:
       '@swc/core': '>=1.2.50'
@@ -4137,8 +4157,8 @@ packages:
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
-  undici@6.21.0:
-    resolution: {integrity: sha512-BUgJXc752Kou3oOIuU1i+yZZypyZRqNPW0vqoMPl8VaoalSfeR0D8/t4iAS3yirs79SSMTxTag+ZC86uswv+Cw==}
+  undici@6.21.1:
+    resolution: {integrity: sha512-q/1rj5D0/zayJB2FraXdaWxbhWiNKDvu8naDT2dl1yTlvJp4BLtOcp2a5BvgGNQpYYJzau7tf1WgKv3b+7mqpQ==}
     engines: {node: '>=18.17'}
 
   unicorn-magic@0.1.0:
@@ -4269,8 +4289,8 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
 
-  vite@6.0.7:
-    resolution: {integrity: sha512-RDt8r/7qx9940f8FcOIAH9PTViRrghKaK2K1jY3RaAURrEUbm9Du1mJ72G+jlhtG3WwodnfzY8ORQZbBavZEAQ==}
+  vite@6.2.0:
+    resolution: {integrity: sha512-7dPxoo+WsT/64rDcwoOjk76XHj+TqNTIvHKcuMQ1k4/SeHDaQt5GFAeLYzrimZrMpn/O6DtdI03WUjdxuPM0oQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -4394,8 +4414,8 @@ packages:
   youch@3.3.4:
     resolution: {integrity: sha512-UeVBXie8cA35DS6+nBkls68xaBBXCye0CNznrhszZjTbRVnJKQuNsyLKBTTL4ln1o1rh2PKtv35twV7irj5SEg==}
 
-  youch@4.1.0-beta.4:
-    resolution: {integrity: sha512-sknU8tgzmqx7PJBEqAdqBYjleLjHfNnFBTi3HwQTh6I+4OoJaIHkezxxUJ/ta7cpfgdG87bdYPCucVZV+GzhRA==}
+  youch@4.1.0-beta.5:
+    resolution: {integrity: sha512-92+bvKtAjm18S2o+IP0aLBpLtzY332Ji9geNLp07cLgHsK3aHVjWrg2eyE5LIKMv6j+GWu+Ehx4My7BTXxMbsA==}
     engines: {node: '>=20.6.0'}
 
   zwitch@2.0.4:
@@ -4417,9 +4437,9 @@ snapshots:
       youch: 3.3.4
       youch-terminal: 2.2.3
 
-  '@adonisjs/ally@5.0.2(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))':
+  '@adonisjs/ally@5.0.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
       '@poppinss/oauth-client': 5.1.5
       '@poppinss/utils': 6.9.2
 
@@ -4455,41 +4475,43 @@ snapshots:
     transitivePeerDependencies:
       - babel-plugin-macros
 
-  '@adonisjs/auth@9.3.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(@japa/plugin-adonisjs@4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@japa/runner@4.1.0))':
+  '@adonisjs/auth@9.3.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(@japa/plugin-adonisjs@4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@japa/runner@4.2.0))':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
-      '@adonisjs/presets': 2.6.4(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
+      '@adonisjs/presets': 2.6.4(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))
       '@poppinss/utils': 6.9.2
       basic-auth: 2.0.1
     optionalDependencies:
-      '@adonisjs/lucid': 21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1)
-      '@adonisjs/session': 7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0)
-      '@japa/plugin-adonisjs': 4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@japa/runner@4.1.0)
+      '@adonisjs/lucid': 21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3)
+      '@adonisjs/session': 7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1)
+      '@japa/plugin-adonisjs': 4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@japa/runner@4.2.0)
     transitivePeerDependencies:
       - '@adonisjs/assembler'
 
-  '@adonisjs/bodyparser@10.0.2(@adonisjs/http-server@7.4.0(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/encryption@6.0.2)(@adonisjs/events@9.0.2(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3)(@adonisjs/logger@6.0.5))':
+  '@adonisjs/bodyparser@10.0.3(@adonisjs/http-server@7.4.0(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/encryption@6.0.2)(@adonisjs/events@9.0.2(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3)(@adonisjs/logger@6.0.5))':
     dependencies:
       '@adonisjs/http-server': 7.4.0(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/encryption@6.0.2)(@adonisjs/events@9.0.2(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3)(@adonisjs/logger@6.0.5)
       '@paralleldrive/cuid2': 2.2.2
       '@poppinss/macroable': 1.0.4
       '@poppinss/multiparty': 2.0.1
       '@poppinss/utils': 6.9.2
-      '@types/qs': 6.9.17
+      '@types/qs': 6.9.18
       bytes: 3.1.2
-      file-type: 19.6.0
+      file-type: 20.4.0
       inflation: 2.1.0
       media-typer: 1.1.0
-      qs: 6.13.1
-      raw-body: 2.5.2
+      qs: 6.14.0
+      raw-body: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
 
-  '@adonisjs/cache@1.0.0-6(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1))(knex@3.1.0(pg@8.13.1))(tslib@2.8.1)':
+  '@adonisjs/cache@1.0.0-6(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3))(knex@3.1.0(pg@8.13.3))(tslib@2.8.1)':
     dependencies:
       '@adonisjs/assembler': 7.8.2(typescript@5.7.3)
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
-      bentocache: 1.0.0-beta.11(knex@3.1.0(pg@8.13.1))(tslib@2.8.1)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
+      bentocache: 1.0.0-beta.11(knex@3.1.0(pg@8.13.3))(tslib@2.8.1)
     optionalDependencies:
-      '@adonisjs/lucid': 21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1)
+      '@adonisjs/lucid': 21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3)
     transitivePeerDependencies:
       - '@aws-sdk/client-dynamodb'
       - ioredis
@@ -4502,11 +4524,11 @@ snapshots:
     dependencies:
       '@poppinss/utils': 6.9.2
 
-  '@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)':
+  '@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)':
     dependencies:
       '@adonisjs/ace': 13.3.0
       '@adonisjs/application': 8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3)
-      '@adonisjs/bodyparser': 10.0.2(@adonisjs/http-server@7.4.0(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/encryption@6.0.2)(@adonisjs/events@9.0.2(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3)(@adonisjs/logger@6.0.5))
+      '@adonisjs/bodyparser': 10.0.3(@adonisjs/http-server@7.4.0(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/encryption@6.0.2)(@adonisjs/events@9.0.2(@adonisjs/application@8.3.1(@adonisjs/config@5.0.2)(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3))(@adonisjs/fold@10.1.3)(@adonisjs/logger@6.0.5))
       '@adonisjs/config': 5.0.2
       '@adonisjs/encryption': 6.0.2
       '@adonisjs/env': 6.1.1
@@ -4535,11 +4557,13 @@ snapshots:
     optionalDependencies:
       '@adonisjs/assembler': 7.8.2(typescript@5.7.3)
       '@vinejs/vine': 3.0.0
-      edge.js: 6.2.0
+      edge.js: 6.2.1
+    transitivePeerDependencies:
+      - supports-color
 
-  '@adonisjs/cors@2.2.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))':
+  '@adonisjs/cors@2.2.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
 
   '@adonisjs/encryption@6.0.2':
     dependencies:
@@ -4559,25 +4583,25 @@ snapshots:
       dotenv: 16.4.7
       split-lines: 3.0.0
 
-  '@adonisjs/eslint-config@2.0.0-beta.7(eslint@9.18.0)(prettier@3.4.2)(typescript@5.7.3)':
+  '@adonisjs/eslint-config@2.0.0(eslint@9.21.0)(prettier@3.5.2)(typescript@5.7.3)':
     dependencies:
-      '@adonisjs/eslint-plugin': 2.0.0-beta.5(eslint@9.18.0)(typescript@5.7.3)
-      '@stylistic/eslint-plugin-ts': 2.12.1(eslint@9.18.0)(typescript@5.7.3)
-      eslint: 9.18.0
-      eslint-config-prettier: 9.1.0(eslint@9.18.0)
-      eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0))(eslint@9.18.0)(prettier@3.4.2)
-      eslint-plugin-unicorn: 55.0.0(eslint@9.18.0)
-      prettier: 3.4.2
-      typescript-eslint: 8.19.1(eslint@9.18.0)(typescript@5.7.3)
+      '@adonisjs/eslint-plugin': 2.0.0-beta.5(eslint@9.21.0)(typescript@5.7.3)
+      '@stylistic/eslint-plugin-ts': 2.12.1(eslint@9.21.0)(typescript@5.7.3)
+      eslint: 9.21.0
+      eslint-config-prettier: 9.1.0(eslint@9.21.0)
+      eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.21.0))(eslint@9.21.0)(prettier@3.5.2)
+      eslint-plugin-unicorn: 55.0.0(eslint@9.21.0)
+      prettier: 3.5.2
+      typescript-eslint: 8.19.1(eslint@9.21.0)(typescript@5.7.3)
     transitivePeerDependencies:
       - '@types/eslint'
       - supports-color
       - typescript
 
-  '@adonisjs/eslint-plugin@2.0.0-beta.5(eslint@9.18.0)(typescript@5.7.3)':
+  '@adonisjs/eslint-plugin@2.0.0-beta.5(eslint@9.21.0)(typescript@5.7.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
-      eslint: 9.18.0
+      '@typescript-eslint/utils': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
+      eslint: 9.21.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4627,24 +4651,24 @@ snapshots:
       mime-types: 2.1.35
       on-finished: 2.4.1
       proxy-addr: 2.0.7
-      qs: 6.13.1
+      qs: 6.14.0
       tmp-cache: 1.1.0
       type-is: 1.6.18
       vary: 1.1.2
       youch: 3.3.4
 
-  '@adonisjs/inertia@3.0.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(@adonisjs/vite@4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))))(edge.js@6.2.0)':
+  '@adonisjs/inertia@3.1.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(@adonisjs/vite@4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/shield@8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))))(edge.js@6.2.1)':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
-      '@adonisjs/session': 7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0)
-      '@adonisjs/vite': 4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
+      '@adonisjs/session': 7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1)
+      '@adonisjs/vite': 4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/shield@8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))
       '@poppinss/utils': 6.9.2
       '@tuyau/utils': 0.0.6
-      edge-error: 4.0.1
-      edge.js: 6.2.0
+      edge-error: 4.0.2
+      edge.js: 6.2.1
       html-entities: 2.5.2
       locate-path: 7.2.0
-      qs: 6.13.1
+      qs: 6.14.0
 
   '@adonisjs/logger@6.0.5':
     dependencies:
@@ -4652,10 +4676,10 @@ snapshots:
       abstract-logging: 2.0.1
       pino: 9.6.0
 
-  '@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.1)':
+  '@adonisjs/lucid@21.6.0(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.0)(luxon@3.5.0)(pg@8.13.3)':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
-      '@adonisjs/presets': 2.6.4(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
+      '@adonisjs/presets': 2.6.4(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))
       '@faker-js/faker': 9.3.0
       '@poppinss/hooks': 7.2.5
       '@poppinss/macroable': 1.0.4
@@ -4663,8 +4687,8 @@ snapshots:
       fast-deep-equal: 3.1.3
       igniculus: 1.5.0
       kleur: 4.1.5
-      knex: 3.1.0(pg@8.13.1)
-      knex-dynamic-connection: 3.2.0(pg@8.13.1)
+      knex: 3.1.0(pg@8.13.3)
+      knex-dynamic-connection: 3.2.0(pg@8.13.3)
       pretty-hrtime: 1.0.3
       qs: 6.13.1
       slash: 5.1.0
@@ -4683,9 +4707,9 @@ snapshots:
       - supports-color
       - tedious
 
-  '@adonisjs/presets@2.6.4(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))':
+  '@adonisjs/presets@2.6.4(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
       '@poppinss/utils': 6.9.2
     optionalDependencies:
       '@adonisjs/assembler': 7.8.2(typescript@5.7.3)
@@ -4695,44 +4719,44 @@ snapshots:
       '@poppinss/colors': 4.1.4
       string-width: 7.2.0
 
-  '@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0)':
+  '@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1)':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
       '@poppinss/macroable': 1.0.4
       '@poppinss/utils': 6.9.2
     optionalDependencies:
-      edge.js: 6.2.0
+      edge.js: 6.2.1
 
-  '@adonisjs/shield@8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)':
+  '@adonisjs/shield@8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
-      '@adonisjs/session': 7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
+      '@adonisjs/session': 7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1)
       '@poppinss/utils': 6.9.2
       csrf: 3.1.0
       helmet-csp: 3.4.0
     optionalDependencies:
-      edge.js: 6.2.0
+      edge.js: 6.2.1
 
-  '@adonisjs/static@1.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))':
+  '@adonisjs/static@1.1.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
       serve-static: 1.16.2
     transitivePeerDependencies:
       - supports-color
 
   '@adonisjs/tsconfig@1.4.0': {}
 
-  '@adonisjs/vite@4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))':
+  '@adonisjs/vite@4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/shield@8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
       '@poppinss/utils': 6.9.2
-      '@vavite/multibuild': 5.1.0(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))
+      '@vavite/multibuild': 5.1.0(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))
       edge-error: 4.0.1
-      vite: 6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))
-      vite-plugin-restart: 0.4.2(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))
+      vite: 6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))
+      vite-plugin-restart: 0.4.2(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))
     optionalDependencies:
-      '@adonisjs/shield': 8.1.1(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)
-      edge.js: 6.2.0
+      '@adonisjs/shield': 8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)
+      edge.js: 6.2.1
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -4878,101 +4902,101 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@esbuild/aix-ppc64@0.24.2':
+  '@esbuild/aix-ppc64@0.25.0':
     optional: true
 
-  '@esbuild/android-arm64@0.24.2':
+  '@esbuild/android-arm64@0.25.0':
     optional: true
 
-  '@esbuild/android-arm@0.24.2':
+  '@esbuild/android-arm@0.25.0':
     optional: true
 
-  '@esbuild/android-x64@0.24.2':
+  '@esbuild/android-x64@0.25.0':
     optional: true
 
-  '@esbuild/darwin-arm64@0.24.2':
+  '@esbuild/darwin-arm64@0.25.0':
     optional: true
 
-  '@esbuild/darwin-x64@0.24.2':
+  '@esbuild/darwin-x64@0.25.0':
     optional: true
 
-  '@esbuild/freebsd-arm64@0.24.2':
+  '@esbuild/freebsd-arm64@0.25.0':
     optional: true
 
-  '@esbuild/freebsd-x64@0.24.2':
+  '@esbuild/freebsd-x64@0.25.0':
     optional: true
 
-  '@esbuild/linux-arm64@0.24.2':
+  '@esbuild/linux-arm64@0.25.0':
     optional: true
 
-  '@esbuild/linux-arm@0.24.2':
+  '@esbuild/linux-arm@0.25.0':
     optional: true
 
-  '@esbuild/linux-ia32@0.24.2':
+  '@esbuild/linux-ia32@0.25.0':
     optional: true
 
-  '@esbuild/linux-loong64@0.24.2':
+  '@esbuild/linux-loong64@0.25.0':
     optional: true
 
-  '@esbuild/linux-mips64el@0.24.2':
+  '@esbuild/linux-mips64el@0.25.0':
     optional: true
 
-  '@esbuild/linux-ppc64@0.24.2':
+  '@esbuild/linux-ppc64@0.25.0':
     optional: true
 
-  '@esbuild/linux-riscv64@0.24.2':
+  '@esbuild/linux-riscv64@0.25.0':
     optional: true
 
-  '@esbuild/linux-s390x@0.24.2':
+  '@esbuild/linux-s390x@0.25.0':
     optional: true
 
-  '@esbuild/linux-x64@0.24.2':
+  '@esbuild/linux-x64@0.25.0':
     optional: true
 
-  '@esbuild/netbsd-arm64@0.24.2':
+  '@esbuild/netbsd-arm64@0.25.0':
     optional: true
 
-  '@esbuild/netbsd-x64@0.24.2':
+  '@esbuild/netbsd-x64@0.25.0':
     optional: true
 
-  '@esbuild/openbsd-arm64@0.24.2':
+  '@esbuild/openbsd-arm64@0.25.0':
     optional: true
 
-  '@esbuild/openbsd-x64@0.24.2':
+  '@esbuild/openbsd-x64@0.25.0':
     optional: true
 
-  '@esbuild/sunos-x64@0.24.2':
+  '@esbuild/sunos-x64@0.25.0':
     optional: true
 
-  '@esbuild/win32-arm64@0.24.2':
+  '@esbuild/win32-arm64@0.25.0':
     optional: true
 
-  '@esbuild/win32-ia32@0.24.2':
+  '@esbuild/win32-ia32@0.25.0':
     optional: true
 
-  '@esbuild/win32-x64@0.24.2':
+  '@esbuild/win32-x64@0.25.0':
     optional: true
 
-  '@eslint-community/eslint-utils@4.4.1(eslint@9.18.0)':
+  '@eslint-community/eslint-utils@4.4.1(eslint@9.21.0)':
     dependencies:
-      eslint: 9.18.0
+      eslint: 9.21.0
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.12.1': {}
 
-  '@eslint/config-array@0.19.1':
+  '@eslint/config-array@0.19.2':
     dependencies:
-      '@eslint/object-schema': 2.1.5
+      '@eslint/object-schema': 2.1.6
       debug: 4.4.0
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/core@0.10.0':
+  '@eslint/core@0.12.0':
     dependencies:
       '@types/json-schema': 7.0.15
 
-  '@eslint/eslintrc@3.2.0':
+  '@eslint/eslintrc@3.3.0':
     dependencies:
       ajv: 6.12.6
       debug: 4.4.0
@@ -4986,13 +5010,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/js@9.18.0': {}
+  '@eslint/js@9.21.0': {}
 
-  '@eslint/object-schema@2.1.5': {}
+  '@eslint/object-schema@2.1.6': {}
 
-  '@eslint/plugin-kit@0.2.5':
+  '@eslint/plugin-kit@0.2.7':
     dependencies:
-      '@eslint/core': 0.10.0
+      '@eslint/core': 0.12.0
       levn: 0.4.1
 
   '@faker-js/faker@9.3.0': {}
@@ -5033,45 +5057,45 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.1': {}
 
-  '@humanwhocodes/retry@0.4.1': {}
+  '@humanwhocodes/retry@0.4.2': {}
 
   '@iarna/toml@2.2.5': {}
 
-  '@inertiajs/core@2.0.0':
+  '@inertiajs/core@2.0.3':
     dependencies:
       axios: 1.7.9
       deepmerge: 4.3.1
-      qs: 6.13.1
+      qs: 6.14.0
     transitivePeerDependencies:
       - debug
 
-  '@inertiajs/react@2.0.0(react@19.0.0)':
+  '@inertiajs/react@2.0.3(react@19.0.0)':
     dependencies:
-      '@inertiajs/core': 2.0.0
+      '@inertiajs/core': 2.0.3
       lodash.isequal: 4.5.0
       react: 19.0.0
     transitivePeerDependencies:
       - debug
 
-  '@inquirer/checkbox@4.0.5(@types/node@22.10.5)':
+  '@inquirer/checkbox@4.0.5(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
       '@inquirer/figures': 1.0.9
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       ansi-escapes: 4.3.2
       yoctocolors-cjs: 2.1.2
 
-  '@inquirer/confirm@5.1.2(@types/node@22.10.5)':
+  '@inquirer/confirm@5.1.2(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
 
-  '@inquirer/core@10.1.3(@types/node@22.10.5)':
+  '@inquirer/core@10.1.3(@types/node@22.13.5)':
     dependencies:
       '@inquirer/figures': 1.0.9
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
       mute-stream: 2.0.0
@@ -5082,86 +5106,86 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@inquirer/editor@4.2.2(@types/node@22.10.5)':
+  '@inquirer/editor@4.2.2(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       external-editor: 3.1.0
 
-  '@inquirer/expand@4.0.5(@types/node@22.10.5)':
+  '@inquirer/expand@4.0.5(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       yoctocolors-cjs: 2.1.2
 
   '@inquirer/figures@1.0.9': {}
 
-  '@inquirer/input@4.1.2(@types/node@22.10.5)':
+  '@inquirer/input@4.1.2(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
 
-  '@inquirer/number@3.0.5(@types/node@22.10.5)':
+  '@inquirer/number@3.0.5(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
 
-  '@inquirer/password@4.0.5(@types/node@22.10.5)':
+  '@inquirer/password@4.0.5(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       ansi-escapes: 4.3.2
 
-  '@inquirer/prompts@7.2.2(@types/node@22.10.5)':
+  '@inquirer/prompts@7.2.2(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/checkbox': 4.0.5(@types/node@22.10.5)
-      '@inquirer/confirm': 5.1.2(@types/node@22.10.5)
-      '@inquirer/editor': 4.2.2(@types/node@22.10.5)
-      '@inquirer/expand': 4.0.5(@types/node@22.10.5)
-      '@inquirer/input': 4.1.2(@types/node@22.10.5)
-      '@inquirer/number': 3.0.5(@types/node@22.10.5)
-      '@inquirer/password': 4.0.5(@types/node@22.10.5)
-      '@inquirer/rawlist': 4.0.5(@types/node@22.10.5)
-      '@inquirer/search': 3.0.5(@types/node@22.10.5)
-      '@inquirer/select': 4.0.5(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/checkbox': 4.0.5(@types/node@22.13.5)
+      '@inquirer/confirm': 5.1.2(@types/node@22.13.5)
+      '@inquirer/editor': 4.2.2(@types/node@22.13.5)
+      '@inquirer/expand': 4.0.5(@types/node@22.13.5)
+      '@inquirer/input': 4.1.2(@types/node@22.13.5)
+      '@inquirer/number': 3.0.5(@types/node@22.13.5)
+      '@inquirer/password': 4.0.5(@types/node@22.13.5)
+      '@inquirer/rawlist': 4.0.5(@types/node@22.13.5)
+      '@inquirer/search': 3.0.5(@types/node@22.13.5)
+      '@inquirer/select': 4.0.5(@types/node@22.13.5)
+      '@types/node': 22.13.5
 
-  '@inquirer/rawlist@4.0.5(@types/node@22.10.5)':
+  '@inquirer/rawlist@4.0.5(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       yoctocolors-cjs: 2.1.2
 
-  '@inquirer/search@3.0.5(@types/node@22.10.5)':
+  '@inquirer/search@3.0.5(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
       '@inquirer/figures': 1.0.9
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       yoctocolors-cjs: 2.1.2
 
-  '@inquirer/select@4.0.5(@types/node@22.10.5)':
+  '@inquirer/select@4.0.5(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
       '@inquirer/figures': 1.0.9
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       ansi-escapes: 4.3.2
       yoctocolors-cjs: 2.1.2
 
-  '@inquirer/type@3.0.2(@types/node@22.10.5)':
+  '@inquirer/type@3.0.2(@types/node@22.13.5)':
     dependencies:
-      '@types/node': 22.10.5
+      '@types/node': 22.13.5
 
-  '@japa/assert@4.0.1(@japa/runner@4.1.0)':
+  '@japa/assert@4.0.1(@japa/runner@4.2.0)':
     dependencies:
-      '@japa/runner': 4.1.0
+      '@japa/runner': 4.2.0
       '@poppinss/macroable': 1.0.4
       '@types/chai': 5.0.1
       assertion-error: 2.0.1
@@ -5177,22 +5201,22 @@ snapshots:
       string-width: 7.2.0
       time-span: 5.1.0
 
-  '@japa/errors-printer@4.1.0':
+  '@japa/errors-printer@4.1.2':
     dependencies:
       '@poppinss/colors': 4.1.4
       jest-diff: 29.7.0
       supports-color: 10.0.0
-      youch: 4.1.0-beta.4
+      youch: 4.1.0-beta.5
 
-  '@japa/plugin-adonisjs@4.0.0(@adonisjs/core@6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0))(@japa/runner@4.1.0)':
+  '@japa/plugin-adonisjs@4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@japa/runner@4.2.0)':
     dependencies:
-      '@adonisjs/core': 6.17.1(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.0)
-      '@japa/runner': 4.1.0
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.7.3))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
+      '@japa/runner': 4.2.0
 
-  '@japa/runner@4.1.0':
+  '@japa/runner@4.2.0':
     dependencies:
       '@japa/core': 10.3.0
-      '@japa/errors-printer': 4.1.0
+      '@japa/errors-printer': 4.1.2
       '@poppinss/colors': 4.1.4
       '@poppinss/hooks': 7.2.5
       fast-glob: 3.3.3
@@ -5231,28 +5255,28 @@ snapshots:
 
   '@lukeed/ms@2.0.2': {}
 
-  '@mantine/core@7.15.3(@mantine/hooks@7.15.3(react@19.0.0))(@types/react@19.0.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@mantine/core@7.17.0(@mantine/hooks@7.17.0(react@19.0.0))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@floating-ui/react': 0.26.28(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@mantine/hooks': 7.15.3(react@19.0.0)
+      '@mantine/hooks': 7.17.0(react@19.0.0)
       clsx: 2.1.1
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       react-number-format: 5.4.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react-remove-scroll: 2.6.2(@types/react@19.0.6)(react@19.0.0)
-      react-textarea-autosize: 8.5.6(@types/react@19.0.6)(react@19.0.0)
+      react-remove-scroll: 2.6.2(@types/react@19.0.10)(react@19.0.0)
+      react-textarea-autosize: 8.5.6(@types/react@19.0.10)(react@19.0.0)
       type-fest: 4.31.0
     transitivePeerDependencies:
       - '@types/react'
 
-  '@mantine/hooks@7.15.3(react@19.0.0)':
+  '@mantine/hooks@7.17.0(react@19.0.0)':
     dependencies:
       react: 19.0.0
 
-  '@mantine/modals@7.15.3(@mantine/core@7.15.3(@mantine/hooks@7.15.3(react@19.0.0))(@types/react@19.0.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@mantine/hooks@7.15.3(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@mantine/modals@7.17.0(@mantine/core@7.17.0(@mantine/hooks@7.17.0(react@19.0.0))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@mantine/hooks@7.17.0(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@mantine/core': 7.15.3(@mantine/hooks@7.15.3(react@19.0.0))(@types/react@19.0.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@mantine/hooks': 7.15.3(react@19.0.0)
+      '@mantine/core': 7.17.0(@mantine/hooks@7.17.0(react@19.0.0))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@mantine/hooks': 7.17.0(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
@@ -5515,71 +5539,79 @@ snapshots:
 
   '@speed-highlight/core@1.2.7': {}
 
-  '@stylistic/eslint-plugin-ts@2.12.1(eslint@9.18.0)(typescript@5.7.3)':
+  '@stylistic/eslint-plugin-ts@2.12.1(eslint@9.21.0)(typescript@5.7.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
-      eslint: 9.18.0
+      '@typescript-eslint/utils': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
+      eslint: 9.21.0
       eslint-visitor-keys: 4.2.0
       espree: 10.3.0
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@swc/core-darwin-arm64@1.10.7':
+  '@swc/core-darwin-arm64@1.11.4':
     optional: true
 
-  '@swc/core-darwin-x64@1.10.7':
+  '@swc/core-darwin-x64@1.11.4':
     optional: true
 
-  '@swc/core-linux-arm-gnueabihf@1.10.7':
+  '@swc/core-linux-arm-gnueabihf@1.11.4':
     optional: true
 
-  '@swc/core-linux-arm64-gnu@1.10.7':
+  '@swc/core-linux-arm64-gnu@1.11.4':
     optional: true
 
-  '@swc/core-linux-arm64-musl@1.10.7':
+  '@swc/core-linux-arm64-musl@1.11.4':
     optional: true
 
-  '@swc/core-linux-x64-gnu@1.10.7':
+  '@swc/core-linux-x64-gnu@1.11.4':
     optional: true
 
-  '@swc/core-linux-x64-musl@1.10.7':
+  '@swc/core-linux-x64-musl@1.11.4':
     optional: true
 
-  '@swc/core-win32-arm64-msvc@1.10.7':
+  '@swc/core-win32-arm64-msvc@1.11.4':
     optional: true
 
-  '@swc/core-win32-ia32-msvc@1.10.7':
+  '@swc/core-win32-ia32-msvc@1.11.4':
     optional: true
 
-  '@swc/core-win32-x64-msvc@1.10.7':
+  '@swc/core-win32-x64-msvc@1.11.4':
     optional: true
 
-  '@swc/core@1.10.7':
+  '@swc/core@1.11.4':
     dependencies:
       '@swc/counter': 0.1.3
-      '@swc/types': 0.1.17
+      '@swc/types': 0.1.19
     optionalDependencies:
-      '@swc/core-darwin-arm64': 1.10.7
-      '@swc/core-darwin-x64': 1.10.7
-      '@swc/core-linux-arm-gnueabihf': 1.10.7
-      '@swc/core-linux-arm64-gnu': 1.10.7
-      '@swc/core-linux-arm64-musl': 1.10.7
-      '@swc/core-linux-x64-gnu': 1.10.7
-      '@swc/core-linux-x64-musl': 1.10.7
-      '@swc/core-win32-arm64-msvc': 1.10.7
-      '@swc/core-win32-ia32-msvc': 1.10.7
-      '@swc/core-win32-x64-msvc': 1.10.7
+      '@swc/core-darwin-arm64': 1.11.4
+      '@swc/core-darwin-x64': 1.11.4
+      '@swc/core-linux-arm-gnueabihf': 1.11.4
+      '@swc/core-linux-arm64-gnu': 1.11.4
+      '@swc/core-linux-arm64-musl': 1.11.4
+      '@swc/core-linux-x64-gnu': 1.11.4
+      '@swc/core-linux-x64-musl': 1.11.4
+      '@swc/core-win32-arm64-msvc': 1.11.4
+      '@swc/core-win32-ia32-msvc': 1.11.4
+      '@swc/core-win32-x64-msvc': 1.11.4
 
   '@swc/counter@0.1.3': {}
 
-  '@swc/types@0.1.17':
+  '@swc/types@0.1.19':
     dependencies:
       '@swc/counter': 0.1.3
 
   '@szmarczak/http-timer@5.0.1':
     dependencies:
       defer-to-connect: 2.0.1
+
+  '@tokenizer/inflate@0.2.7':
+    dependencies:
+      debug: 4.4.0
+      fflate: 0.8.2
+      token-types: 6.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@tokenizer/token@0.3.0': {}
 
@@ -5659,7 +5691,7 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@22.10.5':
+  '@types/node@22.13.5':
     dependencies:
       undici-types: 6.20.0
 
@@ -5669,13 +5701,13 @@ snapshots:
 
   '@types/pluralize@0.0.33': {}
 
-  '@types/qs@6.9.17': {}
+  '@types/qs@6.9.18': {}
 
-  '@types/react-dom@19.0.3(@types/react@19.0.6)':
+  '@types/react-dom@19.0.4(@types/react@19.0.10)':
     dependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  '@types/react@19.0.6':
+  '@types/react@19.0.10':
     dependencies:
       csstype: 3.1.3
 
@@ -5683,15 +5715,15 @@ snapshots:
 
   '@types/validator@13.12.2': {}
 
-  '@typescript-eslint/eslint-plugin@8.19.1(@typescript-eslint/parser@8.19.1(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3)':
+  '@typescript-eslint/eslint-plugin@8.19.1(@typescript-eslint/parser@8.19.1(eslint@9.21.0)(typescript@5.7.3))(eslint@9.21.0)(typescript@5.7.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
-      '@typescript-eslint/parser': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
+      '@typescript-eslint/parser': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.19.1
-      '@typescript-eslint/type-utils': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
+      '@typescript-eslint/type-utils': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
+      '@typescript-eslint/utils': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
       '@typescript-eslint/visitor-keys': 8.19.1
-      eslint: 9.18.0
+      eslint: 9.21.0
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
@@ -5700,14 +5732,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.19.1(eslint@9.18.0)(typescript@5.7.3)':
+  '@typescript-eslint/parser@8.19.1(eslint@9.21.0)(typescript@5.7.3)':
     dependencies:
       '@typescript-eslint/scope-manager': 8.19.1
       '@typescript-eslint/types': 8.19.1
       '@typescript-eslint/typescript-estree': 8.19.1(typescript@5.7.3)
       '@typescript-eslint/visitor-keys': 8.19.1
       debug: 4.4.0
-      eslint: 9.18.0
+      eslint: 9.21.0
       typescript: 5.7.3
     transitivePeerDependencies:
       - supports-color
@@ -5717,12 +5749,12 @@ snapshots:
       '@typescript-eslint/types': 8.19.1
       '@typescript-eslint/visitor-keys': 8.19.1
 
-  '@typescript-eslint/type-utils@8.19.1(eslint@9.18.0)(typescript@5.7.3)':
+  '@typescript-eslint/type-utils@8.19.1(eslint@9.21.0)(typescript@5.7.3)':
     dependencies:
       '@typescript-eslint/typescript-estree': 8.19.1(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
+      '@typescript-eslint/utils': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
       debug: 4.4.0
-      eslint: 9.18.0
+      eslint: 9.21.0
       ts-api-utils: 2.0.0(typescript@5.7.3)
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -5744,13 +5776,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.19.1(eslint@9.18.0)(typescript@5.7.3)':
+  '@typescript-eslint/utils@8.19.1(eslint@9.21.0)(typescript@5.7.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.4.1(eslint@9.18.0)
+      '@eslint-community/eslint-utils': 4.4.1(eslint@9.21.0)
       '@typescript-eslint/scope-manager': 8.19.1
       '@typescript-eslint/types': 8.19.1
       '@typescript-eslint/typescript-estree': 8.19.1(typescript@5.7.3)
-      eslint: 9.18.0
+      eslint: 9.21.0
       typescript: 5.7.3
     transitivePeerDependencies:
       - supports-color
@@ -5762,12 +5794,12 @@ snapshots:
 
   '@ungap/structured-clone@1.2.1': {}
 
-  '@vavite/multibuild@5.1.0(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))':
+  '@vavite/multibuild@5.1.0(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))':
     dependencies:
       '@types/node': 18.19.70
       cac: 6.7.14
       picocolors: 1.1.1
-      vite: 6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))
+      vite: 6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))
 
   '@vinejs/compiler@3.0.0': {}
 
@@ -5782,14 +5814,14 @@ snapshots:
       normalize-url: 8.0.1
       validator: 13.12.0
 
-  '@vitejs/plugin-react@4.3.4(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)))':
+  '@vitejs/plugin-react@4.3.4(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))
+      vite: 6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))
     transitivePeerDependencies:
       - supports-color
 
@@ -5898,7 +5930,7 @@ snapshots:
 
   before-after-hook@3.0.2: {}
 
-  bentocache@1.0.0-beta.11(knex@3.1.0(pg@8.13.1))(tslib@2.8.1):
+  bentocache@1.0.0-beta.11(knex@3.1.0(pg@8.13.3))(tslib@2.8.1):
     dependencies:
       '@boringnode/bus': 0.6.0
       '@poppinss/utils': 6.9.2
@@ -5909,7 +5941,7 @@ snapshots:
       p-timeout: 6.1.4
       typescript-log: 2.0.0(tslib@2.8.1)
     optionalDependencies:
-      knex: 3.1.0(pg@8.13.1)
+      knex: 3.1.0(pg@8.13.3)
     transitivePeerDependencies:
       - tslib
 
@@ -6236,27 +6268,29 @@ snapshots:
 
   edge-error@4.0.1: {}
 
-  edge-lexer@6.0.2:
-    dependencies:
-      edge-error: 4.0.1
+  edge-error@4.0.2: {}
 
-  edge-parser@9.0.3:
+  edge-lexer@6.0.3:
+    dependencies:
+      edge-error: 4.0.2
+
+  edge-parser@9.0.4:
     dependencies:
       acorn: 8.14.0
       astring: 1.9.0
-      edge-error: 4.0.1
-      edge-lexer: 6.0.2
+      edge-error: 4.0.2
+      edge-lexer: 6.0.3
       js-stringify: 1.0.2
 
-  edge.js@6.2.0:
+  edge.js@6.2.1:
     dependencies:
       '@poppinss/inspect': 1.0.1
       '@poppinss/macroable': 1.0.4
       '@poppinss/utils': 6.9.2
       classnames: 2.5.1
-      edge-error: 4.0.1
-      edge-lexer: 6.0.2
-      edge-parser: 9.0.3
+      edge-error: 4.0.2
+      edge-lexer: 6.0.3
+      edge-parser: 9.0.4
       fs-readdir-recursive: 1.1.0
       he: 1.2.0
       js-stringify: 1.0.2
@@ -6310,33 +6344,33 @@ snapshots:
     dependencies:
       es-errors: 1.3.0
 
-  esbuild@0.24.2:
+  esbuild@0.25.0:
     optionalDependencies:
-      '@esbuild/aix-ppc64': 0.24.2
-      '@esbuild/android-arm': 0.24.2
-      '@esbuild/android-arm64': 0.24.2
-      '@esbuild/android-x64': 0.24.2
-      '@esbuild/darwin-arm64': 0.24.2
-      '@esbuild/darwin-x64': 0.24.2
-      '@esbuild/freebsd-arm64': 0.24.2
-      '@esbuild/freebsd-x64': 0.24.2
-      '@esbuild/linux-arm': 0.24.2
-      '@esbuild/linux-arm64': 0.24.2
-      '@esbuild/linux-ia32': 0.24.2
-      '@esbuild/linux-loong64': 0.24.2
-      '@esbuild/linux-mips64el': 0.24.2
-      '@esbuild/linux-ppc64': 0.24.2
-      '@esbuild/linux-riscv64': 0.24.2
-      '@esbuild/linux-s390x': 0.24.2
-      '@esbuild/linux-x64': 0.24.2
-      '@esbuild/netbsd-arm64': 0.24.2
-      '@esbuild/netbsd-x64': 0.24.2
-      '@esbuild/openbsd-arm64': 0.24.2
-      '@esbuild/openbsd-x64': 0.24.2
-      '@esbuild/sunos-x64': 0.24.2
-      '@esbuild/win32-arm64': 0.24.2
-      '@esbuild/win32-ia32': 0.24.2
-      '@esbuild/win32-x64': 0.24.2
+      '@esbuild/aix-ppc64': 0.25.0
+      '@esbuild/android-arm': 0.25.0
+      '@esbuild/android-arm64': 0.25.0
+      '@esbuild/android-x64': 0.25.0
+      '@esbuild/darwin-arm64': 0.25.0
+      '@esbuild/darwin-x64': 0.25.0
+      '@esbuild/freebsd-arm64': 0.25.0
+      '@esbuild/freebsd-x64': 0.25.0
+      '@esbuild/linux-arm': 0.25.0
+      '@esbuild/linux-arm64': 0.25.0
+      '@esbuild/linux-ia32': 0.25.0
+      '@esbuild/linux-loong64': 0.25.0
+      '@esbuild/linux-mips64el': 0.25.0
+      '@esbuild/linux-ppc64': 0.25.0
+      '@esbuild/linux-riscv64': 0.25.0
+      '@esbuild/linux-s390x': 0.25.0
+      '@esbuild/linux-x64': 0.25.0
+      '@esbuild/netbsd-arm64': 0.25.0
+      '@esbuild/netbsd-x64': 0.25.0
+      '@esbuild/openbsd-arm64': 0.25.0
+      '@esbuild/openbsd-x64': 0.25.0
+      '@esbuild/sunos-x64': 0.25.0
+      '@esbuild/win32-arm64': 0.25.0
+      '@esbuild/win32-ia32': 0.25.0
+      '@esbuild/win32-x64': 0.25.0
 
   escalade@3.2.0: {}
 
@@ -6356,27 +6390,27 @@ snapshots:
     optionalDependencies:
       source-map: 0.6.1
 
-  eslint-config-prettier@9.1.0(eslint@9.18.0):
+  eslint-config-prettier@9.1.0(eslint@9.21.0):
     dependencies:
-      eslint: 9.18.0
+      eslint: 9.21.0
 
-  eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0))(eslint@9.18.0)(prettier@3.4.2):
+  eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@9.21.0))(eslint@9.21.0)(prettier@3.5.2):
     dependencies:
-      eslint: 9.18.0
-      prettier: 3.4.2
+      eslint: 9.21.0
+      prettier: 3.5.2
       prettier-linter-helpers: 1.0.0
       synckit: 0.9.2
     optionalDependencies:
-      eslint-config-prettier: 9.1.0(eslint@9.18.0)
+      eslint-config-prettier: 9.1.0(eslint@9.21.0)
 
-  eslint-plugin-unicorn@55.0.0(eslint@9.18.0):
+  eslint-plugin-unicorn@55.0.0(eslint@9.21.0):
     dependencies:
       '@babel/helper-validator-identifier': 7.25.9
-      '@eslint-community/eslint-utils': 4.4.1(eslint@9.18.0)
+      '@eslint-community/eslint-utils': 4.4.1(eslint@9.21.0)
       ci-info: 4.1.0
       clean-regexp: 1.0.0
       core-js-compat: 3.40.0
-      eslint: 9.18.0
+      eslint: 9.21.0
       esquery: 1.6.0
       globals: 15.14.0
       indent-string: 4.0.0
@@ -6398,18 +6432,18 @@ snapshots:
 
   eslint-visitor-keys@4.2.0: {}
 
-  eslint@9.18.0:
+  eslint@9.21.0:
     dependencies:
-      '@eslint-community/eslint-utils': 4.4.1(eslint@9.18.0)
+      '@eslint-community/eslint-utils': 4.4.1(eslint@9.21.0)
       '@eslint-community/regexpp': 4.12.1
-      '@eslint/config-array': 0.19.1
-      '@eslint/core': 0.10.0
-      '@eslint/eslintrc': 3.2.0
-      '@eslint/js': 9.18.0
-      '@eslint/plugin-kit': 0.2.5
+      '@eslint/config-array': 0.19.2
+      '@eslint/core': 0.12.0
+      '@eslint/eslintrc': 3.3.0
+      '@eslint/js': 9.21.0
+      '@eslint/plugin-kit': 0.2.7
       '@humanfs/node': 0.16.6
       '@humanwhocodes/module-importer': 1.0.1
-      '@humanwhocodes/retry': 0.4.1
+      '@humanwhocodes/retry': 0.4.2
       '@types/estree': 1.0.6
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
@@ -6526,6 +6560,8 @@ snapshots:
     dependencies:
       reusify: 1.0.4
 
+  fflate@0.8.2: {}
+
   figures@6.1.0:
     dependencies:
       is-unicode-supported: 2.1.0
@@ -6534,12 +6570,14 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  file-type@19.6.0:
+  file-type@20.4.0:
     dependencies:
-      get-stream: 9.0.1
+      '@tokenizer/inflate': 0.2.7
       strtok3: 8.0.1
       token-types: 6.0.0
       uint8array-extras: 1.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   fill-range@7.1.1:
     dependencies:
@@ -6868,6 +6906,10 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
+  iconv-lite@0.6.3:
+    dependencies:
+      safer-buffer: 2.1.2
+
   ieee754@1.2.1: {}
 
   igniculus@1.5.0: {}
@@ -6898,12 +6940,12 @@ snapshots:
 
   ini@4.1.1: {}
 
-  inquirer@12.3.0(@types/node@22.10.5):
+  inquirer@12.3.0(@types/node@22.13.5):
     dependencies:
-      '@inquirer/core': 10.1.3(@types/node@22.10.5)
-      '@inquirer/prompts': 7.2.2(@types/node@22.10.5)
-      '@inquirer/type': 3.0.2(@types/node@22.10.5)
-      '@types/node': 22.10.5
+      '@inquirer/core': 10.1.3(@types/node@22.13.5)
+      '@inquirer/prompts': 7.2.2(@types/node@22.13.5)
+      '@inquirer/type': 3.0.2(@types/node@22.13.5)
+      '@types/node': 22.13.5
       ansi-escapes: 4.3.2
       mute-stream: 2.0.0
       run-async: 3.0.0
@@ -7038,10 +7080,10 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  knex-dynamic-connection@3.2.0(pg@8.13.1):
+  knex-dynamic-connection@3.2.0(pg@8.13.3):
     dependencies:
       debug: 4.4.0
-      knex: 3.1.0(pg@8.13.1)
+      knex: 3.1.0(pg@8.13.3)
     transitivePeerDependencies:
       - better-sqlite3
       - mysql
@@ -7052,7 +7094,7 @@ snapshots:
       - supports-color
       - tedious
 
-  knex@3.1.0(pg@8.13.1):
+  knex@3.1.0(pg@8.13.3):
     dependencies:
       colorette: 2.0.19
       commander: 10.0.1
@@ -7069,7 +7111,7 @@ snapshots:
       tarn: 3.0.2
       tildify: 2.0.0
     optionalDependencies:
-      pg: 8.13.1
+      pg: 8.13.3
     transitivePeerDependencies:
       - supports-color
 
@@ -7612,11 +7654,11 @@ snapshots:
 
   pg-int8@1.0.1: {}
 
-  pg-pool@3.7.0(pg@8.13.1):
+  pg-pool@3.7.1(pg@8.13.3):
     dependencies:
-      pg: 8.13.1
+      pg: 8.13.3
 
-  pg-protocol@1.7.0: {}
+  pg-protocol@1.7.1: {}
 
   pg-types@2.2.0:
     dependencies:
@@ -7626,11 +7668,11 @@ snapshots:
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
 
-  pg@8.13.1:
+  pg@8.13.3:
     dependencies:
       pg-connection-string: 2.7.0
-      pg-pool: 3.7.0(pg@8.13.1)
-      pg-protocol: 1.7.0
+      pg-pool: 3.7.1(pg@8.13.3)
+      pg-protocol: 1.7.1
       pg-types: 2.2.0
       pgpass: 1.0.5
     optionalDependencies:
@@ -7688,40 +7730,40 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  postcss-js@4.0.1(postcss@8.4.49):
+  postcss-js@4.0.1(postcss@8.5.3):
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.49
+      postcss: 8.5.3
 
-  postcss-mixins@9.0.4(postcss@8.4.49):
+  postcss-mixins@9.0.4(postcss@8.5.3):
     dependencies:
       fast-glob: 3.3.3
-      postcss: 8.4.49
-      postcss-js: 4.0.1(postcss@8.4.49)
-      postcss-simple-vars: 7.0.1(postcss@8.4.49)
-      sugarss: 4.0.1(postcss@8.4.49)
+      postcss: 8.5.3
+      postcss-js: 4.0.1(postcss@8.5.3)
+      postcss-simple-vars: 7.0.1(postcss@8.5.3)
+      sugarss: 4.0.1(postcss@8.5.3)
 
-  postcss-nested@6.2.0(postcss@8.4.49):
+  postcss-nested@6.2.0(postcss@8.5.3):
     dependencies:
-      postcss: 8.4.49
+      postcss: 8.5.3
       postcss-selector-parser: 6.1.2
 
-  postcss-preset-mantine@1.17.0(postcss@8.4.49):
+  postcss-preset-mantine@1.17.0(postcss@8.5.3):
     dependencies:
-      postcss: 8.4.49
-      postcss-mixins: 9.0.4(postcss@8.4.49)
-      postcss-nested: 6.2.0(postcss@8.4.49)
+      postcss: 8.5.3
+      postcss-mixins: 9.0.4(postcss@8.5.3)
+      postcss-nested: 6.2.0(postcss@8.5.3)
 
   postcss-selector-parser@6.1.2:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  postcss-simple-vars@7.0.1(postcss@8.4.49):
+  postcss-simple-vars@7.0.1(postcss@8.5.3):
     dependencies:
-      postcss: 8.4.49
+      postcss: 8.5.3
 
-  postcss@8.4.49:
+  postcss@8.5.3:
     dependencies:
       nanoid: 3.3.8
       picocolors: 1.1.1
@@ -7743,7 +7785,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier@3.4.2: {}
+  prettier@3.5.2: {}
 
   pretty-format@29.7.0:
     dependencies:
@@ -7808,6 +7850,10 @@ snapshots:
     dependencies:
       side-channel: 1.1.0
 
+  qs@6.14.0:
+    dependencies:
+      side-channel: 1.1.0
+
   queue-microtask@1.2.3: {}
 
   quick-format-unescaped@4.0.4: {}
@@ -7818,11 +7864,11 @@ snapshots:
 
   range-parser@1.2.1: {}
 
-  raw-body@2.5.2:
+  raw-body@3.0.0:
     dependencies:
       bytes: 3.1.2
       http-errors: 2.0.0
-      iconv-lite: 0.4.24
+      iconv-lite: 0.6.3
       unpipe: 1.0.0
 
   rc@1.2.8:
@@ -7839,7 +7885,7 @@ snapshots:
 
   react-fast-compare@3.2.2: {}
 
-  react-icons@5.4.0(react@19.0.0):
+  react-icons@5.5.0(react@19.0.0):
     dependencies:
       react: 19.0.0
 
@@ -7863,39 +7909,39 @@ snapshots:
 
   react-refresh@0.14.2: {}
 
-  react-remove-scroll-bar@2.3.8(@types/react@19.0.6)(react@19.0.0):
+  react-remove-scroll-bar@2.3.8(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       react: 19.0.0
-      react-style-singleton: 2.2.3(@types/react@19.0.6)(react@19.0.0)
+      react-style-singleton: 2.2.3(@types/react@19.0.10)(react@19.0.0)
       tslib: 2.8.1
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  react-remove-scroll@2.6.2(@types/react@19.0.6)(react@19.0.0):
+  react-remove-scroll@2.6.2(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       react: 19.0.0
-      react-remove-scroll-bar: 2.3.8(@types/react@19.0.6)(react@19.0.0)
-      react-style-singleton: 2.2.3(@types/react@19.0.6)(react@19.0.0)
+      react-remove-scroll-bar: 2.3.8(@types/react@19.0.10)(react@19.0.0)
+      react-style-singleton: 2.2.3(@types/react@19.0.10)(react@19.0.0)
       tslib: 2.8.1
-      use-callback-ref: 1.3.3(@types/react@19.0.6)(react@19.0.0)
-      use-sidecar: 1.1.3(@types/react@19.0.6)(react@19.0.0)
+      use-callback-ref: 1.3.3(@types/react@19.0.10)(react@19.0.0)
+      use-sidecar: 1.1.3(@types/react@19.0.10)(react@19.0.0)
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  react-style-singleton@2.2.3(@types/react@19.0.6)(react@19.0.0):
+  react-style-singleton@2.2.3(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       get-nonce: 1.0.1
       react: 19.0.0
       tslib: 2.8.1
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  react-textarea-autosize@8.5.6(@types/react@19.0.6)(react@19.0.0):
+  react-textarea-autosize@8.5.6(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       '@babel/runtime': 7.26.0
       react: 19.0.0
-      use-composed-ref: 1.4.0(@types/react@19.0.6)(react@19.0.0)
-      use-latest: 1.3.0(@types/react@19.0.6)(react@19.0.0)
+      use-composed-ref: 1.4.0(@types/react@19.0.10)(react@19.0.0)
+      use-latest: 1.3.0(@types/react@19.0.10)(react@19.0.0)
     transitivePeerDependencies:
       - '@types/react'
 
@@ -7987,7 +8033,7 @@ snapshots:
       hast-util-to-html: 9.0.4
       unified: 11.0.5
 
-  release-it@18.1.1(@types/node@22.10.5)(typescript@5.7.3):
+  release-it@18.1.2(@types/node@22.13.5)(typescript@5.7.3):
     dependencies:
       '@iarna/toml': 2.2.5
       '@octokit/rest': 21.0.2
@@ -7998,7 +8044,7 @@ snapshots:
       execa: 9.5.2
       git-url-parse: 16.0.0
       globby: 14.0.2
-      inquirer: 12.3.0(@types/node@22.10.5)
+      inquirer: 12.3.0(@types/node@22.13.5)
       issue-parser: 7.0.1
       lodash: 4.17.21
       mime-types: 2.1.35
@@ -8009,7 +8055,7 @@ snapshots:
       proxy-agent: 6.5.0
       semver: 7.6.3
       shelljs: 0.8.5
-      undici: 6.21.0
+      undici: 6.21.1
       update-notifier: 7.3.1
       url-join: 5.0.0
       wildcard-match: 5.1.4
@@ -8313,9 +8359,9 @@ snapshots:
 
   stubborn-fs@1.2.5: {}
 
-  sugarss@4.0.1(postcss@8.4.49):
+  sugarss@4.0.1(postcss@8.5.3):
     dependencies:
-      postcss: 8.4.49
+      postcss: 8.5.3
 
   supports-color@10.0.0: {}
 
@@ -8382,14 +8428,14 @@ snapshots:
       '@ts-morph/common': 0.24.0
       code-block-writer: 13.0.3
 
-  ts-node-maintained@10.9.4(@swc/core@1.10.7)(@types/node@22.10.5)(typescript@5.7.3):
+  ts-node-maintained@10.9.5(@swc/core@1.11.4)(@types/node@22.13.5)(typescript@5.7.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.10.5
+      '@types/node': 22.13.5
       acorn: 8.14.0
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -8400,7 +8446,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     optionalDependencies:
-      '@swc/core': 1.10.7
+      '@swc/core': 1.11.4
 
   tslib@2.8.1: {}
 
@@ -8425,12 +8471,12 @@ snapshots:
       media-typer: 0.3.0
       mime-types: 2.1.35
 
-  typescript-eslint@8.19.1(eslint@9.18.0)(typescript@5.7.3):
+  typescript-eslint@8.19.1(eslint@9.21.0)(typescript@5.7.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.19.1(@typescript-eslint/parser@8.19.1(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3)
-      '@typescript-eslint/parser': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.19.1(eslint@9.18.0)(typescript@5.7.3)
-      eslint: 9.18.0
+      '@typescript-eslint/eslint-plugin': 8.19.1(@typescript-eslint/parser@8.19.1(eslint@9.21.0)(typescript@5.7.3))(eslint@9.21.0)(typescript@5.7.3)
+      '@typescript-eslint/parser': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
+      '@typescript-eslint/utils': 8.19.1(eslint@9.21.0)(typescript@5.7.3)
+      eslint: 9.21.0
       typescript: 5.7.3
     transitivePeerDependencies:
       - supports-color
@@ -8451,7 +8497,7 @@ snapshots:
 
   undici-types@6.20.0: {}
 
-  undici@6.21.0: {}
+  undici@6.21.1: {}
 
   unicorn-magic@0.1.0: {}
 
@@ -8519,39 +8565,39 @@ snapshots:
 
   url-join@5.0.0: {}
 
-  use-callback-ref@1.3.3(@types/react@19.0.6)(react@19.0.0):
+  use-callback-ref@1.3.3(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       react: 19.0.0
       tslib: 2.8.1
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  use-composed-ref@1.4.0(@types/react@19.0.6)(react@19.0.0):
+  use-composed-ref@1.4.0(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       react: 19.0.0
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  use-isomorphic-layout-effect@1.2.0(@types/react@19.0.6)(react@19.0.0):
+  use-isomorphic-layout-effect@1.2.0(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       react: 19.0.0
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  use-latest@1.3.0(@types/react@19.0.6)(react@19.0.0):
+  use-latest@1.3.0(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       react: 19.0.0
-      use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.6)(react@19.0.0)
+      use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.10)(react@19.0.0)
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
-  use-sidecar@1.1.3(@types/react@19.0.6)(react@19.0.0):
+  use-sidecar@1.1.3(@types/react@19.0.10)(react@19.0.0):
     dependencies:
       detect-node-es: 1.1.0
       react: 19.0.0
       tslib: 2.8.1
     optionalDependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.10
 
   util-deprecate@1.0.2: {}
 
@@ -8581,20 +8627,20 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite-plugin-restart@0.4.2(vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))):
+  vite-plugin-restart@0.4.2(vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))):
     dependencies:
       micromatch: 4.0.8
-      vite: 6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49))
+      vite: 6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3))
 
-  vite@6.0.7(@types/node@22.10.5)(sugarss@4.0.1(postcss@8.4.49)):
+  vite@6.2.0(@types/node@22.13.5)(sugarss@4.0.1(postcss@8.5.3)):
     dependencies:
-      esbuild: 0.24.2
-      postcss: 8.4.49
+      esbuild: 0.25.0
+      postcss: 8.5.3
       rollup: 4.30.1
     optionalDependencies:
-      '@types/node': 22.10.5
+      '@types/node': 22.13.5
       fsevents: 2.3.3
-      sugarss: 4.0.1(postcss@8.4.49)
+      sugarss: 4.0.1(postcss@8.5.3)
 
   web-namespaces@2.0.1: {}
 
@@ -8667,7 +8713,7 @@ snapshots:
       mustache: 4.2.0
       stacktracey: 2.1.8
 
-  youch@4.1.0-beta.4:
+  youch@4.1.0-beta.5:
     dependencies:
       '@poppinss/dumper': 0.6.2
       '@speed-highlight/core': 1.2.7
