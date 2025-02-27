@@ -1,5 +1,5 @@
 import Guide from '#models/guide';
-import { slugify, validateAndTransformMarkdownUrl } from '#shared/utils/index';
+import { validateAndTransformMarkdownUrl } from '#shared/utils/index';
 
 type CrudGuideData = {
 	title: string;
@@ -10,10 +10,8 @@ type CrudGuideData = {
 export class GuideService {
 	async createGuide({ githubUrl, ...data }: CrudGuideData) {
 		const githubRawUrl = validateAndTransformMarkdownUrl(githubUrl);
-		const slug = slugify(data.title);
 		return await Guide.create({
 			...data,
-			slug,
 			githubRawUrl,
 		});
 	}
@@ -28,8 +26,7 @@ export class GuideService {
 
 	async updateGuide(guide: Guide, { githubUrl, ...data }: CrudGuideData) {
 		const githubRawUrl = validateAndTransformMarkdownUrl(githubUrl);
-		const slug = slugify(data.title);
-		return await guide.merge({ ...data, slug, githubRawUrl }).save();
+		return await guide.merge({ ...data, githubRawUrl }).save();
 	}
 
 	async deleteGuide(guide: Guide) {

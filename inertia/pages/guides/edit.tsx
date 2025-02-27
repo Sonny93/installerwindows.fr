@@ -15,6 +15,7 @@ const EditGuides = ({ guide }: EditGuidesProps) => (
 			title: guide.title,
 			thumbnail: guide.thumbnail,
 			githubUrl: guide.githubRawUrl,
+			slug: guide.slug,
 		}}
 	/>
 );

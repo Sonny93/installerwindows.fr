@@ -13,6 +13,12 @@ const fields: Field[] = [
 			'Les domaines github.com ou raw.githubusercontent.com sont acceptés',
 		name: 'githubUrl',
 	},
+	{
+		label: 'Slug personnalisé',
+		description: "Ce slug sera utilisé pour l'URL de la page du guide",
+		name: 'slug',
+		placeholder: 'mon-super-guide',
+	},
 ];
 
 interface GuideFormProps extends Omit<FormProps, 'fields'> {

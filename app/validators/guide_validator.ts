@@ -1,3 +1,4 @@
+import { slugify } from '#shared/utils/index';
 import { forbiddenValues } from '#validators/rules/forbidden_values';
 import vine from '@vinejs/vine';
 
@@ -27,6 +28,10 @@ const guideObject = vine.object({
 		.trim()
 		.regex(githubRegex)
 		.transform(addHttpsIfNotPresent),
+	slug: vine
+		.string()
+		.trim()
+		.transform((value, field) => slugify(value ?? field.parent.title)),
 });
 
 export const guideValidator = vine.compile(guideObject);

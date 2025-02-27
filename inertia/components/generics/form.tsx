@@ -1,6 +1,7 @@
+import { slugify } from '#shared/utils/index';
 import { useForm } from '@inertiajs/react';
 import { Button, Group, Stack, TextInput, Title } from '@mantine/core';
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
 
 export type Field = {
 	label: string;
@@ -23,6 +24,7 @@ export function Form({
 	formUrl,
 	formMethod = 'post',
 }: FormProps) {
+	const [userHasChangedSlug, setUserHasChangedSlug] = useState<boolean>(false);
 	const defaultValues = fields.reduce<Record<string, string>>((acc, field) => {
 		acc[field.name] = field.value ?? '';
 		return acc;
@@ -41,7 +43,21 @@ export function Form({
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setData(e.target.name, e.target.value);
 		setError(e.target.name, '');
+		if (e.target.name === 'slug') {
+			setUserHasChangedSlug(data?.slug !== slugify(e.target.value));
+		}
 	};
+
+	const handleTitleBlur = (e: FocusEvent<HTMLInputElement>) => {
+		if (!userHasChangedSlug) {
+			setData('slug', slugify(e.target.value));
+		}
+	};
+	const handleSlugBlur = (e: FocusEvent<HTMLInputElement>) => {
+		setData('slug', slugify(e.target.value));
+		setUserHasChangedSlug(data?.title !== slugify(e.target.value));
+	};
+
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		submit(formMethod, formUrl);
@@ -65,6 +81,13 @@ export function Form({
 						key={name}
 						disabled={loading}
 						required={required ?? true}
+						onBlur={
+							name === 'title'
+								? handleTitleBlur
+								: name === 'slug'
+									? handleSlugBlur
+									: undefined
+						}
 					/>
 				))}
 				<Group justify="space-between">
