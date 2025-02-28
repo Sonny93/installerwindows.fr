@@ -13,12 +13,8 @@ export const GuideCard = ({ guide }: GuideCardProps) => (
 		className={classes.card}
 	>
 		<Card.Section>
-			<AspectRatio ratio={16 / 9}>
-				<Image
-					src={guide.thumbnail}
-					alt={guide.title}
-					className={classes.cardImage}
-				/>
+			<AspectRatio ratio={16 / 9} className={classes.cardImage}>
+				<Image src={guide.thumbnail} alt={guide.title} />
 			</AspectRatio>
 		</Card.Section>
 
