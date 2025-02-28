@@ -22,7 +22,7 @@ const Layout = ({ children }: FormProps) => (
 		<FloatingNavbar width={LAYOUT_WIDTH} />
 
 		{/* Page content */}
-		<Box style={{ paddingInline: 'var(--mantine-spacing-lg)' }}>
+		<Box style={{ paddingInline: 'var(--mantine-spacing-lg)', flex: 1 }}>
 			<Box
 				style={{
 					maxWidth: '100%',
