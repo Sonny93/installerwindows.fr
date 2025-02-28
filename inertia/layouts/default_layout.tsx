@@ -12,28 +12,26 @@ const DefaultLayout = ({ children }: PropsWithChildren) => (
 
 export default DefaultLayout;
 
+const LAYOUT_WIDTH = '1500px';
 const Layout = ({ children }: PropsWithChildren) => (
 	<>
 		{/* Top navbar */}
-		<FloatingNavbar />
+		<FloatingNavbar width={LAYOUT_WIDTH} />
 
 		{/* Page content */}
 		<Box
 			style={{
-				maxWidth: '100%',
-				width: '1500px',
-				margin: '0 auto',
-				marginBlock: rem(60),
+				paddingInline: 'var(--mantine-spacing-lg)',
 				flex: 1,
 			}}
 		>
-			{/* Content */}
 			<Box
 				style={{
 					height: '100%',
-					width: '100%',
-					flex: 1,
-					paddingInline: 'var(--mantine-spacing-lg)',
+					maxWidth: '100%',
+					width: LAYOUT_WIDTH,
+					marginInline: 'auto',
+					marginBlock: rem(60),
 				}}
 			>
 				{children}
@@ -41,6 +39,6 @@ const Layout = ({ children }: PropsWithChildren) => (
 		</Box>
 
 		{/* Footer */}
-		<Footer />
+		<Footer width={LAYOUT_WIDTH} />
 	</>
 );

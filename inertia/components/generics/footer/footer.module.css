@@ -22,7 +22,8 @@
 }
 
 .footer__field_content {
-	gap: var(--mantine-spacing-xl);
+	column-gap: var(--mantine-spacing-xl);
+	row-gap: var(--mantine-spacing-sm);
 }
 
 .footer__link {
@@ -31,7 +32,11 @@
 }
 
 .footer__credits {
-	color: var(--mantine-color-white);
 	font-weight: lighter;
-	font-size: var(--mantine-font-size-lg);
+}
+
+@media (max-width: 62em) {
+	.footer__description {
+		width: 100% !important;
+	}
 }

@@ -64,9 +64,7 @@ const Field = ({
 }) => (
 	<Stack gap="xs">
 		<Text className={classes.footer__field_label}>{label}</Text>
-		<Group className={classes.footer__field_content} gap="xl">
-			{children}
-		</Group>
+		<Group className={classes.footer__field_content}>{children}</Group>
 	</Stack>
 );
 
@@ -82,7 +80,7 @@ function TextIcon({
 	external?: boolean;
 }) {
 	const content = (
-		<Group>
+		<Group gap="sm">
 			<Icon size={24} />
 			{children}
 		</Group>

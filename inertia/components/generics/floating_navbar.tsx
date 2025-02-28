@@ -26,7 +26,11 @@ const links = [
 	},
 ];
 
-export function FloatingNavbar() {
+interface FloatingNavbarProps {
+	width: string;
+}
+
+export function FloatingNavbar({ width }: FloatingNavbarProps) {
 	const theme = useMantineTheme();
 	const [opened, handler] = useDisclosure(false);
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, false);
@@ -71,7 +75,10 @@ export function FloatingNavbar() {
 				transition: 'transform 400ms ease',
 			}}
 		>
-			<Group justify="space-between">
+			<Group
+				justify="space-between"
+				style={{ maxWidth: '100%', width, marginInline: 'auto' }}
+			>
 				<Group>
 					{isMobile && <Burger opened={opened} onClick={handler.toggle} />}
 					<InternalLink style={{ fontSize: rem(24) }} href="/">
