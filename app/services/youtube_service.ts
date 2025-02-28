@@ -2,6 +2,8 @@ import { CacheService } from '#services/cache_service';
 import { Videos } from '#shared/types/index';
 import env from '#start/env';
 import { inject } from '@adonisjs/core';
+import { DateTime } from 'luxon';
+import { dateTimeSerializer } from '../libs/index.js';
 
 interface VideoInfo {
 	title: string;
@@ -57,6 +59,7 @@ export class YoutubeService {
 				thumbnail: this.videoThumbnailUrlBuilder(snippet.resourceId.videoId),
 				description: snippet.description,
 				url: `https://www.youtube.com/watch?v=${snippet.resourceId.videoId}`,
+				publishedAt: dateTimeSerializer(DateTime.fromISO(snippet.publishedAt)),
 			};
 		});
 	}

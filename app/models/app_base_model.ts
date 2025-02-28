@@ -1,12 +1,10 @@
+import { dateTimeSerializer } from '#libs/index';
 import {
 	BaseModel,
 	CamelCaseNamingStrategy,
 	column,
 } from '@adonisjs/lucid/orm';
 import { DateTime } from 'luxon';
-
-const dateTimeSerializer = (value: DateTime) =>
-	value.setLocale('fr').toLocaleString(DateTime.DATE_FULL);
 
 export default class AppBaseModel extends BaseModel {
 	static namingStrategy = new CamelCaseNamingStrategy();

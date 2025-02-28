@@ -27,6 +27,7 @@ export type Video = {
 	thumbnail: string;
 	description: string;
 	url: string;
+	publishedAt: string;
 };
 
 export type Guide = CommonBase & {

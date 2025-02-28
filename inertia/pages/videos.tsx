@@ -29,6 +29,7 @@ function VideosPage({ videos, currentVideo }: VideosPageProps) {
 					<VideoMeta
 						title={currentVideo.title}
 						description={currentVideo.description}
+						publishedAt={currentVideo.publishedAt}
 					/>
 				</Stack>
 			)}
