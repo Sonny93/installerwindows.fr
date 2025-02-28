@@ -1,15 +1,41 @@
 .card {
+	/* width: 350px; */
 	background-color: transparent;
 	border: none;
 	box-shadow: none;
-	padding: var(--mantine-spacing-md);
-	width: 350px;
+	overflow: unset !important;
+}
+
+.card:before {
+	--size: 85%;
+	z-index: -1;
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: var(--size);
+	width: var(--size);
+	background-color: light-dark(
+		var(--mantine-color-gray-4),
+		var(--mantine-color-dark-9)
+	);
+	border-radius: var(--mantine-radius-md);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	transition: all 0.15s ease;
+}
+
+.card:hover:before {
+	--size: calc(100% + var(--mantine-spacing-lg));
+	opacity: 1;
+}
+
+.cardImage {
+	border-radius: var(--mantine-radius-md);
+	box-shadow: var(--mantine-shadow-md);
 }
 
 .cardSection {
 	padding: var(--mantine-spacing-sm);
-}
-
-.cardTitle {
-	text-align: center;
+	padding-bottom: 0;
 }
