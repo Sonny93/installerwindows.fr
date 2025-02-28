@@ -9,7 +9,7 @@ export default class GuidesController {
 	async index({ inertia }: HttpContext) {
 		const guides = await this.guideService.getAllGuides();
 		return inertia.render('guides/index', {
-			guides,
+			guides: guides.map((guide) => guide.serialize()),
 		});
 	}
 }
