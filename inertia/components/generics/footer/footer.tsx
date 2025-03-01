@@ -6,23 +6,14 @@ import {
 	projectGithubUrl,
 } from '#config/project';
 import * as packageJson from '@/package.json';
-import { Link } from '@inertiajs/react';
-import {
-	ActionIcon,
-	Anchor,
-	Avatar,
-	Box,
-	Group,
-	Stack,
-	Text,
-} from '@mantine/core';
-import { ReactNode } from 'react';
+import { Box, Stack, Text } from '@mantine/core';
 import { FaDiscord, FaGithub, FaYoutube } from 'react-icons/fa';
-import { IconType } from 'react-icons/lib';
 import { MdSignalWifiStatusbar4Bar } from 'react-icons/md';
-import { TbContract, TbLogin, TbLogout } from 'react-icons/tb';
+import { TbContract } from 'react-icons/tb';
+import { Field } from '~/components/generics/footer/field';
+import { TextIcon } from '~/components/generics/footer/text_icon';
+import { UserCard } from '~/components/generics/footer/user_card/user_card';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
-import useUser from '~/hooks/use_user';
 import classes from './footer.module.css';
 
 interface FooterProps {
@@ -71,85 +62,3 @@ export const Footer = ({ width }: FooterProps) => (
 		</Stack>
 	</Box>
 );
-
-const Field = ({
-	label,
-	children,
-}: {
-	label: string;
-	children: React.ReactNode;
-}) => (
-	<Stack gap="xs">
-		<Text className={classes.footer__field_label}>{label}</Text>
-		<Group className={classes.footer__field_content}>{children}</Group>
-	</Stack>
-);
-
-function TextIcon({
-	icon: Icon,
-	children,
-	href,
-	external = false,
-}: {
-	icon: IconType;
-	children: ReactNode;
-	href: string;
-	external?: boolean;
-}) {
-	const content = (
-		<Group gap="sm">
-			<Icon size={24} />
-			{children}
-		</Group>
-	);
-
-	if (external) {
-		return (
-			<ExternalLinkStyled className={classes.footer__link} href={href}>
-				{content}
-			</ExternalLinkStyled>
-		);
-	}
-	return (
-		<Anchor component={Link} className={classes.footer__link} href={href}>
-			{content}
-		</Anchor>
-	);
-}
-
-function UserCard() {
-	const auth = useUser();
-
-	if (auth.isAuthenticated) {
-		return <Authenticated />;
-	}
-
-	return <NotAuthenticated />;
-}
-
-const NotAuthenticated = () => (
-	<TextIcon icon={TbLogin} href="/auth/login" external>
-		Connexion
-	</TextIcon>
-);
-
-function Authenticated() {
-	const { user } = useUser();
-	return (
-		<Group gap="sm">
-			<Avatar size="sm" src={user!.avatarUrl} radius={30} />
-			<Text fz="sm" fw={500}>
-				{user!.fullname}
-			</Text>
-			<ActionIcon
-				size="sm"
-				component="a"
-				href="/auth/logout"
-				variant="filled"
-				color="red"
-			>
-				<TbLogout size={18} />
-			</ActionIcon>
-		</Group>
-	);
-}

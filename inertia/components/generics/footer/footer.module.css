@@ -28,7 +28,7 @@
 
 .footer__link {
 	color: light-dark(var(--mantine-color-gray-8), var(--mantine-color-white));
-	font-weight: lighter;
+	font-weight: normal;
 }
 
 .footer__credits {
