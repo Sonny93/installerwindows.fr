@@ -15,7 +15,7 @@
 }
 
 .footer__field_label {
-	color: var(--mantine-color-white);
+	color: light-dark(var(--mantine-color-gray-8), var(--mantine-color-white));
 	font-weight: 500;
 	font-size: var(--mantine-font-size-lg);
 	letter-spacing: 0.03em;
@@ -27,7 +27,7 @@
 }
 
 .footer__link {
-	color: var(--mantine-color-white);
+	color: light-dark(var(--mantine-color-gray-8), var(--mantine-color-white));
 	font-weight: lighter;
 }
 

@@ -105,11 +105,7 @@ function TextIcon({
 
 	if (external) {
 		return (
-			<ExternalLinkStyled
-				className={classes.footer__link}
-				href={href}
-				target="_self"
-			>
+			<ExternalLinkStyled className={classes.footer__link} href={href}>
 				{content}
 			</ExternalLinkStyled>
 		);
