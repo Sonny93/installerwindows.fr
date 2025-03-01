@@ -40,10 +40,6 @@
 	padding-bottom: 0;
 }
 
-.card[data-active='true']:not(:hover) .cardImage {
-	box-shadow: 0 0 1rem 0rem var(--mantine-color-blue-5);
-}
-
 .card[data-active='true'] .cardSection {
 	color: var(--mantine-color-blue-3);
 }

@@ -16,3 +16,11 @@ export const forbiddenValues = vine.createRule(
 		}
 	}
 );
+
+export const rowExists = vine.createRule(
+	(currentValue: unknown, field: FieldContext) => {
+		if (currentValue === 'new') {
+			field.report('La valeur ne peut pas être "new"', 'row_exists', field);
+		}
+	}
+);
