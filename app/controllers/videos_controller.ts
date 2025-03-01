@@ -19,9 +19,10 @@ export default class VideosController {
 			return response.redirect(`/videos/${videos[0].id}`);
 		}
 
+		const nextVideo = videos.at(videos.indexOf(currentVideo) + 1);
 		return inertia.render(
 			'videos',
-			{ videos, currentVideo },
+			{ videos, currentVideo, nextVideo },
 			{
 				title: currentVideo.title,
 				description: currentVideo.description,

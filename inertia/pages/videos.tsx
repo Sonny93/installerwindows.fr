@@ -9,8 +9,9 @@ import { VideoPlayer } from '~/components/videos/video_player';
 interface VideosPageProps {
 	videos: Videos;
 	currentVideo: Video;
+	nextVideo: Video;
 }
-function VideosPage({ videos, currentVideo }: VideosPageProps) {
+function VideosPage({ videos, currentVideo, nextVideo }: VideosPageProps) {
 	const theme = useMantineTheme();
 	const isSmallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
@@ -36,10 +37,18 @@ function VideosPage({ videos, currentVideo }: VideosPageProps) {
 
 			{!isSmallScreen ? (
 				<Box w="100%" maw={350}>
-					<VideoList videos={videos} activeVideoId={currentVideo.id} />
+					<VideoList
+						videos={videos}
+						nextVideo={nextVideo}
+						activeVideoId={currentVideo.id}
+					/>
 				</Box>
 			) : (
-				<VideoList videos={videos} activeVideoId={currentVideo.id} />
+				<VideoList
+					videos={videos}
+					nextVideo={nextVideo}
+					activeVideoId={currentVideo.id}
+				/>
 			)}
 		</Flex>
 	);
