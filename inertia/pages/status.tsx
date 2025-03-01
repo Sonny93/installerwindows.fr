@@ -28,7 +28,7 @@ const StatusPage = ({ services, status }: StatusPageProps) => (
 					<Table.Tr key={service.name}>
 						<Table.Td>{service.name}</Table.Td>
 						<Table.Td>
-							<Badge color={service.status === 'ok' ? 'green' : 'red'}>
+							<Badge color={getBadgeColor(service.status)} fw={400}>
 								{service.status}
 							</Badge>
 						</Table.Td>
@@ -39,5 +39,18 @@ const StatusPage = ({ services, status }: StatusPageProps) => (
 		</Table>
 	</>
 );
+
+const getBadgeColor = (status: string) => {
+	const statusColor = {
+		ok: 'green',
+		warning: 'yellow',
+		error: 'red',
+		unknown: 'gray',
+	};
+	return (
+		statusColor[status.toLowerCase() as keyof typeof statusColor] ||
+		statusColor.unknown
+	);
+};
 
 export default StatusPage;
