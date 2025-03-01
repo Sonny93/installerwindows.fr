@@ -27,7 +27,6 @@ export default class extends BaseSeeder {
 				githubRawUrl: url,
 			};
 		});
-		console.log(guides);
 		await Guide.createMany(guides);
 	}
 }

@@ -5,7 +5,8 @@ import db from '@adonisjs/lucid/services/db';
 export const healthChecks = new HealthChecks().register([
 	new MemoryHeapCheck().as('Mémoire'),
 	new DbCheck(db.connection()).as('Base de données'),
-	new DbConnectionCountCheck(db.connection()).as(
-		'Connexions à la base de données'
-	),
+	new DbConnectionCountCheck(db.connection())
+		.as('Connexions à la base de données')
+		.warnWhenExceeds(15)
+		.failWhenExceeds(25),
 ]);
