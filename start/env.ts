@@ -11,8 +11,6 @@
 
 import { Env } from '@adonisjs/core/env';
 
-const nodeEnv = process.env.NODE_ENV;
-
 export default await Env.create(new URL('../', import.meta.url), {
 	NODE_ENV: Env.schema.enum(['development', 'production', 'test'] as const),
 	PORT: Env.schema.number(),
@@ -67,6 +65,6 @@ export default await Env.create(new URL('../', import.meta.url), {
   | Variables for configuring umami
   |----------------------------------------------------------
   */
-	UMAMI_URL: Env.schema.string.optionalWhen(nodeEnv !== 'production'),
-	UMAMI_WEBSITE_ID: Env.schema.string.optionalWhen(nodeEnv !== 'production'),
+	UMAMI_URL: Env.schema.string.optional(),
+	UMAMI_WEBSITE_ID: Env.schema.string.optional(),
 });
