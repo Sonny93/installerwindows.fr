@@ -1,7 +1,13 @@
 import { primaryColor } from '#config/project';
 import { PageProps } from '@adonisjs/inertia/types';
 import { usePage } from '@inertiajs/react';
-import { createTheme, MantineProvider, Notification, rem } from '@mantine/core';
+import {
+	ColorSchemeScript,
+	createTheme,
+	MantineProvider,
+	Notification,
+	rem,
+} from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { PropsWithChildren, useState } from 'react';
 import { TbX } from 'react-icons/tb';
@@ -54,16 +60,19 @@ export function BaseLayout({ children }: PropsWithChildren) {
 	const { props } = usePage<PageProps & { flash: string }>();
 	const [opened, setOpened] = useState<boolean>(!!props.flash);
 	return (
-		<MantineProvider theme={customTheme} defaultColorScheme="dark">
-			{opened && (
-				<Notification
-					icon={<TbX />}
-					color="red"
-					title={props.flash}
-					onClose={() => setOpened(false)}
-				/>
-			)}
-			<ModalsProvider>{children}</ModalsProvider>
-		</MantineProvider>
+		<>
+			<ColorSchemeScript defaultColorScheme="dark" />
+			<MantineProvider theme={customTheme} defaultColorScheme="dark">
+				{opened && (
+					<Notification
+						icon={<TbX />}
+						color="red"
+						title={props.flash}
+						onClose={() => setOpened(false)}
+					/>
+				)}
+				<ModalsProvider>{children}</ModalsProvider>
+			</MantineProvider>
+		</>
 	);
 }
