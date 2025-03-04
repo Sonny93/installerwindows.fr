@@ -1,4 +1,3 @@
-import { Link } from '@inertiajs/react';
 import { Button, Container, Group, Text, Title } from '@mantine/core';
 import { Error500 } from '~/components/errors/error_500';
 import { HelpButton } from '~/components/generics/help_button';
@@ -14,10 +13,13 @@ const ServerError = () => (
 					Une erreur côté serveur est survenue. Si le problème persiste,
 					veuillez nous contacter.
 				</Text>
+				<Text c="dimmed" size="lg" ta="center" className={classes.description}>
+					Rafraîchir la page pour essayer de résoudre le problème.
+				</Text>
 				<Group justify="center">
 					<HelpButton />
-					<Button component={Link} href="/" variant="outline">
-						Retour à la page d'accueil
+					<Button onClick={() => window.location.reload()} variant="outline">
+						Rafraîchir la page
 					</Button>
 				</Group>
 			</div>
