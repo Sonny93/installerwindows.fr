@@ -29,6 +29,7 @@
 		"#listeners/*": "./app/listeners/*.js",
 		"#events/*": "./app/events/*.js",
 		"#middleware/*": "./app/middleware/*.js",
+		"#repositories/*": "./app/repositories/*.js",
 		"#validators/*": "./app/validators/*.js",
 		"#providers/*": "./providers/*.js",
 		"#policies/*": "./app/policies/*.js",
@@ -37,7 +38,8 @@
 		"#tests/*": "./tests/*.js",
 		"#start/*": "./start/*.js",
 		"#config/*": "./config/*.js",
-		"#shared/*": "./shared/*.js"
+		"#shared/*": "./shared/*.js",
+		"#routes/*": "./start/routes/*.js"
 	},
 	"devDependencies": {
 		"@adonisjs/assembler": "^7.8.2",

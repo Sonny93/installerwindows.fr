@@ -19,6 +19,7 @@ import { ThemeSwitcher } from '~/components/generics/theme_switcher';
 const links = [
 	{ label: 'Vidéos', href: '/videos', external: false },
 	{ label: 'Guides', href: '/guides', external: false },
+	{ label: 'Periphériques', href: '/periphs', external: false },
 	{
 		label: editorName,
 		href: editorYtbUrl,
