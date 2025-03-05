@@ -56,3 +56,81 @@ export type InertiaPage<
 > = T & {
 	auth: Auth;
 };
+
+export type Review = {
+	id: number;
+	title: string;
+	url: string;
+};
+
+export const PeriphType = ['open', 'closed'] as const;
+export type PeriphType = (typeof PeriphType)[number];
+
+export const PeriphConnectivity = ['USB', 'Bluetooth', 'Jack'] as const;
+export type PeriphConnectivity = (typeof PeriphConnectivity)[number];
+
+export const PeriphMicrophone = [
+	'cardioid',
+	'omnidirectional',
+	'stereo',
+] as const;
+export type PeriphMicrophone = (typeof PeriphMicrophone)[number];
+
+export const PeriphSize = ['full', 'tenkeyless', '87', '60', '40'] as const;
+export type PeriphSize = (typeof PeriphSize)[number];
+
+export const PeriphPanel = ['IPS', 'VA', 'TN', 'OLED', 'QD-OLED'] as const;
+export type PeriphPanel = (typeof PeriphPanel)[number];
+
+export const PeriphShape = ['ergonomic', 'symmetrical'] as const;
+export type PeriphShape = (typeof PeriphShape)[number];
+
+export type BasePeriph = {
+	brand: string;
+	model: string;
+	reviews: Review[];
+	price: number;
+	notes: number;
+} & CommonBase;
+
+export type Periph = BasePeriph & {
+	wire: boolean;
+	microOnWire: boolean;
+};
+
+export type Headset = BasePeriph & {
+	wire: boolean;
+	type: PeriphType;
+	connectivity: PeriphConnectivity;
+	microphone: boolean;
+};
+
+export type Keyboard = BasePeriph & {
+	size: PeriphSize;
+	switches: string;
+};
+
+export type Microphone = BasePeriph & {
+	connectivity: PeriphConnectivity;
+	microphoneType: PeriphMicrophone;
+};
+
+export type Monitor = BasePeriph & {
+	size: number;
+	resolution: string;
+	refreshRate: number;
+	panel: PeriphPanel;
+	vesaSupport: boolean;
+};
+
+export type MousePad = BasePeriph & {
+	slideSpeed: number;
+	covering: boolean;
+	size: PeriphSize;
+};
+
+export type Mouse = BasePeriph & {
+	wire: boolean;
+	shape: PeriphShape;
+	weight: number;
+};
