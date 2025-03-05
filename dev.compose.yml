@@ -17,7 +17,7 @@ services:
 
   pgadmin:
     container_name: pgadmin
-    image: dpage/pgadmin4:8
+    image: dpage/pgadmin4:9
     restart: always
     entrypoint: /bin/sh -c "chmod 0600 /pgpass; /entrypoint.sh;"
     healthcheck:

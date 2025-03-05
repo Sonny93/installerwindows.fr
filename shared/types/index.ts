@@ -110,6 +110,11 @@ export type Keyboard = BasePeriph & {
 	switches: string;
 };
 
+export type Earphone = BasePeriph & {
+	wire: boolean;
+	microOnWire: boolean;
+};
+
 export type Microphone = BasePeriph & {
 	connectivity: PeriphConnectivity;
 	microphoneType: PeriphMicrophone;
@@ -133,4 +138,14 @@ export type Mouse = BasePeriph & {
 	wire: boolean;
 	shape: PeriphShape;
 	weight: number;
+};
+
+export type CountPerCategory = {
+	headset: number;
+	keyboard: number;
+	monitor: number;
+	mouse: number;
+	mousepad: number;
+	microphone: number;
+	earphone: number;
 };
