@@ -2,7 +2,7 @@ import BasePeriphModel from '#models/base_periph_model';
 import type { PeriphPanel } from '#shared/types/index';
 import { column } from '@adonisjs/lucid/orm';
 
-export default class Monitor extends BasePeriphModel {
+export default class Monitors extends BasePeriphModel {
 	@column()
 	declare size: number;
 

@@ -1,7 +1,7 @@
 import BasePeriphModel from '#models/base_periph_model';
 import { column } from '@adonisjs/lucid/orm';
 
-export default class Earphone extends BasePeriphModel {
+export default class Earphones extends BasePeriphModel {
 	@column()
 	declare wire: boolean;
 

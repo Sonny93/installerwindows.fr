@@ -2,7 +2,7 @@ import BasePeriphModel from '#models/base_periph_model';
 import type { PeriphConnectivity, PeriphType } from '#shared/types/index';
 import { column } from '@adonisjs/lucid/orm';
 
-export default class Headset extends BasePeriphModel {
+export default class Headsets extends BasePeriphModel {
 	@column()
 	declare wire: boolean;
 

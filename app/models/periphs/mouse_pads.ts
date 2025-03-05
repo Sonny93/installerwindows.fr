@@ -2,7 +2,7 @@ import BasePeriphModel from '#models/base_periph_model';
 import type { PeriphSize } from '#shared/types/index';
 import { column } from '@adonisjs/lucid/orm';
 
-export default class MousePad extends BasePeriphModel {
+export default class MousePads extends BasePeriphModel {
 	@column()
 	declare slide_speed: number;
 

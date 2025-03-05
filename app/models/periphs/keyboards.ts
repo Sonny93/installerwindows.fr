@@ -2,7 +2,7 @@ import BasePeriphModel from '#models/base_periph_model';
 import type { PeriphSize } from '#shared/types/index';
 import { column } from '@adonisjs/lucid/orm';
 
-export default class Keyboard extends BasePeriphModel {
+export default class Keyboards extends BasePeriphModel {
 	@column()
 	declare size: PeriphSize;
 
