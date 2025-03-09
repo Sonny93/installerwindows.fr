@@ -20,7 +20,7 @@ export default class Product extends AppLightModel {
 	declare affiliateLinks: string;
 
 	@column()
-	declare additionalInfo: string;
+	declare additionalInfo: string | null;
 
 	@hasMany(() => Review, {
 		foreignKey: 'productId',

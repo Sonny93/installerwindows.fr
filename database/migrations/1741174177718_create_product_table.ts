@@ -11,7 +11,7 @@ export default class extends BaseSchema {
 			table.string('image').notNullable();
 			table.integer('recommended_price').notNullable();
 			table.string('affiliate_links').notNullable();
-			table.string('additional_info').notNullable();
+			table.string('additional_info').nullable();
 			generateIdColumn(table);
 		});
 	}
