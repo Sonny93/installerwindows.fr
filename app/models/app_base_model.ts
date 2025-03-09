@@ -8,7 +8,7 @@ import { DateTime } from 'luxon';
 
 export default class AppBaseModel extends BaseModel {
 	static namingStrategy = new CamelCaseNamingStrategy();
-	serializeExtras = true;
+	serializeExtras = false;
 
 	@column({ isPrimary: true })
 	declare id: number;

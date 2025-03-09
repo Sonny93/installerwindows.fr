@@ -1,10 +1,21 @@
-import BasePeriphModel from '#models/base_periph_model';
-import { column } from '@adonisjs/lucid/orm';
+import AppBaseModel from '#models/app_base_model';
+import Product from '#models/products';
+import { column, hasOne } from '@adonisjs/lucid/orm';
+import type { HasOne } from '@adonisjs/lucid/types/relations';
 
-export default class Earphones extends BasePeriphModel {
+export default class Earphones extends AppBaseModel {
 	@column()
 	declare wire: boolean;
 
 	@column()
 	declare micro_on_wire: boolean;
+
+	@column()
+	declare productId: number;
+
+	@hasOne(() => Product, {
+		foreignKey: 'id',
+		localKey: 'productId',
+	})
+	declare product: HasOne<typeof Product>;
 }

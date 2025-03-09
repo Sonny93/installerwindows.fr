@@ -1,8 +1,10 @@
-import BasePeriphModel from '#models/base_periph_model';
+import AppBaseModel from '#models/app_base_model';
+import Product from '#models/products';
 import type { PeriphSize } from '#shared/types/index';
-import { column } from '@adonisjs/lucid/orm';
+import { column, hasOne } from '@adonisjs/lucid/orm';
+import type { HasOne } from '@adonisjs/lucid/types/relations';
 
-export default class MousePads extends BasePeriphModel {
+export default class MousePads extends AppBaseModel {
 	@column()
 	declare slide_speed: number;
 
@@ -11,4 +13,13 @@ export default class MousePads extends BasePeriphModel {
 
 	@column()
 	declare size: PeriphSize;
+
+	@column()
+	declare productId: number;
+
+	@hasOne(() => Product, {
+		foreignKey: 'id',
+		localKey: 'productId',
+	})
+	declare product: HasOne<typeof Product>;
 }
