@@ -57,6 +57,17 @@ export type InertiaPage<
 	auth: Auth;
 };
 
+export const ProductType = [
+	'mouse',
+	'keyboard',
+	'monitor',
+	'headset',
+	'earphone',
+	'microphone',
+	'mousepad',
+] as const;
+export type ProductType = (typeof ProductType)[number];
+
 export type Review = {
 	id: number;
 	title: string;
@@ -85,7 +96,7 @@ export type PeriphPanel = (typeof PeriphPanel)[number];
 export const PeriphShape = ['ergonomic', 'symmetrical'] as const;
 export type PeriphShape = (typeof PeriphShape)[number];
 
-export type BasePeriph = {
+export type Product = {
 	brand: string;
 	model: string;
 	reviews: Review[];
@@ -93,51 +104,59 @@ export type BasePeriph = {
 	notes: number;
 } & CommonBase;
 
-export type Periph = BasePeriph & {
+export type Periph = CommonBase & {
 	wire: boolean;
 	microOnWire: boolean;
+	product: Product;
 };
 
-export type Headset = BasePeriph & {
+export type Headset = CommonBase & {
 	wire: boolean;
 	type: PeriphType;
 	connectivity: PeriphConnectivity;
 	microphone: boolean;
+	product: Product;
 };
 
-export type Keyboard = BasePeriph & {
+export type Keyboard = CommonBase & {
 	size: PeriphSize;
 	switches: string;
+	product: Product;
 };
 
-export type Earphone = BasePeriph & {
+export type Earphone = CommonBase & {
 	wire: boolean;
 	microOnWire: boolean;
+	product: Product;
 };
 
-export type Microphone = BasePeriph & {
+export type Microphone = CommonBase & {
 	connectivity: PeriphConnectivity;
 	microphoneType: PeriphMicrophone;
+	product: Product;
 };
 
-export type Monitor = BasePeriph & {
+export type Monitor = CommonBase & {
 	size: number;
 	resolution: string;
 	refreshRate: number;
 	panel: PeriphPanel;
 	vesaSupport: boolean;
+	product: Product;
 };
 
-export type MousePad = BasePeriph & {
+export type MousePad = CommonBase & {
 	slideSpeed: number;
 	covering: boolean;
 	size: PeriphSize;
+	product: Product;
 };
 
-export type Mouse = BasePeriph & {
+export type Mouse = CommonBase & {
 	wire: boolean;
 	shape: PeriphShape;
 	weight: number;
+	product: Product;
 };
 
 export type CountPerCategory = {

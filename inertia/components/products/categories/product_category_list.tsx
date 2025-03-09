@@ -1,8 +1,8 @@
-import { CountPerCategory } from '#shared/types/index';
+import { CountPerCategory, ProductType } from '#shared/types/index';
 import { SimpleGrid } from '@mantine/core';
-import { PeriphCategoryCard } from '~/components/periphs/categories/card/periph_category_card';
+import { ProductCategoryCard } from '~/components/products/categories/card/product_category_card';
 
-const CATEGORIES = [
+const CATEGORIES: [ProductType, string, string][] = [
 	['mouse', 'Souris', 'mouse.jpg'],
 	['keyboard', 'Claviers', 'keyboard.jpg'],
 	['monitor', 'Écrans', 'monitor.jpg'],
@@ -12,14 +12,14 @@ const CATEGORIES = [
 	['mousepad', 'Tapis de souris', 'mouse_pad.png'],
 ];
 
-interface PeriphCategoryListProps {
+interface ProductCategoryListProps {
 	count: CountPerCategory;
 }
 
-export const PeriphCategoryList = (props: PeriphCategoryListProps) => (
+export const ProductCategoryList = (props: ProductCategoryListProps) => (
 	<SimpleGrid cols={3}>
 		{CATEGORIES.map(([id, name, thumbnail]) => (
-			<PeriphCategoryCard
+			<ProductCategoryCard
 				key={id}
 				id={id}
 				name={name}

@@ -3,7 +3,7 @@ import { CountPerCategory } from '#shared/types/index';
 import { Link } from '@inertiajs/react';
 import { Button, Group, Stack, Text, Title } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
-import { PeriphCategoryList } from '~/components/periphs/categories/periph_category_list';
+import { ProductCategoryList } from '~/components/products/categories/product_category_list';
 import useUser from '~/hooks/use_user';
 
 interface PeriphsProps {
@@ -43,7 +43,7 @@ export default function Periphs(props: PeriphsProps) {
 					.
 				</Text>
 			</Stack>
-			<PeriphCategoryList count={props.count} />
+			<ProductCategoryList count={props.count} />
 		</Stack>
 	);
 }

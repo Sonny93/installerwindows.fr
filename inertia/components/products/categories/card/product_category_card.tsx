@@ -1,26 +1,22 @@
 import { Link } from '@inertiajs/react';
 import { AspectRatio, Card, Image, Text, Tooltip } from '@mantine/core';
-import classes from './periph_category_card.module.css';
+import classes from './product_category_card.module.css';
 
-type PeriphCategory = {
+type ProductCategory = {
 	id: string;
 	name: string;
 	thumbnail: string;
 	total_periphs: number;
 };
-interface PeriphCategoryCardProps extends PeriphCategory {}
-export function PeriphCategoryCard({
+interface ProductCategoryCardProps extends ProductCategory {}
+export function ProductCategoryCard({
 	id,
 	name,
 	thumbnail,
 	total_periphs,
-}: PeriphCategoryCardProps) {
+}: ProductCategoryCardProps) {
 	return (
-		<Card
-			component={Link}
-			href={`/periphs/categories/${id}`}
-			className={classes.card}
-		>
+		<Card component={Link} href={`/periphs/${id}`} className={classes.card}>
 			<Card.Section>
 				<AspectRatio ratio={16 / 9} className={classes.cardImage}>
 					<Image src={thumbnail} alt={name} style={{ height: '100%' }} />
