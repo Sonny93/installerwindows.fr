@@ -6,3 +6,7 @@ export function defaultTableFields(table: Knex.CreateTableBuilder) {
 	table.timestamp('created_at').notNullable();
 	table.timestamp('updated_at').nullable();
 }
+
+export function generateIdColumn(table: Knex.CreateTableBuilder) {
+	table.increments('id').primary().first().unique().notNullable();
+}

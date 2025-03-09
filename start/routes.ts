@@ -1,7 +1,7 @@
 import { middleware } from '#start/kernel';
 import router from '@adonisjs/core/services/router';
 
-import '#routes/periphs';
+import '#start/routes/products';
 
 const HomeController = () => import('#controllers/home_controller');
 const HealthChecksController = () =>
