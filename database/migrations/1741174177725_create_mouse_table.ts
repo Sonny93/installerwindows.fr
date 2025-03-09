@@ -9,6 +9,7 @@ export default class extends BaseSchema {
 			table.boolean('wire').notNullable();
 			table.string('shape').notNullable();
 			table.integer('weight').notNullable();
+			table.integer('product_id').notNullable();
 			defaultTableFields(table);
 		});
 	}

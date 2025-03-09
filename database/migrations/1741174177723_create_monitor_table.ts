@@ -11,6 +11,7 @@ export default class extends BaseSchema {
 			table.integer('refresh_rate').notNullable();
 			table.string('panel').notNullable();
 			table.boolean('vesa_support').notNullable();
+			table.integer('product_id').notNullable();
 			defaultTableFields(table);
 		});
 	}

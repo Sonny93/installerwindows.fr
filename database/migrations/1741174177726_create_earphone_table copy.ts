@@ -8,6 +8,7 @@ export default class extends BaseSchema {
 		this.schema.createTable(this.tableName, (table) => {
 			table.boolean('wire').notNullable();
 			table.boolean('micro_on_wire').notNullable();
+			table.integer('product_id').notNullable();
 			defaultTableFields(table);
 		});
 	}

@@ -10,6 +10,7 @@ export default class extends BaseSchema {
 			table.string('type').notNullable();
 			table.string('connectivity').notNullable();
 			table.boolean('microphone').notNullable();
+			table.integer('product_id').notNullable();
 			defaultTableFields(table);
 		});
 	}
