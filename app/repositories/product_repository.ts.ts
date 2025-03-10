@@ -7,6 +7,7 @@ import MousePads from '#models/periphs/mouse_pads';
 import Mouses from '#models/periphs/mouses';
 import Product from '#models/products';
 import {
+	AffiliateLink,
 	CountPerCategory,
 	Earphone,
 	Headset,
@@ -15,8 +16,11 @@ import {
 	Monitor,
 	Mouse,
 	MousePad,
+	PeriphShape,
 	ProductType,
+	Review,
 } from '#shared/types/index';
+import db from '@adonisjs/lucid/services/db';
 import {
 	ModelObject,
 	ModelQueryBuilderContract,
@@ -30,6 +34,21 @@ type Models =
 	| typeof Mouses
 	| typeof MousePads
 	| typeof Microphones;
+
+type ProductPayload = {
+	brand: string;
+	reference: string;
+	recommendedPrice: number;
+	additionalInfo: string | null;
+	affiliateLinks: AffiliateLink[];
+	reviews: Review[];
+};
+
+type CreateMousePayload = ProductPayload & {
+	wire: boolean;
+	shape: PeriphShape;
+	weight: number;
+};
 
 export class ProductRepository {
 	async getCountPerCategory(): Promise<CountPerCategory> {
@@ -92,6 +111,29 @@ export class ProductRepository {
 		return this.arraySerialize<Mouses, Mouse>(mouses);
 	}
 
+	async createMouse(payload: CreateMousePayload): Promise<Mouse> {
+		return await db.transaction(async (trx) => {
+			const productPayload = {
+				brand: payload.brand,
+				reference: payload.reference,
+				recommendedPrice: payload.recommendedPrice,
+				additionalInfo: payload.additionalInfo,
+				affiliateLinks: payload.affiliateLinks,
+				reviews: payload.reviews,
+			};
+			const product = await Product.create(productPayload, { client: trx });
+
+			const mousePayload = {
+				wire: payload.wire,
+				shape: payload.shape,
+				weight: payload.weight,
+				productId: product.id,
+			};
+			const mouse = await Mouses.create(mousePayload, { client: trx });
+			return this.serialize<Mouses, Mouse>(mouse);
+		});
+	}
+
 	async getProductsByCategory(category: ProductType): Promise<Product[]> {
 		const model = this.getProductCategoryFromString(category);
 		const products = await this.preloadRelations(model.query());
@@ -123,7 +165,11 @@ export class ProductRepository {
 		return array.map((item) => item.serialize() as Y);
 	}
 
+	private serialize<T extends ModelObject, Y>(item: T): Y {
+		return item.serialize() as Y;
+	}
+
 	private preloadRelations(query: ModelQueryBuilderContract<any>) {
-		return query.preload('product', (product) => product.preload('reviews'));
+		return query.preload('product');
 	}
 }

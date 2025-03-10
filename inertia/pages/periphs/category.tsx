@@ -7,6 +7,7 @@ import {
 	Mouse,
 	MousePad,
 } from '#shared/types/index';
+import { MouseList } from '~/components/products/mouses/mouse_list';
 
 export default function PeriphCategory({
 	products,
@@ -22,10 +23,10 @@ export default function PeriphCategory({
 		| Earphone[];
 	category: string;
 }) {
-	console.log(products);
-	return (
-		<div>
-			<h1>{category}</h1>
-		</div>
-	);
+	switch (category) {
+		case 'mouse':
+			return <MouseList products={products as Mouse[]} />;
+		default:
+			return <div>No products found</div>;
+	}
 }
