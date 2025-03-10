@@ -1,13 +1,5 @@
 import { Mouse } from '#shared/types/index';
-import {
-	Box,
-	Card,
-	Group,
-	Image,
-	SimpleGrid,
-	Stack,
-	Text,
-} from '@mantine/core';
+import { Card, Group, Image, SimpleGrid, Stack, Text } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import classes from './mouse_card.module.css';
 
@@ -30,39 +22,40 @@ export function MouseCard({ product }: { product: Mouse }) {
 					<Text fz="lg" fw={500}>
 						{productData.brand} {productData.reference}
 					</Text>
-					<Text fz="sm" mt="xs">
-						{productData.additionalInfo}
-					</Text>
+					{productData.additionalInfo && (
+						<Text fz="sm" mt="xs">
+							{productData.additionalInfo}
+						</Text>
+					)}
 				</Card.Section>
 
 				<Card.Section className={classes.section}>
-					<Text className={classes.label} c="dimmed">
-						Caractéristiques
-					</Text>
+					<Text className={classes.sectionTitle}>Caractéristiques</Text>
 					<SimpleGrid cols={2} mt={5}>
-						<Text size="sm" variant="light" fw={300}>
-							Connectivité <Box fw={500}>{wire ? 'Filaire' : 'Sans fil'}</Box>
+						<Text className={classes.label}>
+							Connectivité{' '}
+							<span className={classes.bold}>
+								{wire ? 'Filaire' : 'Sans fil'}
+							</span>
 						</Text>
-						<Text size="sm" variant="light" fw={300}>
-							Poids <Box fw={500}>{weight}g</Box>
+						<Text className={classes.label}>
+							Poids <span className={classes.bold}>{weight}g</span>
 						</Text>
-						<Text size="sm" variant="light" fw={300}>
-							Forme <Box fw={500}>{shape}</Box>
+						<Text className={classes.label}>
+							Forme <span className={classes.bold}>{shape}</span>
 						</Text>
-						<Text size="sm" variant="light" fw={300}>
+						<Text className={classes.label}>
 							Prix conseillé
-							<Box fw={500}>
+							<span className={classes.bold}>
 								{'<'}
 								{productData.recommendedPrice}€
-							</Box>
+							</span>
 						</Text>
 					</SimpleGrid>
 				</Card.Section>
 
 				<Card.Section className={classes.section}>
-					<Text className={classes.label} c="dimmed">
-						Reviews
-					</Text>
+					<Text className={classes.sectionTitle}>Reviews</Text>
 					<Group gap={7} mt={5}>
 						{productData.reviews.length > 0 ? (
 							productData.reviews.map((review, index) => (
@@ -74,17 +67,13 @@ export function MouseCard({ product }: { product: Mouse }) {
 								</>
 							))
 						) : (
-							<Text size="sm" variant="light" fw={300}>
-								Aucune review
-							</Text>
+							<Text className={classes.label}>Aucune review</Text>
 						)}
 					</Group>
 				</Card.Section>
 
 				<Card.Section className={classes.section}>
-					<Text className={classes.label} c="dimmed">
-						Liens affiliés
-					</Text>
+					<Text className={classes.sectionTitle}>Liens affiliés</Text>
 					<Group gap={7} mt={5}>
 						{productData.affiliateLinks.length > 0 ? (
 							productData.affiliateLinks.map((link, index) => (
@@ -96,9 +85,7 @@ export function MouseCard({ product }: { product: Mouse }) {
 								</>
 							))
 						) : (
-							<Text size="sm" variant="light" fw={300}>
-								Aucun lien affilié
-							</Text>
+							<Text className={classes.label}>Aucun lien affilié</Text>
 						)}
 					</Group>
 				</Card.Section>
