@@ -3,7 +3,7 @@ import { Card, Group, Image, SimpleGrid, Stack, Text } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import classes from './mouse_card.module.css';
 
-const DEFAULT_IMAGE = 'http://localhost:3333/periphs/mouse.jpg';
+const DEFAULT_IMAGE = '/periphs/mouse.jpg';
 
 export function MouseCard({ product }: { product: Mouse }) {
 	const { wire, shape, weight, product: productData } = product;
