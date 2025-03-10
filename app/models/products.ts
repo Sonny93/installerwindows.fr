@@ -1,7 +1,8 @@
 import AppLightModel from '#models/app_light_model';
-import Review from '#models/review';
-import { column, hasMany } from '@adonisjs/lucid/orm';
-import type { HasMany } from '@adonisjs/lucid/types/relations';
+import { AffiliateLink, Review } from '#shared/types/index';
+import { column } from '@adonisjs/lucid/orm';
+
+const jsonbSerialize = (value: unknown) => (Array.isArray(value) ? value : []);
 
 export default class Product extends AppLightModel {
 	@column()
@@ -11,20 +12,21 @@ export default class Product extends AppLightModel {
 	declare reference: string;
 
 	@column()
-	declare image: string;
+	declare image: string | null;
 
 	@column()
 	declare recommendedPrice: number;
 
 	@column()
-	declare affiliateLinks: string;
-
-	@column()
 	declare additionalInfo: string | null;
 
-	@hasMany(() => Review, {
-		foreignKey: 'productId',
-		localKey: 'id',
+	@column({
+		serialize: jsonbSerialize,
 	})
-	declare reviews: HasMany<typeof Review>;
+	declare reviews: Review[];
+
+	@column({
+		serialize: jsonbSerialize,
+	})
+	declare affiliateLinks: AffiliateLink[];
 }

@@ -69,8 +69,12 @@ export const ProductType = [
 export type ProductType = (typeof ProductType)[number];
 
 export type Review = {
-	id: number;
-	title: string;
+	label: string;
+	url: string;
+};
+
+export type AffiliateLink = {
+	label: string;
 	url: string;
 };
 
@@ -98,10 +102,12 @@ export type PeriphShape = (typeof PeriphShape)[number];
 
 export type Product = {
 	brand: string;
-	model: string;
+	reference: string;
+	image: string;
+	recommendedPrice: number;
+	additionalInfo: string | null;
+	affiliateLinks: AffiliateLink[];
 	reviews: Review[];
-	price: number;
-	notes: number;
 } & CommonBase;
 
 export type Periph = CommonBase & {
