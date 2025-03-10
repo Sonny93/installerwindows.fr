@@ -72,6 +72,7 @@
 		"@adonisjs/cache": "1.0.0-6",
 		"@adonisjs/core": "^6.17.2",
 		"@adonisjs/cors": "^2.2.1",
+		"@adonisjs/drive": "^3.2.0",
 		"@adonisjs/inertia": "^3.1.0",
 		"@adonisjs/lucid": "^21.6.0",
 		"@adonisjs/session": "^7.5.1",

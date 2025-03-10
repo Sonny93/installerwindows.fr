@@ -45,26 +45,33 @@ export default await Env.create(new URL('../', import.meta.url), {
 	YOUTUBE_PLAYLIST_ID: Env.schema.string(),
 
 	/*
-  |----------------------------------------------------------
-  | Variables for configuring auth
-  |----------------------------------------------------------
-  */
+|----------------------------------------------------------
+| Variables for configuring auth
+|----------------------------------------------------------
+*/
 	DISCORD_CLIENT_ID: Env.schema.string(),
 	DISCORD_CLIENT_SECRET: Env.schema.string(),
 	USERS_IDS: Env.schema.string(),
 
 	/*
-  |----------------------------------------------------------
-  | Variables for configuring app url
-  |----------------------------------------------------------
-  */
+|----------------------------------------------------------
+| Variables for configuring app url
+|----------------------------------------------------------
+*/
 	APP_URL: Env.schema.string({ format: 'url', tld: false }), // Remove TLD to allow localhost
 
 	/*
-  |----------------------------------------------------------
-  | Variables for configuring umami
-  |----------------------------------------------------------
-  */
+|----------------------------------------------------------
+| Variables for configuring umami
+|----------------------------------------------------------
+*/
 	UMAMI_URL: Env.schema.string.optional(),
 	UMAMI_WEBSITE_ID: Env.schema.string.optional(),
+
+	/*
+  |----------------------------------------------------------
+  | Variables for configuring the drive package
+  |----------------------------------------------------------
+  */
+	DRIVE_DISK: Env.schema.enum(['fs'] as const),
 });

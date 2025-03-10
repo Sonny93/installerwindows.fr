@@ -111,10 +111,14 @@ export class ProductRepository {
 		return this.arraySerialize<Mouses, Mouse>(mouses);
 	}
 
-	async createMouse(payload: CreateMousePayload): Promise<Mouse> {
+	async createMouse(
+		payload: CreateMousePayload,
+		imagePath: string
+	): Promise<Mouse> {
 		return await db.transaction(async (trx) => {
 			const productPayload = {
 				brand: payload.brand,
+				image: imagePath,
 				reference: payload.reference,
 				recommendedPrice: payload.recommendedPrice,
 				additionalInfo: payload.additionalInfo,

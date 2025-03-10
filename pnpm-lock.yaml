@@ -26,6 +26,9 @@ importers:
       '@adonisjs/cors':
         specifier: ^2.2.1
         version: 2.2.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))
+      '@adonisjs/drive':
+        specifier: ^3.2.0
+        version: 3.2.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))
       '@adonisjs/inertia':
         specifier: ^3.1.0
         version: 3.1.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(@adonisjs/vite@4.0.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/shield@8.1.2(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(@adonisjs/session@7.5.1(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1))(edge.js@6.2.1)(vite@6.2.0(@types/node@22.13.8)(sugarss@4.0.1(postcss@8.5.3))))(edge.js@6.2.1)
@@ -282,6 +285,22 @@ packages:
     engines: {node: '>=18.16.0'}
     peerDependencies:
       '@adonisjs/core': ^6.2.0
+
+  '@adonisjs/drive@3.2.0':
+    resolution: {integrity: sha512-vfZphRUmnOHlt5insWes07xXtQn3pn3bvI1SyfOeFV8rK5stKLQ7xD7qp/DcmhW5qzMnyGTuOYUdVOYDJHIiEg==}
+    engines: {node: '>=20.6.0'}
+    peerDependencies:
+      '@adonisjs/core': ^6.2.0
+      '@aws-sdk/client-s3': ^3.577.0
+      '@aws-sdk/s3-request-presigner': ^3.577.0
+      '@google-cloud/storage': ^7.10.2
+    peerDependenciesMeta:
+      '@aws-sdk/client-s3':
+        optional: true
+      '@aws-sdk/s3-request-presigner':
+        optional: true
+      '@google-cloud/storage':
+        optional: true
 
   '@adonisjs/encryption@6.0.2':
     resolution: {integrity: sha512-37XqVPsZi6zXMbC0Me1/qlcTP0uE+KAtYOFx7D7Tvtz377NL/6gqxqgpW/BopgOSD+CVDXjzO/Wx3M2UrbkJRQ==}
@@ -2339,6 +2358,21 @@ packages:
   flattie@1.1.1:
     resolution: {integrity: sha512-9UbaD6XdAL97+k/n+N7JwX46K/M6Zc6KcFYskrYL8wbBV/Uyk0CTAMY0VT+qiK5PM7AIc9aTWYtq65U7T+aCNQ==}
     engines: {node: '>=8'}
+
+  flydrive@1.1.0:
+    resolution: {integrity: sha512-acV6Pl2T+jjOURyvE57c79HP2KZmeI6sgPO6n5fZnExre4y8SCcLz5Fzttz79Snrpp6HbsA1q255OdVDf5Vrfg==}
+    engines: {node: '>=20.6.0'}
+    peerDependencies:
+      '@aws-sdk/client-s3': ^3.577.0
+      '@aws-sdk/s3-request-presigner': ^3.577.0
+      '@google-cloud/storage': ^7.10.2
+    peerDependenciesMeta:
+      '@aws-sdk/client-s3':
+        optional: true
+      '@aws-sdk/s3-request-presigner':
+        optional: true
+      '@google-cloud/storage':
+        optional: true
 
   follow-redirects@1.15.9:
     resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
@@ -4565,6 +4599,11 @@ snapshots:
     dependencies:
       '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
 
+  '@adonisjs/drive@3.2.0(@adonisjs/core@6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1))':
+    dependencies:
+      '@adonisjs/core': 6.17.2(@adonisjs/assembler@7.8.2(typescript@5.8.2))(@vinejs/vine@3.0.0)(edge.js@6.2.1)
+      flydrive: 1.1.0
+
   '@adonisjs/encryption@6.0.2':
     dependencies:
       '@poppinss/utils': 6.9.2
@@ -6613,6 +6652,13 @@ snapshots:
   flatted@3.3.2: {}
 
   flattie@1.1.1: {}
+
+  flydrive@1.1.0:
+    dependencies:
+      '@humanwhocodes/retry': 0.3.1
+      '@poppinss/utils': 6.9.2
+      etag: 1.8.1
+      mime-types: 2.1.35
 
   follow-redirects@1.15.9: {}
 
