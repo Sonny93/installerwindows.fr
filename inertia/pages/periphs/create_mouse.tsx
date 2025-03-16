@@ -54,7 +54,7 @@ export default function CreateMouse() {
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		post('/periphs/create/mouse');
+		post('/periphs/mouse/create');
 	};
 
 	return (

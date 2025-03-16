@@ -1,10 +1,10 @@
-import { PeriphShape, ProductType } from '#shared/types/index';
+import { PeriphShape, PeriphSize, ProductType } from '#shared/types/index';
 import vine from '@vinejs/vine';
 
-export const productCategoryValidator = vine.compile(
+export const productTypeValidator = vine.compile(
 	vine.object({
 		params: vine.object({
-			category: vine.enum(ProductType),
+			productType: vine.enum(ProductType),
 		}),
 	})
 );
@@ -34,5 +34,13 @@ export const mouseValidator = vine.compile(
 		wire: vine.boolean(),
 		shape: vine.enum(PeriphShape),
 		weight: vine.number(),
+	})
+);
+
+export const keyboardValidator = vine.compile(
+	vine.object({
+		...productValidator.getProperties(),
+		size: vine.enum(PeriphSize),
+		switches: vine.string(),
 	})
 );

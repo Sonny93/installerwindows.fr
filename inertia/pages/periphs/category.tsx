@@ -11,7 +11,7 @@ import { MouseList } from '~/components/products/mouses/mouse_list';
 
 export default function PeriphCategory({
 	products,
-	category,
+	productType,
 }: {
 	products:
 		| Mouse[]
@@ -21,9 +21,9 @@ export default function PeriphCategory({
 		| Headset[]
 		| Keyboard[]
 		| Earphone[];
-	category: string;
+	productType: string;
 }) {
-	switch (category) {
+	switch (productType) {
 		case 'mouse':
 			return <MouseList products={products as Mouse[]} />;
 		default:

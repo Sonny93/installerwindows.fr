@@ -9,14 +9,14 @@ router
 	.group(() => {
 		router.get('', [ProductsController, 'render']).as('products.categories');
 		router
-			.get('/:category', [ProductsController, 'categoryRender'])
-			.as('products.category');
+			.get('/:productType', [ProductsController, 'categoryRender'])
+			.as('products.productType');
 
 		router
-			.get('/create/mouse', [CreateProductController, 'showMouseForm'])
-			.as('products.create.mouse');
+			.get('/:productType/create', [CreateProductController, 'showForm'])
+			.as('products.productType.create');
 		router
-			.post('/create/mouse', [CreateProductController, 'storeMouse'])
-			.as('products.create.mouse.store');
+			.post('/:productType/create', [CreateProductController, 'store'])
+			.as('products.productType.create.store');
 	})
 	.prefix('/periphs');

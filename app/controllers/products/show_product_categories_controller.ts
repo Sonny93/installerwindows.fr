@@ -1,5 +1,5 @@
 import { ProductRepository } from '#repositories/product_repository.ts';
-import { productCategoryValidator } from '#validators/product';
+import { productTypeValidator } from '#validators/product';
 import { inject } from '@adonisjs/core/container';
 import type { HttpContext } from '@adonisjs/core/http';
 
@@ -13,15 +13,13 @@ export default class ShowProductCategoriesController {
 	}
 
 	async categoryRender(ctx: HttpContext) {
-		const { params } = await ctx.request.validateUsing(
-			productCategoryValidator
-		);
+		const { params } = await ctx.request.validateUsing(productTypeValidator);
 		const products = await this.productRepository.getProductsByCategory(
-			params.category
+			params.productType
 		);
 		return ctx.inertia.render('periphs/category', {
 			products,
-			category: params.category,
+			productType: params.productType,
 		});
 	}
 }
