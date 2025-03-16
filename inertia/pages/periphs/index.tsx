@@ -12,7 +12,6 @@ interface PeriphsProps {
 
 export default function Periphs(props: PeriphsProps) {
 	const { isAuthenticated } = useUser();
-	console.log(props);
 	return (
 		<Stack gap="xl">
 			<Stack gap="xs">

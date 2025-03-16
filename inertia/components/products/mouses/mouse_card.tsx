@@ -7,7 +7,6 @@ const DEFAULT_IMAGE = '/periphs/mouse.jpg';
 
 export function MouseCard({ product }: { product: Mouse }) {
 	const { wire, shape, weight, product: productData } = product;
-	console.log(product);
 	return (
 		<Card radius="md" p="md" className={classes.card}>
 			<Card.Section>

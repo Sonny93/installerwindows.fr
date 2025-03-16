@@ -22,11 +22,13 @@ export default class Product extends AppLightModel {
 
 	@column({
 		serialize: jsonbSerialize,
+		prepare: (value) => JSON.stringify(value),
 	})
 	declare reviews: Review[];
 
 	@column({
 		serialize: jsonbSerialize,
+		prepare: (value) => JSON.stringify(value),
 	})
 	declare affiliateLinks: AffiliateLink[];
 }
