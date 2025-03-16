@@ -1,6 +1,7 @@
 import { AffiliateLink, PeriphShape, Review } from '#shared/types/index';
 import { useForm } from '@inertiajs/react';
 import {
+	Box,
 	Button,
 	Divider,
 	Group,
@@ -12,7 +13,7 @@ import {
 	TextInput,
 	Title,
 } from '@mantine/core';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 
 type MouseFormData = {
 	brand: string;
@@ -184,39 +185,56 @@ function FieldGenarator({
 		setFields([...fields, { label: '', url: '' }]);
 	};
 
-	const handleChange = (
-		event: React.ChangeEvent<HTMLInputElement>,
-		index: number
-	) => {
+	const removeField = (index: number) => {
+		const newFields = fields.filter((_, i) => i !== index);
+		setFields(newFields);
+		onChange(newFields);
+	};
+
+	const handleChange = (field: string, value: string, index: number) => {
 		const newFields = [...fields];
 		newFields[index] = {
-			label: event.target.name,
-			url: event.target.value,
+			label: field === 'label' ? value : fields[index].label,
+			url: field === 'url' ? value : fields[index].url,
 		};
 		setFields(newFields);
 		onChange(newFields);
 	};
 
 	return (
-		<Stack gap="xs" h="100%">
+		<Stack h="100%">
 			<Divider label={label} />
 			{fields.map((field, index) => (
-				<Fragment key={index}>
+				<Box key={index}>
 					<TextInput
 						label={textLabel}
 						name={textLabel}
 						value={field.label}
 						placeholder={`Ex: ${textLabel}`}
-						onChange={(event) => handleChange(event, index)}
+						onChange={(event) =>
+							handleChange('label', event.currentTarget.value, index)
+						}
+						mb={4}
 					/>
 					<TextInput
 						label={valueLabel}
 						name={valueLabel}
 						value={field.url}
 						placeholder={`Ex: ${valueLabel}`}
-						onChange={(event) => handleChange(event, index)}
+						onChange={(event) =>
+							handleChange('url', event.currentTarget.value, index)
+						}
+						mb={4}
 					/>
-				</Fragment>
+					<Button
+						onClick={() => removeField(index)}
+						variant="subtle"
+						color="red"
+						size="xs"
+					>
+						Supprimer
+					</Button>
+				</Box>
 			))}
 			<Button onClick={addField} variant="outline">
 				Ajouter un champ
