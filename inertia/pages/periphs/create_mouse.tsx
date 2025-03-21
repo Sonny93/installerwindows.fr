@@ -6,44 +6,35 @@ import {
 	Stack,
 	Text,
 } from '@mantine/core';
-import { useState } from 'react';
 import {
 	BaseProductFormData,
 	ProductForm,
 } from '~/components/products/form/product_form';
+import { createFormStore } from '~/stores/form_store';
 
-type MouseFormData = BaseProductFormData & {
+type MouseFields = {
 	wire: boolean;
 	shape: PeriphShape;
 	weight: number;
 };
+type MouseFormData = BaseProductFormData & MouseFields;
+
+const initialData: MouseFields = {
+	wire: false,
+	shape: PeriphShape[0],
+	weight: 0,
+};
+
+const useMouseFormStore = createFormStore<MouseFormData>(initialData);
 
 export default function CreateMouse() {
-	const [data, setData] = useState<MouseFormData>({
-		brand: '',
-		reference: '',
-		recommendedPrice: 0,
-		additionalInfo: '',
-		affiliateLinks: [],
-		reviews: [],
-		wire: false,
-		shape: PeriphShape[0],
-		weight: 0,
-	});
-
-	const handleNumberChange = (
-		field: keyof MouseFormData,
-		value: number | string
-	) => {
-		setData({ ...data, [field]: Number(value) });
-	};
-
-	const handleSelectChange = (
-		field: keyof MouseFormData,
-		value: string | null
-	) => {
-		setData({ ...data, [field]: value ?? '' });
-	};
+	const {
+		data,
+		handleNumberChange,
+		handleSelectChange,
+		handleBooleanChange,
+		setData,
+	} = useMouseFormStore();
 
 	const additionalFields = (
 		<Stack gap={2}>
@@ -59,7 +50,7 @@ export default function CreateMouse() {
 						value: 'wireless',
 					},
 				]}
-				onChange={(value) => setData({ ...data, wire: value === 'wire' })}
+				onChange={(value) => handleBooleanChange('wire', value === 'wire')}
 				value={data.wire ? 'wire' : 'wireless'}
 				w="200px"
 			/>
