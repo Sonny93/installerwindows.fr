@@ -8,6 +8,7 @@ import {
 	MousePad,
 } from '#shared/types/index';
 import { KeyboardList } from '~/components/products/keyboards/keyboard_list';
+import { MonitorList } from '~/components/products/monitors/monitor_list';
 import { MouseList } from '~/components/products/mouses/mouse_list';
 
 export default function PeriphCategory({
@@ -29,6 +30,8 @@ export default function PeriphCategory({
 			return <MouseList products={products as Mouse[]} />;
 		case 'keyboard':
 			return <KeyboardList products={products as Keyboard[]} />;
+		case 'monitor':
+			return <MonitorList products={products as Monitor[]} />;
 		default:
 			return <div>No products found</div>;
 	}

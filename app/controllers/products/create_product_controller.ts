@@ -4,6 +4,7 @@ import { ImageDownloadService } from '#services/image_download_service';
 import { ProductType } from '#shared/types/index';
 import {
 	keyboardValidator,
+	monitorValidator,
 	mouseValidator,
 	productTypeValidator,
 } from '#validators/product';
@@ -11,13 +12,14 @@ import { inject } from '@adonisjs/core/container';
 import { HttpContext } from '@adonisjs/core/http';
 import { VineValidator } from '@vinejs/vine';
 
-type SupportedProductType = 'mouse' | 'keyboard';
+type SupportedProductType = 'mouse' | 'keyboard' | 'monitor';
 
 @inject()
 export default class CreateProductController {
 	private validators: Record<SupportedProductType, VineValidator<any, any>> = {
 		mouse: mouseValidator,
 		keyboard: keyboardValidator,
+		monitor: monitorValidator,
 	};
 
 	constructor(

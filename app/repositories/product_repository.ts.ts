@@ -16,6 +16,7 @@ import {
 	Monitor,
 	Mouse,
 	MousePad,
+	PeriphPanel,
 	PeriphShape,
 	PeriphSize,
 	ProductType,
@@ -54,6 +55,14 @@ type CreateMousePayload = ProductPayload & {
 type CreateKeyboardPayload = ProductPayload & {
 	size: PeriphSize;
 	switches: string;
+};
+
+type CreateMonitorPayload = ProductPayload & {
+	size: number;
+	resolution: string;
+	refreshRate: number;
+	panel: PeriphPanel;
+	vesaSupport: boolean;
 };
 
 export class ProductRepository {
@@ -167,6 +176,35 @@ export class ProductRepository {
 			};
 			const keyboard = await Keyboards.create(keyboardPayload, { client: trx });
 			return this.serialize<Keyboards, Keyboard>(keyboard);
+		});
+	}
+
+	async createMonitor(
+		payload: CreateMonitorPayload,
+		imagePath: string
+	): Promise<Monitor> {
+		return await db.transaction(async (trx) => {
+			const productPayload = {
+				brand: payload.brand,
+				image: imagePath,
+				reference: payload.reference,
+				recommendedPrice: payload.recommendedPrice,
+				additionalInfo: payload.additionalInfo,
+				affiliateLinks: payload.affiliateLinks,
+				reviews: payload.reviews,
+			};
+			const product = await Product.create(productPayload, { client: trx });
+
+			const monitorPayload = {
+				size: payload.size,
+				resolution: payload.resolution,
+				refreshRate: payload.refreshRate,
+				panel: payload.panel,
+				vesa_support: payload.vesaSupport,
+				productId: product.id,
+			};
+			const monitor = await Monitors.create(monitorPayload, { client: trx });
+			return this.serialize<Monitors, Monitor>(monitor);
 		});
 	}
 

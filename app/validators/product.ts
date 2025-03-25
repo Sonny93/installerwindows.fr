@@ -1,4 +1,9 @@
-import { PeriphShape, PeriphSize, ProductType } from '#shared/types/index';
+import {
+	PeriphPanel,
+	PeriphShape,
+	PeriphSize,
+	ProductType,
+} from '#shared/types/index';
 import vine from '@vinejs/vine';
 
 export const productTypeValidator = vine.compile(
@@ -42,5 +47,16 @@ export const keyboardValidator = vine.compile(
 		...productValidator.getProperties(),
 		size: vine.enum(PeriphSize),
 		switches: vine.string(),
+	})
+);
+
+export const monitorValidator = vine.compile(
+	vine.object({
+		...productValidator.getProperties(),
+		size: vine.number(),
+		resolution: vine.string(),
+		refreshRate: vine.number(),
+		panel: vine.enum(PeriphPanel),
+		vesaSupport: vine.boolean(),
 	})
 );
