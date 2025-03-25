@@ -110,14 +110,7 @@ export type Product = {
 	reviews: Review[];
 } & CommonBase;
 
-export type Periph = CommonBase & {
-	wire: boolean;
-	microOnWire: boolean;
-	product: Product;
-};
-
 export type Headset = CommonBase & {
-	wire: boolean;
 	type: PeriphType;
 	connectivity: PeriphConnectivity;
 	microphone: boolean;

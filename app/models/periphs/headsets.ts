@@ -6,9 +6,6 @@ import type { HasOne } from '@adonisjs/lucid/types/relations';
 
 export default class Headsets extends AppBaseModel {
 	@column()
-	declare wire: boolean;
-
-	@column()
 	declare type: PeriphType;
 
 	@column()

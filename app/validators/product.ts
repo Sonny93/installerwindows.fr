@@ -1,7 +1,9 @@
 import {
+	PeriphConnectivity,
 	PeriphPanel,
 	PeriphShape,
 	PeriphSize,
+	PeriphType,
 	ProductType,
 } from '#shared/types/index';
 import vine from '@vinejs/vine';
@@ -58,5 +60,14 @@ export const monitorValidator = vine.compile(
 		refreshRate: vine.number(),
 		panel: vine.enum(PeriphPanel),
 		vesaSupport: vine.boolean(),
+	})
+);
+
+export const headsetValidator = vine.compile(
+	vine.object({
+		...productValidator.getProperties(),
+		type: vine.enum(PeriphType),
+		connectivity: vine.enum(PeriphConnectivity),
+		microphone: vine.boolean(),
 	})
 );

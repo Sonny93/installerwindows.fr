@@ -16,9 +16,11 @@ import {
 	Monitor,
 	Mouse,
 	MousePad,
+	PeriphConnectivity,
 	PeriphPanel,
 	PeriphShape,
 	PeriphSize,
+	PeriphType,
 	ProductType,
 	Review,
 } from '#shared/types/index';
@@ -63,6 +65,12 @@ type CreateMonitorPayload = ProductPayload & {
 	refreshRate: number;
 	panel: PeriphPanel;
 	vesaSupport: boolean;
+};
+
+type CreateHeadsetPayload = ProductPayload & {
+	type: PeriphType;
+	connectivity: PeriphConnectivity;
+	microphone: boolean;
 };
 
 export class ProductRepository {
@@ -205,6 +213,33 @@ export class ProductRepository {
 			};
 			const monitor = await Monitors.create(monitorPayload, { client: trx });
 			return this.serialize<Monitors, Monitor>(monitor);
+		});
+	}
+
+	async createHeadset(
+		payload: CreateHeadsetPayload,
+		imagePath: string
+	): Promise<Headset> {
+		return await db.transaction(async (trx) => {
+			const productPayload = {
+				brand: payload.brand,
+				image: imagePath,
+				reference: payload.reference,
+				recommendedPrice: payload.recommendedPrice,
+				additionalInfo: payload.additionalInfo,
+				affiliateLinks: payload.affiliateLinks,
+				reviews: payload.reviews,
+			};
+			const product = await Product.create(productPayload, { client: trx });
+
+			const headsetPayload = {
+				type: payload.type,
+				connectivity: payload.connectivity,
+				microphone: payload.microphone,
+				productId: product.id,
+			};
+			const headset = await Headsets.create(headsetPayload, { client: trx });
+			return this.serialize<Headsets, Headset>(headset);
 		});
 	}
 
