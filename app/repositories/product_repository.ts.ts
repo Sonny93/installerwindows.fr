@@ -17,6 +17,7 @@ import {
 	Mouse,
 	MousePad,
 	PeriphShape,
+	PeriphSize,
 	ProductType,
 	Review,
 } from '#shared/types/index';
@@ -48,6 +49,11 @@ type CreateMousePayload = ProductPayload & {
 	wire: boolean;
 	shape: PeriphShape;
 	weight: number;
+};
+
+type CreateKeyboardPayload = ProductPayload & {
+	size: PeriphSize;
+	switches: string;
 };
 
 export class ProductRepository {
@@ -135,6 +141,32 @@ export class ProductRepository {
 			};
 			const mouse = await Mouses.create(mousePayload, { client: trx });
 			return this.serialize<Mouses, Mouse>(mouse);
+		});
+	}
+
+	async createKeyboard(
+		payload: CreateKeyboardPayload,
+		imagePath: string
+	): Promise<Keyboard> {
+		return await db.transaction(async (trx) => {
+			const productPayload = {
+				brand: payload.brand,
+				image: imagePath,
+				reference: payload.reference,
+				recommendedPrice: payload.recommendedPrice,
+				additionalInfo: payload.additionalInfo,
+				affiliateLinks: payload.affiliateLinks,
+				reviews: payload.reviews,
+			};
+			const product = await Product.create(productPayload, { client: trx });
+
+			const keyboardPayload = {
+				size: payload.size,
+				switches: payload.switches,
+				productId: product.id,
+			};
+			const keyboard = await Keyboards.create(keyboardPayload, { client: trx });
+			return this.serialize<Keyboards, Keyboard>(keyboard);
 		});
 	}
 
