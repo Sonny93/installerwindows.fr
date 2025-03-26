@@ -9,7 +9,7 @@ export default class Microphones extends AppBaseModel {
 	declare connectivity: PeriphConnectivity;
 
 	@column()
-	declare microphone_type: PeriphMicrophone;
+	declare microphoneType: PeriphMicrophone;
 
 	@column()
 	declare productId: number;

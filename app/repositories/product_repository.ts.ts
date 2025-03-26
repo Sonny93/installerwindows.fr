@@ -17,6 +17,7 @@ import {
 	Mouse,
 	MousePad,
 	PeriphConnectivity,
+	PeriphMicrophone,
 	PeriphPanel,
 	PeriphShape,
 	PeriphSize,
@@ -76,6 +77,11 @@ type CreateHeadsetPayload = ProductPayload & {
 type CreateEarphonePayload = ProductPayload & {
 	wire: boolean;
 	microOnWire: boolean;
+};
+
+type CreateMicrophonePayload = ProductPayload & {
+	connectivity: PeriphConnectivity;
+	microphoneType: PeriphMicrophone;
 };
 
 export class ProductRepository {
@@ -271,6 +277,34 @@ export class ProductRepository {
 			};
 			const earphone = await Earphones.create(earphonePayload, { client: trx });
 			return this.serialize<Earphones, Earphone>(earphone);
+		});
+	}
+
+	async createMicrophone(
+		payload: CreateMicrophonePayload,
+		imagePath: string
+	): Promise<Microphone> {
+		return await db.transaction(async (trx) => {
+			const productPayload = {
+				brand: payload.brand,
+				image: imagePath,
+				reference: payload.reference,
+				recommendedPrice: payload.recommendedPrice,
+				additionalInfo: payload.additionalInfo,
+				affiliateLinks: payload.affiliateLinks,
+				reviews: payload.reviews,
+			};
+			const product = await Product.create(productPayload, { client: trx });
+
+			const microphonePayload = {
+				connectivity: payload.connectivity,
+				microphoneType: payload.microphoneType,
+				productId: product.id,
+			};
+			const microphone = await Microphones.create(microphonePayload, {
+				client: trx,
+			});
+			return this.serialize<Microphones, Microphone>(microphone);
 		});
 	}
 

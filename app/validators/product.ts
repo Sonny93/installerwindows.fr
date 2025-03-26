@@ -1,5 +1,6 @@
 import {
 	PeriphConnectivity,
+	PeriphMicrophone,
 	PeriphPanel,
 	PeriphShape,
 	PeriphSize,
@@ -77,5 +78,13 @@ export const earphoneValidator = vine.compile(
 		...productValidator.getProperties(),
 		wire: vine.boolean(),
 		microOnWire: vine.boolean(),
+	})
+);
+
+export const microphoneValidator = vine.compile(
+	vine.object({
+		...productValidator.getProperties(),
+		connectivity: vine.enum(PeriphConnectivity),
+		microphoneType: vine.enum(PeriphMicrophone),
 	})
 );

@@ -6,6 +6,7 @@ import {
 	earphoneValidator,
 	headsetValidator,
 	keyboardValidator,
+	microphoneValidator,
 	monitorValidator,
 	mouseValidator,
 	productTypeValidator,
@@ -19,7 +20,8 @@ type SupportedProductType =
 	| 'keyboard'
 	| 'monitor'
 	| 'headset'
-	| 'earphone';
+	| 'earphone'
+	| 'microphone';
 
 @inject()
 export default class CreateProductController {
@@ -29,6 +31,7 @@ export default class CreateProductController {
 		monitor: monitorValidator,
 		headset: headsetValidator,
 		earphone: earphoneValidator,
+		microphone: microphoneValidator,
 	};
 
 	constructor(
