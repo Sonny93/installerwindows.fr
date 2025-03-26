@@ -91,8 +91,11 @@ export const PeriphMicrophone = [
 ] as const;
 export type PeriphMicrophone = (typeof PeriphMicrophone)[number];
 
-export const PeriphSize = ['full', 'tenkeyless', '87', '60', '40'] as const;
-export type PeriphSize = (typeof PeriphSize)[number];
+export const KeyboardSize = ['full', 'tenkeyless', '87', '60', '40'] as const;
+export type KeyboardSize = (typeof KeyboardSize)[number];
+
+export const MousePadSpeed = ['fast', 'medium', 'slow'] as const;
+export type MousePadSpeed = (typeof MousePadSpeed)[number];
 
 export const PeriphPanel = ['IPS', 'VA', 'TN', 'OLED', 'QD-OLED'] as const;
 export type PeriphPanel = (typeof PeriphPanel)[number];
@@ -118,7 +121,7 @@ export type Headset = CommonBase & {
 };
 
 export type Keyboard = CommonBase & {
-	size: PeriphSize;
+	size: KeyboardSize;
 	switches: string;
 	product: Product;
 };
@@ -145,9 +148,9 @@ export type Monitor = CommonBase & {
 };
 
 export type MousePad = CommonBase & {
-	slideSpeed: number;
+	slideSpeed: MousePadSpeed;
 	covering: boolean;
-	size: PeriphSize;
+	size: KeyboardSize;
 	product: Product;
 };
 

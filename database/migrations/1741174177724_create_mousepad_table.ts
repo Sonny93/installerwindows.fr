@@ -6,7 +6,7 @@ export default class extends BaseSchema {
 
 	async up() {
 		this.schema.createTable(this.tableName, (table) => {
-			table.integer('slide_speed').notNullable();
+			table.string('slide_speed').notNullable();
 			table.boolean('covering').notNullable();
 			table.string('size').notNullable();
 			table.integer('product_id').notNullable();

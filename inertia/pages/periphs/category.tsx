@@ -12,6 +12,7 @@ import { HeadsetList } from '~/components/products/headsets/headset_list';
 import { KeyboardList } from '~/components/products/keyboards/keyboard_list';
 import { MicrophoneList } from '~/components/products/microphones/microphone_list';
 import { MonitorList } from '~/components/products/monitors/monitor_list';
+import { MousePadList } from '~/components/products/mousepads/mousepad_list';
 import { MouseList } from '~/components/products/mouses/mouse_list';
 
 export default function PeriphCategory({
@@ -41,6 +42,8 @@ export default function PeriphCategory({
 			return <EarphoneList products={products as Earphone[]} />;
 		case 'microphone':
 			return <MicrophoneList products={products as Microphone[]} />;
+		case 'mousepad':
+			return <MousePadList products={products as MousePad[]} />;
 		default:
 			return <div>No products found</div>;
 	}

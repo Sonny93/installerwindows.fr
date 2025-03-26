@@ -1,20 +1,12 @@
-import { Keyboard, KeyboardSize } from '#shared/types/index';
+import { MousePad } from '#shared/types/index';
 import { Card, Group, Image, SimpleGrid, Stack, Text } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
-import classes from './keyboard_card.module.css';
+import classes from './mousepad_card.module.css';
 
-const DEFAULT_IMAGE = '/periphs/keyboard.jpg';
+const DEFAULT_IMAGE = '/periphs/mousepad.jpg';
 
-const sizeLabels: Record<KeyboardSize, string> = {
-	full: 'Full Size',
-	tenkeyless: 'TKL',
-	'87': '87%',
-	'60': '60%',
-	'40': '40%',
-};
-
-export function KeyboardCard({ product }: { product: Keyboard }) {
-	const { size, switches, product: productData } = product;
+export function MousePadCard({ product }: { product: MousePad }) {
+	const { slideSpeed, covering, size, product: productData } = product;
 	return (
 		<Card radius="md" p="md" className={classes.card}>
 			<Card.Section>
@@ -40,10 +32,15 @@ export function KeyboardCard({ product }: { product: Keyboard }) {
 					<Text className={classes.sectionTitle}>Caractéristiques</Text>
 					<SimpleGrid cols={2} mt={5}>
 						<Text className={classes.label}>
-							Taille <span className={classes.bold}>{sizeLabels[size]}</span>
+							Vitesse de glissement{' '}
+							<span className={classes.bold}>{slideSpeed}</span>
 						</Text>
 						<Text className={classes.label}>
-							Switch <span className={classes.bold}>{switches}</span>
+							Revêtement{' '}
+							<span className={classes.bold}>{covering ? 'Oui' : 'Non'}</span>
+						</Text>
+						<Text className={classes.label}>
+							Taille <span className={classes.bold}>{size}</span>
 						</Text>
 						<Text className={classes.label}>
 							Prix conseillé

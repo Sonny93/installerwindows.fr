@@ -12,15 +12,16 @@ import {
 	Earphone,
 	Headset,
 	Keyboard,
+	KeyboardSize,
 	Microphone,
 	Monitor,
 	Mouse,
 	MousePad,
+	MousePadSpeed,
 	PeriphConnectivity,
 	PeriphMicrophone,
 	PeriphPanel,
 	PeriphShape,
-	PeriphSize,
 	PeriphType,
 	ProductType,
 	Review,
@@ -56,7 +57,7 @@ type CreateMousePayload = ProductPayload & {
 };
 
 type CreateKeyboardPayload = ProductPayload & {
-	size: PeriphSize;
+	size: KeyboardSize;
 	switches: string;
 };
 
@@ -82,6 +83,12 @@ type CreateEarphonePayload = ProductPayload & {
 type CreateMicrophonePayload = ProductPayload & {
 	connectivity: PeriphConnectivity;
 	microphoneType: PeriphMicrophone;
+};
+
+type CreateMousePadPayload = ProductPayload & {
+	slideSpeed: MousePadSpeed;
+	covering: boolean;
+	size: string;
 };
 
 export class ProductRepository {
@@ -305,6 +312,33 @@ export class ProductRepository {
 				client: trx,
 			});
 			return this.serialize<Microphones, Microphone>(microphone);
+		});
+	}
+
+	async createMousepad(
+		payload: CreateMousePadPayload,
+		imagePath: string
+	): Promise<MousePad> {
+		return await db.transaction(async (trx) => {
+			const productPayload = {
+				brand: payload.brand,
+				image: imagePath,
+				reference: payload.reference,
+				recommendedPrice: payload.recommendedPrice,
+				additionalInfo: payload.additionalInfo,
+				affiliateLinks: payload.affiliateLinks,
+				reviews: payload.reviews,
+			};
+			const product = await Product.create(productPayload, { client: trx });
+
+			const mousePadPayload = {
+				slideSpeed: payload.slideSpeed,
+				covering: payload.covering,
+				size: payload.size,
+				productId: product.id,
+			};
+			const mousePad = await MousePads.create(mousePadPayload, { client: trx });
+			return this.serialize<MousePads, MousePad>(mousePad);
 		});
 	}
 

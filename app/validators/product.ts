@@ -1,9 +1,10 @@
 import {
+	KeyboardSize,
+	MousePadSpeed,
 	PeriphConnectivity,
 	PeriphMicrophone,
 	PeriphPanel,
 	PeriphShape,
-	PeriphSize,
 	PeriphType,
 	ProductType,
 } from '#shared/types/index';
@@ -48,7 +49,7 @@ export const mouseValidator = vine.compile(
 export const keyboardValidator = vine.compile(
 	vine.object({
 		...productValidator.getProperties(),
-		size: vine.enum(PeriphSize),
+		size: vine.enum(KeyboardSize),
 		switches: vine.string(),
 	})
 );
@@ -86,5 +87,14 @@ export const microphoneValidator = vine.compile(
 		...productValidator.getProperties(),
 		connectivity: vine.enum(PeriphConnectivity),
 		microphoneType: vine.enum(PeriphMicrophone),
+	})
+);
+
+export const mousePadValidator = vine.compile(
+	vine.object({
+		...productValidator.getProperties(),
+		slideSpeed: vine.enum(MousePadSpeed),
+		covering: vine.boolean(),
+		size: vine.string(),
 	})
 );

@@ -1,4 +1,4 @@
-import { PeriphSize } from '#shared/types/index';
+import { KeyboardSize } from '#shared/types/index';
 import { Select, Stack, TextInput } from '@mantine/core';
 import {
 	BaseProductFormData,
@@ -7,7 +7,7 @@ import {
 import { createFormStore } from '~/stores/form_store';
 
 type KeyboardFields = {
-	size: PeriphSize;
+	size: KeyboardSize;
 	switches: string;
 };
 
@@ -21,12 +21,12 @@ export default function CreateKeyboard() {
 	const { data, handleSelectChange, setData } = useKeyboardFormStore();
 
 	const additionalFields = (
-		<Stack gap={2}>
+		<Stack gap="xs">
 			<Select
 				label="Taille"
 				name="size"
 				onChange={(value) => handleSelectChange('size', value)}
-				data={Object.values(PeriphSize).map((size) => ({
+				data={Object.values(KeyboardSize).map((size) => ({
 					label: size,
 					value: size,
 				}))}
