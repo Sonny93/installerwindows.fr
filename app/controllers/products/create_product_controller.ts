@@ -3,6 +3,7 @@ import { GoogleImageService } from '#services/google_image_service';
 import { ImageDownloadService } from '#services/image_download_service';
 import { ProductType } from '#shared/types/index';
 import {
+	earphoneValidator,
 	headsetValidator,
 	keyboardValidator,
 	monitorValidator,
@@ -13,7 +14,12 @@ import { inject } from '@adonisjs/core/container';
 import { HttpContext } from '@adonisjs/core/http';
 import { VineValidator } from '@vinejs/vine';
 
-type SupportedProductType = 'mouse' | 'keyboard' | 'monitor' | 'headset';
+type SupportedProductType =
+	| 'mouse'
+	| 'keyboard'
+	| 'monitor'
+	| 'headset'
+	| 'earphone';
 
 @inject()
 export default class CreateProductController {
@@ -22,6 +28,7 @@ export default class CreateProductController {
 		keyboard: keyboardValidator,
 		monitor: monitorValidator,
 		headset: headsetValidator,
+		earphone: earphoneValidator,
 	};
 
 	constructor(

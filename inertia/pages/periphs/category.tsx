@@ -7,6 +7,7 @@ import {
 	Mouse,
 	MousePad,
 } from '#shared/types/index';
+import { EarphoneList } from '~/components/products/earphones/earphone_list';
 import { HeadsetList } from '~/components/products/headsets/headset_list';
 import { KeyboardList } from '~/components/products/keyboards/keyboard_list';
 import { MonitorList } from '~/components/products/monitors/monitor_list';
@@ -35,6 +36,8 @@ export default function PeriphCategory({
 			return <MonitorList products={products as Monitor[]} />;
 		case 'headset':
 			return <HeadsetList products={products as Headset[]} />;
+		case 'earphone':
+			return <EarphoneList products={products as Earphone[]} />;
 		default:
 			return <div>No products found</div>;
 	}

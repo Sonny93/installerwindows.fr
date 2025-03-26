@@ -71,3 +71,11 @@ export const headsetValidator = vine.compile(
 		microphone: vine.boolean(),
 	})
 );
+
+export const earphoneValidator = vine.compile(
+	vine.object({
+		...productValidator.getProperties(),
+		wire: vine.boolean(),
+		microOnWire: vine.boolean(),
+	})
+);

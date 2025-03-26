@@ -8,7 +8,7 @@ export default class Earphones extends AppBaseModel {
 	declare wire: boolean;
 
 	@column()
-	declare micro_on_wire: boolean;
+	declare microOnWire: boolean;
 
 	@column()
 	declare productId: number;

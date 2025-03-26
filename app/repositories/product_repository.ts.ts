@@ -73,6 +73,11 @@ type CreateHeadsetPayload = ProductPayload & {
 	microphone: boolean;
 };
 
+type CreateEarphonePayload = ProductPayload & {
+	wire: boolean;
+	microOnWire: boolean;
+};
+
 export class ProductRepository {
 	async getCountPerCategory(): Promise<CountPerCategory> {
 		const headsetCount = await this.getCount(Headsets);
@@ -240,6 +245,32 @@ export class ProductRepository {
 			};
 			const headset = await Headsets.create(headsetPayload, { client: trx });
 			return this.serialize<Headsets, Headset>(headset);
+		});
+	}
+
+	async createEarphone(
+		payload: CreateEarphonePayload,
+		imagePath: string
+	): Promise<Earphone> {
+		return await db.transaction(async (trx) => {
+			const productPayload = {
+				brand: payload.brand,
+				image: imagePath,
+				reference: payload.reference,
+				recommendedPrice: payload.recommendedPrice,
+				additionalInfo: payload.additionalInfo,
+				affiliateLinks: payload.affiliateLinks,
+				reviews: payload.reviews,
+			};
+			const product = await Product.create(productPayload, { client: trx });
+
+			const earphonePayload = {
+				wire: payload.wire,
+				microOnWire: payload.microOnWire,
+				productId: product.id,
+			};
+			const earphone = await Earphones.create(earphonePayload, { client: trx });
+			return this.serialize<Earphones, Earphone>(earphone);
 		});
 	}
 
