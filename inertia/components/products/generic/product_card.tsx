@@ -1,12 +1,33 @@
-import { MousePad } from '#shared/types/index';
 import { Card, Group, Image, SimpleGrid, Stack, Text } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
-import classes from './mousepad_card.module.css';
+import classes from './product_card.module.css';
 
-const DEFAULT_IMAGE = '/periphs/mousepad.jpg';
+const DEFAULT_IMAGE = '/periphs/default.jpg';
 
-export function MousePadCard({ product }: { product: MousePad }) {
-	const { slideSpeed, covering, size, product: productData } = product;
+interface BaseProduct {
+	id: number;
+	product: {
+		brand: string;
+		reference: string;
+		image?: string;
+		additionalInfo?: string | null;
+		recommendedPrice: number;
+		reviews: Array<{ url: string; label: string }>;
+		affiliateLinks: Array<{ url: string; label: string }>;
+	};
+}
+
+interface ProductCardProps<T extends BaseProduct> {
+	product: T;
+	renderSpecificFields: (product: T) => React.ReactNode;
+}
+
+export function ProductCard<T extends BaseProduct>({
+	product,
+	renderSpecificFields,
+}: ProductCardProps<T>) {
+	const { product: productData } = product;
+
 	return (
 		<Card radius="md" p="md" className={classes.card}>
 			<Card.Section>
@@ -32,23 +53,13 @@ export function MousePadCard({ product }: { product: MousePad }) {
 					<Text className={classes.sectionTitle}>Caractéristiques</Text>
 					<SimpleGrid cols={2} mt={5}>
 						<Text className={classes.label}>
-							Vitesse de glissement{' '}
-							<span className={classes.bold}>{slideSpeed}</span>
-						</Text>
-						<Text className={classes.label}>
-							Revêtement{' '}
-							<span className={classes.bold}>{covering ? 'Oui' : 'Non'}</span>
-						</Text>
-						<Text className={classes.label}>
-							Taille <span className={classes.bold}>{size}</span>
-						</Text>
-						<Text className={classes.label}>
 							Prix conseillé
 							<span className={classes.bold}>
 								{'<'}
 								{productData.recommendedPrice}€
 							</span>
 						</Text>
+						{renderSpecificFields(product)}
 					</SimpleGrid>
 				</Card.Section>
 

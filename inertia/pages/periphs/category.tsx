@@ -7,13 +7,13 @@ import {
 	Mouse,
 	MousePad,
 } from '#shared/types/index';
-import { EarphoneList } from '~/components/products/earphones/earphone_list';
-import { HeadsetList } from '~/components/products/headsets/headset_list';
-import { KeyboardList } from '~/components/products/keyboards/keyboard_list';
-import { MicrophoneList } from '~/components/products/microphones/microphone_list';
-import { MonitorList } from '~/components/products/monitors/monitor_list';
-import { MousePadList } from '~/components/products/mousepads/mousepad_list';
-import { MouseList } from '~/components/products/mouses/mouse_list';
+import { EarphoneList } from '~/components/products/lists/earphone_list';
+import { HeadsetList } from '~/components/products/lists/headset_list';
+import { KeyboardList } from '~/components/products/lists/keyboard_list';
+import { MicrophoneList } from '~/components/products/lists/microphone_list';
+import { MonitorList } from '~/components/products/lists/monitor_list';
+import { MouseList } from '~/components/products/lists/mouse_list';
+import { MousePadList } from '~/components/products/lists/mousepad_list';
 
 export default function PeriphCategory({
 	products,
@@ -45,6 +45,6 @@ export default function PeriphCategory({
 		case 'mousepad':
 			return <MousePadList products={products as MousePad[]} />;
 		default:
-			return <div>No products found</div>;
+			return <div>Aucun produit trouvé</div>;
 	}
 }
