@@ -6,6 +6,7 @@ export default function CreateHeadset() {
 			title="Ajouter un casque"
 			formUrl="/periphs/headset/create"
 			productType="headset"
+			formMethod="post"
 		/>
 	);
 }

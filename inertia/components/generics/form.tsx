@@ -31,6 +31,7 @@ export interface FormProps {
 	fields: Field[];
 	formUrl: string;
 	formMethod?: 'post' | 'put';
+	values?: Record<string, any>;
 }
 
 export function Form({
@@ -38,14 +39,24 @@ export function Form({
 	fields,
 	formUrl,
 	formMethod = 'post',
+	values,
 }: FormProps) {
 	const [userHasChangedSlug, setUserHasChangedSlug] = useState<boolean>(false);
-	const defaultValues = fields.reduce<
-		Record<string, string | number | boolean | { label: string; url: string }[]>
-	>((acc, field) => {
-		acc[field.name] = field.value ?? (field.type === 'generated' ? [] : '');
-		return acc;
-	}, {});
+	const defaultValues =
+		values ||
+		fields.reduce<
+			Record<
+				string,
+				string | number | boolean | { label: string; url: string }[]
+			>
+		>((acc, field) => {
+			if (field.type === 'generated') {
+				acc[field.name] = [];
+			} else {
+				acc[field.name] = field.value ?? '';
+			}
+			return acc;
+		}, {});
 	const {
 		data,
 		processing,

@@ -4,24 +4,44 @@ import { baseProductFields, productSpecificFields } from './product_fields';
 
 interface DynamicProductFormProps extends Omit<FormProps, 'fields'> {
 	productType: ProductType;
-	values?: Record<string, string>;
+	initialValues?: Record<string, any>;
+	formMethod: 'post' | 'put';
 }
 
 export function DynamicProductForm({
+	title,
+	formUrl,
 	productType,
-	values,
+	initialValues,
+	formMethod,
 	...formProps
 }: DynamicProductFormProps) {
-	const fields: Field[] = [
-		...baseProductFields,
-		...(productSpecificFields[productType] || []),
-	];
+	const fields = [...baseProductFields, ...productSpecificFields[productType]];
 
-	const fieldsWithValues: Field[] = values
-		? computedFields(fields, values)
+	// Préparer les valeurs initiales
+	const preparedValues = initialValues
+		? {
+				...initialValues,
+				affiliateLinks: initialValues.affiliateLinks || [],
+				reviews: initialValues.reviews || [],
+			}
+		: undefined;
+
+	// Appliquer les valeurs initiales aux champs
+	const fieldsWithValues = preparedValues
+		? computedFields(fields, preparedValues)
 		: fields;
 
-	return <Form {...formProps} fields={fieldsWithValues} />;
+	return (
+		<Form
+			title={title}
+			fields={fieldsWithValues}
+			formUrl={formUrl}
+			formMethod={formMethod}
+			values={preparedValues}
+			{...formProps}
+		/>
+	);
 }
 
 const computedFields = (

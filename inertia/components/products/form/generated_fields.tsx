@@ -9,15 +9,15 @@ interface GeneratedFieldsProps {
 	label: string;
 	textLabel: string;
 	valueLabel: string;
-	value: GeneratedField[];
-	onChange: (fields: GeneratedField[]) => void;
+	value?: GeneratedField[];
+	onChange: (value: GeneratedField[]) => void;
 }
 
 export function GeneratedFields({
 	label,
 	textLabel,
 	valueLabel,
-	value,
+	value = [],
 	onChange,
 }: GeneratedFieldsProps) {
 	const addField = () => {

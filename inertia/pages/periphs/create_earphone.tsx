@@ -6,6 +6,7 @@ export default function CreateEarphone() {
 			title="Ajouter des écouteurs"
 			formUrl="/periphs/earphone/create"
 			productType="earphone"
+			formMethod="post"
 		/>
 	);
 }

@@ -6,6 +6,7 @@ export default function CreateMousePad() {
 			title="Ajouter un tapis de souris"
 			formUrl="/periphs/mousepad/create"
 			productType="mousepad"
+			formMethod="post"
 		/>
 	);
 }

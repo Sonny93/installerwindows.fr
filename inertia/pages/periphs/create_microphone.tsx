@@ -6,6 +6,7 @@ export default function CreateMicrophone() {
 			title="Ajouter un microphone"
 			formUrl="/periphs/microphone/create"
 			productType="microphone"
+			formMethod="post"
 		/>
 	);
 }

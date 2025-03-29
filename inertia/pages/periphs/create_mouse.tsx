@@ -6,6 +6,7 @@ export default function CreateMouse() {
 			title="Ajouter une souris"
 			formUrl="/periphs/mouse/create"
 			productType="mouse"
+			formMethod="post"
 		/>
 	);
 }

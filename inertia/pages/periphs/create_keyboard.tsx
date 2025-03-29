@@ -6,6 +6,7 @@ export default function CreateKeyboard() {
 			title="Ajouter un clavier"
 			formUrl="/periphs/keyboard/create"
 			productType="keyboard"
+			formMethod="post"
 		/>
 	);
 }

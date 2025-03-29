@@ -6,6 +6,7 @@ export default function CreateMonitor() {
 			title="Ajouter un moniteur"
 			formUrl="/periphs/monitor/create"
 			productType="monitor"
+			formMethod="post"
 		/>
 	);
 }

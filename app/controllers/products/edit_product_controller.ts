@@ -8,7 +8,7 @@ import { inject } from '@adonisjs/core/container';
 import { HttpContext } from '@adonisjs/core/http';
 
 @inject()
-export default class CreateProductController extends BaseProductController {
+export default class EditProductController extends BaseProductController {
 	constructor(
 		protected productRepository: ProductRepository,
 		protected googleImageService: GoogleImageService,
@@ -20,31 +20,49 @@ export default class CreateProductController extends BaseProductController {
 	async showForm(ctx: HttpContext) {
 		await ctx.request.validateUsing(productTypeValidator);
 		const productType = ctx.params.productType as ProductType;
-		return ctx.inertia.render(`periphs/create_${productType}`);
+		const productId = ctx.params.id;
+
+		if (!this.isSupportedProductType(productType)) {
+			throw new Error('Product type not supported for editing');
+		}
+
+		const getMethod = this.getRepositoryGetByIdMethod(productType);
+		const product = await getMethod(productId);
+
+		return ctx.inertia.render(`periphs/edit_${productType}`, {
+			product,
+		});
 	}
 
-	async store(ctx: HttpContext) {
+	async update(ctx: HttpContext) {
 		await ctx.request.validateUsing(productTypeValidator);
 		const productType = ctx.params.productType as ProductType;
+		const productId = ctx.params.id;
+
 		if (!this.isSupportedProductType(productType)) {
-			throw new Error('Product type not supported for creation');
+			throw new Error('Product type not supported for editing');
 		}
 
 		const validator = this.getValidator(productType);
 		const product = await ctx.request.validateUsing(validator);
 
-		const image = await this.googleImageService.getFirstImage(
-			product.brand,
-			product.reference
-		);
-		if (!image) {
-			return ctx.response.redirect().back();
+		let imagePath = product.image;
+
+		if (
+			product.brand !== ctx.request.input('brand') ||
+			product.reference !== ctx.request.input('reference')
+		) {
+			const image = await this.googleImageService.getFirstImage(
+				product.brand,
+				product.reference
+			);
+			if (image) {
+				imagePath = await this.imageDownloadService.downloadImage(image);
+			}
 		}
 
-		const imagePath = await this.imageDownloadService.downloadImage(image);
-
-		const createMethod = this.getRepositoryCreateMethod(productType);
-		await createMethod(product, imagePath);
+		const updateMethod = this.getRepositoryUpdateMethod(productType);
+		await updateMethod(productId, product, imagePath);
 
 		return ctx.response.redirect(`/periphs/${productType}`);
 	}
