@@ -40,7 +40,7 @@ export const productValidator = vine.object({
 export const mouseValidator = vine.compile(
 	vine.object({
 		...productValidator.getProperties(),
-		wire: vine.boolean(),
+		wire: vine.boolean().parse((value) => value ?? false),
 		shape: vine.enum(PeriphShape),
 		weight: vine.number(),
 	})
