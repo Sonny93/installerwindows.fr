@@ -40,14 +40,14 @@ export const baseProductFields: Field[] = [
 	{
 		label: 'Marque',
 		name: 'brand',
-		placeholder: 'Ex: Logitech',
+		placeholder: 'Marque',
 		required: true,
 		type: 'text',
 	} as TextField,
 	{
 		label: 'Référence',
 		name: 'reference',
-		placeholder: 'Ex: G502',
+		placeholder: 'Référence',
 		required: true,
 		type: 'text',
 	} as TextField,
@@ -61,7 +61,7 @@ export const baseProductFields: Field[] = [
 	{
 		label: 'Informations additionnelles',
 		name: 'additionalInfo',
-		placeholder: 'Ex: Connectique USB, 7 boutons, etc.',
+		placeholder: 'Super produit, très bon, etc.',
 		type: 'text',
 	} as TextField,
 	{
