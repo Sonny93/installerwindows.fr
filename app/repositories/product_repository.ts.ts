@@ -39,75 +39,76 @@ type Models =
 	| typeof MousePads
 	| typeof Microphones;
 
-type ProductPayload = {
+interface BaseProductPayload {
 	brand: string;
 	reference: string;
 	recommendedPrice: number;
 	additionalInfo: string | null;
 	affiliateLinks: AffiliateLink[];
 	reviews: Review[];
-};
+}
 
-type CreateMousePayload = ProductPayload & {
+interface MousePayload extends BaseProductPayload {
 	wire: boolean;
 	shape: PeriphShape;
 	weight: number;
-};
+}
 
-type CreateKeyboardPayload = ProductPayload & {
+interface KeyboardPayload extends BaseProductPayload {
 	size: KeyboardSize;
 	switches: string;
-};
+}
 
-type CreateMonitorPayload = ProductPayload & {
+interface MonitorPayload extends BaseProductPayload {
 	size: number;
 	resolution: string;
 	refreshRate: number;
 	panel: PeriphPanel;
 	vesaSupport: boolean;
-};
+}
 
-type CreateHeadsetPayload = ProductPayload & {
+interface HeadsetPayload extends BaseProductPayload {
 	type: PeriphType;
 	connectivity: PeriphConnectivity;
 	microphone: boolean;
-};
+}
 
-type CreateEarphonePayload = ProductPayload & {
+interface EarphonePayload extends BaseProductPayload {
 	wire: boolean;
 	microOnWire: boolean;
-};
+}
 
-type CreateMicrophonePayload = ProductPayload & {
+interface MicrophonePayload extends BaseProductPayload {
 	connectivity: PeriphConnectivity;
 	microphoneType: PeriphMicrophone;
-};
+}
 
-type CreateMousePadPayload = ProductPayload & {
+interface MousePadPayload extends BaseProductPayload {
 	slideSpeed: MousePadSpeed;
 	covering: boolean;
 	size: string;
-};
+}
 
 export class ProductRepository {
-	async getCountPerCategory(): Promise<CountPerCategory> {
-		const headsetCount = await this.getCount(Headsets);
-		const keyboardCount = await this.getCount(Keyboards);
-		const earphoneCount = await this.getCount(Earphones);
-		const monitorCount = await this.getCount(Monitors);
-		const mouseCount = await this.getCount(Mouses);
-		const mousepadCount = await this.getCount(MousePads);
-		const microphoneCount = await this.getCount(Microphones);
+	private readonly modelMap: Record<ProductType, Models> = {
+		headset: Headsets,
+		keyboard: Keyboards,
+		earphone: Earphones,
+		monitor: Monitors,
+		mouse: Mouses,
+		mousepad: MousePads,
+		microphone: Microphones,
+	};
 
-		return {
-			headset: headsetCount,
-			keyboard: keyboardCount,
-			earphone: earphoneCount,
-			monitor: monitorCount,
-			mouse: mouseCount,
-			mousepad: mousepadCount,
-			microphone: microphoneCount,
-		};
+	async getCountPerCategory(): Promise<CountPerCategory> {
+		const counts = await Promise.all(
+			Object.entries(this.modelMap).map(async ([key, model]) => {
+				const count = await this.getCount(model);
+				return [key, count];
+			})
+		);
+
+		return Object.fromEntries(counts) as CountPerCategory;
 	}
 
 	async getCount(model: Models): Promise<number> {
@@ -115,59 +116,46 @@ export class ProductRepository {
 		return count[0].$extras.count ?? 0;
 	}
 
+	private async getById<T extends Models, U>(model: T, id: string): Promise<U> {
+		const result = await this.preloadRelations(model.query().where('id', id));
+		return SerializerService.serialize<typeof model, U>(result[0]);
+	}
+
 	async getHeadsetById(id: string): Promise<Headset> {
-		const headset = await this.preloadRelations(
-			Headsets.query().where('id', id)
-		);
-		return SerializerService.serialize<Headsets, Headset>(headset[0]);
+		return this.getById<typeof Headsets, Headset>(Headsets, id);
 	}
 
 	async getKeyboardById(id: string): Promise<Keyboard> {
-		const keyboard = await this.preloadRelations(
-			Keyboards.query().where('id', id)
-		);
-		return SerializerService.serialize<Keyboards, Keyboard>(keyboard[0]);
+		return this.getById<typeof Keyboards, Keyboard>(Keyboards, id);
 	}
 
 	async getEarphoneById(id: string): Promise<Earphone> {
-		const earphone = await this.preloadRelations(
-			Earphones.query().where('id', id)
-		);
-		return SerializerService.serialize<Earphones, Earphone>(earphone[0]);
+		return this.getById<typeof Earphones, Earphone>(Earphones, id);
 	}
 
 	async getMicrophoneById(id: string): Promise<Microphone> {
-		const microphone = await this.preloadRelations(
-			Microphones.query().where('id', id)
-		);
-		return SerializerService.serialize<Microphones, Microphone>(microphone[0]);
+		return this.getById<typeof Microphones, Microphone>(Microphones, id);
 	}
 
 	async getMonitorById(id: string): Promise<Monitor> {
-		const monitor = await this.preloadRelations(
-			Monitors.query().where('id', id)
-		);
-		return SerializerService.serialize<Monitors, Monitor>(monitor[0]);
+		return this.getById<typeof Monitors, Monitor>(Monitors, id);
 	}
 
 	async getMousePadById(id: string): Promise<MousePad> {
-		const mousepad = await this.preloadRelations(
-			MousePads.query().where('id', id)
-		);
-		return SerializerService.serialize<MousePads, MousePad>(mousepad[0]);
+		return this.getById<typeof MousePads, MousePad>(MousePads, id);
 	}
 
 	async getMouseById(id: string): Promise<Mouse> {
-		const mouse = await this.preloadRelations(Mouses.query().where('id', id));
-		return SerializerService.serialize<Mouses, Mouse>(mouse[0]);
+		return this.getById<typeof Mouses, Mouse>(Mouses, id);
 	}
 
-	async createMouse(
-		payload: CreateMousePayload,
-		imagePath: string
-	): Promise<Mouse> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
+	private async createBaseProduct(
+		payload: BaseProductPayload,
+		imagePath: string,
+		trx: any
+	) {
+		return await Product.create(
+			{
 				brand: payload.brand,
 				image: imagePath,
 				reference: payload.reference,
@@ -175,162 +163,158 @@ export class ProductRepository {
 				additionalInfo: payload.additionalInfo,
 				affiliateLinks: payload.affiliateLinks,
 				reviews: payload.reviews,
-			};
-			const product = await Product.create(productPayload, { client: trx });
+			},
+			{ client: trx }
+		);
+	}
 
-			const mousePayload = {
+	private async createProduct<
+		T extends Models,
+		U,
+		P extends BaseProductPayload,
+	>(
+		model: T,
+		payload: P,
+		imagePath: string,
+		specificPayload: (productId: number) => Partial<P>
+	): Promise<U> {
+		return await db.transaction(async (trx) => {
+			const product = await this.createBaseProduct(payload, imagePath, trx);
+			const modelInstance = await model.create(
+				{
+					...specificPayload(product.id),
+					productId: product.id,
+				},
+				{ client: trx }
+			);
+			return SerializerService.serialize<typeof model, U>(modelInstance as any);
+		});
+	}
+
+	async createMouse(payload: MousePayload, imagePath: string): Promise<Mouse> {
+		return this.createProduct<typeof Mouses, Mouse, MousePayload>(
+			Mouses,
+			payload,
+			imagePath,
+			() => ({
 				wire: payload.wire,
 				shape: payload.shape,
 				weight: payload.weight,
-				productId: product.id,
-			};
-			const mouse = await Mouses.create(mousePayload, { client: trx });
-			return SerializerService.serialize<Mouses, Mouse>(mouse);
-		});
+			})
+		);
 	}
 
 	async createKeyboard(
-		payload: CreateKeyboardPayload,
+		payload: KeyboardPayload,
 		imagePath: string
 	): Promise<Keyboard> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.create(productPayload, { client: trx });
-
-			const keyboardPayload = {
+		return this.createProduct<typeof Keyboards, Keyboard, KeyboardPayload>(
+			Keyboards,
+			payload,
+			imagePath,
+			() => ({
 				size: payload.size,
 				switches: payload.switches,
-				productId: product.id,
-			};
-			const keyboard = await Keyboards.create(keyboardPayload, { client: trx });
-			return SerializerService.serialize<Keyboards, Keyboard>(keyboard);
-		});
+			})
+		);
 	}
 
 	async createMonitor(
-		payload: CreateMonitorPayload,
+		payload: MonitorPayload,
 		imagePath: string
 	): Promise<Monitor> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.create(productPayload, { client: trx });
-
-			const monitorPayload = {
+		return this.createProduct<typeof Monitors, Monitor, MonitorPayload>(
+			Monitors,
+			payload,
+			imagePath,
+			() => ({
 				size: payload.size,
 				resolution: payload.resolution,
 				refreshRate: payload.refreshRate,
 				panel: payload.panel,
-				vesa_support: payload.vesaSupport,
-				productId: product.id,
-			};
-			const monitor = await Monitors.create(monitorPayload, { client: trx });
-			return SerializerService.serialize<Monitors, Monitor>(monitor);
-		});
+				vesaSupport: payload.vesaSupport,
+			})
+		);
 	}
 
 	async createHeadset(
-		payload: CreateHeadsetPayload,
+		payload: HeadsetPayload,
 		imagePath: string
 	): Promise<Headset> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.create(productPayload, { client: trx });
-
-			const headsetPayload = {
+		return this.createProduct<typeof Headsets, Headset, HeadsetPayload>(
+			Headsets,
+			payload,
+			imagePath,
+			() => ({
 				type: payload.type,
 				connectivity: payload.connectivity,
 				microphone: payload.microphone,
-				productId: product.id,
-			};
-			const headset = await Headsets.create(headsetPayload, { client: trx });
-			return SerializerService.serialize<Headsets, Headset>(headset);
-		});
+			})
+		);
 	}
 
 	async createEarphone(
-		payload: CreateEarphonePayload,
+		payload: EarphonePayload,
 		imagePath: string
 	): Promise<Earphone> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.create(productPayload, { client: trx });
-
-			const earphonePayload = {
+		return this.createProduct<typeof Earphones, Earphone, EarphonePayload>(
+			Earphones,
+			payload,
+			imagePath,
+			() => ({
 				wire: payload.wire,
 				microOnWire: payload.microOnWire,
-				productId: product.id,
-			};
-			const earphone = await Earphones.create(earphonePayload, { client: trx });
-			return SerializerService.serialize<Earphones, Earphone>(earphone);
-		});
+			})
+		);
 	}
 
 	async createMicrophone(
-		payload: CreateMicrophonePayload,
+		payload: MicrophonePayload,
 		imagePath: string
 	): Promise<Microphone> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.create(productPayload, { client: trx });
-
-			const microphonePayload = {
-				connectivity: payload.connectivity,
-				microphoneType: payload.microphoneType,
-				productId: product.id,
-			};
-			const microphone = await Microphones.create(microphonePayload, {
-				client: trx,
-			});
-			return SerializerService.serialize<Microphones, Microphone>(microphone);
-		});
+		return this.createProduct<
+			typeof Microphones,
+			Microphone,
+			MicrophonePayload
+		>(Microphones, payload, imagePath, () => ({
+			connectivity: payload.connectivity,
+			microphoneType: payload.microphoneType,
+		}));
 	}
 
 	async createMousepad(
-		payload: CreateMousePadPayload,
+		payload: MousePadPayload,
 		imagePath: string
 	): Promise<MousePad> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
+		return this.createProduct<typeof MousePads, MousePad, MousePadPayload>(
+			MousePads,
+			payload,
+			imagePath,
+			() => ({
+				slideSpeed: payload.slideSpeed,
+				covering: payload.covering,
+				size: payload.size,
+			})
+		);
+	}
+
+	async getProductsByCategory(category: ProductType): Promise<Product[]> {
+		const model = this.modelMap[category];
+		if (!model) throw new Error('Invalid product category');
+
+		const products = await this.preloadRelations(model.query());
+		return SerializerService.arraySerialize<typeof model, Product>(products);
+	}
+
+	private async updateBaseProduct(
+		id: string,
+		payload: BaseProductPayload,
+		imagePath: string,
+		trx: any
+	) {
+		const product = await Product.findOrFail(id, { client: trx });
+		await product
+			.merge({
 				brand: payload.brand,
 				image: imagePath,
 				reference: payload.reference,
@@ -338,265 +322,154 @@ export class ProductRepository {
 				additionalInfo: payload.additionalInfo,
 				affiliateLinks: payload.affiliateLinks,
 				reviews: payload.reviews,
-			};
-			const product = await Product.create(productPayload, { client: trx });
+			})
+			.save();
+		return product;
+	}
 
-			const mousePadPayload = {
-				slideSpeed: payload.slideSpeed,
-				covering: payload.covering,
-				size: payload.size,
-				productId: product.id,
-			};
-			const mousePad = await MousePads.create(mousePadPayload, { client: trx });
-			return SerializerService.serialize<MousePads, MousePad>(mousePad);
+	private async updateProduct<
+		T extends Models,
+		U,
+		P extends BaseProductPayload,
+	>(
+		model: T,
+		id: string,
+		payload: P,
+		imagePath: string,
+		specificPayload: Partial<P>
+	): Promise<U> {
+		return await db.transaction(async (trx) => {
+			await this.updateBaseProduct(id, payload, imagePath, trx);
+			const instance = await model.findOrFail(
+				{ productId: id },
+				{ client: trx }
+			);
+			await instance.merge(specificPayload as any).save();
+			return SerializerService.serialize<typeof model, U>(instance as any);
 		});
-	}
-
-	async getProductsByCategory(category: ProductType): Promise<Product[]> {
-		const model = this.getProductCategoryFromString(category);
-		const products = await this.preloadRelations(model.query());
-		return SerializerService.arraySerialize<Models, Product>(products);
-	}
-
-	getProductCategoryFromString(category: ProductType) {
-		switch (category) {
-			case 'headset':
-				return Headsets;
-			case 'keyboard':
-				return Keyboards;
-			case 'earphone':
-				return Earphones;
-			case 'monitor':
-				return Monitors;
-			case 'mouse':
-				return Mouses;
-			case 'mousepad':
-				return MousePads;
-			case 'microphone':
-				return Microphones;
-			default:
-				throw new Error('Invalid product category');
-		}
 	}
 
 	async updateMouse(
 		id: string,
-		payload: CreateMousePayload,
+		payload: MousePayload,
 		imagePath: string
 	): Promise<Mouse> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.findOrFail(id, { client: trx });
-			await product.merge(productPayload).save();
-
-			const mousePayload = {
+		return this.updateProduct<typeof Mouses, Mouse, MousePayload>(
+			Mouses,
+			id,
+			payload,
+			imagePath,
+			{
 				wire: payload.wire,
 				shape: payload.shape,
 				weight: payload.weight,
-			};
-			const mouse = await Mouses.findOrFail({ productId: id }, { client: trx });
-			await mouse.merge(mousePayload).save();
-			return SerializerService.serialize<Mouses, Mouse>(mouse);
-		});
+			}
+		);
 	}
 
 	async updateKeyboard(
 		id: string,
-		payload: CreateKeyboardPayload,
+		payload: KeyboardPayload,
 		imagePath: string
 	): Promise<Keyboard> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.findOrFail(id, { client: trx });
-			await product.merge(productPayload).save();
-
-			const keyboardPayload = {
+		return this.updateProduct<typeof Keyboards, Keyboard, KeyboardPayload>(
+			Keyboards,
+			id,
+			payload,
+			imagePath,
+			{
 				size: payload.size,
 				switches: payload.switches,
-			};
-			const keyboard = await Keyboards.findOrFail(
-				{ productId: id },
-				{ client: trx }
-			);
-			await keyboard.merge(keyboardPayload).save();
-			return SerializerService.serialize<Keyboards, Keyboard>(keyboard);
-		});
+			}
+		);
 	}
 
 	async updateMonitor(
 		id: string,
-		payload: CreateMonitorPayload,
+		payload: MonitorPayload,
 		imagePath: string
 	): Promise<Monitor> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.findOrFail(id, { client: trx });
-			await product.merge(productPayload).save();
-
-			const monitorPayload = {
+		return this.updateProduct<typeof Monitors, Monitor, MonitorPayload>(
+			Monitors,
+			id,
+			payload,
+			imagePath,
+			{
 				size: payload.size,
 				resolution: payload.resolution,
 				refreshRate: payload.refreshRate,
 				panel: payload.panel,
-				vesa_support: payload.vesaSupport,
-			};
-			const monitor = await Monitors.findOrFail(
-				{ productId: id },
-				{ client: trx }
-			);
-			await monitor.merge(monitorPayload).save();
-			return SerializerService.serialize<Monitors, Monitor>(monitor);
-		});
+				vesaSupport: payload.vesaSupport,
+			}
+		);
 	}
 
 	async updateHeadset(
 		id: string,
-		payload: CreateHeadsetPayload,
+		payload: HeadsetPayload,
 		imagePath: string
 	): Promise<Headset> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.findOrFail(id, { client: trx });
-			await product.merge(productPayload).save();
-
-			const headsetPayload = {
+		return this.updateProduct<typeof Headsets, Headset, HeadsetPayload>(
+			Headsets,
+			id,
+			payload,
+			imagePath,
+			{
 				type: payload.type,
 				connectivity: payload.connectivity,
 				microphone: payload.microphone,
-			};
-			const headset = await Headsets.findOrFail(
-				{ productId: id },
-				{ client: trx }
-			);
-			await headset.merge(headsetPayload).save();
-			return SerializerService.serialize<Headsets, Headset>(headset);
-		});
+			}
+		);
 	}
 
 	async updateEarphone(
 		id: string,
-		payload: CreateEarphonePayload,
+		payload: EarphonePayload,
 		imagePath: string
 	): Promise<Earphone> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.findOrFail(id, { client: trx });
-			await product.merge(productPayload).save();
-
-			const earphonePayload = {
+		return this.updateProduct<typeof Earphones, Earphone, EarphonePayload>(
+			Earphones,
+			id,
+			payload,
+			imagePath,
+			{
 				wire: payload.wire,
 				microOnWire: payload.microOnWire,
-			};
-			const earphone = await Earphones.findOrFail(
-				{ productId: id },
-				{ client: trx }
-			);
-			await earphone.merge(earphonePayload).save();
-			return SerializerService.serialize<Earphones, Earphone>(earphone);
-		});
+			}
+		);
 	}
 
 	async updateMicrophone(
 		id: string,
-		payload: CreateMicrophonePayload,
+		payload: MicrophonePayload,
 		imagePath: string
 	): Promise<Microphone> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.findOrFail(id, { client: trx });
-			await product.merge(productPayload).save();
-
-			const microphonePayload = {
-				connectivity: payload.connectivity,
-				microphoneType: payload.microphoneType,
-			};
-			const microphone = await Microphones.findOrFail(
-				{ productId: id },
-				{ client: trx }
-			);
-			await microphone.merge(microphonePayload).save();
-			return SerializerService.serialize<Microphones, Microphone>(microphone);
+		return this.updateProduct<
+			typeof Microphones,
+			Microphone,
+			MicrophonePayload
+		>(Microphones, id, payload, imagePath, {
+			connectivity: payload.connectivity,
+			microphoneType: payload.microphoneType,
 		});
 	}
 
 	async updateMousepad(
 		id: string,
-		payload: CreateMousePadPayload,
+		payload: MousePadPayload,
 		imagePath: string
 	): Promise<MousePad> {
-		return await db.transaction(async (trx) => {
-			const productPayload = {
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			};
-			const product = await Product.findOrFail(id, { client: trx });
-			await product.merge(productPayload).save();
-
-			const mousePadPayload = {
+		return this.updateProduct<typeof MousePads, MousePad, MousePadPayload>(
+			MousePads,
+			id,
+			payload,
+			imagePath,
+			{
 				slideSpeed: payload.slideSpeed,
 				covering: payload.covering,
 				size: payload.size,
-			};
-			const mousePad = await MousePads.findOrFail(
-				{ productId: id },
-				{ client: trx }
-			);
-			await mousePad.merge(mousePadPayload).save();
-			return SerializerService.serialize<MousePads, MousePad>(mousePad);
-		});
+			}
+		);
 	}
 
 	private preloadRelations(query: ModelQueryBuilderContract<any>) {
