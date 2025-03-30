@@ -8,6 +8,7 @@ import {
 	PeriphType,
 	ProductType,
 } from '#shared/types/index';
+import { ALLOWED_IMAGE_EXTENSIONS, MAX_IMAGE_SIZE } from '#shared/utils/index';
 import vine from '@vinejs/vine';
 
 export const productTypeValidator = vine.compile(
@@ -20,21 +21,29 @@ export const productTypeValidator = vine.compile(
 
 export const productValidator = vine.object({
 	brand: vine.string(),
+	thumbnail: vine.file({
+		extnames: ALLOWED_IMAGE_EXTENSIONS,
+		size: MAX_IMAGE_SIZE,
+	}),
 	reference: vine.string(),
 	recommendedPrice: vine.number(),
 	additionalInfo: vine.string().nullable(),
-	affiliateLinks: vine.array(
-		vine.object({
-			label: vine.string(),
-			url: vine.string(),
-		})
-	),
-	reviews: vine.array(
-		vine.object({
-			label: vine.string(),
-			url: vine.string(),
-		})
-	),
+	affiliateLinks: vine
+		.array(
+			vine.object({
+				label: vine.string(),
+				url: vine.string(),
+			})
+		)
+		.parse((value) => value ?? []),
+	reviews: vine
+		.array(
+			vine.object({
+				label: vine.string(),
+				url: vine.string(),
+			})
+		)
+		.parse((value) => value ?? []),
 });
 
 export const mouseValidator = vine.compile(

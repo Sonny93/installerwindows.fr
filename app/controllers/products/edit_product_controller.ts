@@ -1,7 +1,5 @@
 import { BaseProductController } from '#controllers/products/base_product_controller';
 import { ProductRepository } from '#repositories/product_repository.ts';
-import { GoogleImageService } from '#services/google_image_service';
-import { ImageDownloadService } from '#services/image_download_service';
 import { ProductType } from '#shared/types/index';
 import { productTypeValidator } from '#validators/product';
 import { inject } from '@adonisjs/core/container';
@@ -9,11 +7,7 @@ import { HttpContext } from '@adonisjs/core/http';
 
 @inject()
 export default class EditProductController extends BaseProductController {
-	constructor(
-		protected productRepository: ProductRepository,
-		protected googleImageService: GoogleImageService,
-		protected imageDownloadService: ImageDownloadService
-	) {
+	constructor(protected productRepository: ProductRepository) {
 		super(productRepository);
 	}
 
@@ -46,23 +40,8 @@ export default class EditProductController extends BaseProductController {
 		const validator = this.getValidator(productType);
 		const product = await ctx.request.validateUsing(validator);
 
-		let imagePath = product.image;
-
-		if (
-			product.brand !== ctx.request.input('brand') ||
-			product.reference !== ctx.request.input('reference')
-		) {
-			const image = await this.googleImageService.getFirstImage(
-				product.brand,
-				product.reference
-			);
-			if (image) {
-				imagePath = await this.imageDownloadService.downloadImage(image);
-			}
-		}
-
 		const updateMethod = this.getRepositoryUpdateMethod(productType);
-		await updateMethod(productId, product, imagePath);
+		await updateMethod(productId, product);
 
 		return ctx.response.redirect(`/periphs/${productType}`);
 	}

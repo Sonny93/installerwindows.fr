@@ -80,7 +80,9 @@
 		"@adonisjs/static": "^1.1.1",
 		"@adonisjs/vite": "^4.0.0",
 		"@inertiajs/react": "^2.0.3",
+		"@jrmc/adonis-attachment": "^3.2.2",
 		"@mantine/core": "^7.17.1",
+		"@mantine/dropzone": "^7.17.3",
 		"@mantine/hooks": "^7.17.1",
 		"@mantine/modals": "^7.17.1",
 		"@vinejs/vine": "^3.0.0",
@@ -100,6 +102,7 @@
 		"rehype-stringify": "^10.0.1",
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.1",
+		"sharp": "^0.33.5",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0",
 		"zustand": "^5.0.3"
@@ -122,7 +125,9 @@
 		},
 		"onlyBuiltDependencies": [
 			"@swc/core",
-			"esbuild"
+			"esbuild",
+			"exifreader",
+			"sharp"
 		]
 	},
 	"prettier": {

@@ -14,6 +14,7 @@ export default defineConfig({
 		() => import('@adonisjs/core/commands'),
 		() => import('@adonisjs/lucid/commands'),
 		() => import('@adonisjs/cache/commands'),
+		() => import('@jrmc/adonis-attachment/commands'),
 	],
 
 	/*
@@ -45,6 +46,7 @@ export default defineConfig({
 		() => import('@adonisjs/cache/cache_provider'),
 		() => import('@adonisjs/ally/ally_provider'),
 		() => import('@adonisjs/drive/drive_provider'),
+		() => import('@jrmc/adonis-attachment/attachment_provider'),
 	],
 
 	/*

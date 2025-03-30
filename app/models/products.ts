@@ -1,6 +1,7 @@
 import AppLightModel from '#models/app_light_model';
 import { AffiliateLink, Review } from '#shared/types/index';
 import { column } from '@adonisjs/lucid/orm';
+import { Attachment, attachment } from '@jrmc/adonis-attachment';
 
 const jsonbSerialize = (value: unknown) => (Array.isArray(value) ? value : []);
 
@@ -11,8 +12,11 @@ export default class Product extends AppLightModel {
 	@column()
 	declare reference: string;
 
-	@column()
-	declare image: string | null;
+	@attachment({
+		folder: 'uploads/products',
+		preComputeUrl: true,
+	})
+	declare thumbnail: Attachment;
 
 	@column()
 	declare recommendedPrice: number;

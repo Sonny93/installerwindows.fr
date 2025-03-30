@@ -6,6 +6,9 @@ export const slugify = (str: string = '') =>
 		.replace(/[^a-zA-Z0-9]/g, '-')
 		.toLowerCase();
 
+export const ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+export const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB
+
 export const urlify = (text: string) => {
 	return text.replace(
 		/(https?:\/\/[^\s]+)/g,

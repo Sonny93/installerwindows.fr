@@ -5,6 +5,7 @@ import { projectName } from '#config/project';
 import { resolvePageComponent } from '@adonisjs/inertia/helpers';
 import { createInertiaApp } from '@inertiajs/react';
 import '@mantine/core/styles.css';
+import '@mantine/dropzone/styles.css';
 import { hydrateRoot } from 'react-dom/client';
 import DefaultLayout from '~/layouts/default_layout';
 import '../css/app.css';

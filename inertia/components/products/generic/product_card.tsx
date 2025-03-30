@@ -1,3 +1,4 @@
+import { Product } from '#shared/types/index';
 import { Link } from '@inertiajs/react';
 import {
 	Anchor,
@@ -15,15 +16,7 @@ const DEFAULT_IMAGE = '/periphs/default.jpg';
 
 interface BaseProduct {
 	id: number;
-	product: {
-		brand: string;
-		reference: string;
-		image?: string;
-		additionalInfo?: string | null;
-		recommendedPrice: number;
-		reviews: Array<{ url: string; label: string }>;
-		affiliateLinks: Array<{ url: string; label: string }>;
-	};
+	product: Product;
 }
 
 interface ProductCardProps<T extends BaseProduct> {
@@ -41,7 +34,7 @@ export function ProductCard<T extends BaseProduct>({
 		<Card radius="md" p="md" className={classes.card}>
 			<Card.Section>
 				<Image
-					src={productData.image ?? DEFAULT_IMAGE}
+					src={productData.thumbnail.url ?? DEFAULT_IMAGE}
 					alt={productData.brand}
 				/>
 			</Card.Section>

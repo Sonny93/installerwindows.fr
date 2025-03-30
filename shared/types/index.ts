@@ -106,7 +106,20 @@ export type PeriphShape = (typeof PeriphShape)[number];
 export type Product = {
 	brand: string;
 	reference: string;
-	image: string;
+	thumbnail: {
+		extname: string;
+		meta: {
+			dimension: {
+				width: number;
+				height: number;
+			};
+		};
+		mimeType: string;
+		name: string;
+		originalName: string;
+		size: number;
+		url: string;
+	};
 	recommendedPrice: number;
 	additionalInfo: string | null;
 	affiliateLinks: AffiliateLink[];

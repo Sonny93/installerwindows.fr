@@ -29,14 +29,25 @@ type GeneratedField = Field & {
 	type: 'generated';
 };
 
-type SelectOrBooleanOrNumberOrTextOrGeneratedField =
+type FileField = Field & {
+	type: 'file';
+};
+
+type SelectOrBooleanOrNumberOrTextOrGeneratedOrFileField =
 	| SelectField
 	| BooleanField
 	| NumberField
 	| TextField
-	| GeneratedField;
+	| GeneratedField
+	| FileField;
 
 export const baseProductFields: Field[] = [
+	{
+		label: 'Image',
+		name: 'thumbnail',
+		type: 'file',
+		required: true,
+	} as FileField,
 	{
 		label: 'Marque',
 		name: 'brand',
@@ -80,7 +91,7 @@ export const baseProductFields: Field[] = [
 
 export const productSpecificFields: Record<
 	string,
-	SelectOrBooleanOrNumberOrTextOrGeneratedField[]
+	SelectOrBooleanOrNumberOrTextOrGeneratedOrFileField[]
 > = {
 	keyboard: [
 		{

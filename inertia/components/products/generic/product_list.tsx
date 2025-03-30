@@ -1,18 +1,11 @@
+import { Product } from '#shared/types/index';
 import { Link } from '@inertiajs/react';
 import { Button, Flex, Group, Stack, Title } from '@mantine/core';
 import { ProductCard } from '~/components/products/generic/product_card';
 
 interface BaseProduct {
 	id: number;
-	product: {
-		brand: string;
-		reference: string;
-		image?: string;
-		additionalInfo?: string | null;
-		recommendedPrice: number;
-		reviews: Array<{ url: string; label: string }>;
-		affiliateLinks: Array<{ url: string; label: string }>;
-	};
+	product: Product;
 }
 
 interface ProductListProps<T extends BaseProduct> {

@@ -27,8 +27,10 @@ import {
 	ProductType,
 	Review,
 } from '#shared/types/index';
+import { MultipartFile } from '@adonisjs/core/bodyparser';
 import db from '@adonisjs/lucid/services/db';
 import { ModelQueryBuilderContract } from '@adonisjs/lucid/types/model';
+import { attachmentManager } from '@jrmc/adonis-attachment';
 
 type Models =
 	| typeof Headsets
@@ -42,6 +44,7 @@ type Models =
 interface BaseProductPayload {
 	brand: string;
 	reference: string;
+	thumbnail: MultipartFile;
 	recommendedPrice: number;
 	additionalInfo: string | null;
 	affiliateLinks: AffiliateLink[];
@@ -149,23 +152,21 @@ export class ProductRepository {
 		return this.getById<typeof Mouses, Mouse>(Mouses, id);
 	}
 
-	private async createBaseProduct(
-		payload: BaseProductPayload,
-		imagePath: string,
-		trx: any
-	) {
-		return await Product.create(
-			{
-				brand: payload.brand,
-				image: imagePath,
-				reference: payload.reference,
-				recommendedPrice: payload.recommendedPrice,
-				additionalInfo: payload.additionalInfo,
-				affiliateLinks: payload.affiliateLinks,
-				reviews: payload.reviews,
-			},
-			{ client: trx }
-		);
+	private async createBaseProduct(payload: BaseProductPayload, trx: any) {
+		const product = new Product();
+		product.fill({
+			brand: payload.brand,
+			reference: payload.reference,
+			recommendedPrice: payload.recommendedPrice,
+			additionalInfo: payload.additionalInfo,
+			affiliateLinks: payload.affiliateLinks,
+			reviews: payload.reviews,
+		});
+		product.thumbnail = (await attachmentManager.createFromFile(
+			payload.thumbnail
+		)) as any;
+		product.$trx = trx;
+		return await product.save();
 	}
 
 	private async createProduct<
@@ -175,11 +176,10 @@ export class ProductRepository {
 	>(
 		model: T,
 		payload: P,
-		imagePath: string,
 		specificPayload: (productId: number) => Partial<P>
 	): Promise<U> {
 		return await db.transaction(async (trx) => {
-			const product = await this.createBaseProduct(payload, imagePath, trx);
+			const product = await this.createBaseProduct(payload, trx);
 			const modelInstance = await model.create(
 				{
 					...specificPayload(product.id),
@@ -191,11 +191,10 @@ export class ProductRepository {
 		});
 	}
 
-	async createMouse(payload: MousePayload, imagePath: string): Promise<Mouse> {
+	async createMouse(payload: MousePayload): Promise<Mouse> {
 		return this.createProduct<typeof Mouses, Mouse, MousePayload>(
 			Mouses,
 			payload,
-			imagePath,
 			() => ({
 				wire: payload.wire,
 				shape: payload.shape,
@@ -204,14 +203,10 @@ export class ProductRepository {
 		);
 	}
 
-	async createKeyboard(
-		payload: KeyboardPayload,
-		imagePath: string
-	): Promise<Keyboard> {
+	async createKeyboard(payload: KeyboardPayload): Promise<Keyboard> {
 		return this.createProduct<typeof Keyboards, Keyboard, KeyboardPayload>(
 			Keyboards,
 			payload,
-			imagePath,
 			() => ({
 				size: payload.size,
 				switches: payload.switches,
@@ -219,14 +214,10 @@ export class ProductRepository {
 		);
 	}
 
-	async createMonitor(
-		payload: MonitorPayload,
-		imagePath: string
-	): Promise<Monitor> {
+	async createMonitor(payload: MonitorPayload): Promise<Monitor> {
 		return this.createProduct<typeof Monitors, Monitor, MonitorPayload>(
 			Monitors,
 			payload,
-			imagePath,
 			() => ({
 				size: payload.size,
 				resolution: payload.resolution,
@@ -237,14 +228,10 @@ export class ProductRepository {
 		);
 	}
 
-	async createHeadset(
-		payload: HeadsetPayload,
-		imagePath: string
-	): Promise<Headset> {
+	async createHeadset(payload: HeadsetPayload): Promise<Headset> {
 		return this.createProduct<typeof Headsets, Headset, HeadsetPayload>(
 			Headsets,
 			payload,
-			imagePath,
 			() => ({
 				type: payload.type,
 				connectivity: payload.connectivity,
@@ -253,14 +240,10 @@ export class ProductRepository {
 		);
 	}
 
-	async createEarphone(
-		payload: EarphonePayload,
-		imagePath: string
-	): Promise<Earphone> {
+	async createEarphone(payload: EarphonePayload): Promise<Earphone> {
 		return this.createProduct<typeof Earphones, Earphone, EarphonePayload>(
 			Earphones,
 			payload,
-			imagePath,
 			() => ({
 				wire: payload.wire,
 				microOnWire: payload.microOnWire,
@@ -268,28 +251,21 @@ export class ProductRepository {
 		);
 	}
 
-	async createMicrophone(
-		payload: MicrophonePayload,
-		imagePath: string
-	): Promise<Microphone> {
+	async createMicrophone(payload: MicrophonePayload): Promise<Microphone> {
 		return this.createProduct<
 			typeof Microphones,
 			Microphone,
 			MicrophonePayload
-		>(Microphones, payload, imagePath, () => ({
+		>(Microphones, payload, () => ({
 			connectivity: payload.connectivity,
 			microphoneType: payload.microphoneType,
 		}));
 	}
 
-	async createMousepad(
-		payload: MousePadPayload,
-		imagePath: string
-	): Promise<MousePad> {
+	async createMousepad(payload: MousePadPayload): Promise<MousePad> {
 		return this.createProduct<typeof MousePads, MousePad, MousePadPayload>(
 			MousePads,
 			payload,
-			imagePath,
 			() => ({
 				slideSpeed: payload.slideSpeed,
 				covering: payload.covering,
@@ -309,14 +285,12 @@ export class ProductRepository {
 	private async updateBaseProduct(
 		id: string,
 		payload: BaseProductPayload,
-		imagePath: string,
 		trx: any
 	) {
 		const product = await Product.findOrFail(id, { client: trx });
 		await product
 			.merge({
 				brand: payload.brand,
-				image: imagePath,
 				reference: payload.reference,
 				recommendedPrice: payload.recommendedPrice,
 				additionalInfo: payload.additionalInfo,
@@ -331,15 +305,9 @@ export class ProductRepository {
 		T extends Models,
 		U,
 		P extends BaseProductPayload,
-	>(
-		model: T,
-		id: string,
-		payload: P,
-		imagePath: string,
-		specificPayload: Partial<P>
-	): Promise<U> {
+	>(model: T, id: string, payload: P, specificPayload: Partial<P>): Promise<U> {
 		return await db.transaction(async (trx) => {
-			await this.updateBaseProduct(id, payload, imagePath, trx);
+			await this.updateBaseProduct(id, payload, trx);
 			const instance = await model.findOrFail(
 				{ productId: id },
 				{ client: trx }
@@ -349,16 +317,11 @@ export class ProductRepository {
 		});
 	}
 
-	async updateMouse(
-		id: string,
-		payload: MousePayload,
-		imagePath: string
-	): Promise<Mouse> {
+	async updateMouse(id: string, payload: MousePayload): Promise<Mouse> {
 		return this.updateProduct<typeof Mouses, Mouse, MousePayload>(
 			Mouses,
 			id,
 			payload,
-			imagePath,
 			{
 				wire: payload.wire,
 				shape: payload.shape,
@@ -369,14 +332,12 @@ export class ProductRepository {
 
 	async updateKeyboard(
 		id: string,
-		payload: KeyboardPayload,
-		imagePath: string
+		payload: KeyboardPayload
 	): Promise<Keyboard> {
 		return this.updateProduct<typeof Keyboards, Keyboard, KeyboardPayload>(
 			Keyboards,
 			id,
 			payload,
-			imagePath,
 			{
 				size: payload.size,
 				switches: payload.switches,
@@ -384,16 +345,11 @@ export class ProductRepository {
 		);
 	}
 
-	async updateMonitor(
-		id: string,
-		payload: MonitorPayload,
-		imagePath: string
-	): Promise<Monitor> {
+	async updateMonitor(id: string, payload: MonitorPayload): Promise<Monitor> {
 		return this.updateProduct<typeof Monitors, Monitor, MonitorPayload>(
 			Monitors,
 			id,
 			payload,
-			imagePath,
 			{
 				size: payload.size,
 				resolution: payload.resolution,
@@ -404,16 +360,11 @@ export class ProductRepository {
 		);
 	}
 
-	async updateHeadset(
-		id: string,
-		payload: HeadsetPayload,
-		imagePath: string
-	): Promise<Headset> {
+	async updateHeadset(id: string, payload: HeadsetPayload): Promise<Headset> {
 		return this.updateProduct<typeof Headsets, Headset, HeadsetPayload>(
 			Headsets,
 			id,
 			payload,
-			imagePath,
 			{
 				type: payload.type,
 				connectivity: payload.connectivity,
@@ -424,14 +375,12 @@ export class ProductRepository {
 
 	async updateEarphone(
 		id: string,
-		payload: EarphonePayload,
-		imagePath: string
+		payload: EarphonePayload
 	): Promise<Earphone> {
 		return this.updateProduct<typeof Earphones, Earphone, EarphonePayload>(
 			Earphones,
 			id,
 			payload,
-			imagePath,
 			{
 				wire: payload.wire,
 				microOnWire: payload.microOnWire,
@@ -441,14 +390,13 @@ export class ProductRepository {
 
 	async updateMicrophone(
 		id: string,
-		payload: MicrophonePayload,
-		imagePath: string
+		payload: MicrophonePayload
 	): Promise<Microphone> {
 		return this.updateProduct<
 			typeof Microphones,
 			Microphone,
 			MicrophonePayload
-		>(Microphones, id, payload, imagePath, {
+		>(Microphones, id, payload, {
 			connectivity: payload.connectivity,
 			microphoneType: payload.microphoneType,
 		});
@@ -456,14 +404,12 @@ export class ProductRepository {
 
 	async updateMousepad(
 		id: string,
-		payload: MousePadPayload,
-		imagePath: string
+		payload: MousePadPayload
 	): Promise<MousePad> {
 		return this.updateProduct<typeof MousePads, MousePad, MousePadPayload>(
 			MousePads,
 			id,
 			payload,
-			imagePath,
 			{
 				slideSpeed: payload.slideSpeed,
 				covering: payload.covering,

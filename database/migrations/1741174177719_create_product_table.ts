@@ -8,7 +8,7 @@ export default class extends BaseSchema {
 		this.schema.createTable(this.tableName, (table) => {
 			table.string('brand').notNullable();
 			table.string('reference').notNullable();
-			table.string('image').nullable();
+			table.jsonb('thumbnail').notNullable();
 			table.integer('recommended_price').notNullable();
 			table.string('additional_info').nullable();
 			table.jsonb('reviews').nullable();

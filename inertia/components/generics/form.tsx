@@ -12,6 +12,7 @@ import {
 	Title,
 } from '@mantine/core';
 import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
+import { FileUpload } from '~/components/products/form/file_upload';
 import { GeneratedFields } from '~/components/products/form/generated_fields';
 
 export type Field = {
@@ -20,8 +21,8 @@ export type Field = {
 	description?: string;
 	required?: boolean;
 	placeholder?: string;
-	value?: string | { label: string; url: string }[];
-	type?: 'text' | 'number' | 'boolean' | 'select' | 'generated';
+	value?: string | { label: string; url: string }[] | File;
+	type?: 'text' | 'number' | 'boolean' | 'select' | 'generated' | 'file';
 	options?: { label: string; value: string }[];
 	generateSlug?: boolean;
 };
@@ -47,11 +48,13 @@ export function Form({
 		fields.reduce<
 			Record<
 				string,
-				string | number | boolean | { label: string; url: string }[]
+				string | number | boolean | { label: string; url: string }[] | File
 			>
 		>((acc, field) => {
 			if (field.type === 'generated') {
-				acc[field.name] = [];
+				acc[field.name] = field.value || [];
+			} else if (field.type === 'file') {
+				acc[field.name] = (field.value as File) || null;
 			} else {
 				acc[field.name] = field.value ?? '';
 			}
@@ -68,6 +71,7 @@ export function Form({
 		reset,
 	} = useForm(defaultValues);
 
+	console.log(data);
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setData(e.target.name, e.target.value);
 		setError(e.target.name, '');
@@ -96,6 +100,11 @@ export function Form({
 		value: { label: string; url: string }[]
 	) => {
 		setData(name, value);
+		setError(name, '');
+	};
+
+	const handleFileChange = (name: string, file: File | null) => {
+		setData(name, file);
 		setError(name, '');
 	};
 
@@ -158,6 +167,17 @@ export function Form({
 						data={field.options || []}
 						value={data[field.name] as string}
 						onChange={(value) => handleSelectChange(field.name, value)}
+						error={errors[field.name]}
+						required={field.required}
+					/>
+				);
+			case 'file':
+				return (
+					<FileUpload
+						key={field.name}
+						label={field.label}
+						name={field.name}
+						onChange={(file) => handleFileChange(field.name, file)}
 						error={errors[field.name]}
 						required={field.required}
 					/>
