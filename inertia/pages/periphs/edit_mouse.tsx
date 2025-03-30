@@ -17,7 +17,6 @@ interface EditMouseProps {
 }
 
 export default function EditMouse({ product }: EditMouseProps) {
-	console.log(product);
 	return (
 		<DynamicProductForm
 			title="Modifier une souris"

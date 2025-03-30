@@ -1,38 +1,38 @@
 {
-  "theme_color": "#222831",
-  "background_color": "#222831",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-  "name": "Installerwindows.fr",
-  "short_name": "Installerwindows.fr",
-  "description": "Installation de Windows et optimisations saines",
-  "icons": [
-    {
-      "src": "/images/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/images/maskable_icon.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/images/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    },
-    {
-      "src": "/images/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "/images/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+	"theme_color": "#222831",
+	"background_color": "#222831",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "/",
+	"name": "Installerwindows.fr",
+	"short_name": "Installerwindows.fr",
+	"description": "Installation de Windows et optimisations saines",
+	"icons": [
+		{
+			"src": "/images/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/maskable_icon.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/images/icon-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/icon-384x384.png",
+			"sizes": "384x384",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
 }

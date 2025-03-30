@@ -71,7 +71,6 @@ export function Form({
 		reset,
 	} = useForm(defaultValues);
 
-	console.log(data);
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setData(e.target.name, e.target.value);
 		setError(e.target.name, '');

@@ -17,7 +17,8 @@
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"typecheck": "tsc --noEmit",
-		"release": "release-it"
+		"release": "release-it",
+		"check": "pnpm run lint && pnpm run format && pnpm run typecheck"
 	},
 	"imports": {
 		"#controllers/*": "./app/controllers/*.js",
