@@ -1,3 +1,4 @@
+import { middleware } from '#start/kernel';
 import router from '@adonisjs/core/services/router';
 
 const ProductsController = () =>
@@ -13,7 +14,11 @@ router
 		router
 			.get('/:productType', [ProductsController, 'categoryRender'])
 			.as('products.productType');
+	})
+	.prefix('/periphs');
 
+router
+	.group(() => {
 		router
 			.get('/:productType/create', [CreateProductController, 'showForm'])
 			.as('products.productType.create');
@@ -28,4 +33,5 @@ router
 			.put('/:productType/:id', [EditProductController, 'update'])
 			.as('products.productType.update');
 	})
-	.prefix('/periphs');
+	.prefix('/periphs')
+	.middleware([middleware.auth()]);

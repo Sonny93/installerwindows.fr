@@ -2,6 +2,7 @@ import { Product } from '#shared/types/index';
 import { Link } from '@inertiajs/react';
 import { Button, Flex, Group, Stack, Title } from '@mantine/core';
 import { ProductCard } from '~/components/products/generic/product_card';
+import useUser from '~/hooks/use_user';
 
 interface BaseProduct {
 	id: number;
@@ -23,15 +24,19 @@ export function ProductList<T extends BaseProduct>({
 	createButtonText,
 	renderSpecificFields,
 }: ProductListProps<T>) {
+	const { isAuthenticated } = useUser();
+
 	return (
 		<Stack>
 			<Group justify="space-between">
 				<Title order={1} style={{ lineHeight: 1.2 }}>
 					{title}
 				</Title>
-				<Button component={Link} href={createUrl}>
-					{createButtonText}
-				</Button>
+				{isAuthenticated && (
+					<Button component={Link} href={createUrl}>
+						{createButtonText}
+					</Button>
+				)}
 			</Group>
 			<Flex gap="md" wrap="wrap">
 				{products.map((product) => (
