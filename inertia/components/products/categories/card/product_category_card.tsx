@@ -18,7 +18,7 @@ export function ProductCategoryCard({
 	return (
 		<Card component={Link} href={`/periphs/${id}`} className={classes.card}>
 			<Card.Section>
-				<AspectRatio ratio={16 / 9} className={classes.cardImage}>
+				<AspectRatio ratio={1 / 1} className={classes.cardImage}>
 					<Image src={thumbnail} alt={name} style={{ height: '100%' }} />
 				</AspectRatio>
 			</Card.Section>

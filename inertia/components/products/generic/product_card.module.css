@@ -29,3 +29,10 @@
 	font-weight: 500;
 	display: block;
 }
+
+.additionalInfo {
+	font-weight: 300;
+	font-size: var(--mantine-font-size-sm);
+	margin-top: var(--mantine-spacing-xs);
+	white-space: pre-wrap;
+}

@@ -45,7 +45,7 @@ export function ProductCard<T extends BaseProduct>({
 						{productData.brand} {productData.reference}
 					</Text>
 					{productData.additionalInfo && (
-						<Text fz="sm" mt="xs">
+						<Text className={classes.additionalInfo}>
 							{productData.additionalInfo}
 						</Text>
 					)}
