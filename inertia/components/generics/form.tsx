@@ -8,6 +8,7 @@ import {
 	SimpleGrid,
 	Stack,
 	Switch,
+	Textarea,
 	TextInput,
 	Title,
 } from '@mantine/core';
@@ -22,7 +23,14 @@ export type Field = {
 	required?: boolean;
 	placeholder?: string;
 	value?: string | { label: string; url: string }[] | File;
-	type?: 'text' | 'number' | 'boolean' | 'select' | 'generated' | 'file';
+	type?:
+		| 'text'
+		| 'number'
+		| 'boolean'
+		| 'select'
+		| 'generated'
+		| 'file'
+		| 'textarea';
 	options?: { label: string; value: string }[];
 	generateSlug?: boolean;
 };
@@ -71,7 +79,9 @@ export function Form({
 		reset,
 	} = useForm(defaultValues);
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
 		setData(e.target.name, e.target.value);
 		setError(e.target.name, '');
 		if (e.target.name === 'slug') {
@@ -176,7 +186,21 @@ export function Form({
 						key={field.name}
 						label={field.label}
 						name={field.name}
-						onChange={(file) => handleFileChange(field.name, file)}
+						files={data[field.name] ? [data[field.name]] : undefined}
+						onChange={(files) => handleFileChange(field.name, files[0])}
+						error={errors[field.name]}
+						required={field.required}
+					/>
+				);
+			case 'textarea':
+				return (
+					<Textarea
+						key={field.name}
+						label={field.label}
+						name={field.name}
+						placeholder={field.placeholder}
+						value={data[field.name] as string}
+						onChange={handleChange}
 						error={errors[field.name]}
 						required={field.required}
 					/>

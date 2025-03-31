@@ -25,6 +25,10 @@ type TextField = Field & {
 	type: 'text';
 };
 
+type TextareaField = Field & {
+	type: 'textarea';
+};
+
 type GeneratedField = Field & {
 	type: 'generated';
 };
@@ -38,6 +42,7 @@ type SelectOrBooleanOrNumberOrTextOrGeneratedOrFileField =
 	| BooleanField
 	| NumberField
 	| TextField
+	| TextareaField
 	| GeneratedField
 	| FileField;
 
@@ -73,8 +78,8 @@ export const baseProductFields: Field[] = [
 		label: 'Informations additionnelles',
 		name: 'additionalInfo',
 		placeholder: 'Super produit, très bon, etc.',
-		type: 'text',
-	} as TextField,
+		type: 'textarea',
+	} as TextareaField,
 	{
 		label: 'Liens affiliés',
 		name: 'affiliateLinks',
