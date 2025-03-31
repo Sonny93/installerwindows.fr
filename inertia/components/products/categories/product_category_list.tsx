@@ -17,7 +17,7 @@ interface ProductCategoryListProps {
 }
 
 export const ProductCategoryList = (props: ProductCategoryListProps) => (
-	<SimpleGrid cols={3}>
+	<SimpleGrid cols={{ xs: 1, sm: 2, md: 3, lg: 4 }}>
 		{CATEGORIES.map(([id, name, thumbnail]) => (
 			<ProductCategoryCard
 				key={id}

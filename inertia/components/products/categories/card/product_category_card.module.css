@@ -6,7 +6,7 @@
 }
 
 .card:before {
-	--size: 85%;
+	--size: 100%;
 	z-index: -1;
 	content: '';
 	position: absolute;
