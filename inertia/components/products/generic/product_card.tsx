@@ -1,14 +1,5 @@
 import { Product } from '#shared/types/index';
-import { Link } from '@inertiajs/react';
-import {
-	Anchor,
-	Card,
-	Group,
-	Image,
-	SimpleGrid,
-	Stack,
-	Text,
-} from '@mantine/core';
+import { Card, Group, Image, SimpleGrid, Stack, Text } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import classes from './product_card.module.css';
 
@@ -100,9 +91,6 @@ export function ProductCard<T extends BaseProduct>({
 						)}
 					</Group>
 				</Card.Section>
-				<Anchor component={Link} href={`/periphs/mouse/${product.id}/edit`}>
-					edit
-				</Anchor>
 			</Stack>
 		</Card>
 	);

@@ -1,8 +1,10 @@
 import { Product } from '#shared/types/index';
 import { Link } from '@inertiajs/react';
 import { Button, Flex, Group, Stack, Title } from '@mantine/core';
+import { FAQ } from '~/components/generics/faq';
 import { ProductCard } from '~/components/products/generic/product_card';
 import useUser from '~/hooks/use_user';
+import { FaqItem } from '~/types';
 
 interface BaseProduct {
 	id: number;
@@ -14,6 +16,10 @@ interface ProductListProps<T extends BaseProduct> {
 	title: string;
 	createUrl: string;
 	createButtonText: string;
+	criterias?: {
+		title: string;
+		items: FaqItem[];
+	};
 	renderSpecificFields: (product: T) => React.ReactNode;
 }
 
@@ -22,6 +28,7 @@ export function ProductList<T extends BaseProduct>({
 	title,
 	createUrl,
 	createButtonText,
+	criterias,
 	renderSpecificFields,
 }: ProductListProps<T>) {
 	const { isAuthenticated } = useUser();
@@ -38,6 +45,9 @@ export function ProductList<T extends BaseProduct>({
 					</Button>
 				)}
 			</Group>
+
+			{criterias && <FAQ title={criterias.title} items={criterias.items} />}
+
 			<Flex gap="md" wrap="wrap">
 				{products.map((product) => (
 					<ProductCard
