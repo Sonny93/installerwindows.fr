@@ -1,7 +1,9 @@
+import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import { CacheService } from '#services/cache_service';
 import { Videos } from '#shared/types/index';
 import env from '#start/env';
 import { inject } from '@adonisjs/core';
+import logger from '@adonisjs/core/services/logger';
 import { DateTime } from 'luxon';
 import { dateTimeSerializer } from '../libs/index.js';
 
@@ -47,7 +49,8 @@ export class YoutubeService {
 
 		const response = await fetch(url.toString());
 		if (!response.ok) {
-			throw new Error(`Failed to fetch playlist data: ${response.statusText}`);
+			logger.debug('Youtube API error ' + (await response.text()));
+			throw new RemoteApiErrorException('youtube', url.toString());
 		}
 
 		const data = await response.json();

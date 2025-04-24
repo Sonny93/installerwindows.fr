@@ -2,6 +2,7 @@ import { YoutubeService } from '#services/youtube_service';
 import { TocItem } from '#shared/types/index';
 import env from '#start/env';
 import { inject } from '@adonisjs/core';
+import logger from '@adonisjs/core/services/logger';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
@@ -86,15 +87,19 @@ export class MarkdownService {
 		const youtubeRegex =
 			/https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/g;
 
-		const playlist = await this.youtubeService.getPlaylist();
-		const playlistVideos = playlist.map((video: { id: string }) => video.id);
+		try {
+			const playlist = await this.youtubeService.getPlaylist();
+			const playlistVideos = playlist.map((video: { id: string }) => video.id);
 
-		markdown = markdown.replace(youtubeRegex, (match, videoId) => {
-			if (playlistVideos.includes(videoId)) {
-				return `${this.appUrl}/videos/${videoId}`;
-			}
-			return match;
-		});
+			markdown = markdown.replace(youtubeRegex, (match, videoId) => {
+				if (playlistVideos.includes(videoId)) {
+					return `${this.appUrl}/videos/${videoId}`;
+				}
+				return match;
+			});
+		} catch (error) {
+			logger.error(error);
+		}
 
 		return markdown;
 	}
