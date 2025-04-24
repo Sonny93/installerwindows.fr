@@ -15,7 +15,13 @@ export const InternalLink = ({
 	style,
 	onClick,
 }: InternalLinkProps) => (
-	<Anchor component={Link} href={href} style={style} onClick={onClick}>
+	<Anchor
+		component={Link}
+		href={href}
+		style={style}
+		prefetch="hover"
+		onClick={onClick}
+	>
 		{children}
 	</Anchor>
 );
