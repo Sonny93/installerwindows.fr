@@ -1,7 +1,7 @@
 import { getDirname } from '@adonisjs/core/helpers';
 import inertia from '@adonisjs/inertia/client';
 import adonisjs from '@adonisjs/vite/client';
-import react from '@vitejs/plugin-react-oxc';
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
