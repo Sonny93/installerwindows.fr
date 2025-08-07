@@ -11,6 +11,7 @@ import {
 import { ModalsProvider } from '@mantine/modals';
 import { PropsWithChildren, useState } from 'react';
 import { TbX } from 'react-icons/tb';
+import { usePageTransition } from '~/hooks/use_page_transition';
 
 const customTheme = createTheme({
 	colors: {
@@ -59,6 +60,8 @@ const customTheme = createTheme({
 export function BaseLayout({ children }: PropsWithChildren) {
 	const { props } = usePage<PageProps & { flash: string }>();
 	const [opened, setOpened] = useState<boolean>(!!props.flash);
+	usePageTransition({ querySelector: '#app' });
+
 	return (
 		<>
 			<ColorSchemeScript defaultColorScheme="dark" />

@@ -20,3 +20,19 @@
 :root[data-mantine-color-scheme='dark'] {
 	--mantine-color-body: #222831 !important;
 }
+
+@keyframes pageFadeIn {
+	from {
+		opacity: 0;
+		filter: blur(0.44rem);
+	}
+	to {
+		opacity: 1;
+		filter: blur(0);
+	}
+}
+
+.page-transition-enter {
+	animation: pageFadeIn 400ms ease forwards;
+	will-change: opacity, filter;
+}
