@@ -48,6 +48,8 @@ export function VideoPlayer({ url }: YoutubePlayerProps) {
 						controls: 1,
 					},
 				}}
+				// This event is not working on 3.x version
+				// Waiting for this pr to be merged: https://github.com/cookpete/react-player/pull/1970
 				onReady={() => setLoading(false)}
 			/>
 		</Box>

@@ -3,11 +3,13 @@ import { defineConfig, drivers, store } from '@adonisjs/cache';
 const cacheConfig = defineConfig({
 	default: 'database',
 	stores: {
-		database: store().useL2Layer(
-			drivers.database({
-				connectionName: 'postgres',
-			})
-		),
+		database: store()
+			.useL1Layer(drivers.memory())
+			.useL2Layer(
+				drivers.database({
+					connectionName: 'postgres',
+				})
+			),
 	},
 });
 
