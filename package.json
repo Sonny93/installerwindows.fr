@@ -17,6 +17,7 @@
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"typecheck": "tsc --noEmit",
+		"check": "pnpm run lint && pnpm run typecheck",
 		"release": "release-it"
 	},
 	"imports": {
