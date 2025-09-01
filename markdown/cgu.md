@@ -6,7 +6,7 @@ Bienvenue sur **installerwindows.fr** ! Nous vous invitons à lire attentivement
 
 ## 1. Informations Générales
 
-**installerwindows.fr** est un site open-source proposant des guides pour (ré)installer Windows 10/11 proprement et optimiser votre machine de manière saine.
+**installerwindows.fr** est un site open-source proposant des guides pour (ré)installer Windows 11 proprement et optimiser votre machine de manière saine.
 
 - **Propriétaire** : Sonny93 (voir le [repository GitHub](https://github.com/Sonny93/installerwindows.fr) pour plus d'informations).
 - **Contact** : Via notre [serveur Discord](https://discord.gg/informatique).

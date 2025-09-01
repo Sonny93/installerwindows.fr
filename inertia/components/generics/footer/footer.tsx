@@ -26,7 +26,7 @@ export const Footer = ({ width }: FooterProps) => (
 			<Field label="Installerwindows.fr">
 				<Box>
 					<Text className={classes.footer__description}>
-						Guides pour (ré)installer Windows 10/11 au propre et faire des
+						Guides pour (ré)installer Windows 11 au propre et faire des
 						optimisations saines pour votre machine. Il s'agit de guides
 						complets, que vous devriez pouvoir suivre quel que soit votre niveau
 						en informatique.

@@ -30,13 +30,9 @@ li:not(:last-child) {
 }
 
 #guide-w11 {
-	float: left;
-}
-
-#guide-w11,
-#guide-w10 {
 	padding: 1.5em;
 	width: 50%;
+	margin: 0 auto;
 	display: flex;
 	gap: 1em;
 	flex-direction: column;
@@ -82,8 +78,7 @@ li:not(:last-child) {
 }
 
 @media (max-width: 1100px) {
-	#guide-w11,
-	#guide-w10 {
+	#guide-w11 {
 		float: unset;
 		width: 100%;
 

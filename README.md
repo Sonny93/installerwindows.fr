@@ -1,6 +1,6 @@
 # Installerwindows.fr
 
-Installerwindows.fr est un site avec différents guides pour apprendre à (ré)installer Windows 10/11 au propre et faire des optimisations saines pour votre machine. Il s'agit d'un guide complet, que vous devriez pouvoir suivre quel que soit votre niveau en informatique.
+Installerwindows.fr est un site avec différents guides pour apprendre à (ré)installer Windows 11 au propre et faire des optimisations saines pour votre machine. Il s'agit d'un guide complet, que vous devriez pouvoir suivre quel que soit votre niveau en informatique.
 
 ## Technologies
 
