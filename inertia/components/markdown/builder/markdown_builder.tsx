@@ -1,5 +1,5 @@
 import { TocItem } from '#shared/types/index';
-import { Flex, TypographyStylesProvider } from '@mantine/core';
+import { Flex, Typography } from '@mantine/core';
 import { MarkdownToc } from '~/components/markdown/toc/markdown_toc';
 import './markdown.css';
 
@@ -17,7 +17,7 @@ export const MarkdownBuilder = ({
 	githubRawUrl,
 }: MarkdownBuilderProps) => (
 	<Flex align="flex-start" gap="xl" w="100%">
-		<TypographyStylesProvider
+		<Typography
 			style={{ width: 0, flex: 1, lineHeight: 1.5 }}
 			dangerouslySetInnerHTML={{ __html: html }}
 		/>
