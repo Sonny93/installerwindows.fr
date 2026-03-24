@@ -4,14 +4,14 @@ import { Button, Group, Stack, Text, Title } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import { GuideList } from '~/components/guides/guide_list';
 import { DISCORD_SUGGESTION_CHANNEL_URL, HELP_URL } from '~/consts/project';
-import useUser from '~/hooks/use_user';
+import { useAuth } from '~/hooks/use_auth';
 
 interface GuidesPageProps {
 	guides: Guides;
 }
 
 export default function GuidesPage({ guides }: Readonly<GuidesPageProps>) {
-	const { isAuthenticated } = useUser();
+	const { isAuthenticated } = useAuth();
 	return (
 		<Stack gap="xl">
 			<Stack gap="xs">

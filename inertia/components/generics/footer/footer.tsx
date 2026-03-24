@@ -1,4 +1,5 @@
-import * as packageJson from '@/package.json';
+import { SharedProps } from '@adonisjs/inertia/types';
+import { usePage } from '@inertiajs/react';
 import { Box, Stack, Text } from '@mantine/core';
 import { FaDiscord, FaGithub, FaYoutube } from 'react-icons/fa';
 import { MdSignalWifiStatusbar4Bar } from 'react-icons/md';
@@ -20,49 +21,53 @@ interface FooterProps {
 	width: string;
 }
 
-export const Footer = ({ width }: FooterProps) => (
-	<Box className={classes.footer}>
-		<Stack className={classes.footer__content} gap="xl" w={width}>
-			<Field label="Installerwindows.fr">
-				<Box>
-					<Text className={classes.footer__description}>
-						Guides pour (ré)installer Windows 11 au propre et faire des
-						optimisations saines pour votre machine. Il s'agit de guides
-						complets, que vous devriez pouvoir suivre quel que soit votre niveau
-						en informatique.
-					</Text>
-					<Text c="dimmed" size="sm" mt="xs">
-						v{packageJson.version}
-					</Text>
-				</Box>
-			</Field>
-			<Field label="Liens utiles">
-				<TextIcon icon={FaYoutube} href={EDITOR_YTB_URL} external>
-					Piwi
-				</TextIcon>
-				<TextIcon
-					icon={FaDiscord}
-					href={DISCORD_SUGGESTION_CHANNEL_URL}
-					external
-				>
-					Discord
-				</TextIcon>
-				<TextIcon icon={FaGithub} href={PROJECT_GITHUB_URL} external>
-					Github
-				</TextIcon>
-				<TextIcon icon={MdSignalWifiStatusbar4Bar} href="/status">
-					Statut des services
-				</TextIcon>
-				<TextIcon icon={TbContract} href="/cgu">
-					CGUs
-				</TextIcon>
-				<UserCard />
-			</Field>
-			<Text className={classes.footer__credits}>
-				Réalisé avec ❤️ par{' '}
-				<ExternalLinkStyled href={DEV_URL}>Sonny</ExternalLinkStyled>, rédaction
-				par <ExternalLinkStyled href={EDITOR_X_URL}>Piwi</ExternalLinkStyled>
-			</Text>
-		</Stack>
-	</Box>
-);
+export function Footer({ width }: Readonly<FooterProps>) {
+	const { version } = usePage<SharedProps>().props;
+	return (
+		<Box className={classes.footer}>
+			<Stack className={classes.footer__content} gap="xl" w={width}>
+				<Field label="Installerwindows.fr">
+					<Box>
+						<Text className={classes.footer__description}>
+							Guides pour (ré)installer Windows 11 au propre et faire des
+							optimisations saines pour votre machine. Il s'agit de guides
+							complets, que vous devriez pouvoir suivre quel que soit votre
+							niveau en informatique.
+						</Text>
+						<Text c="dimmed" size="sm" mt="xs">
+							v{version}
+						</Text>
+					</Box>
+				</Field>
+				<Field label="Liens utiles">
+					<TextIcon icon={FaYoutube} href={EDITOR_YTB_URL} external>
+						Piwi
+					</TextIcon>
+					<TextIcon
+						icon={FaDiscord}
+						href={DISCORD_SUGGESTION_CHANNEL_URL}
+						external
+					>
+						Discord
+					</TextIcon>
+					<TextIcon icon={FaGithub} href={PROJECT_GITHUB_URL} external>
+						Github
+					</TextIcon>
+					<TextIcon icon={MdSignalWifiStatusbar4Bar} href="/status">
+						Statut des services
+					</TextIcon>
+					<TextIcon icon={TbContract} href="/cgu">
+						CGUs
+					</TextIcon>
+					<UserCard />
+				</Field>
+				<Text className={classes.footer__credits}>
+					Réalisé avec ❤️ par{' '}
+					<ExternalLinkStyled href={DEV_URL}>Sonny</ExternalLinkStyled>,
+					rédaction par{' '}
+					<ExternalLinkStyled href={EDITOR_X_URL}>Piwi</ExternalLinkStyled>
+				</Text>
+			</Stack>
+		</Box>
+	);
+}

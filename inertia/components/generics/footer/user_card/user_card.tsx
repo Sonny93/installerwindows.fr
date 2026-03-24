@@ -1,11 +1,11 @@
 import { ActionIcon, Avatar, Group, Text } from '@mantine/core';
 import { TbLogin, TbLogout } from 'react-icons/tb';
 import { TextIcon } from '~/components/generics/footer/text_icon';
-import useUser from '~/hooks/use_user';
+import { useAuth } from '~/hooks/use_auth';
 import classes from './user_card.module.css';
 
 export function UserCard() {
-	const auth = useUser();
+	const auth = useAuth();
 
 	if (auth.isAuthenticated) {
 		return <Authenticated />;
@@ -21,7 +21,7 @@ const NotAuthenticated = () => (
 );
 
 function Authenticated() {
-	const { user } = useUser();
+	const { user } = useAuth();
 	return (
 		<Group className={classes.card} gap="xs">
 			<Avatar size="sm" src={user!.avatarUrl} radius={30} />

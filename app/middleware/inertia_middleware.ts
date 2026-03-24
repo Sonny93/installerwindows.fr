@@ -1,3 +1,6 @@
+import UserAuthTransformer, {
+	guestAuth,
+} from '#transformers/user_auth_transformer';
 import type { HttpContext } from '@adonisjs/core/http';
 import type { NextFn } from '@adonisjs/core/types/http';
 import BaseInertiaMiddleware from '@adonisjs/inertia/inertia_middleware';
@@ -10,10 +13,9 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
 		return {
 			errors: ctx.inertia.always(this.getValidationErrors(ctx)),
 			flash: ctx.inertia.always(session?.flashMessages.get('flash')),
-			auth: ctx.inertia.always({
-				user: auth?.user ?? null,
-				isAuthenticated: auth?.isAuthenticated ?? false,
-			}),
+			auth: ctx.inertia.always(
+				auth.user ? UserAuthTransformer.transform(auth.user) : guestAuth
+			),
 		};
 	}
 

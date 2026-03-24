@@ -4,12 +4,6 @@ type CommonBase = {
 	updatedAt: string;
 };
 
-export type User = CommonBase & {
-	fullname: string;
-	avatarUrl: string;
-	lastSeenAt: string;
-};
-
 export type Chapter = {
 	id: string;
 	name: string;
@@ -40,19 +34,3 @@ export type Guide = CommonBase & {
 export type Guides = Guide[];
 
 export type Videos = Video[];
-
-type Auth =
-	| {
-			isAuthenticated: true;
-			user: User;
-	  }
-	| {
-			isAuthenticated: false;
-			user: null;
-	  };
-
-export type InertiaPage<
-	T extends Record<string, unknown> = Record<string, unknown>,
-> = T & {
-	auth: Auth;
-};

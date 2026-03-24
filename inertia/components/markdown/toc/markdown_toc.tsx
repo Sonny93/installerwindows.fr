@@ -16,7 +16,7 @@ import { TbListSearch } from 'react-icons/tb';
 import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
 import { GuideTocControls } from '~/components/guides/guide_toc_controls';
 import { MarkdownBuilderProps } from '~/components/markdown/builder/markdown_builder';
-import useUser from '~/hooks/use_user';
+import { useAuth } from '~/hooks/use_auth';
 import classes from './markdown_toc.module.css';
 
 interface MarkdownTocProps extends Omit<MarkdownBuilderProps, 'html'> {}
@@ -26,7 +26,7 @@ export function MarkdownToc({
 	slug,
 	githubRawUrl,
 }: Readonly<MarkdownTocProps>) {
-	const { isAuthenticated } = useUser();
+	const { isAuthenticated } = useAuth();
 	const theme = useMantineTheme();
 	const [opened, handler] = useDisclosure(false);
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
