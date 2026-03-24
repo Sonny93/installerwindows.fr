@@ -5,6 +5,7 @@ import type { HttpContext } from '@adonisjs/core/http';
 import type { NextFn } from '@adonisjs/core/types/http';
 import BaseInertiaMiddleware from '@adonisjs/inertia/inertia_middleware';
 import type { InferSharedProps } from '@adonisjs/inertia/types';
+import packageJson from '../../package.json' with { type: 'json' };
 
 export default class InertiaMiddleware extends BaseInertiaMiddleware {
 	async share(ctx: HttpContext) {
@@ -16,6 +17,7 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
 			auth: ctx.inertia.always(
 				auth.user ? UserAuthTransformer.transform(auth.user) : guestAuth
 			),
+			version: ctx.inertia.always(packageJson.version),
 		};
 	}
 

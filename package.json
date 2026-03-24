@@ -23,6 +23,7 @@
 		"postuninstall": "pnpm run format"
 	},
 	"imports": {
+		"#client/*": "./.adonisjs/client/*.ts",
 		"#generated/*": "./.adonisjs/server/*.js",
 		"#transformers/*": "./app/transformers/*.js",
 		"#controllers/*": "./app/controllers/*.js",
