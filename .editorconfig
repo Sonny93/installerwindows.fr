@@ -17,7 +17,7 @@ insert_final_newline = unset
 indent_style = unset
 insert_final_newline = unset
 
-[MakeFile]
+[Justfile]
 indent_style = tab
 
 [*.md]

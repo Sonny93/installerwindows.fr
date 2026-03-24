@@ -21,7 +21,7 @@ pnpm install
 Commande pour lancer le site en local dans un environnement de dév
 
 ```shell
-make dev
+just dev
 # ou
 pnpm run dev
 ```
@@ -31,7 +31,7 @@ pnpm run dev
 Commande pour lancer le site en local dans un environnement de prod
 
 ```shell
-make prod # docker compose up -d --build --wait
+just prod # docker compose up -d --build --wait
 # ou
 pnpm run build
 pnpm start
@@ -40,7 +40,7 @@ pnpm start
 ## Publier une nouvelle release
 
 ```shell
-make release
+just release
 # ou
 npx release-it
 ```
