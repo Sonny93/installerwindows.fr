@@ -27,8 +27,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: ExtractQueryForGet<InferInput<(typeof import('#validators/video_validator').videoValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/videos_controller').default['index']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/videos_controller').default['index']>>> | { status: 422; response: { errors: SimpleError[] } }
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/show_videos_controller').default['render']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/show_videos_controller').default['render']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'cgu': {
@@ -63,8 +63,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/create_guides_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/create_guides_controller').default['render']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['render']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['render']>>>
     }
   }
   'guides.create': {
@@ -75,8 +75,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: ExtractQuery<InferInput<(typeof import('#validators/guide_validator').guideValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/create_guides_controller').default['execute']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/create_guides_controller').default['execute']>>> | { status: 422; response: { errors: SimpleError[] } }
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['execute']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['execute']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'guides.edit-view': {
@@ -87,8 +87,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { slug: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/edit_guide_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/edit_guide_controller').default['render']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['render']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['render']>>>
     }
   }
   'guides.edit': {
@@ -99,8 +99,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { slug: ParamValue }
       query: ExtractQuery<InferInput<(typeof import('#validators/guide_validator').editGuideValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/edit_guide_controller').default['execute']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/edit_guide_controller').default['execute']>>> | { status: 422; response: { errors: SimpleError[] } }
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['execute']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['execute']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'guides.delete': {
@@ -111,8 +111,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { slug: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/delete_guide_controller').default['execute']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/delete_guide_controller').default['execute']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/delete_guide_controller').default['execute']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/delete_guide_controller').default['execute']>>>
     }
   }
   'guides': {
@@ -123,8 +123,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides_controller').default['index']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides_controller').default['index']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/show_guides_controller').default['render']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/show_guides_controller').default['render']>>>
     }
   }
   'guides.show': {
@@ -135,8 +135,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { guideSlug: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/show_guide_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/show_guide_controller').default['render']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/show_guide_controller').default['render']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/show_guide_controller').default['render']>>>
     }
   }
   'auth.login': {

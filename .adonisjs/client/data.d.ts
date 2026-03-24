@@ -6,8 +6,18 @@
 /// <reference path="./manifest.d.ts" />
 import type { InferData, InferVariants } from '@adonisjs/core/types/transformers'
 import type { InferSharedProps } from '@adonisjs/inertia/types'
+import type GuideTransformer from '#transformers/guide_transformer'
+import type UserTransformer from '#transformers/user_transformer'
 import type InertiaMiddleware from '#middleware/inertia_middleware'
 
 export namespace Data {
+  export type Guide = InferData<GuideTransformer>
+  export namespace Guide {
+    export type Variants = InferVariants<GuideTransformer>
+  }
+  export type User = InferData<UserTransformer>
+  export namespace User {
+    export type Variants = InferVariants<UserTransformer>
+  }
   export type SharedProps = InferSharedProps<InertiaMiddleware>
 }

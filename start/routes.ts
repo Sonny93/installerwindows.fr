@@ -1,24 +1,13 @@
+import { controllers } from '#generated/controllers';
 import { middleware } from '#start/kernel';
 import router from '@adonisjs/core/services/router';
 
-const HomeController = () => import('#controllers/home_controller');
-const HealthChecksController = () =>
-	import('#controllers/health_checks_controller');
-const VideosController = () => import('#controllers/videos_controller');
-const AuthController = () => import('#controllers/auth_controller');
-const CguController = () => import('#controllers/cgu_controller');
-const GuidesController = () => import('#controllers/guides_controller');
-const CreateGuidesController = () =>
-	import('#controllers/create_guides_controller');
-const ShowGuideController = () => import('#controllers/show_guide_controller');
-const EditGuideController = () => import('#controllers/edit_guide_controller');
-const DeleteGuideController = () =>
-	import('#controllers/delete_guide_controller');
-
-router.get('/', [HomeController, 'render']).as('home');
-router.get('/videos/:videoId?', [VideosController, 'index']).as('videos');
-router.get('/cgu', [CguController, 'render']).as('cgu');
-router.get('/status', [HealthChecksController, 'render']).as('status');
+router.get('/', [controllers.Home, 'render']).as('home');
+router
+	.get('/videos/:videoId?', [controllers.ShowVideos, 'render'])
+	.as('videos');
+router.get('/cgu', [controllers.Cgu, 'render']).as('cgu');
+router.get('/status', [controllers.HealthChecks, 'render']).as('status');
 
 // redirect /guide/:slug to /guides/:slug
 router.get('/guide/:slug', (ctx) =>
@@ -30,27 +19,27 @@ router
 		router
 			.group(() => {
 				router
-					.get('/new', [CreateGuidesController, 'render'])
+					.get('/new', [controllers.guides.CreateGuides, 'render'])
 					.as('guides.create-view');
 				router
-					.post('/new', [CreateGuidesController, 'execute'])
+					.post('/new', [controllers.guides.CreateGuides, 'execute'])
 					.as('guides.create');
 
 				router
-					.get('/edit/:slug', [EditGuideController, 'render'])
+					.get('/edit/:slug', [controllers.guides.EditGuide, 'render'])
 					.as('guides.edit-view');
 				router
-					.put('/:slug', [EditGuideController, 'execute'])
+					.put('/:slug', [controllers.guides.EditGuide, 'execute'])
 					.as('guides.edit');
 
 				router
-					.delete('/:slug', [DeleteGuideController, 'execute'])
+					.delete('/:slug', [controllers.guides.DeleteGuide, 'execute'])
 					.as('guides.delete');
 			})
 			.middleware([middleware.auth()]);
-		router.get('/', [GuidesController, 'index']).as('guides');
+		router.get('/', [controllers.guides.ShowGuides, 'render']).as('guides');
 		router
-			.get('/:guideSlug', [ShowGuideController, 'render'])
+			.get('/:guideSlug', [controllers.guides.ShowGuide, 'render'])
 			.as('guides.show');
 	})
 	.prefix('/guides');
@@ -61,9 +50,9 @@ router
 		 * Auth routes for unauthicated users
 		 */
 		router.group(() => {
-			router.get('/login', [AuthController, 'discord']).as('auth.login');
+			router.get('/login', [controllers.Auth, 'discord']).as('auth.login');
 			router
-				.get('/callback', [AuthController, 'authCallback'])
+				.get('/callback', [controllers.Auth, 'authCallback'])
 				.as('auth.callback');
 		});
 
@@ -72,7 +61,7 @@ router
 		 */
 		router
 			.group(() => {
-				router.get('/logout', [AuthController, 'logout']).as('auth.logout');
+				router.get('/logout', [controllers.Auth, 'logout']).as('auth.logout');
 			})
 			.middleware([middleware.auth()]);
 	})
