@@ -73,6 +73,7 @@
 		<script async defer data-website-id="{{ umamiWebsiteId }}" src="{{ umamiUrl }}/script.js" />
 	@endif
 
+  @stack('dumper')
   @viteReactRefresh()
   @inertiaHead()
   @vite(['inertia/app.tsx', `inertia/pages/${page.component}.tsx`])

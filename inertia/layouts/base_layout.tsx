@@ -1,4 +1,5 @@
 import { primaryColor } from '#config/project';
+import { TuyauProvider } from '@adonisjs/inertia/react';
 import { PageProps } from '@adonisjs/inertia/types';
 import { usePage } from '@inertiajs/react';
 import {
@@ -12,6 +13,7 @@ import { ModalsProvider } from '@mantine/modals';
 import { PropsWithChildren, useState } from 'react';
 import { TbX } from 'react-icons/tb';
 import { usePageTransition } from '~/hooks/use_page_transition';
+import { tuyauClient } from '~/lib/tuyau';
 
 const customTheme = createTheme({
 	colors: {
@@ -63,7 +65,7 @@ export function BaseLayout({ children }: PropsWithChildren) {
 	usePageTransition({ querySelector: '#app' });
 
 	return (
-		<>
+		<TuyauProvider client={tuyauClient}>
 			<ColorSchemeScript defaultColorScheme="dark" />
 			<MantineProvider theme={customTheme} defaultColorScheme="dark">
 				{opened && (
@@ -76,6 +78,6 @@ export function BaseLayout({ children }: PropsWithChildren) {
 				)}
 				<ModalsProvider>{children}</ModalsProvider>
 			</MantineProvider>
-		</>
+		</TuyauProvider>
 	);
 }
