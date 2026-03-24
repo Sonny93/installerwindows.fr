@@ -1,9 +1,9 @@
-import type { Guides } from '#shared/types/index';
+import { Data } from '@generated/data';
 import { SimpleGrid } from '@mantine/core';
 import { GuideCard } from '~/components/guides/card/guide_card';
 
 interface GuideListProps {
-	guides: Guides;
+	guides: Data.Guide[];
 }
 
 export const GuideList = ({ guides }: Readonly<GuideListProps>) => (

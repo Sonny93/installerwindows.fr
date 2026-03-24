@@ -1,5 +1,5 @@
-import type { Guides } from '#shared/types/index';
 import { Link } from '@adonisjs/inertia/react';
+import { Data } from '@generated/data';
 import { Button, Group, Stack, Text, Title } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import { GuideList } from '~/components/guides/guide_list';
@@ -7,7 +7,7 @@ import { DISCORD_SUGGESTION_CHANNEL_URL, HELP_URL } from '~/consts/project';
 import { useAuth } from '~/hooks/use_auth';
 
 interface GuidesPageProps {
-	guides: Guides;
+	guides: Data.Guide[];
 }
 
 export default function GuidesPage({ guides }: Readonly<GuidesPageProps>) {

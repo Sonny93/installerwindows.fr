@@ -1,10 +1,10 @@
-import type { Guide } from '#shared/types/index';
+import { Data } from '@generated/data';
 import { ReactNode } from 'react';
 import { GuideForm } from '~/components/guides/guide_form';
 import FormLayout from '~/layouts/form_layout';
 
 interface EditGuidesProps {
-	guide: Guide;
+	guide: Data.Guide;
 }
 
 const EditGuides = ({ guide }: Readonly<EditGuidesProps>) => (

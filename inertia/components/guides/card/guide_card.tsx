@@ -1,10 +1,10 @@
-import type { Guide } from '#shared/types/index';
 import { Link } from '@adonisjs/inertia/react';
+import { Data } from '@generated/data';
 import { AspectRatio, Card, Image, Text, Tooltip } from '@mantine/core';
 import classes from './guide_card.module.css';
 
 interface GuideCardProps {
-	guide: Guide;
+	guide: Data.Guide;
 }
 
 export const GuideCard = ({ guide }: Readonly<GuideCardProps>) => (
