@@ -39,9 +39,15 @@ WORKDIR /app
 COPY --from=production-deps /app/node_modules /app/node_modules
 COPY --from=build /app/build /app
 COPY --from=build /app/markdown /app/markdown
+COPY --from=build /app/.adonisjs /app/.adonisjs
+COPY --from=build /app/package.json /app/package.json
 
 # Expose port
 EXPOSE $PORT
 
 # Start app
-CMD node --no-warnings bin/console.js migration:run --force && node --no-warnings bin/server.js
+
+COPY scripts/entrypoint.sh /app/scripts/entrypoint.sh
+RUN chmod +x /app/scripts/entrypoint.sh
+
+CMD ["/app/scripts/entrypoint.sh"]
