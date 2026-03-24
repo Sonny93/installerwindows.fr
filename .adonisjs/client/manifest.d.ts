@@ -9,4 +9,4 @@
 /// <reference path="../../config/cache.ts" />
 /// <reference path="../../config/hash.ts" />
 /// <reference path="../../config/logger.ts" />
-/// <reference path="../../config/project.ts" />
+../../inertia/consts/project.ts

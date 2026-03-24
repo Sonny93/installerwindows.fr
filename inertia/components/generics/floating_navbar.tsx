@@ -1,4 +1,3 @@
-import { editorName, editorYtbUrl, projectName } from '#config/project';
 import {
 	Box,
 	Burger,
@@ -15,13 +14,14 @@ import { HelpButton } from '~/components/generics/help_button';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import { InternalLink } from '~/components/generics/links/internal_link';
 import { ThemeSwitcher } from '~/components/generics/theme_switcher';
+import { EDITOR_NAME, EDITOR_YTB_URL, PROJECT_NAME } from '~/consts/project';
 
 const links = [
 	{ label: 'Vidéos', href: '/videos', external: false },
 	{ label: 'Guides', href: '/guides', external: false },
 	{
-		label: editorName,
-		href: editorYtbUrl,
+		label: EDITOR_NAME,
+		href: EDITOR_YTB_URL,
 		external: true,
 	},
 ];
@@ -82,7 +82,7 @@ export function FloatingNavbar({ width }: FloatingNavbarProps) {
 				<Group>
 					{isMobile && <Burger opened={opened} onClick={handler.toggle} />}
 					<InternalLink style={{ fontSize: rem(24) }} href="/">
-						{projectName}
+						{PROJECT_NAME}
 					</InternalLink>
 				</Group>
 
@@ -102,7 +102,7 @@ export function FloatingNavbar({ width }: FloatingNavbarProps) {
 				opened={opened}
 				onClose={handler.close}
 				padding="md"
-				title={projectName}
+				title={PROJECT_NAME}
 				zIndex={999999}
 			>
 				<Flex direction="column" gap="md">

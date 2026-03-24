@@ -1,10 +1,3 @@
-import {
-	devUrl,
-	discordSuggestionChannelUrl,
-	editorXUrl,
-	editorYtbUrl,
-	projectGithubUrl,
-} from '#config/project';
 import * as packageJson from '@/package.json';
 import { Box, Stack, Text } from '@mantine/core';
 import { FaDiscord, FaGithub, FaYoutube } from 'react-icons/fa';
@@ -14,6 +7,13 @@ import { Field } from '~/components/generics/footer/field';
 import { TextIcon } from '~/components/generics/footer/text_icon';
 import { UserCard } from '~/components/generics/footer/user_card/user_card';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
+import {
+	DEV_URL,
+	DISCORD_SUGGESTION_CHANNEL_URL,
+	EDITOR_X_URL,
+	EDITOR_YTB_URL,
+	PROJECT_GITHUB_URL,
+} from '~/consts/project';
 import classes from './footer.module.css';
 
 interface FooterProps {
@@ -37,13 +37,17 @@ export const Footer = ({ width }: FooterProps) => (
 				</Box>
 			</Field>
 			<Field label="Liens utiles">
-				<TextIcon icon={FaYoutube} href={editorYtbUrl} external>
+				<TextIcon icon={FaYoutube} href={EDITOR_YTB_URL} external>
 					Piwi
 				</TextIcon>
-				<TextIcon icon={FaDiscord} href={discordSuggestionChannelUrl} external>
+				<TextIcon
+					icon={FaDiscord}
+					href={DISCORD_SUGGESTION_CHANNEL_URL}
+					external
+				>
 					Discord
 				</TextIcon>
-				<TextIcon icon={FaGithub} href={projectGithubUrl} external>
+				<TextIcon icon={FaGithub} href={PROJECT_GITHUB_URL} external>
 					Github
 				</TextIcon>
 				<TextIcon icon={MdSignalWifiStatusbar4Bar} href="/status">
@@ -56,8 +60,8 @@ export const Footer = ({ width }: FooterProps) => (
 			</Field>
 			<Text className={classes.footer__credits}>
 				Réalisé avec ❤️ par{' '}
-				<ExternalLinkStyled href={devUrl}>Sonny</ExternalLinkStyled>, rédaction
-				par <ExternalLinkStyled href={editorXUrl}>Piwi</ExternalLinkStyled>
+				<ExternalLinkStyled href={DEV_URL}>Sonny</ExternalLinkStyled>, rédaction
+				par <ExternalLinkStyled href={EDITOR_X_URL}>Piwi</ExternalLinkStyled>
 			</Text>
 		</Stack>
 	</Box>

@@ -1,9 +1,9 @@
-import { discordSuggestionChannelUrl, helpUrl } from '#config/project';
 import type { Guides } from '#shared/types/index';
 import { Link } from '@adonisjs/inertia/react';
 import { Button, Group, Stack, Text, Title } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import { GuideList } from '~/components/guides/guide_list';
+import { DISCORD_SUGGESTION_CHANNEL_URL, HELP_URL } from '~/consts/project';
 import useUser from '~/hooks/use_user';
 
 interface GuidesPageProps {
@@ -27,12 +27,12 @@ export default function GuidesPage({ guides }: GuidesPageProps) {
 				</Group>
 				<Text c="gray.6">
 					Vous souhaitez proposer un nouveau guide ou faire un retour ?<br />
-					<ExternalLinkStyled href={helpUrl} target="_blank" rel="noreferrer">
+					<ExternalLinkStyled href={HELP_URL} target="_blank" rel="noreferrer">
 						Rejoignez le serveur Discord
 					</ExternalLinkStyled>{' '}
 					et faites une proposition dans le salon{' '}
 					<ExternalLinkStyled
-						href={discordSuggestionChannelUrl}
+						href={DISCORD_SUGGESTION_CHANNEL_URL}
 						target="_blank"
 						rel="noreferrer"
 					>

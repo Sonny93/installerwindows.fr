@@ -1,4 +1,3 @@
-import { primaryColor } from '#config/project';
 import { TuyauProvider } from '@adonisjs/inertia/react';
 import { PageProps } from '@adonisjs/inertia/types';
 import { usePage } from '@inertiajs/react';
@@ -12,6 +11,7 @@ import {
 import { ModalsProvider } from '@mantine/modals';
 import { PropsWithChildren, useState } from 'react';
 import { TbX } from 'react-icons/tb';
+import { PRIMAY_COLOR } from '~/consts/project';
 import { usePageTransition } from '~/hooks/use_page_transition';
 import { tuyauClient } from '~/lib/tuyau';
 
@@ -23,7 +23,7 @@ const customTheme = createTheme({
 			'#a5d8ff',
 			'#74c0fc',
 			'#4dabf7',
-			primaryColor,
+			PRIMAY_COLOR,
 			'#228be6',
 			'#1c7ed6',
 			'#1971c2',
