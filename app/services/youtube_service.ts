@@ -20,11 +20,14 @@ export class YoutubeService {
 	private readonly apiKey: string = env.get('YOUTUBE_API_KEY');
 	private readonly apiUrl: string = `https://www.googleapis.com/youtube/v3/playlistItems`;
 
+	/**
+	 * @param cacheService Cache service used to avoid repeated YouTube API calls.
+	 */
 	constructor(private readonly cacheService: CacheService) {}
 
 	/**
-	 * Fetches videos from a YouTube playlist, leveraging caching for optimization.
-	 * @returns A list of videos with their details.
+	 * Fetches videos from the configured playlist, using the cache when data is still valid.
+	 * @returns List of video metadata serialized for the application.
 	 */
 	async getPlaylist(): Promise<Videos> {
 		const videos = await this.cacheService.getOrSet({
@@ -36,9 +39,10 @@ export class YoutubeService {
 	}
 
 	/**
-	 * Fetches raw playlist data from the YouTube Data API.
-	 * @param playlistId The ID of the YouTube playlist.
-	 * @returns A list of video information objects.
+	 * Calls the YouTube Data API v3 to list playlist items and maps each item to the shape expected by the app.
+	 * @param playlistId YouTube playlist identifier.
+	 * @throws RemoteApiErrorException when the HTTP response indicates an error.
+	 * @returns Array of objects describing title, thumbnail, description, URL, and publish date.
 	 */
 	private async fetchPlaylist(playlistId: string): Promise<VideoInfo[]> {
 		const url = new URL(this.apiUrl);
@@ -68,9 +72,9 @@ export class YoutubeService {
 	}
 
 	/**
-	 * Builds a thumbnail URL for a YouTube video.
-	 * @param videoId The ID of the YouTube video.
-	 * @returns The URL of the video thumbnail.
+	 * Builds the high-resolution thumbnail URL served by YouTube’s image CDN.
+	 * @param videoId YouTube video identifier.
+	 * @returns HTTPS URL pointing at maxresdefault.jpg.
 	 */
 	private videoThumbnailUrlBuilder(videoId: string): string {
 		return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;

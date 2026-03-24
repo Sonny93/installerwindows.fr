@@ -20,6 +20,11 @@ export class MarkdownService {
 
 	constructor(private readonly youtubeService: YoutubeService) {}
 
+	/**
+	 * Builds a unified tree visitor that fills an array with heading levels, slugs, and labels extracted from h1–h6 elements.
+	 * @param toc Mutable array that will receive table-of-contents entries.
+	 * @returns Function to plug into the unified pipeline to walk the AST.
+	 */
 	extractToc: ExtractToc = (toc) => {
 		return (tree) => {
 			visit(tree, 'element', (node: any) => {
@@ -47,6 +52,11 @@ export class MarkdownService {
 		};
 	};
 
+	/**
+	 * Converts a Markdown string to HTML with slugs, autolinked headings, and extracts a table of contents.
+	 * @param markdown Full Markdown source.
+	 * @returns Final HTML and list of TOC entries.
+	 */
 	async markdownToHtmlWithToc(
 		markdown: string
 	): Promise<{ html: string; toc: TocItem[] }> {
@@ -66,6 +76,11 @@ export class MarkdownService {
 		return { html, toc };
 	}
 
+	/**
+	 * Converts a Markdown string to HTML without extracting a table of contents.
+	 * @param markdown Markdown source.
+	 * @returns Stringified HTML fragment after link post-processing.
+	 */
 	async markdownToHtml(markdown: string): Promise<string> {
 		const file = await unified()
 			.use(remarkParse)
@@ -78,6 +93,11 @@ export class MarkdownService {
 		return html;
 	}
 
+	/**
+	 * Rewrites absolute public-domain URLs and YouTube videos that appear in the configured playlist to internal site routes.
+	 * @param markdown HTML or fragment containing links to normalize.
+	 * @returns String with links replaced where applicable.
+	 */
 	private async replaceMarkdownLinks(markdown: string): Promise<string> {
 		markdown = markdown.replace(
 			/https?:\/\/installerwindows\.fr\/([\w\-\/]+)([^\s")]*)/g,
