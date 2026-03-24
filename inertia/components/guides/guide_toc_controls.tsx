@@ -1,4 +1,5 @@
-import { Link, useForm } from '@inertiajs/react';
+import { Link } from '@adonisjs/inertia/react';
+import { useForm } from '@inertiajs/react';
 import { Button, Text } from '@mantine/core';
 import { modals } from '@mantine/modals';
 

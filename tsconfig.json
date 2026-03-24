@@ -4,5 +4,6 @@
 		"rootDir": "./",
 		"outDir": "./build"
 	},
-	"exclude": ["./inertia/**/*", "node_modules", "build"]
+	"exclude": ["./inertia/**/*", "node_modules", "build"],
+	"references": [{ "path": "./tsconfig.inertia.json" }]
 }

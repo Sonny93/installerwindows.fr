@@ -1,6 +1,6 @@
 import { discordSuggestionChannelUrl, helpUrl } from '#config/project';
 import type { Guides } from '#shared/types/index';
-import { Link } from '@inertiajs/react';
+import { Link } from '@adonisjs/inertia/react';
 import { Button, Group, Stack, Text, Title } from '@mantine/core';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import { GuideList } from '~/components/guides/guide_list';

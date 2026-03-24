@@ -1,5 +1,5 @@
 import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
-import { ExceptionHandler, HttpContext } from '@adonisjs/core/http';
+import { ExceptionHandler, type HttpContext } from '@adonisjs/core/http';
 import type {
 	StatusPageRange,
 	StatusPageRenderer,

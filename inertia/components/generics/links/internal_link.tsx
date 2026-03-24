@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from '@adonisjs/inertia/react';
 import { Anchor } from '@mantine/core';
 import { CSSProperties } from 'react';
 

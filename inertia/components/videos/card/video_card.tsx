@@ -1,5 +1,5 @@
-import { Video } from '#shared/types/index';
-import { Link } from '@inertiajs/react';
+import type { Video } from '#shared/types/index';
+import { Link } from '@adonisjs/inertia/react';
 import { AspectRatio, Card, Image, Text, Tooltip } from '@mantine/core';
 import classes from './video_card.module.css';
 

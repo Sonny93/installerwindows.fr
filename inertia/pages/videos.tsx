@@ -1,4 +1,4 @@
-import { Video, Videos } from '#shared/types/index';
+import type { Video, Videos } from '#shared/types/index';
 import { Box, Flex, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { ClientOnly } from '~/components/generics/client_only';

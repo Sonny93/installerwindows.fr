@@ -1,4 +1,4 @@
-import { TocItem } from '#shared/types/index';
+import type { TocItem } from '#shared/types/index';
 import { Flex, Typography } from '@mantine/core';
 import { MarkdownToc } from '~/components/markdown/toc/markdown_toc';
 import './markdown.css';

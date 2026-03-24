@@ -1,4 +1,4 @@
-import { Video, Videos } from '#shared/types/index';
+import type { Video, Videos } from '#shared/types/index';
 import { router } from '@inertiajs/react';
 import { Box, Button, Divider, Stack } from '@mantine/core';
 import { VideoCard } from '~/components/videos/card/video_card';

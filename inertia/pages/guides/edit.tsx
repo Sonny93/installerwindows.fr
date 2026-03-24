@@ -1,4 +1,4 @@
-import { Guide } from '#shared/types/index';
+import type { Guide } from '#shared/types/index';
 import { ReactNode } from 'react';
 import { GuideForm } from '~/components/guides/guide_form';
 import FormLayout from '~/layouts/form_layout';

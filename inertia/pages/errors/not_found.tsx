@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from '@adonisjs/inertia/react';
 import { Button, Container, Group, Text, Title } from '@mantine/core';
 import { Error404 } from '~/components/errors/error_404';
 import { HelpButton } from '~/components/generics/help_button';

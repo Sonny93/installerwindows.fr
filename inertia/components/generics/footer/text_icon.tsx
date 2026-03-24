@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from '@adonisjs/inertia/react';
 import { Anchor, Group } from '@mantine/core';
 import { ReactNode } from 'react';
 import { IconType } from 'react-icons/lib';

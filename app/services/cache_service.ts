@@ -1,5 +1,5 @@
 import cache from '@adonisjs/cache/services/main';
-import { GetSetFactory } from '@adonisjs/cache/types';
+import type { GetSetFactory } from '@adonisjs/cache/types';
 
 export class CacheService {
 	getOrSet({

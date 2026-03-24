@@ -34,9 +34,9 @@ const guideObject = vine.object({
 		.transform((value, field) => slugify(value ?? field.parent.title)),
 });
 
-export const guideValidator = vine.compile(guideObject);
+export const guideValidator = vine.create(guideObject);
 
-export const editGuideValidator = vine.compile(
+export const editGuideValidator = vine.create(
 	vine.object({
 		...guideObject.getProperties(),
 		params: vine.object({

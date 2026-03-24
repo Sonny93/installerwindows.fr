@@ -1,5 +1,5 @@
-import { Guide } from '#shared/types/index';
-import { Link } from '@inertiajs/react';
+import type { Guide } from '#shared/types/index';
+import { Link } from '@adonisjs/inertia/react';
 import { AspectRatio, Card, Image, Text, Tooltip } from '@mantine/core';
 import classes from './guide_card.module.css';
 

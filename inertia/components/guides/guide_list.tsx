@@ -1,4 +1,4 @@
-import { Guides } from '#shared/types/index';
+import type { Guides } from '#shared/types/index';
 import { SimpleGrid } from '@mantine/core';
 import { GuideCard } from '~/components/guides/card/guide_card';
 

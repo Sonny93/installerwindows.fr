@@ -8,7 +8,7 @@ export default class CreateGuidesController {
 	constructor(private guideService: GuideService) {}
 
 	async render({ inertia }: HttpContext) {
-		return inertia.render('guides/new');
+		return inertia.render('guides/new', {});
 	}
 
 	async execute({ request, response }: HttpContext) {
