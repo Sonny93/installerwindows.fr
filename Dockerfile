@@ -1,27 +1,28 @@
 # Source : https://github.com/adonisjs-community/adonis-packages/blob/main/Dockerfile
 
-FROM node:24.10-alpine3.22 AS base
+FROM node:24.14-alpine3.22 AS base
 
-RUN apk --no-cache add curl
-RUN corepack enable
+RUN apk --no-cache add curl && corepack enable
 
 # All deps stage
 FROM base AS deps
 WORKDIR /app
-ADD package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
 RUN pnpm install --ignore-scripts
 
 # Production only deps stage
 FROM base AS production-deps
 WORKDIR /app
-ADD package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
 RUN pnpm install --ignore-scripts --prod
 
 # Build stage
 FROM base AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
-ADD . .
+COPY . .
 
 RUN node ace build
 

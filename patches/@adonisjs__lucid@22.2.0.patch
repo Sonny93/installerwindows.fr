@@ -1,0 +1,11 @@
+diff --git a/build/src/clients/libsql.cjs b/build/src/clients/libsql.cjs
+index e04eba9e2066959f83b5715592a7b2dac0374ed3..488c2bbe3304b42a6879304ef6bb02c2b3cd6912 100644
+--- a/build/src/clients/libsql.cjs
++++ b/build/src/clients/libsql.cjs
+@@ -1,5 +1,5 @@
+ "use strict";
+-const Sqlite3Client = require('knex/lib/dialects/sqlite3');
++const Sqlite3Client = require('knex/lib/dialects/sqlite3/index.js');
+ module.exports = class LibSQLClient extends Sqlite3Client {
+     _driver() {
+         return require('@libsql/sqlite3');

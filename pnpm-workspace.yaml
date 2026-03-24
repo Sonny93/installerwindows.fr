@@ -1,3 +1,5 @@
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
+patchedDependencies:
+  '@adonisjs/lucid@22.2.0': patches/@adonisjs__lucid@22.2.0.patch
