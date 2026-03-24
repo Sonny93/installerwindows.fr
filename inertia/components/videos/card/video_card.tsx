@@ -1,9 +1,9 @@
-import type { Video } from '#shared/types/index';
 import { Link } from '@adonisjs/inertia/react';
+import { Data } from '@generated/data';
 import { AspectRatio, Card, Image, Text, Tooltip } from '@mantine/core';
 import classes from './video_card.module.css';
 
-interface VideoCardProps extends Video {
+interface VideoCardProps extends Data.Video {
 	activeVideoId?: string;
 }
 

@@ -1,4 +1,5 @@
 import { YoutubeService } from '#services/youtube_service';
+import VideoTransformer from '#transformers/video_transformer';
 import { videoValidator } from '#validators/video_validator';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
@@ -22,7 +23,13 @@ export default class VideosController {
 		const nextVideo = videos.at(videos.indexOf(currentVideo) + 1);
 		return inertia.render(
 			'videos',
-			{ videos, currentVideo, nextVideo },
+			{
+				videos: VideoTransformer.transform(videos),
+				currentVideo: VideoTransformer.transform(currentVideo),
+				nextVideo: nextVideo
+					? VideoTransformer.transform(nextVideo)
+					: undefined,
+			},
 			{
 				title: currentVideo.title,
 				description: currentVideo.description,

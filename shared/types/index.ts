@@ -15,15 +15,6 @@ export type TocItem = {
 	id: string;
 };
 
-export type Video = {
-	id: string;
-	title: string;
-	thumbnail: string;
-	description: string;
-	url: string;
-	publishedAt: string;
-};
-
 export type Guide = CommonBase & {
 	title: string;
 	slug: string;
@@ -32,5 +23,3 @@ export type Guide = CommonBase & {
 };
 
 export type Guides = Guide[];
-
-export type Videos = Video[];

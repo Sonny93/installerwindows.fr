@@ -1,4 +1,4 @@
-import type { Video, Videos } from '#shared/types/index';
+import { Data } from '@generated/data';
 import { Box, Flex, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { ClientOnly } from '~/components/generics/client_only';
@@ -7,9 +7,9 @@ import { VideoMeta } from '~/components/videos/video_meta';
 import { VideoPlayer } from '~/components/videos/video_player';
 
 interface VideosPageProps {
-	videos: Videos;
-	currentVideo: Video;
-	nextVideo: Video;
+	videos: Data.Video[];
+	currentVideo: Data.Video;
+	nextVideo: Data.Video | undefined;
 }
 
 export default function VideosPage({

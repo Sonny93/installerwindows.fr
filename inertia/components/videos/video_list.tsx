@@ -1,11 +1,11 @@
-import type { Video, Videos } from '#shared/types/index';
+import { Data } from '@generated/data';
 import { router } from '@inertiajs/react';
 import { Box, Button, Divider, Stack } from '@mantine/core';
 import { VideoCard } from '~/components/videos/card/video_card';
 
 interface VideoListProps {
-	videos: Videos;
-	nextVideo: Video;
+	videos: Data.Video[];
+	nextVideo: Data.Video | undefined;
 	activeVideoId?: string;
 }
 
@@ -55,6 +55,6 @@ export function VideoList({
 	);
 }
 
-function removeVideoFromList(videos: Videos, nextVideo: Video) {
-	return videos.filter((v) => v.id !== nextVideo.id);
+function removeVideoFromList(videos: Data.Video[], nextVideo: Data.Video) {
+	return videos.filter((video) => video.id !== nextVideo.id);
 }
