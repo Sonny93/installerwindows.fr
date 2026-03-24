@@ -6,7 +6,7 @@ import { readFile } from 'node:fs/promises';
 
 @inject()
 export default class CguController {
-	constructor(private markdownService: MarkdownService) {}
+	constructor(private readonly markdownService: MarkdownService) {}
 
 	async render({ inertia }: HttpContext) {
 		const markdownPath = app.makePath('markdown', 'cgu.md');

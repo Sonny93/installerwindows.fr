@@ -7,9 +7,9 @@ import type { HttpContext } from '@adonisjs/core/http';
 @inject()
 export default class ShowGuideController {
 	constructor(
-		private guideService: GuideService,
-		private githubService: GithubService,
-		private markdownService: MarkdownService
+		private readonly guideService: GuideService,
+		private readonly githubService: GithubService,
+		private readonly markdownService: MarkdownService
 	) {}
 
 	async render({ request, inertia }: HttpContext) {

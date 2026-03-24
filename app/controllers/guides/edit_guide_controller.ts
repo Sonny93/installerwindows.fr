@@ -5,7 +5,7 @@ import type { HttpContext } from '@adonisjs/core/http';
 
 @inject()
 export default class EditGuideController {
-	constructor(private guideService: GuideService) {}
+	constructor(private readonly guideService: GuideService) {}
 
 	async render({ inertia, request }: HttpContext) {
 		const guide = await this.guideService.getGuideBySlug(request.param('slug'));

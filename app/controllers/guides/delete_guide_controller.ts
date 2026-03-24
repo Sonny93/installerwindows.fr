@@ -4,7 +4,7 @@ import type { HttpContext } from '@adonisjs/core/http';
 
 @inject()
 export default class DeleteGuideController {
-	constructor(private guideService: GuideService) {}
+	constructor(private readonly guideService: GuideService) {}
 
 	async execute({ request, response }: HttpContext) {
 		const guide = await this.guideService.getGuideBySlug(request.param('slug'));

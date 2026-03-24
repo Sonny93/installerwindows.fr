@@ -6,12 +6,12 @@
 export const controllers = {
   Auth: () => import('#controllers/auth_controller'),
   Cgu: () => import('#controllers/cgu_controller'),
-  CreateGuides: () => import('#controllers/create_guides_controller'),
-  DeleteGuide: () => import('#controllers/delete_guide_controller'),
-  EditGuide: () => import('#controllers/edit_guide_controller'),
-  Guides: () => import('#controllers/guides_controller'),
+  CreateGuides: () => import('#controllers/guides/create_guides_controller'),
+  DeleteGuide: () => import('#controllers/guides/delete_guide_controller'),
+  EditGuide: () => import('#controllers/guides/edit_guide_controller'),
+  Guides: () => import('#controllers/guides/show_guides_controller'),
   HealthChecks: () => import('#controllers/health_checks_controller'),
   Home: () => import('#controllers/home_controller'),
-  ShowGuide: () => import('#controllers/show_guide_controller'),
-  Videos: () => import('#controllers/videos_controller'),
+  ShowGuide: () => import('#controllers/guides/show_guide_controller'),
+  Videos: () => import('#controllers/show_videos_controller'),
 }

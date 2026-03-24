@@ -5,9 +5,9 @@ import type { HttpContext } from '@adonisjs/core/http';
 
 @inject()
 export default class VideosController {
-	constructor(private youtubeService: YoutubeService) {}
+	constructor(private readonly youtubeService: YoutubeService) {}
 
-	async index({ request, inertia, response }: HttpContext) {
+	async render({ request, inertia, response }: HttpContext) {
 		const {
 			params: { videoId },
 		} = await request.validateUsing(videoValidator);

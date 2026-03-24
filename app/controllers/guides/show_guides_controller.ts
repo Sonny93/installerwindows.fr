@@ -4,9 +4,9 @@ import type { HttpContext } from '@adonisjs/core/http';
 
 @inject()
 export default class GuidesController {
-	constructor(private guideService: GuideService) {}
+	constructor(private readonly guideService: GuideService) {}
 
-	async index({ inertia }: HttpContext) {
+	async render({ inertia }: HttpContext) {
 		const guides = await this.guideService.getAllGuides();
 		return inertia.render('guides/index', {
 			guides: guides.map((guide) => guide.serialize()),

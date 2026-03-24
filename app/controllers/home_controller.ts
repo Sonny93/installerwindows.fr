@@ -6,8 +6,8 @@ import type { HttpContext } from '@adonisjs/core/http';
 @inject()
 export default class HomeController {
 	constructor(
-		private githubService: GithubService,
-		private markdownService: MarkdownService
+		private readonly githubService: GithubService,
+		private readonly markdownService: MarkdownService
 	) {}
 
 	async render({ inertia }: HttpContext) {
