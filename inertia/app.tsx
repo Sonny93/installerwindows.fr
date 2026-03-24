@@ -1,5 +1,6 @@
 import { primaryColor, projectName } from '#config/project';
 import { resolvePageComponent } from '@adonisjs/inertia/helpers';
+import { Data } from '@generated/data';
 import { createInertiaApp } from '@inertiajs/react';
 import '@mantine/core/styles.css';
 import { hydrateRoot } from 'react-dom/client';
@@ -15,7 +16,9 @@ createInertiaApp({
 		return resolvePageComponent(
 			`./pages/${name}.tsx`,
 			import.meta.glob('./pages/**/*.tsx'),
-			(page: React.ReactElement<any>) => <DefaultLayout>{page}</DefaultLayout>
+			(page: React.ReactElement<Data.SharedProps>) => (
+				<DefaultLayout>{page}</DefaultLayout>
+			)
 		);
 	},
 
