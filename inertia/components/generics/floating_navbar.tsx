@@ -30,7 +30,7 @@ interface FloatingNavbarProps {
 	width: string;
 }
 
-export function FloatingNavbar({ width }: FloatingNavbarProps) {
+export function FloatingNavbar({ width }: Readonly<FloatingNavbarProps>) {
 	const theme = useMantineTheme();
 	const [opened, handler] = useDisclosure(false);
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, false);

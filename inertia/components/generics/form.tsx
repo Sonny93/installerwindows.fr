@@ -1,7 +1,7 @@
 import { slugify } from '#shared/utils/index';
 import { useForm } from '@inertiajs/react';
 import { Button, Group, Stack, TextInput, Title } from '@mantine/core';
-import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FocusEvent, useState } from 'react';
 
 export type Field = {
 	label: string;
@@ -23,7 +23,7 @@ export function Form({
 	fields,
 	formUrl,
 	formMethod = 'post',
-}: FormProps) {
+}: Readonly<FormProps>) {
 	const [userHasChangedSlug, setUserHasChangedSlug] = useState<boolean>(false);
 	const defaultValues = fields.reduce<Record<string, string>>((acc, field) => {
 		acc[field.name] = field.value ?? '';
@@ -58,7 +58,7 @@ export function Form({
 		setUserHasChangedSlug(data?.title !== slugify(e.target.value));
 	};
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		submit(formMethod, formUrl);
 	};
@@ -69,27 +69,25 @@ export function Form({
 		<form onSubmit={handleSubmit} onReset={handleReset}>
 			<Stack>
 				<Title order={2}>{title}</Title>
-				{fields.map(({ label, description, name, placeholder, required }) => (
-					<TextInput
-						label={label}
-						description={description}
-						name={name}
-						placeholder={placeholder ?? label}
-						value={data[name]}
-						onChange={handleChange}
-						error={errors[name]}
-						key={name}
-						disabled={loading}
-						required={required ?? true}
-						onBlur={
-							name === 'title'
-								? handleTitleBlur
-								: name === 'slug'
-									? handleSlugBlur
-									: undefined
-						}
-					/>
-				))}
+				{fields.map(({ label, description, name, placeholder, required }) => {
+					const onBlurTitle = name === 'title' ? handleTitleBlur : undefined;
+					const onBlurSlug = name === 'slug' ? handleSlugBlur : undefined;
+					return (
+						<TextInput
+							label={label}
+							description={description}
+							name={name}
+							placeholder={placeholder ?? label}
+							value={data[name]}
+							onChange={handleChange}
+							error={errors[name]}
+							key={name}
+							disabled={loading}
+							required={required ?? true}
+							onBlur={onBlurTitle ?? onBlurSlug}
+						/>
+					);
+				})}
 				<Group justify="space-between">
 					<Button variant="light" type="reset" disabled={loading || !isDirty}>
 						Effacer

@@ -13,7 +13,7 @@ export function VideoList({
 	videos: videosProps,
 	nextVideo,
 	activeVideoId,
-}: VideoListProps) {
+}: Readonly<VideoListProps>) {
 	const videos = nextVideo
 		? removeVideoFromList(videosProps, nextVideo)
 		: videosProps;

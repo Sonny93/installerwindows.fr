@@ -16,9 +16,9 @@ type ExtractToc = (toc: TocItem[]) => (tree: any) => void;
 
 @inject()
 export class MarkdownService {
-	private appUrl: string = env.get('APP_URL');
+	private readonly appUrl: string = env.get('APP_URL');
 
-	constructor(private youtubeService: YoutubeService) {}
+	constructor(private readonly youtubeService: YoutubeService) {}
 
 	extractToc: ExtractToc = (toc) => {
 		return (tree) => {

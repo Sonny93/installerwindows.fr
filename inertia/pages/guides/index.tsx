@@ -10,7 +10,7 @@ interface GuidesPageProps {
 	guides: Guides;
 }
 
-export default function GuidesPage({ guides }: GuidesPageProps) {
+export default function GuidesPage({ guides }: Readonly<GuidesPageProps>) {
 	const { isAuthenticated } = useUser();
 	return (
 		<Stack gap="xl">

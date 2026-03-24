@@ -8,7 +8,7 @@ import { inject } from '@adonisjs/core';
 import logger from '@adonisjs/core/services/logger';
 @inject()
 export class GithubService {
-	constructor(private cacheService: CacheService) {}
+	constructor(private readonly cacheService: CacheService) {}
 
 	async getHtmlFromUrl(url: string) {
 		const cachedHtml = await this.cacheService.getOrSet({

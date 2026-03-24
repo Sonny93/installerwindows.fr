@@ -6,7 +6,8 @@ import classes from './guide_card.module.css';
 interface GuideCardProps {
 	guide: Guide;
 }
-export const GuideCard = ({ guide }: GuideCardProps) => (
+
+export const GuideCard = ({ guide }: Readonly<GuideCardProps>) => (
 	<Card
 		component={Link}
 		href={`/guides/${guide.slug}`}

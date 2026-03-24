@@ -1,5 +1,5 @@
 import { urlify } from '#shared/utils/index';
-import { Stack, Text, Title, TypographyStylesProvider } from '@mantine/core';
+import { Stack, Text, Title, Typography } from '@mantine/core';
 
 interface VideoMetaProps {
 	title: string;
@@ -11,7 +11,7 @@ export const VideoMeta = ({
 	title,
 	description,
 	publishedAt,
-}: VideoMetaProps) => (
+}: Readonly<VideoMetaProps>) => (
 	<>
 		<Stack gap={0}>
 			<Text c="dimmed" size="sm">
@@ -19,7 +19,7 @@ export const VideoMeta = ({
 			</Text>
 			<Title size="h2">{title}</Title>
 		</Stack>
-		<TypographyStylesProvider
+		<Typography
 			style={{ whiteSpace: 'pre-wrap' }}
 			dangerouslySetInnerHTML={{ __html: urlify(description) }}
 		/>

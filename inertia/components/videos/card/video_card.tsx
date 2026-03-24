@@ -13,7 +13,7 @@ export const VideoCard = ({
 	thumbnail,
 	publishedAt,
 	activeVideoId,
-}: VideoCardProps) => (
+}: Readonly<VideoCardProps>) => (
 	<Card
 		component={Link}
 		href={`/videos/${id}`}

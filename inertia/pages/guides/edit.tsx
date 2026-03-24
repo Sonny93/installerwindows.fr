@@ -6,7 +6,8 @@ import FormLayout from '~/layouts/form_layout';
 interface EditGuidesProps {
 	guide: Guide;
 }
-const EditGuides = ({ guide }: EditGuidesProps) => (
+
+const EditGuides = ({ guide }: Readonly<EditGuidesProps>) => (
 	<GuideForm
 		title="Modifier un guide"
 		formUrl={`/guides/${guide.slug}`}

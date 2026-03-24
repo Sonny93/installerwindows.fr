@@ -11,7 +11,12 @@ interface VideosPageProps {
 	currentVideo: Video;
 	nextVideo: Video;
 }
-function VideosPage({ videos, currentVideo, nextVideo }: VideosPageProps) {
+
+export default function VideosPage({
+	videos,
+	currentVideo,
+	nextVideo,
+}: Readonly<VideosPageProps>) {
 	const theme = useMantineTheme();
 	const isSmallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
@@ -35,7 +40,13 @@ function VideosPage({ videos, currentVideo, nextVideo }: VideosPageProps) {
 				</Stack>
 			)}
 
-			{!isSmallScreen ? (
+			{isSmallScreen ? (
+				<VideoList
+					videos={videos}
+					nextVideo={nextVideo}
+					activeVideoId={currentVideo.id}
+				/>
+			) : (
 				<Box w="100%" maw={350}>
 					<VideoList
 						videos={videos}
@@ -43,15 +54,7 @@ function VideosPage({ videos, currentVideo, nextVideo }: VideosPageProps) {
 						activeVideoId={currentVideo.id}
 					/>
 				</Box>
-			) : (
-				<VideoList
-					videos={videos}
-					nextVideo={nextVideo}
-					activeVideoId={currentVideo.id}
-				/>
 			)}
 		</Flex>
 	);
 }
-
-export default VideosPage;

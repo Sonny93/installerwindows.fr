@@ -3,7 +3,11 @@ import { useForm } from '@inertiajs/react';
 import { Button, Text } from '@mantine/core';
 import { modals } from '@mantine/modals';
 
-export function GuideTocControls({ slug }: { slug: string }) {
+interface GuideTocControlsProps {
+	slug: string;
+}
+
+export function GuideTocControls({ slug }: Readonly<GuideTocControlsProps>) {
 	const { delete: deleteGuide } = useForm();
 
 	const handleDelete = () => {

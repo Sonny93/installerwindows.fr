@@ -1,11 +1,11 @@
 import { Box } from '@mantine/core';
 import ReactPlayer from 'react-player';
 
-interface YoutubePlayerProps {
+interface VideoPlayerProps {
 	url: string;
 }
 
-export const VideoPlayer = ({ url }: YoutubePlayerProps) => (
+export const VideoPlayer = ({ url }: Readonly<VideoPlayerProps>) => (
 	<Box
 		style={{
 			position: 'relative',

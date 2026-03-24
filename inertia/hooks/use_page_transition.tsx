@@ -14,14 +14,12 @@ interface UsePageTransitionProps {
 
 export const usePageTransition = ({
 	querySelector,
-}: UsePageTransitionProps): void => {
+}: Readonly<UsePageTransitionProps>): void => {
 	const previousUrlRef = useRef<string>(getCurrentPathAndSearch());
 
 	useEffect(() => {
 		const handleSuccess = (event: Event) => {
-			const element = document.querySelector(
-				querySelector
-			) as HTMLElement | null;
+			const element = document.querySelector<HTMLElement>(querySelector);
 			if (!element) return;
 
 			const { detail } = event as InertiaSuccessEvent;

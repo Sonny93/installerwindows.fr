@@ -6,7 +6,7 @@ interface GuideListProps {
 	guides: Guides;
 }
 
-export const GuideList = ({ guides }: GuideListProps) => (
+export const GuideList = ({ guides }: Readonly<GuideListProps>) => (
 	<SimpleGrid cols={{ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 }} spacing="lg">
 		{guides.map((guide) => (
 			<GuideCard key={guide.id} guide={guide} />

@@ -15,7 +15,7 @@ export const MarkdownBuilder = ({
 	toc,
 	slug,
 	githubRawUrl,
-}: MarkdownBuilderProps) => (
+}: Readonly<MarkdownBuilderProps>) => (
 	<Flex align="flex-start" gap="xl" w="100%">
 		<Typography
 			style={{ width: 0, flex: 1, lineHeight: 1.5 }}

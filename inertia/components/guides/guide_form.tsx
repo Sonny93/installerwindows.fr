@@ -24,7 +24,8 @@ const fields: Field[] = [
 interface GuideFormProps extends Omit<FormProps, 'fields'> {
 	values?: Record<string, string>;
 }
-export function GuideForm({ values, ...formProps }: GuideFormProps) {
+
+export function GuideForm({ values, ...formProps }: Readonly<GuideFormProps>) {
 	const fieldsWithValues: Field[] = values
 		? computedFields(fields, values)
 		: fields;

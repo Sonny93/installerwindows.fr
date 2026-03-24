@@ -16,11 +16,11 @@ interface VideoInfo {
 
 @inject()
 export class YoutubeService {
-	private playlistId: string = env.get('YOUTUBE_PLAYLIST_ID');
-	private apiKey: string = env.get('YOUTUBE_API_KEY');
-	private apiUrl: string = `https://www.googleapis.com/youtube/v3/playlistItems`;
+	private readonly playlistId: string = env.get('YOUTUBE_PLAYLIST_ID');
+	private readonly apiKey: string = env.get('YOUTUBE_API_KEY');
+	private readonly apiUrl: string = `https://www.googleapis.com/youtube/v3/playlistItems`;
 
-	constructor(private cacheService: CacheService) {}
+	constructor(private readonly cacheService: CacheService) {}
 
 	/**
 	 * Fetches videos from a YouTube playlist, leveraging caching for optimization.

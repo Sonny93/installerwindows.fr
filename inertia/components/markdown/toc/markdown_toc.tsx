@@ -21,7 +21,11 @@ import classes from './markdown_toc.module.css';
 
 interface MarkdownTocProps extends Omit<MarkdownBuilderProps, 'html'> {}
 
-export function MarkdownToc({ toc, slug, githubRawUrl }: MarkdownTocProps) {
+export function MarkdownToc({
+	toc,
+	slug,
+	githubRawUrl,
+}: Readonly<MarkdownTocProps>) {
 	const { isAuthenticated } = useUser();
 	const theme = useMantineTheme();
 	const [opened, handler] = useDisclosure(false);
@@ -36,15 +40,13 @@ export function MarkdownToc({ toc, slug, githubRawUrl }: MarkdownTocProps) {
 		const handleScroll = () => {
 			let currentActiveId = null;
 
-			for (let i = 0; i < headings.length; i++) {
-				const heading = headings[i];
-				if (heading) {
-					const { top, bottom } = heading.getBoundingClientRect();
+			for (const heading of headings) {
+				if (!heading) continue;
+				const { top, bottom } = heading.getBoundingClientRect();
 
-					if (bottom > 0 && top < window.innerHeight) {
-						currentActiveId = heading.id;
-						break;
-					}
+				if (bottom > 0 && top < window.innerHeight) {
+					currentActiveId = heading.id;
+					break;
 				}
 			}
 
