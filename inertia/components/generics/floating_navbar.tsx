@@ -65,13 +65,13 @@ export function FloatingNavbar({
 	return (
 		<>
 			<div
-				className="sticky top-0 z-[9] w-full shrink-0 py-2 transition-transform duration-[400ms] ease-out bg-gray-100 dark:bg-gray-900"
+				className="sticky top-0 z-[9] w-full shrink-0 transition-transform duration-[400ms] ease-out bg-gray-100 dark:bg-gray-900"
 				style={{
 					transform: pinned ? 'translate3d(0,0,0)' : 'translate3d(0,-110px,0)',
 				}}
 			>
 				<div
-					className="mx-auto flex h-[60px] w-full items-center justify-between gap-3 px-4 md:px-6"
+					className="flex h-[60px] w-full items-center justify-between gap-3 px-2 md:px-4"
 					style={{ maxWidth: layoutMaxWidth }}
 				>
 					<div className="flex items-center gap-3">

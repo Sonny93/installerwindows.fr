@@ -68,7 +68,7 @@ export function MarkdownToc({
 			'min-h-10 flex items-center text-sm leading-snug border-l border-gray-300 dark:border-gray-600 py-1 pr-2 no-underline transition-colors rounded-r-sm pl-4';
 		const activeClasses = clsx(
 			'font-medium text-blue-600 dark:text-blue-400',
-			'bg-gray-50 dark:bg-gray-950/40'
+			'bg-gray-200 dark:bg-gray-950/40'
 		);
 		return (
 			<a
