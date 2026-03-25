@@ -1,7 +1,10 @@
 import type { TocItem } from '#shared/types/index';
 import { MarkdownToc } from '~/components/markdown/toc/markdown_toc';
 import { useEffect, useRef } from 'react';
-import { bindMarkdownCopy, enhanceMarkdownCopy } from './markdown_copy_enhancer';
+import {
+	bindMarkdownCopy,
+	enhanceMarkdownCopy,
+} from './markdown_copy_enhancer';
 
 export interface MarkdownBuilderProps {
 	html: string;

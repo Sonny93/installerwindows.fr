@@ -42,7 +42,11 @@ export const ContentCard = ({
 	>
 		<span className={cardBefore} aria-hidden />
 		<div className={clsx(thumbWrap, 'aspect-video')}>
-			<img src={thumbnailSrc} alt={thumbnailAlt} className="h-full w-full object-cover" />
+			<img
+				src={thumbnailSrc}
+				alt={thumbnailAlt}
+				className="h-full w-full object-cover"
+			/>
 		</div>
 		<div className={clsx('px-2 pt-2 pb-0', bodyClassName)}>
 			{meta ? <p className={clsx('text-xs', metaClassName)}>{meta}</p> : null}
