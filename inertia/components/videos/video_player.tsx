@@ -1,4 +1,3 @@
-import { Box } from '@mantine/core';
 import ReactPlayer from 'react-player';
 
 interface VideoPlayerProps {
@@ -6,24 +5,12 @@ interface VideoPlayerProps {
 }
 
 export const VideoPlayer = ({ url }: Readonly<VideoPlayerProps>) => (
-	<Box
-		style={{
-			position: 'relative',
-			minHeight: '100%',
-			height: '100%',
-			width: '100%',
-			flex: 1,
-			aspectRatio: '16/9',
-		}}
-	>
+	<div className="relative aspect-video w-full min-h-0 flex-1">
 		<ReactPlayer
-			height="auto"
+			height="100%"
 			width="100%"
+			className="!aspect-video overflow-hidden rounded-md"
 			style={{
-				aspectRatio: '16/9',
-				flex: 1,
-				borderRadius: 'var(--mantine-radius-md)',
-				overflow: 'hidden',
 				transition: 'opacity 0.3s ease-in-out',
 			}}
 			src={url}
@@ -35,5 +22,5 @@ export const VideoPlayer = ({ url }: Readonly<VideoPlayerProps>) => (
 			preload="auto"
 			controls
 		/>
-	</Box>
+	</div>
 );

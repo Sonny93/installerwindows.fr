@@ -1,38 +1,47 @@
 import { Link } from '@adonisjs/inertia/react';
-import { Anchor, Group } from '@mantine/core';
+import clsx from 'clsx';
 import { ReactNode } from 'react';
-import { IconType } from 'react-icons/lib';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
-import classes from './footer.module.css';
 
-export function TextIcon({
-	icon: Icon,
-	children,
-	href,
-	external = false,
-}: {
-	icon: IconType;
+interface TextIconProps {
+	icon: string;
+	iconClass?: string;
 	children: ReactNode;
 	href: string;
 	external?: boolean;
-}) {
+}
+
+export function TextIcon({
+	icon,
+	iconClass = 'h-6 w-6 shrink-0',
+	children,
+	href,
+	external = false,
+}: Readonly<TextIconProps>) {
 	const content = (
-		<Group gap="sm">
-			<Icon size={24} />
-			{children}
-		</Group>
+		<span className="flex items-center gap-2">
+			<span
+				className={clsx(icon, iconClass, 'text-black dark:text-white')}
+				aria-hidden
+			/>
+			<span className="text-black dark:text-white">{children}</span>
+		</span>
+	);
+
+	const linkClass = clsx(
+		'font-normal hover:opacity-80 text-black dark:text-white'
 	);
 
 	if (external) {
 		return (
-			<ExternalLinkStyled className={classes.footer__link} href={href}>
+			<ExternalLinkStyled className={linkClass} href={href}>
 				{content}
 			</ExternalLinkStyled>
 		);
 	}
 	return (
-		<Anchor component={Link} className={classes.footer__link} href={href}>
+		<Link className={linkClass} href={href}>
 			{content}
-		</Anchor>
+		</Link>
 	);
 }

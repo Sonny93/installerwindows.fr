@@ -1,5 +1,4 @@
 import { Data } from '@generated/data';
-import { SimpleGrid } from '@mantine/core';
 import { GuideCard } from '~/components/guides/card/guide_card';
 
 interface GuideListProps {
@@ -7,9 +6,9 @@ interface GuideListProps {
 }
 
 export const GuideList = ({ guides }: Readonly<GuideListProps>) => (
-	<SimpleGrid cols={{ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 }} spacing="lg">
+	<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 		{guides.map((guide) => (
 			<GuideCard key={guide.id} guide={guide} />
 		))}
-	</SimpleGrid>
+	</div>
 );

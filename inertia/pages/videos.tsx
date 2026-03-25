@@ -1,10 +1,11 @@
 import { Data } from '@generated/data';
-import { Box, Flex, Stack, useMantineTheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
-import { ClientOnly } from '~/components/generics/client_only';
+import { ClientOnly } from '@minimalstuff/ui';
 import { VideoList } from '~/components/videos/video_list';
 import { VideoMeta } from '~/components/videos/video_meta';
 import { VideoPlayer } from '~/components/videos/video_player';
+import { useMediaQuery } from '~/hooks/use_media_query';
+
+const MQ_MD = '(max-width: 991px)';
 
 interface VideosPageProps {
 	videos: Data.Video[];
@@ -17,18 +18,14 @@ export default function VideosPage({
 	currentVideo,
 	nextVideo,
 }: Readonly<VideosPageProps>) {
-	const theme = useMantineTheme();
-	const isSmallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+	const isSmallScreen = useMediaQuery(MQ_MD);
 
 	return (
-		<Flex
-			align="flex-start"
-			wrap="nowrap"
-			gap="xl"
-			direction={isSmallScreen ? 'column' : 'row'}
+		<div
+			className={`flex w-full flex-nowrap items-start gap-8 ${isSmallScreen ? 'flex-col' : 'flex-row'}`}
 		>
-			{videos.at(0) && (
-				<Stack gap="lg" w="100%">
+			{videos.at(0) ? (
+				<div className="flex w-full flex-col gap-6 lg:min-w-0 lg:flex-1">
 					<ClientOnly>
 						<VideoPlayer url={currentVideo.url} />
 					</ClientOnly>
@@ -37,24 +34,18 @@ export default function VideosPage({
 						description={currentVideo.description}
 						publishedAt={currentVideo.publishedAt}
 					/>
-				</Stack>
-			)}
+				</div>
+			) : null}
 
-			{isSmallScreen ? (
+			<div
+				className={isSmallScreen ? 'w-full' : 'w-full max-w-[350px] shrink-0'}
+			>
 				<VideoList
 					videos={videos}
 					nextVideo={nextVideo}
 					activeVideoId={currentVideo.id}
 				/>
-			) : (
-				<Box w="100%" maw={350}>
-					<VideoList
-						videos={videos}
-						nextVideo={nextVideo}
-						activeVideoId={currentVideo.id}
-					/>
-				</Box>
-			)}
-		</Flex>
+			</div>
+		</div>
 	);
 }

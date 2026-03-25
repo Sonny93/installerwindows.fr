@@ -1,6 +1,3 @@
-import { Group, Stack, Text } from '@mantine/core';
-import classes from './footer.module.css';
-
 export const Field = ({
 	label,
 	children,
@@ -8,8 +5,12 @@ export const Field = ({
 	label: string;
 	children: React.ReactNode;
 }) => (
-	<Stack gap="xs">
-		<Text className={classes.footer__field_label}>{label}</Text>
-		<Group className={classes.footer__field_content}>{children}</Group>
-	</Stack>
+	<div className="flex flex-col gap-1">
+		<p className="text-lg font-medium tracking-wide text-gray-800 dark:text-white">
+			{label}
+		</p>
+		<div className="flex flex-row items-center flex-wrap gap-x-8 gap-y-2">
+			{children}
+		</div>
+	</div>
 );

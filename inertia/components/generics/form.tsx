@@ -1,6 +1,7 @@
 import { slugify } from '#shared/utils/index';
 import { useForm } from '@inertiajs/react';
-import { Button, Group, Stack, TextInput, Title } from '@mantine/core';
+import { BASE_INPUT_STYLES, Button } from '@minimalstuff/ui';
+import clsx from 'clsx';
 import React, { ChangeEvent, FocusEvent, useState } from 'react';
 
 export type Field = {
@@ -67,36 +68,64 @@ export function Form({
 	const loading = processing;
 	return (
 		<form onSubmit={handleSubmit} onReset={handleReset}>
-			<Stack>
-				<Title order={2}>{title}</Title>
+			<div className="flex flex-col gap-4">
+				<h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">
+					{title}
+				</h2>
 				{fields.map(({ label, description, name, placeholder, required }) => {
 					const onBlurTitle = name === 'title' ? handleTitleBlur : undefined;
 					const onBlurSlug = name === 'slug' ? handleSlugBlur : undefined;
+					const req = required ?? true;
 					return (
-						<TextInput
-							label={label}
-							description={description}
-							name={name}
-							placeholder={placeholder ?? label}
-							value={data[name]}
-							onChange={handleChange}
-							error={errors[name]}
-							key={name}
-							disabled={loading}
-							required={required ?? true}
-							onBlur={onBlurTitle ?? onBlurSlug}
-						/>
+						<div key={name} className="w-full">
+							<label
+								htmlFor={name}
+								className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
+							>
+								{label}
+								{req ? (
+									<span className="ml-1 text-red-500 dark:text-red-400">*</span>
+								) : null}
+							</label>
+							{description ? (
+								<p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
+									{description}
+								</p>
+							) : null}
+							<input
+								id={name}
+								name={name}
+								placeholder={placeholder ?? label}
+								value={data[name]}
+								onChange={handleChange}
+								disabled={loading}
+								required={req}
+								onBlur={onBlurTitle ?? onBlurSlug}
+								className={clsx(
+									BASE_INPUT_STYLES,
+									'px-3 py-2 text-sm',
+									errors[name] &&
+										'border-red-500 focus:ring-red-500 dark:border-red-400'
+								)}
+								aria-invalid={!!errors[name]}
+							/>
+							{errors[name] ? (
+								<p className="mt-1 text-xs text-red-600 dark:text-red-400">
+									{errors[name]}
+								</p>
+							) : null}
+						</div>
 					);
 				})}
-				<Group justify="space-between">
-					<Button variant="light" type="reset" disabled={loading || !isDirty}>
+				<div className="flex justify-between gap-4">
+					<Button variant="subtle" type="reset" disabled={loading || !isDirty}>
 						Effacer
 					</Button>
 					<Button type="submit" loading={loading} disabled={!isDirty}>
 						Enregistrer
 					</Button>
-				</Group>
-			</Stack>
+				</div>
+			</div>
 		</form>
 	);
 }

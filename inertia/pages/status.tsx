@@ -1,56 +1,61 @@
-import { Badge, Table, Title } from '@mantine/core';
-
 interface StatusPageProps {
 	services: { name: string; status: string; message: string }[];
 	status: boolean;
 }
 
+const badgeStyles: Record<string, string> = {
+	ok: 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300',
+	warning:
+		'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200',
+	error: 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300',
+	unknown: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
+};
+
 const StatusPage = ({ services, status }: StatusPageProps) => (
 	<>
-		<Title mb="md" order={2}>
+		<h2 className="mb-4 text-xl font-medium text-gray-900 dark:text-gray-100">
 			Statut des services
-		</Title>
-		<Table>
-			<Table.Caption>
-				{status
-					? 'Tous les services sont en ligne'
-					: 'Un ou plusieurs services sont en panne'}
-			</Table.Caption>
-			<Table.Thead>
-				<Table.Tr>
-					<Table.Th>Service</Table.Th>
-					<Table.Th>Status</Table.Th>
-					<Table.Th>Message</Table.Th>
-				</Table.Tr>
-			</Table.Thead>
-			<Table.Tbody>
-				{services.map((service) => (
-					<Table.Tr key={service.name}>
-						<Table.Td>{service.name}</Table.Td>
-						<Table.Td>
-							<Badge color={getBadgeColor(service.status)} fw={400}>
-								{service.status}
-							</Badge>
-						</Table.Td>
-						<Table.Td>{service.message}</Table.Td>
-					</Table.Tr>
-				))}
-			</Table.Tbody>
-		</Table>
+		</h2>
+		<div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+			<table className="w-full border-collapse text-left text-sm text-gray-800 dark:text-gray-200">
+				<caption className="border-b border-gray-200 bg-gray-50 px-4 py-3 text-gray-700 dark:border-gray-700 dark:bg-gray-800/50 dark:text-gray-300">
+					{status
+						? 'Tous les services sont en ligne'
+						: 'Un ou plusieurs services sont en panne'}
+				</caption>
+				<thead>
+					<tr className="border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/30">
+						<th className="px-4 py-3 font-medium">Service</th>
+						<th className="px-4 py-3 font-medium">Status</th>
+						<th className="px-4 py-3 font-medium">Message</th>
+					</tr>
+				</thead>
+				<tbody>
+					{services.map((service) => (
+						<tr
+							key={service.name}
+							className="border-b border-gray-100 dark:border-gray-800"
+						>
+							<td className="px-4 py-3">{service.name}</td>
+							<td className="px-4 py-3">
+								<span
+									className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-normal ${getBadgeClass(service.status)}`}
+								>
+									{service.status}
+								</span>
+							</td>
+							<td className="px-4 py-3">{service.message}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
 	</>
 );
 
-const getBadgeColor = (status: string) => {
-	const statusColor = {
-		ok: 'green',
-		warning: 'yellow',
-		error: 'red',
-		unknown: 'gray',
-	};
-	return (
-		statusColor[status.toLowerCase() as keyof typeof statusColor] ||
-		statusColor.unknown
-	);
+const getBadgeClass = (status: string) => {
+	const key = status.toLowerCase() as keyof typeof badgeStyles;
+	return badgeStyles[key] ?? badgeStyles.unknown;
 };
 
 export default StatusPage;

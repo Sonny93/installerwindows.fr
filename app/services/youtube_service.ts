@@ -1,17 +1,18 @@
 import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import { CacheService } from '#services/cache_service';
-import { Videos } from '#shared/types/index';
 import env from '#start/env';
 import { inject } from '@adonisjs/core';
 import logger from '@adonisjs/core/services/logger';
 import { DateTime } from 'luxon';
 import { dateTimeSerializer } from '../libs/index.js';
 
-interface VideoInfo {
+export interface VideoInfo {
+	id: string;
 	title: string;
 	thumbnail: string;
 	description: string;
 	url: string;
+	publishedAt: string;
 }
 
 @inject()
@@ -29,7 +30,7 @@ export class YoutubeService {
 	 * Fetches videos from the configured playlist, using the cache when data is still valid.
 	 * @returns List of video metadata serialized for the application.
 	 */
-	async getPlaylist(): Promise<Videos> {
+	async getPlaylist(): Promise<VideoInfo[]> {
 		const videos = await this.cacheService.getOrSet({
 			ns: 'youtube',
 			key: this.playlistId,

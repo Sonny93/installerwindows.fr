@@ -1,6 +1,6 @@
 import { Data } from '@generated/data';
 import { router } from '@inertiajs/react';
-import { Box, Button, Divider, Stack } from '@mantine/core';
+import { Button } from '@minimalstuff/ui';
 import { VideoCard } from '~/components/videos/card/video_card';
 
 interface VideoListProps {
@@ -20,17 +20,20 @@ export function VideoList({
 
 	return (
 		<>
-			{nextVideo && (
-				<Box>
-					<Divider label="Prochaine vidéo" mb="sm" />
+			{nextVideo ? (
+				<div>
+					<div className="mb-2 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+						<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+						<span className="shrink-0">Prochaine vidéo</span>
+						<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+					</div>
 					<VideoCard
 						{...nextVideo}
 						activeVideoId={activeVideoId}
 						key={nextVideo.id}
 					/>
-				</Box>
-			)}
-			{!nextVideo && (
+				</div>
+			) : (
 				<Button
 					variant="outline"
 					onClick={() => router.visit('/videos')}
@@ -39,9 +42,13 @@ export function VideoList({
 					Revenir à la première vidéo
 				</Button>
 			)}
-			<Box>
-				<Divider label="Toutes les vidéos" mt={'lg'} mb="sm" />
-				<Stack align="center" w="100%" gap="lg">
+			<div>
+				<div className="mb-2 mt-6 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+					<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+					<span className="shrink-0">Toutes les vidéos</span>
+					<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+				</div>
+				<div className="flex w-full flex-col items-center gap-6">
 					{videos.map((video) => (
 						<VideoCard
 							{...video}
@@ -49,8 +56,8 @@ export function VideoList({
 							key={video.id}
 						/>
 					))}
-				</Stack>
-			</Box>
+				</div>
+			</div>
 		</>
 	);
 }

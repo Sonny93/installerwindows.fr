@@ -1,24 +1,57 @@
-@import './fonts/poppins/import.css';
+html {
+	min-height: 100%;
+}
 
-* {
-	scroll-behavior: smooth !important;
-	scroll-margin-top: rem(60);
+body {
+	min-height: 100%;
+	margin: 0;
 }
 
 #app {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+	min-height: 100%;
 }
 
-/* For light mode */
-:root[data-mantine-color-scheme='light'] {
-	--mantine-color-body: #f0eef6 !important;
+* {
+	scroll-behavior: smooth;
+	scrollbar-width: 7px;
+	scrollbar-color: rgb(203 213 225 / 0.5) transparent;
 }
 
-/* For dark mode */
-:root[data-mantine-color-scheme='dark'] {
-	--mantine-color-body: #222831 !important;
+.dark {
+	color: white;
+}
+
+*::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: rgb(203 213 225 / 0.5);
+	border-radius: 4px;
+	border: 2px solid transparent;
+	background-clip: padding-box;
+	transition: background-color 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background-color: rgb(148 163 184 / 0.7);
+}
+
+.dark * {
+	scrollbar-color: rgb(71 85 105 / 0.5) transparent;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+	background-color: rgb(71 85 105 / 0.5);
+}
+
+.dark *::-webkit-scrollbar-thumb:hover {
+	background-color: rgb(100 116 139 / 0.7);
 }
 
 @keyframes pageFadeIn {
@@ -33,6 +66,6 @@
 }
 
 .page-transition-enter {
-	animation: pageFadeIn 400ms ease forwards;
+	animation: pageFadeIn 250ms ease forwards;
 	will-change: opacity, filter;
 }

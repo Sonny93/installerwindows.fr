@@ -1,5 +1,5 @@
-import { CSSProperties } from '@mantine/core';
-import { AnchorHTMLAttributes, ReactNode } from 'react';
+import clsx from 'clsx';
+import { AnchorHTMLAttributes, CSSProperties, ReactNode } from 'react';
 
 interface ExternalLinkUnstyledProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	children: ReactNode;
@@ -7,11 +7,13 @@ interface ExternalLinkUnstyledProps extends AnchorHTMLAttributes<HTMLAnchorEleme
 	title?: string;
 	className?: string;
 }
+
 export const ExternalLinkUnstyled = ({
 	children,
+	className,
 	...props
 }: ExternalLinkUnstyledProps) => (
-	<a target="_blank" rel="noreferrer" {...props}>
+	<a target="_blank" rel="noreferrer" className={clsx(className)} {...props}>
 		{children}
 	</a>
 );

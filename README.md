@@ -6,7 +6,7 @@ Installerwindows.fr est un site avec différents guides pour apprendre à (ré)i
 
 Le site se base sur ces technologies pour fonctionner.
 
-Adonis.js (React via Inertia), Typescript, Mantine
+Adonis.js (React via Inertia), TypeScript, UnoCSS, Vite
 
 ## Installer les dépendances
 

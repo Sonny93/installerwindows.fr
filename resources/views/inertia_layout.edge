@@ -73,6 +73,31 @@
 		<script async defer data-website-id="{{ umamiWebsiteId }}" src="{{ umamiUrl }}/script.js" />
 	@endif
 
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      let theme = 'system';
+
+      if (savedTheme) {
+        theme = savedTheme;
+      }
+
+      if (theme === 'system') {
+        if (systemPrefersDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } else if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
   @stack('dumper')
   @viteReactRefresh()
   @inertiaHead()

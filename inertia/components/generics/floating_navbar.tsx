@@ -1,20 +1,14 @@
-import {
-	Box,
-	Burger,
-	Drawer,
-	Flex,
-	Group,
-	rem,
-	useMantineTheme,
-} from '@mantine/core';
-import { useDisclosure, useHeadroom, useMediaQuery } from '@mantine/hooks';
-import { useEffect } from 'react';
-import { ClientOnly } from '~/components/generics/client_only';
+import { ClientOnly, IconButton, ThemeToggle } from '@minimalstuff/ui';
+import { useEffect, useState } from 'react';
+import { AppDrawer } from '~/components/generics/app_drawer';
 import { HelpButton } from '~/components/generics/help_button';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 import { InternalLink } from '~/components/generics/links/internal_link';
-import { ThemeSwitcher } from '~/components/generics/theme_switcher';
 import { EDITOR_NAME, EDITOR_YTB_URL, PROJECT_NAME } from '~/consts/project';
+import { useHeadroom } from '~/hooks/use_headroom';
+import { useMediaQuery } from '~/hooks/use_media_query';
+
+const MQ_SM = '(max-width: 767px)';
 
 const links = [
 	{ label: 'Vidéos', href: '/videos', external: false },
@@ -27,17 +21,21 @@ const links = [
 ];
 
 interface FloatingNavbarProps {
-	width: string;
+	layoutMaxWidth: string;
 }
 
-export function FloatingNavbar({ width }: Readonly<FloatingNavbarProps>) {
-	const theme = useMantineTheme();
-	const [opened, handler] = useDisclosure(false);
-	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, false);
+export function FloatingNavbar({
+	layoutMaxWidth,
+}: Readonly<FloatingNavbarProps>) {
+	const [opened, setOpened] = useState(false);
+	const isMobile = useMediaQuery(MQ_SM);
 	const pinned = useHeadroom({ fixedAt: 120 });
 
+	const close = () => setOpened(false);
+	const toggle = () => setOpened((o) => !o);
+
 	const showLinks = links.map((link) => {
-		const onClick = () => handler.close();
+		const onClick = () => close();
 		if (link.external) {
 			return (
 				<ExternalLinkStyled href={link.href} key={link.label} onClick={onClick}>
@@ -47,7 +45,12 @@ export function FloatingNavbar({ width }: Readonly<FloatingNavbarProps>) {
 		}
 
 		return (
-			<InternalLink href={link.href} key={link.label} onClick={onClick}>
+			<InternalLink
+				href={link.href}
+				key={link.label}
+				className="font-normal"
+				onClick={onClick}
+			>
 				{link.label}
 			</InternalLink>
 		);
@@ -55,63 +58,62 @@ export function FloatingNavbar({ width }: Readonly<FloatingNavbarProps>) {
 
 	useEffect(() => {
 		if (opened && !isMobile) {
-			handler.close();
+			setOpened(false);
 		}
-	}, [isMobile]);
+	}, [isMobile, opened]);
 
 	return (
-		<Box
-			style={{
-				zIndex: 9,
-				position: 'sticky',
-				top: 0,
-				left: 0,
-				right: 0,
-				height: rem(60),
-				backgroundColor: 'light-dark(var(--mantine-color-gray-0), #1b2028)',
-				paddingInline: 'var(--mantine-spacing-lg)',
-				paddingBlock: 'var(--mantine-spacing-sm)',
-				transform: `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
-				transition: 'transform 400ms ease',
-			}}
-		>
-			<Group
-				justify="space-between"
-				style={{ maxWidth: '100%', width, marginInline: 'auto' }}
+		<>
+			<div
+				className="sticky top-0 z-[9] w-full shrink-0 py-2 transition-transform duration-[400ms] ease-out bg-gray-100 dark:bg-gray-900"
+				style={{
+					transform: pinned ? 'translate3d(0,0,0)' : 'translate3d(0,-110px,0)',
+				}}
 			>
-				<Group>
-					{isMobile && <Burger opened={opened} onClick={handler.toggle} />}
-					<InternalLink style={{ fontSize: rem(24) }} href="/">
-						{PROJECT_NAME}
-					</InternalLink>
-				</Group>
+				<div
+					className="mx-auto flex h-[60px] w-full items-center justify-between gap-3 px-4 md:px-6"
+					style={{ maxWidth: layoutMaxWidth }}
+				>
+					<div className="flex items-center gap-3">
+						{isMobile ? (
+							<IconButton
+								icon={opened ? 'i-tabler-x' : 'i-tabler-menu-2'}
+								aria-label={opened ? 'Fermer le menu' : 'Ouvrir le menu'}
+								variant="ghost"
+								onClick={toggle}
+							/>
+						) : null}
+						<InternalLink
+							href="/"
+							className="text-2xl font-normal no-underline hover:opacity-90 text-blue-600 hover:text-blue-700"
+						>
+							{PROJECT_NAME}
+						</InternalLink>
+					</div>
 
-				{!isMobile && (
-					<Group>
-						<HelpButton />
-						{showLinks}
-						<ClientOnly>
-							<ThemeSwitcher />
-						</ClientOnly>
-					</Group>
-				)}
-			</Group>
+					{isMobile ? null : (
+						<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+							<HelpButton />
+							{showLinks}
+							<ThemeToggle />
+						</div>
+					)}
+				</div>
+			</div>
 
-			{/* Mobile drawer */}
-			<Drawer
-				opened={opened}
-				onClose={handler.close}
-				padding="md"
+			<AppDrawer
+				opened={opened && isMobile}
+				onClose={close}
 				title={PROJECT_NAME}
 				zIndex={999999}
 			>
-				<Flex direction="column" gap="md">
+				<div className="flex flex-col gap-4">
 					{showLinks}
 					<ClientOnly>
-						<ThemeSwitcher />
+						<ThemeToggle />
 					</ClientOnly>
-				</Flex>
-			</Drawer>
-		</Box>
+				</div>
+			</AppDrawer>
+		</>
 	);
 }

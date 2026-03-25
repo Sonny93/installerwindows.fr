@@ -1,8 +1,5 @@
-import { ActionIcon, Avatar, Group, Text } from '@mantine/core';
-import { TbLogin, TbLogout } from 'react-icons/tb';
 import { TextIcon } from '~/components/generics/footer/text_icon';
 import { useAuth } from '~/hooks/use_auth';
-import classes from './user_card.module.css';
 
 export function UserCard() {
 	const auth = useAuth();
@@ -15,7 +12,7 @@ export function UserCard() {
 }
 
 const NotAuthenticated = () => (
-	<TextIcon icon={TbLogin} href="/auth/login" external>
+	<TextIcon icon="i-tabler-login" href="/auth/login" external>
 		Connexion
 	</TextIcon>
 );
@@ -23,17 +20,22 @@ const NotAuthenticated = () => (
 function Authenticated() {
 	const { user } = useAuth();
 	return (
-		<Group className={classes.card} gap="xs">
-			<Avatar size="sm" src={user!.avatarUrl} radius={30} />
-			<Text className={classes.username}>{user!.fullname}</Text>
-			<ActionIcon
-				component="a"
+		<div className="flex items-center gap-2">
+			<img
+				src={user!.avatarUrl}
+				alt=""
+				className="h-8 w-8 shrink-0 rounded-full object-cover"
+			/>
+			<span className="font-normal text-gray-800 dark:text-white">
+				{user!.fullname}
+			</span>
+			<a
 				href="/auth/logout"
-				variant="filled"
-				color="red"
+				className="inline-flex shrink-0 items-center justify-center rounded text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
+				aria-label="Déconnexion"
 			>
-				<TbLogout size={18} />
-			</ActionIcon>
-		</Group>
+				<span className="i-tabler-logout h-4 w-4 shrink-0" aria-hidden />
+			</a>
+		</div>
 	);
 }

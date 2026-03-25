@@ -1,10 +1,9 @@
 import { resolvePageComponent } from '@adonisjs/inertia/helpers';
 import { Data } from '@generated/data';
 import { createInertiaApp } from '@inertiajs/react';
-import '@mantine/core/styles.css';
 import { hydrateRoot } from 'react-dom/client';
 import { PRIMAY_COLOR, PROJECT_NAME } from '~/consts/project';
-import DefaultLayout from '~/layouts/default_layout';
+import { DefaultLayout } from '~/layouts/default_layout';
 import './css/app.css';
 
 createInertiaApp({

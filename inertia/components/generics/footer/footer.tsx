@@ -1,9 +1,5 @@
 import { SharedProps } from '@adonisjs/inertia/types';
 import { usePage } from '@inertiajs/react';
-import { Box, Stack, Text } from '@mantine/core';
-import { FaDiscord, FaGithub, FaYoutube } from 'react-icons/fa';
-import { MdSignalWifiStatusbar4Bar } from 'react-icons/md';
-import { TbContract } from 'react-icons/tb';
 import { Field } from '~/components/generics/footer/field';
 import { TextIcon } from '~/components/generics/footer/text_icon';
 import { UserCard } from '~/components/generics/footer/user_card/user_card';
@@ -15,59 +11,67 @@ import {
 	EDITOR_YTB_URL,
 	PROJECT_GITHUB_URL,
 } from '~/consts/project';
-import classes from './footer.module.css';
 
 interface FooterProps {
-	width: string;
+	layoutMaxWidth: string;
 }
 
-export function Footer({ width }: Readonly<FooterProps>) {
+export function Footer({ layoutMaxWidth }: Readonly<FooterProps>) {
 	const { version } = usePage<SharedProps>().props;
 	return (
-		<Box className={classes.footer}>
-			<Stack className={classes.footer__content} gap="xl" w={width}>
+		<footer className="w-full py-10 bg-gray-100 dark:bg-gray-900">
+			<div
+				className="mx-auto flex w-full flex-col gap-8 px-4 md:px-6"
+				style={{ maxWidth: layoutMaxWidth }}
+			>
 				<Field label="Installerwindows.fr">
-					<Box>
-						<Text className={classes.footer__description}>
+					<div>
+						<p className="max-w-[50%] font-light max-md:max-w-full text-gray-800 dark:text-gray-400">
 							Guides pour (ré)installer Windows 11 au propre et faire des
 							optimisations saines pour votre machine. Il s'agit de guides
 							complets, que vous devriez pouvoir suivre quel que soit votre
 							niveau en informatique.
-						</Text>
-						<Text c="dimmed" size="sm" mt="xs">
-							v{version}
-						</Text>
-					</Box>
+						</p>
+						<p className="mt-1 text-sm text-gray-500">v{version}</p>
+					</div>
 				</Field>
 				<Field label="Liens utiles">
-					<TextIcon icon={FaYoutube} href={EDITOR_YTB_URL} external>
+					<TextIcon
+						icon="i-simple-icons-youtube"
+						href={EDITOR_YTB_URL}
+						external
+					>
 						Piwi
 					</TextIcon>
 					<TextIcon
-						icon={FaDiscord}
+						icon="i-simple-icons-discord"
 						href={DISCORD_SUGGESTION_CHANNEL_URL}
 						external
 					>
 						Discord
 					</TextIcon>
-					<TextIcon icon={FaGithub} href={PROJECT_GITHUB_URL} external>
+					<TextIcon
+						icon="i-simple-icons-github"
+						href={PROJECT_GITHUB_URL}
+						external
+					>
 						Github
 					</TextIcon>
-					<TextIcon icon={MdSignalWifiStatusbar4Bar} href="/status">
+					<TextIcon icon="i-material-symbols-signal-wifi-4-bar" href="/status">
 						Statut des services
 					</TextIcon>
-					<TextIcon icon={TbContract} href="/cgu">
+					<TextIcon icon="i-tabler-contract" href="/cgu">
 						CGUs
 					</TextIcon>
 					<UserCard />
 				</Field>
-				<Text className={classes.footer__credits}>
+				<p className="font-light text-gray-800 dark:text-gray-200">
 					Réalisé avec ❤️ par{' '}
 					<ExternalLinkStyled href={DEV_URL}>Sonny</ExternalLinkStyled>,
 					rédaction par{' '}
 					<ExternalLinkStyled href={EDITOR_X_URL}>Piwi</ExternalLinkStyled>
-				</Text>
-			</Stack>
-		</Box>
+				</p>
+			</div>
+		</footer>
 	);
 }

@@ -1,44 +1,20 @@
-import { Box, rem } from '@mantine/core';
-import { PropsWithChildren } from 'react';
 import { FloatingNavbar } from '~/components/generics/floating_navbar';
 import { Footer } from '~/components/generics/footer/footer';
-import { BaseLayout } from './base_layout';
+import { BaseLayout } from '~/layouts/base_layout';
 
-const DefaultLayout = ({ children }: PropsWithChildren) => (
+const LAYOUT_MAX_WIDTH = '1500px';
+
+export const DefaultLayout = ({ children }: React.PropsWithChildren) => (
 	<BaseLayout>
-		<Layout>{children}</Layout>
-	</BaseLayout>
-);
-
-export default DefaultLayout;
-
-const LAYOUT_WIDTH = '1500px';
-const Layout = ({ children }: PropsWithChildren) => (
-	<>
-		{/* Top navbar */}
-		<FloatingNavbar width={LAYOUT_WIDTH} />
-
-		{/* Page content */}
-		<Box
-			style={{
-				paddingInline: 'var(--mantine-spacing-lg)',
-				flex: 1,
-			}}
-		>
-			<Box
-				style={{
-					height: '100%',
-					maxWidth: '100%',
-					width: LAYOUT_WIDTH,
-					marginInline: 'auto',
-					marginBlock: rem(60),
-				}}
+		<div className="flex min-h-screen flex-col bg-gray-50 dark:bg-gray-800">
+			<FloatingNavbar layoutMaxWidth={LAYOUT_MAX_WIDTH} />
+			<div
+				className="mx-auto w-full max-w-[1920px] flex-1 px-4 py-8 md:px-6"
+				style={{ maxWidth: LAYOUT_MAX_WIDTH }}
 			>
-				{children}
-			</Box>
-		</Box>
-
-		{/* Footer */}
-		<Footer width={LAYOUT_WIDTH} />
-	</>
+				<main className="min-w-0">{children}</main>
+			</div>
+			<Footer layoutMaxWidth={LAYOUT_MAX_WIDTH} />
+		</div>
+	</BaseLayout>
 );

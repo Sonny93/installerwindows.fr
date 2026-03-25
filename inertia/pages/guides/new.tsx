@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { GuideForm } from '~/components/guides/guide_form';
-import FormLayout from '~/layouts/form_layout';
+import { FormLayout } from '~/layouts/form_layout';
 
 const CreateGuides = () => (
 	<GuideForm title="Ajouter un guide" formUrl="/guides/new" />

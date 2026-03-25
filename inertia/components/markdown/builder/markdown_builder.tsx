@@ -1,7 +1,5 @@
 import type { TocItem } from '#shared/types/index';
-import { Flex, Typography } from '@mantine/core';
 import { MarkdownToc } from '~/components/markdown/toc/markdown_toc';
-import './markdown.css';
 
 export interface MarkdownBuilderProps {
 	html: string;
@@ -16,11 +14,13 @@ export const MarkdownBuilder = ({
 	slug,
 	githubRawUrl,
 }: Readonly<MarkdownBuilderProps>) => (
-	<Flex align="flex-start" gap="xl" w="100%">
-		<Typography
-			style={{ width: 0, flex: 1, lineHeight: 1.5 }}
+	<div className="flex w-full flex-col items-start gap-8 lg:flex-row">
+		<div
+			className="w-full markdown-body prose prose-lg prose-gray max-w-none min-w-0 flex-1 break-words dark:prose-invert"
 			dangerouslySetInnerHTML={{ __html: html }}
 		/>
-		{toc && <MarkdownToc toc={toc} slug={slug} githubRawUrl={githubRawUrl} />}
-	</Flex>
+		{toc ? (
+			<MarkdownToc toc={toc} slug={slug} githubRawUrl={githubRawUrl} />
+		) : null}
+	</div>
 );

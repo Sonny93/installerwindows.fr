@@ -67,7 +67,30 @@ export class MarkdownService {
 			.use(remarkRehype, { allowDangerousHtml: true })
 			.use(rehypeRaw)
 			.use(rehypeSlug)
-			.use(rehypeAutolinkHeadings, { behavior: 'wrap' })
+			.use(rehypeAutolinkHeadings, {
+				behavior: 'prepend',
+				headingProperties: {
+					className: ['flex', 'flex-wrap', 'items-center', 'gap-2'],
+				},
+				properties: {
+					className: ['inline-flex', 'shrink-0', 'items-center'],
+					ariaHidden: 'true',
+					tabIndex: -1,
+				},
+				content: {
+					type: 'element',
+					tagName: 'span',
+					properties: {
+						className: [
+							'i-heroicons-link-16-solid',
+							'text-blue-400',
+							'inline-block',
+							'shrink-0',
+						],
+					},
+					children: [],
+				},
+			})
 			.use(() => this.extractToc(toc))
 			.use(rehypeStringify, { allowDangerousHtml: true })
 			.process(markdown);
