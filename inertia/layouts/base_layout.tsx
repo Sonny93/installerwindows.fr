@@ -11,8 +11,10 @@ import { tuyauClient } from '~/lib/tuyau';
 export function BaseLayout({ children }: Readonly<PropsWithChildren>) {
 	const { props } = usePage<PageProps & { flash: string }>();
 	const [opened, setOpened] = useState<boolean>(!!props.flash);
+
 	usePageTransition({
 		querySelector: '[data-page-transition]',
+		ignorePatterns: [/^\/videos\/[^/]+$/],
 	});
 
 	return (
