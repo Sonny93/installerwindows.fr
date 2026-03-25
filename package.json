@@ -53,6 +53,7 @@
 		"@japa/plugin-adonisjs": "^5.2.0",
 		"@japa/runner": "^5.3.0",
 		"@poppinss/ts-exec": "^1.4.4",
+		"@release-it/conventional-changelog": "^10.0.6",
 		"@types/luxon": "^3.7.1",
 		"@types/node": "24",
 		"@types/react": "^19.2.14",
