@@ -71,7 +71,7 @@ export function FloatingNavbar({
 				}}
 			>
 				<div
-					className="flex h-[60px] w-full items-center justify-between gap-3 px-2 md:px-4"
+					className="mx-auto flex h-[60px] w-full items-center justify-between gap-3 px-2 md:px-4"
 					style={{ maxWidth: layoutMaxWidth }}
 				>
 					<div className="flex items-center gap-3">
