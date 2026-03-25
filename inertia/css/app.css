@@ -54,6 +54,11 @@ body {
 	background-color: rgb(100 116 139 / 0.7);
 }
 
+.page-transition-enter {
+	animation: pageFadeIn 250ms ease forwards;
+	will-change: opacity, filter;
+}
+
 @keyframes pageFadeIn {
 	from {
 		opacity: 0;
@@ -63,9 +68,4 @@ body {
 		opacity: 1;
 		filter: blur(0);
 	}
-}
-
-.page-transition-enter {
-	animation: pageFadeIn 250ms ease forwards;
-	will-change: opacity, filter;
 }

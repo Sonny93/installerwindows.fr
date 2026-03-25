@@ -12,6 +12,7 @@ export const FormLayout = ({ children }: Readonly<PropsWithChildren>) => (
 			<div
 				className="mx-auto w-full max-w-[1920px] flex-1 px-4 py-6 md:px-6"
 				style={{ maxWidth: LAYOUT_MAX_WIDTH }}
+				data-page-transition
 			>
 				<main className="min-w-0">{children}</main>
 			</div>
