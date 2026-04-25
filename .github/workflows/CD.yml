@@ -47,5 +47,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: |
-            docker service update installerwindows_front --with-registry-auth --image ctrlfdocker/installerwindows:latest
+          script: docker pull docker.io/ctrlfdocker/installerwindows:latest && docker compose -f docker/compose.yml up -d
