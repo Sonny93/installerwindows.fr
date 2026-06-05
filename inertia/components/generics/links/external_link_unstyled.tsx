@@ -13,7 +13,15 @@ export const ExternalLinkUnstyled = ({
 	className,
 	...props
 }: ExternalLinkUnstyledProps) => (
-	<a target="_blank" rel="noreferrer" className={clsx(className)} {...props}>
+	<a
+		target="_blank"
+		rel="noreferrer"
+		className={clsx(
+			'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500',
+			className
+		)}
+		{...props}
+	>
 		{children}
 	</a>
 );

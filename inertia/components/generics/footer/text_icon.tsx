@@ -1,7 +1,7 @@
 import { Link } from '@adonisjs/inertia/react';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
-import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
+import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
 
 interface TextIconProps {
 	icon: string;
@@ -13,7 +13,7 @@ interface TextIconProps {
 
 export function TextIcon({
 	icon,
-	iconClass = 'h-6 w-6 shrink-0',
+	iconClass = 'h-4 w-4 shrink-0',
 	children,
 	href,
 	external = false,
@@ -21,22 +21,22 @@ export function TextIcon({
 	const content = (
 		<span className="flex items-center gap-2">
 			<span
-				className={clsx(icon, iconClass, 'text-black dark:text-white')}
+				className={clsx(icon, iconClass, 'text-gray-500 dark:text-slate-400')}
 				aria-hidden
 			/>
-			<span className="text-black dark:text-white">{children}</span>
+			<span>{children}</span>
 		</span>
 	);
 
 	const linkClass = clsx(
-		'font-normal hover:opacity-80 text-black dark:text-white'
+		'text-sm font-normal text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-100 transition-colors no-underline'
 	);
 
 	if (external) {
 		return (
-			<ExternalLinkStyled className={linkClass} href={href}>
+			<ExternalLinkUnstyled className={linkClass} href={href}>
 				{content}
-			</ExternalLinkStyled>
+			</ExternalLinkUnstyled>
 		);
 	}
 	return (

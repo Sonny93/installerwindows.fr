@@ -19,6 +19,7 @@ export const ExternalLinkStyled = ({
 		rel="noreferrer"
 		title={title}
 		className={clsx(
+			'rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500',
 			'text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300',
 			className
 		)}

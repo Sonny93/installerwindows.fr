@@ -19,9 +19,15 @@ export function BaseLayout({ children }: Readonly<PropsWithChildren>) {
 
 	return (
 		<TuyauProvider client={tuyauClient}>
+			<a
+				href="#main-content"
+				className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-[200] focus-visible:rounded-lg focus-visible:bg-blue-600 focus-visible:px-4 focus-visible:py-2.5 focus-visible:text-sm focus-visible:font-medium focus-visible:text-white focus-visible:shadow-xl"
+			>
+				Passer au contenu principal
+			</a>
 			{opened && props.flash ? (
 				<div
-					className="fixed top-4 left-1/2 z-[100] flex max-w-[min(100%-2rem,32rem)] -trangray-x-1/2 items-center gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 shadow-lg dark:border-red-900/50 dark:bg-red-950/90 dark:text-red-200"
+					className="fixed top-4 left-1/2 z-[100] flex max-w-[min(100%-2rem,32rem)] -translate-x-1/2 items-center gap-3 rounded-xl border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/80 px-4 py-3 text-sm text-red-800 dark:text-red-200 shadow-lg dark:shadow-black/40 backdrop-blur-sm"
 					role="alert"
 				>
 					<span className="flex-1">{props.flash}</span>

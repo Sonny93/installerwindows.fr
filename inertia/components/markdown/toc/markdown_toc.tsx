@@ -65,10 +65,10 @@ export function MarkdownToc({
 
 	const items = toc?.map((item) => {
 		const baseClasses =
-			'min-h-10 flex items-center text-sm leading-snug border-l border-gray-300 dark:border-gray-600 py-1 pr-2 no-underline transition-colors rounded-r-sm pl-4';
+			'min-h-10 flex items-center text-sm leading-snug border-l border-gray-200 dark:border-white/8 py-1 pr-2 no-underline transition-colors rounded-r-sm pl-4 text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500';
 		const activeClasses = clsx(
-			'font-medium text-blue-600 dark:text-blue-400',
-			'bg-gray-200 dark:bg-gray-950/40'
+			'font-medium text-blue-600 dark:text-blue-400 !border-blue-500 dark:!border-blue-400',
+			'bg-blue-50 dark:bg-blue-500/8'
 		);
 		return (
 			<a
@@ -83,7 +83,7 @@ export function MarkdownToc({
 	});
 
 	const tocHeader = (
-		<div className="flex items-center gap-2 font-medium text-gray-900 dark:text-gray-100">
+		<div className="flex items-center gap-2 font-medium text-gray-900 dark:text-slate-200 text-sm">
 			<span className={tocIconClass} aria-hidden />
 			<span>Table des matières</span>
 		</div>
@@ -101,7 +101,7 @@ export function MarkdownToc({
 			size="sm"
 			onClick={() => setOpened(true)}
 			className={clsx(
-				'fixed left-1/2 z-40 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 gap-2 bg-gray-50 shadow-md transition-all dark:bg-gray-900',
+				'fixed left-1/2 z-40 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 gap-2 bg-white dark:bg-[#111120] border border-gray-100 dark:border-white/5 shadow-lg dark:shadow-black/30 transition-all',
 				pinned ? 'bottom-4' : '-bottom-24'
 			)}
 		>
@@ -111,7 +111,7 @@ export function MarkdownToc({
 	) : null;
 
 	const btnOutline =
-		'inline-flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800/50 dark:focus:ring-offset-gray-900';
+		'inline-flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 transition-colors hover:bg-gray-50 dark:hover:bg-white/8 no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500';
 
 	return (
 		<>

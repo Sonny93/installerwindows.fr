@@ -12,8 +12,7 @@ export const GuideCard = ({ guide }: Readonly<GuideCardProps>) => (
 		thumbnailAlt={`${guide.title} thumbnail`}
 		meta={guide.createdAt}
 		title={guide.title}
-		bodyClassName="pt-3"
-		metaClassName="text-gray-700 dark:text-gray-300"
-		titleClassName="text-black dark:text-white"
+		metaClassName="text-gray-600 dark:text-slate-400"
+		titleClassName="text-gray-900 dark:text-slate-100 font-medium"
 	/>
 );

@@ -12,9 +12,9 @@ export const VideoMeta = ({
 	publishedAt,
 }: Readonly<VideoMetaProps>) => (
 	<>
-		<div className="flex flex-col gap-0">
-			<p className="text-sm text-gray-500 dark:text-gray-400">{publishedAt}</p>
-			<h2 className="text-xl font-medium text-gray-900 dark:text-gray-100 md:text-2xl">
+		<div className="flex flex-col gap-0.5">
+			<p className="text-sm text-gray-600 dark:text-slate-400">{publishedAt}</p>
+			<h2 className="text-xl text-gray-900 dark:text-slate-100 md:text-2xl">
 				{title}
 			</h2>
 		</div>

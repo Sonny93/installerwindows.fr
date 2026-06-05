@@ -1,6 +1,6 @@
 import { Button } from '@minimalstuff/ui';
-import { Error500 } from '~/components/errors/error_500';
 import { HelpButton } from '~/components/generics/help_button';
+import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
 
 const DEFAULT_ERROR_MESSAGE =
 	'Une erreur côté serveur est survenue. Si le problème persiste, veuillez nous contacter.';
@@ -16,39 +16,46 @@ const ServerError = ({
 	service,
 	link,
 }: ServerErrorProps) => (
-	<div className="mx-auto w-full max-w-6xl px-4 py-20 md:px-6">
-		<div className="relative">
-			<Error500 className="pointer-events-none absolute inset-0 opacity-75 text-gray-300 dark:text-gray-600" />
-			<div className="relative z-[1] pt-[120px] sm:pt-[220px]">
-				<h1 className="text-center font-sans text-3xl font-black text-gray-900 sm:text-[38px] dark:text-gray-100">
+	<div className="flex min-h-[70vh] flex-col items-center justify-center px-4 py-20 text-center">
+		<div
+			aria-hidden
+			className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
+		>
+			<div className="h-[400px] w-[600px] rounded-full bg-red-500/3 dark:bg-red-500/5 blur-3xl" />
+		</div>
+
+		<div className="relative flex flex-col items-center gap-6">
+			<div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-red-200/60 dark:border-red-500/20 bg-red-50 dark:bg-red-500/8 shadow-lg dark:shadow-black/30">
+				<span className="text-4xl font-black text-red-300 dark:text-red-600">
+					500
+				</span>
+			</div>
+
+			<div className="flex flex-col gap-3">
+				<h1 className="text-3xl text-gray-900 dark:text-slate-100 md:text-4xl">
 					Erreur serveur
 				</h1>
-				<p className="mx-auto mt-8 max-w-[540px] text-center text-lg text-gray-600 dark:text-gray-400">
-					{message} <br />
-					{link ? (
-						<>
-							En attendant que le problème soit résolu, vous pouvez consulter le
-							lien vers la ressource <br />
-							<a
-								href={link}
-								target="_blank"
-								rel="noreferrer"
-								className="mt-4 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-gray-600 to-cyan-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:from-gray-700 hover:to-cyan-600"
-							>
-								Lien vers la ressource {service}
-							</a>
-						</>
-					) : null}
+				<p className="mx-auto max-w-[480px] text-base text-gray-600 dark:text-slate-400 leading-relaxed">
+					{message}
 				</p>
-				<p className="mx-auto mt-8 max-w-[540px] text-center text-lg text-gray-600 dark:text-gray-400">
-					Rafraîchir la page pour essayer de résoudre le problème.
-				</p>
-				<div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-					<HelpButton />
-					<Button variant="outline" onClick={() => window.location.reload()}>
-						Rafraîchir la page
-					</Button>
-				</div>
+			</div>
+
+			{link ? (
+				<ExternalLinkUnstyled
+					href={link}
+					className="inline-flex items-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-5 py-2.5 text-sm font-medium text-gray-700 dark:text-slate-300 transition-colors hover:bg-gray-50 dark:hover:bg-white/8 no-underline"
+				>
+					<span className="i-tabler-external-link h-4 w-4" aria-hidden />
+					Lien vers la ressource {service}
+				</ExternalLinkUnstyled>
+			) : null}
+
+			<div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+				<Button variant="outline" onClick={() => window.location.reload()}>
+					<span className="i-tabler-refresh h-4 w-4" aria-hidden />
+					Rafraîchir la page
+				</Button>
+				<HelpButton />
 			</div>
 		</div>
 	</div>

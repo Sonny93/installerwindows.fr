@@ -6,14 +6,14 @@ const LAYOUT_MAX_WIDTH = '1500px';
 
 export const DefaultLayout = ({ children }: React.PropsWithChildren) => (
 	<BaseLayout>
-		<div className="flex min-h-screen flex-col bg-gray-50 dark:bg-gray-800">
+		<div className="flex min-h-screen flex-col bg-[#f8f9fc] dark:bg-[#080811]">
 			<FloatingNavbar layoutMaxWidth={LAYOUT_MAX_WIDTH} />
 			<div
 				className="mx-auto w-full max-w-[1920px] flex-1 px-4 py-8 md:px-6"
 				style={{ maxWidth: LAYOUT_MAX_WIDTH }}
 				data-page-transition
 			>
-				<main className="min-w-0">{children}</main>
+				<main id="main-content" className="min-w-0">{children}</main>
 			</div>
 			<Footer layoutMaxWidth={LAYOUT_MAX_WIDTH} />
 		</div>

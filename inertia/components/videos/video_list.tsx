@@ -22,10 +22,10 @@ export function VideoList({
 		<>
 			{nextVideo ? (
 				<div>
-					<div className="mb-2 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-						<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+					<div className="mb-2 flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+						<span className="h-px flex-1 bg-gray-200 dark:bg-white/8" />
 						<span className="shrink-0">Prochaine vidéo</span>
-						<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+						<span className="h-px flex-1 bg-gray-200 dark:bg-white/8" />
 					</div>
 					<VideoCard
 						{...nextVideo}
@@ -43,10 +43,10 @@ export function VideoList({
 				</Button>
 			)}
 			<div>
-				<div className="mb-2 mt-6 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-					<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+				<div className="mb-2 mt-6 flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+					<span className="h-px flex-1 bg-gray-200 dark:bg-white/8" />
 					<span className="shrink-0">Toutes les vidéos</span>
-					<span className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+					<span className="h-px flex-1 bg-gray-200 dark:bg-white/8" />
 				</div>
 				<div className="flex w-full flex-col items-center gap-6">
 					{videos.map((video) => (

@@ -6,13 +6,13 @@
 	<meta
 		name="theme-color"
 		media="(prefers-color-scheme: light)"
-		content="#f0eef6"
+		content="#f8f9fc"
 	/>
 	<meta
 		name="theme-color"
-		media="(prefers-color-scheme: light)"
-    content='#222831'
-  />
+		media="(prefers-color-scheme: dark)"
+		content="#080811"
+	/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title inertia>Installerwindows.fr</title>
 	<meta name="title" content="Installerwindows.fr">
@@ -78,7 +78,7 @@
       const savedTheme = localStorage.getItem('theme');
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      let theme = 'system';
+      let theme = 'dark';
 
       if (savedTheme) {
         theme = savedTheme;

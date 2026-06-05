@@ -24,14 +24,14 @@ function Authenticated() {
 			<img
 				src={user!.avatarUrl}
 				alt=""
-				className="h-8 w-8 shrink-0 rounded-full object-cover"
+				className="h-7 w-7 shrink-0 rounded-full object-cover ring-1 ring-white/10"
 			/>
-			<span className="font-normal text-gray-800 dark:text-white">
+			<span className="text-sm font-normal text-gray-700 dark:text-slate-300">
 				{user!.fullname}
 			</span>
 			<a
 				href="/auth/logout"
-				className="inline-flex shrink-0 items-center justify-center rounded text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
+				className="inline-flex shrink-0 items-center justify-center rounded-lg p-1 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
 				aria-label="Déconnexion"
 			>
 				<span className="i-tabler-logout h-4 w-4 shrink-0" aria-hidden />

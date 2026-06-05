@@ -40,25 +40,25 @@ export function AppDrawer({
 		<div className="fixed inset-0" style={{ zIndex }}>
 			<button
 				type="button"
-				className="absolute inset-0 bg-black/50"
+				className="absolute inset-0 bg-black/60 backdrop-blur-sm"
 				aria-label="Fermer"
 				onClick={onClose}
 			/>
-			<div className="absolute top-0 left-0 flex h-full w-[min(100%,20rem)] flex-col border-r border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-900">
-				<div className="flex shrink-0 items-center justify-between gap-2 border-b border-gray-200 px-4 py-3 dark:border-gray-700">
-					<div className="font-semibold text-gray-900 dark:text-gray-100">
+			<div className="absolute top-0 left-0 flex h-full w-[min(100%,20rem)] flex-col bg-white dark:bg-[#0d0d1a] border-r border-gray-100 dark:border-white/5 shadow-2xl dark:shadow-black/50">
+				<div className="flex shrink-0 items-center justify-between gap-2 border-b border-gray-100 dark:border-white/5 px-4 py-3.5">
+					<div className="text-gray-900 dark:text-white">
 						{title}
 					</div>
 					<button
 						type="button"
-						className="rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+						className="rounded-lg p-1.5 text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
 						onClick={onClose}
 						aria-label="Fermer"
 					>
-						<span className="i-tabler-x block h-5 w-5" />
+						<span className="i-tabler-x block h-4 w-4" />
 					</button>
 				</div>
-				<div className="min-h-0 flex-1 overflow-y-auto p-4">{children}</div>
+				<div className="min-h-0 flex-1 overflow-y-auto p-5">{children}</div>
 			</div>
 		</div>,
 		document.body

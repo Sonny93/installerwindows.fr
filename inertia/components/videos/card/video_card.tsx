@@ -20,11 +20,12 @@ export const VideoCard = ({
 		meta={publishedAt}
 		title={title}
 		dataActive={activeVideoId === id ? 'true' : 'false'}
-		metaClassName="text-gray-700 dark:text-gray-300"
+		metaClassName="text-gray-600 dark:text-slate-400"
 		titleClassName={clsx(
+			'font-medium',
 			activeVideoId === id
-				? 'text-blue-500 dark:text-blue-300'
-				: 'text-gray-900 dark:text-gray-100'
+				? 'text-blue-600 dark:text-blue-400'
+				: 'text-gray-900 dark:text-slate-100'
 		)}
 	/>
 );

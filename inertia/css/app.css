@@ -13,8 +13,8 @@ body {
 
 * {
 	scroll-behavior: smooth;
-	scrollbar-width: 7px;
-	scrollbar-color: rgb(203 213 225 / 0.5) transparent;
+	scrollbar-width: thin;
+	scrollbar-color: rgb(203 213 225 / 0.4) transparent;
 }
 
 .dark {
@@ -22,8 +22,8 @@ body {
 }
 
 *::-webkit-scrollbar {
-	width: 7px;
-	height: 7px;
+	width: 6px;
+	height: 6px;
 }
 
 *::-webkit-scrollbar-track {
@@ -31,27 +31,27 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: rgb(203 213 225 / 0.5);
+	background-color: rgb(203 213 225 / 0.4);
 	border-radius: 4px;
-	border: 2px solid transparent;
+	border: 1px solid transparent;
 	background-clip: padding-box;
 	transition: background-color 0.2s ease;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-	background-color: rgb(148 163 184 / 0.7);
+	background-color: rgb(148 163 184 / 0.6);
 }
 
 .dark * {
-	scrollbar-color: rgb(71 85 105 / 0.5) transparent;
+	scrollbar-color: rgb(51 65 85 / 0.6) transparent;
 }
 
 .dark *::-webkit-scrollbar-thumb {
-	background-color: rgb(71 85 105 / 0.5);
+	background-color: rgb(51 65 85 / 0.6);
 }
 
 .dark *::-webkit-scrollbar-thumb:hover {
-	background-color: rgb(100 116 139 / 0.7);
+	background-color: rgb(71 85 105 / 0.8);
 }
 
 .page-transition-enter {

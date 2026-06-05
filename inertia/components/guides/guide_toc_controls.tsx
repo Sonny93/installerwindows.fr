@@ -25,7 +25,7 @@ export function GuideTocControls({ slug }: Readonly<GuideTocControlsProps>) {
 	};
 
 	const btnOutline =
-		'inline-flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800/50 dark:focus:ring-offset-gray-900';
+		'inline-flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 transition-colors hover:bg-gray-50 dark:hover:bg-white/8 no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500';
 
 	return (
 		<>
