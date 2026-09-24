@@ -4,12 +4,17 @@
  */
 
 export const controllers = {
-  Auth: () => import('#controllers/auth_controller'),
+  auth: {
+    DiscordCallback: () => import('#controllers/auth/discord_callback_controller'),
+    Login: () => import('#controllers/auth/login_controller'),
+    Logout: () => import('#controllers/auth/logout_controller'),
+  },
   Cgu: () => import('#controllers/cgu_controller'),
   guides: {
     CreateGuides: () => import('#controllers/guides/create_guides_controller'),
     DeleteGuide: () => import('#controllers/guides/delete_guide_controller'),
     EditGuide: () => import('#controllers/guides/edit_guide_controller'),
+    LegacyGuideRedirect: () => import('#controllers/guides/legacy_guide_redirect_controller'),
     ShowGuide: () => import('#controllers/guides/show_guide_controller'),
     ShowGuides: () => import('#controllers/guides/show_guides_controller'),
   },

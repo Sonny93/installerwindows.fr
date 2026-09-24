@@ -10,6 +10,6 @@ export default class DeleteGuideController {
 	async execute({ request, response }: HttpContext) {
 		const guide = await this.guideService.getGuideBySlug(request.param('slug'));
 		await this.guideService.deleteGuide(guide);
-		return response.redirect('/guides');
+		return response.redirect().toRoute('guides.show_guides');
 	}
 }

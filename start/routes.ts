@@ -3,17 +3,19 @@ import router from '@adonisjs/core/services/router';
 import { middleware } from '#start/kernel';
 import { controllers } from '#generated/controllers';
 
-router.get('/', [controllers.Home, 'render']).as('home');
+router.get('/', [controllers.Home, 'render']).as('home.show_home');
 router
 	.get('/videos/:videoId?', [controllers.ShowVideos, 'render'])
-	.as('videos');
-router.get('/cgu', [controllers.Cgu, 'render']).as('cgu');
-router.get('/status', [controllers.HealthChecks, 'render']).as('status');
+	.as('videos.show_videos');
+router.get('/cgu', [controllers.Cgu, 'render']).as('cgu.show_cgu');
+router
+	.get('/status', [controllers.HealthChecks, 'render'])
+	.as('status.show_status');
 
-// redirect /guide/:slug to /guides/:slug
-router.get('/guide/:slug', (ctx) =>
-	ctx.response.redirect(`/guides/${ctx.params.slug}`)
-);
+router.get('/guide/:guideSlug', [
+	controllers.guides.LegacyGuideRedirect,
+	'render',
+]);
 
 router
 	.group(() => {
@@ -21,27 +23,29 @@ router
 			.group(() => {
 				router
 					.get('/new', [controllers.guides.CreateGuides, 'render'])
-					.as('guides.create-view');
+					.as('guides.create_guide');
 				router
 					.post('/new', [controllers.guides.CreateGuides, 'execute'])
-					.as('guides.create');
+					.as('guides.create_guide.submit');
 
 				router
 					.get('/edit/:slug', [controllers.guides.EditGuide, 'render'])
-					.as('guides.edit-view');
+					.as('guides.edit_guide');
 				router
 					.put('/:slug', [controllers.guides.EditGuide, 'execute'])
-					.as('guides.edit');
+					.as('guides.edit_guide.submit');
 
 				router
 					.delete('/:slug', [controllers.guides.DeleteGuide, 'execute'])
-					.as('guides.delete');
+					.as('guides.delete_guide');
 			})
 			.middleware([middleware.auth()]);
-		router.get('/', [controllers.guides.ShowGuides, 'render']).as('guides');
+		router
+			.get('/', [controllers.guides.ShowGuides, 'render'])
+			.as('guides.show_guides');
 		router
 			.get('/:guideSlug', [controllers.guides.ShowGuide, 'render'])
-			.as('guides.show');
+			.as('guides.show_guide');
 	})
 	.prefix('/guides');
 
@@ -51,10 +55,10 @@ router
 		 * Auth routes for unauthicated users
 		 */
 		router.group(() => {
-			router.get('/login', [controllers.Auth, 'discord']).as('auth.login');
+			router.get('/login', [controllers.auth.Login, 'render']).as('auth.login');
 			router
-				.get('/callback', [controllers.Auth, 'authCallback'])
-				.as('auth.callback');
+				.get('/callback', [controllers.auth.DiscordCallback, 'render'])
+				.as('auth.discord_callback');
 		});
 
 		/**
@@ -62,7 +66,9 @@ router
 		 */
 		router
 			.group(() => {
-				router.post('/logout', [controllers.Auth, 'logout']).as('auth.logout');
+				router
+					.post('/logout', [controllers.auth.Logout, 'execute'])
+					.as('auth.logout');
 			})
 			.middleware([middleware.auth()]);
 	})

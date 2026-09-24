@@ -15,6 +15,8 @@ export default class CreateGuidesController {
 	async execute({ request, response }: HttpContext) {
 		const payload = await request.validateUsing(guideValidator);
 		const guide = await this.guideService.createGuide(payload);
-		return response.redirect(`/guides/${guide.slug}`);
+		return response
+			.redirect()
+			.toRoute('guides.show_guide', { guideSlug: guide.slug });
 	}
 }

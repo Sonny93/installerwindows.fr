@@ -18,7 +18,9 @@ export default class VideosController {
 		const currentVideo = videos.find((v) => v.id === videoId);
 
 		if (!currentVideo) {
-			return response.redirect(`/videos/${videos[0].id}`);
+			return response
+				.redirect()
+				.toRoute('videos.show_videos', { videoId: videos[0].id });
 		}
 
 		const nextVideo = videos.at(videos.indexOf(currentVideo) + 1);

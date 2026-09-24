@@ -23,6 +23,8 @@ export default class EditGuideController {
 		const guide = await this.guideService.getGuideBySlug(params.slug);
 		await this.guideService.updateGuide(guide, payload);
 
-		return response.redirect(`/guides/${guide.slug}`);
+		return response
+			.redirect()
+			.toRoute('guides.show_guide', { guideSlug: guide.slug });
 	}
 }
