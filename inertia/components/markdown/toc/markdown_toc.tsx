@@ -7,7 +7,6 @@ import { useAuth } from '~/hooks/use_auth';
 import { useHeadroom } from '~/hooks/use_headroom';
 import { useMediaQuery } from '~/hooks/use_media_query';
 import { AppDrawer } from '~/components/generics/app_drawer';
-import { transformRawToGithubUrl } from '#shared/utils/index';
 import { GuideTocControls } from '~/components/guides/guide_toc_controls';
 import { MarkdownBuilderProps } from '~/components/markdown/builder/markdown_builder';
 import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
@@ -21,7 +20,7 @@ interface MarkdownTocProps extends Omit<MarkdownBuilderProps, 'html'> {}
 export function MarkdownToc({
 	toc,
 	slug,
-	githubRawUrl,
+	githubUrl,
 }: Readonly<MarkdownTocProps>) {
 	const { isAuthenticated } = useAuth();
 	const [opened, setOpened] = useState(false);
@@ -123,12 +122,9 @@ export function MarkdownToc({
 				>
 					<div className="mb-4">{tocHeader}</div>
 					<div className="flex flex-col gap-0.5">{items}</div>
-					{githubRawUrl ? (
+					{githubUrl ? (
 						<div className="mt-4 flex w-full flex-col gap-2">
-							<ExternalLinkUnstyled
-								href={transformRawToGithubUrl(githubRawUrl)}
-								className={btnOutline}
-							>
+							<ExternalLinkUnstyled href={githubUrl} className={btnOutline}>
 								Contribuer
 							</ExternalLinkUnstyled>
 							{isAuthenticated && slug ? (

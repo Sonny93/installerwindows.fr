@@ -1,7 +1,7 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders';
 
 import Guide from '#models/guide';
-import { slugify } from '#shared/utils/index';
+import { slugify } from '#libs/slugify';
 
 const guideUrls = [
 	'https://github.com/Piwielle/windows_11/blob/main/Guide/README.md',

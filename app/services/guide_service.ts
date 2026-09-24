@@ -1,5 +1,7 @@
+import { inject } from '@adonisjs/core';
+
 import Guide from '#models/guide';
-import { validateAndTransformMarkdownUrl } from '#shared/utils/index';
+import { GithubService } from '#services/github_service';
 
 type CrudGuideData = {
 	title: string;
@@ -7,7 +9,10 @@ type CrudGuideData = {
 	githubUrl: string;
 };
 
+@inject()
 export class GuideService {
+	constructor(private readonly githubService: GithubService) {}
+
 	/**
 	 * Creates a guide, persisting the raw GitHub URL derived from the provided link.
 	 * @param crud.title Guide title.
@@ -16,7 +21,7 @@ export class GuideService {
 	 * @returns Newly created Guide record.
 	 */
 	async createGuide({ githubUrl, ...data }: CrudGuideData) {
-		const githubRawUrl = validateAndTransformMarkdownUrl(githubUrl);
+		const githubRawUrl = this.githubService.toRawContentUrl(githubUrl);
 		return await Guide.create({
 			...data,
 			githubRawUrl,
@@ -49,7 +54,7 @@ export class GuideService {
 	 * @returns Saved guide after merge.
 	 */
 	async updateGuide(guide: Guide, { githubUrl, ...data }: CrudGuideData) {
-		const githubRawUrl = validateAndTransformMarkdownUrl(githubUrl);
+		const githubRawUrl = this.githubService.toRawContentUrl(githubUrl);
 		return await guide.merge({ ...data, githubRawUrl }).save();
 	}
 

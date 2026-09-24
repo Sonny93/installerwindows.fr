@@ -1,6 +1,6 @@
 import vine from '@vinejs/vine';
 
-import { slugify } from '#shared/utils/index';
+import { slugify } from '#libs/slugify';
 import { forbiddenValues } from '#validators/rules/forbidden_values';
 
 const githubRegex =

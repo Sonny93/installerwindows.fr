@@ -11,10 +11,7 @@ export default defineConfig({
 		{
 			files: ['inertia/**/*.{ts,tsx}'],
 			rules: {
-				'@adonisjs/no-backend-import-in-frontend': [
-					'error',
-					{ allowed: ['#shared/*', '#shared/**'] },
-				],
+				'@adonisjs/no-backend-import-in-frontend': 'error',
 			},
 		},
 	],

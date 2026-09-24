@@ -1,4 +1,4 @@
-import type { TocItem } from '#shared/types/index';
+import type { TocItem } from '~/components/markdown/toc/toc_item';
 import { MarkdownBuilder } from '~/components/markdown/builder/markdown_builder';
 
 interface CGUPageProps {

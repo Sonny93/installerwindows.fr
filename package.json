@@ -29,8 +29,7 @@
 		"#database/*": "./database/*.js",
 		"#tests/*": "./tests/*.js",
 		"#start/*": "./start/*.js",
-		"#config/*": "./config/*.js",
-		"#shared/*": "./shared/*.js"
+		"#config/*": "./config/*.js"
 	},
 	"scripts": {
 		"start": "node bin/server.js",

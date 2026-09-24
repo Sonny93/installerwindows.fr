@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/react';
 import { BASE_INPUT_STYLES, Button } from '@minimalstuff/ui';
 import React, { ChangeEvent, FocusEvent, useState } from 'react';
 
-import { slugify } from '#shared/utils/index';
+import { slugify } from '~/lib/slugify';
 
 export type Field = {
 	label: string;

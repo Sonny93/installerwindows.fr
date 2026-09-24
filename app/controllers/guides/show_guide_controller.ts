@@ -25,7 +25,7 @@ export default class ShowGuideController {
 			'guides/show',
 			{
 				...htmlAndToc,
-				githubRawUrl: guide.githubRawUrl,
+				githubUrl: this.githubService.toBlobUrl(guide.githubRawUrl),
 				slug: guide.slug,
 			},
 			{

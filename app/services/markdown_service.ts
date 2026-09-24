@@ -10,8 +10,13 @@ import logger from '@adonisjs/core/services/logger';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 import env from '#start/env';
-import { TocItem } from '#shared/types/index';
 import { YoutubeService } from '#services/youtube_service';
+
+export type TocItem = {
+	level: number;
+	text: string;
+	id: string;
+};
 
 type ExtractToc = (toc: TocItem[]) => (tree: any) => void;
 

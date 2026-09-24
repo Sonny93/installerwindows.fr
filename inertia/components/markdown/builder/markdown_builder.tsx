@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import type { TocItem } from '#shared/types/index';
+import type { TocItem } from '~/components/markdown/toc/toc_item';
 import { MarkdownToc } from '~/components/markdown/toc/markdown_toc';
 import {
 	bindMarkdownCopy,
@@ -11,14 +11,14 @@ export interface MarkdownBuilderProps {
 	html: string;
 	toc?: TocItem[];
 	slug?: string;
-	githubRawUrl?: string;
+	githubUrl?: string;
 }
 
 export const MarkdownBuilder = ({
 	html,
 	toc,
 	slug,
-	githubRawUrl,
+	githubUrl,
 }: Readonly<MarkdownBuilderProps>) => {
 	const rootRef = useRef<HTMLDivElement | null>(null);
 
@@ -37,9 +37,7 @@ export const MarkdownBuilder = ({
 				className="w-full markdown-body prose prose-lg prose-gray max-w-none min-w-0 flex-1 break-words dark:prose-invert"
 				dangerouslySetInnerHTML={{ __html: html }}
 			/>
-			{toc ? (
-				<MarkdownToc toc={toc} slug={slug} githubRawUrl={githubRawUrl} />
-			) : null}
+			{toc ? <MarkdownToc toc={toc} slug={slug} githubUrl={githubUrl} /> : null}
 		</div>
 	);
 };
