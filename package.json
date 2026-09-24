@@ -1,27 +1,14 @@
 {
 	"name": "new-installerwindows.fr",
 	"version": "3.4.0",
+	"private": true,
+	"license": "MIT",
 	"author": {
 		"name": "Sonny",
 		"email": "sonnyasdev@gmail.com",
 		"url": "https://www.sonny.dev/"
 	},
-	"private": true,
 	"type": "module",
-	"license": "MIT",
-	"scripts": {
-		"start": "node bin/server.js",
-		"build": "node ace build",
-		"dev": "node ace serve --hmr",
-		"test": "node ace test",
-		"lint": "eslint .",
-		"format": "prettier --write .",
-		"typecheck": "tsc --noEmit && tsc --noEmit --project inertia/tsconfig.json",
-		"check": "pnpm run lint && pnpm run typecheck",
-		"release": "release-it",
-		"postinstall": "pnpm run format",
-		"postuninstall": "pnpm run format"
-	},
 	"imports": {
 		"#client/*": "./.adonisjs/client/*.ts",
 		"#generated/*": "./.adonisjs/server/*.js",
@@ -45,32 +32,20 @@
 		"#config/*": "./config/*.js",
 		"#shared/*": "./shared/*.js"
 	},
-	"devDependencies": {
-		"@adonisjs/assembler": "^8.5.2",
-		"@adonisjs/eslint-config": "^3.1.0",
-		"@adonisjs/tsconfig": "^2.0.0",
-		"@japa/assert": "^4.2.0",
-		"@japa/plugin-adonisjs": "^5.2.0",
-		"@japa/runner": "^5.3.0",
-		"@poppinss/ts-exec": "^1.4.4",
-		"@release-it/conventional-changelog": "^12.0.2",
-		"@types/luxon": "^3.7.5",
-		"@types/node": "24",
-		"@types/react": "^19.3.0",
-		"@types/react-dom": "^19.3.0",
-		"@unocss/preset-icons": "^66.10.5",
-		"@unocss/preset-typography": "^66.10.5",
-		"@unocss/preset-web-fonts": "^66.10.5",
-		"@vitejs/plugin-react": "^6.1.1",
-		"eslint": "^10.11.0",
-		"hot-hook": "^1.0.0",
-		"pino-pretty": "^13.1.3",
-		"prettier": "^3.9.9",
-		"release-it": "^21.1.0",
-		"typescript": "~5.9.3",
-		"unocss": "^66.10.5",
-		"vite": "^8.3.0",
-		"youch": "^4.1.1"
+	"scripts": {
+		"start": "node bin/server.js",
+		"build": "node ace build",
+		"dev": "node ace serve --hmr",
+		"test": "node ace test",
+		"lint": "oxlint --type-aware",
+		"lint:fix": "oxlint --type-aware --fix --fix-suggestions --fix-dangerously",
+		"format": "pnpm run lint:fix; oxfmt --write .",
+		"format:check": "oxfmt --check .",
+		"typecheck": "tsc --noEmit && tsc --noEmit --project inertia/tsconfig.json",
+		"check": "pnpm run lint && pnpm run format:check && pnpm run typecheck",
+		"release": "release-it",
+		"postinstall": "oxfmt --write .",
+		"postuninstall": "oxfmt --write ."
 	},
 	"dependencies": {
 		"@adonisjs/ally": "^6.3.0",
@@ -106,23 +81,41 @@
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.1.0"
 	},
+	"devDependencies": {
+		"@adonisjs/assembler": "^8.5.2",
+		"@adonisjs/tsconfig": "^2.0.0",
+		"@japa/assert": "^4.2.0",
+		"@japa/plugin-adonisjs": "^5.2.0",
+		"@japa/runner": "^5.3.0",
+		"@minimalstuff/tooling": "^0.6.0",
+		"@poppinss/ts-exec": "^1.4.4",
+		"@release-it/conventional-changelog": "^12.0.2",
+		"@types/luxon": "^3.7.5",
+		"@types/node": "24",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"@unocss/preset-icons": "^66.10.5",
+		"@unocss/preset-typography": "^66.10.5",
+		"@unocss/preset-web-fonts": "^66.10.5",
+		"@vitejs/plugin-react": "^6.1.1",
+		"hot-hook": "^1.0.0",
+		"oxfmt": "^0.70.0",
+		"oxlint": "^1.85.0",
+		"oxlint-tsgolint": "^7.0.2002",
+		"pino-pretty": "^13.1.3",
+		"release-it": "^21.1.0",
+		"typescript": "~5.9.3",
+		"unocss": "^66.10.5",
+		"vite": "^8.3.0",
+		"youch": "^4.1.1"
+	},
+	"volta": {
+		"node": "24.14.0"
+	},
 	"hotHook": {
 		"boundaries": [
 			"./app/controllers/**/*.ts",
 			"./app/middleware/*.ts"
 		]
-	},
-	"prettier": {
-		"trailingComma": "es5",
-		"semi": true,
-		"singleQuote": true,
-		"useTabs": true,
-		"quoteProps": "as-needed",
-		"bracketSpacing": true,
-		"arrowParens": "always",
-		"printWidth": 80
-	},
-	"volta": {
-		"node": "24.14.0"
 	}
 }
