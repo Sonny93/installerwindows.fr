@@ -3,6 +3,8 @@
 	"compilerOptions": {
 		"module": "ESNext",
 		"jsx": "react-jsx",
+		"rewriteRelativeImportExtensions": true,
+		"allowImportingTsExtensions": true,
 		"paths": {
 			"~/*": ["./*"],
 			"@generated/*": ["../.adonisjs/client/*"]

@@ -6,17 +6,13 @@
 /// <reference path="./manifest.d.ts" />
 import type { InferData, InferVariants } from '@adonisjs/core/types/transformers'
 import type { InferSharedProps, InferFlashData } from '@adonisjs/inertia/types'
-import type GuideTransformer from '#transformers/guide_transformer'
-import type UserAuthTransformer from '#transformers/user_auth_transformer'
-import type UserTransformer from '#transformers/user_transformer'
-import type VideoTransformer from '#transformers/video_transformer'
+import type UserAuthTransformer from '../../app/auth/user_auth_transformer.ts'
+import type UserTransformer from '../../app/auth/user_transformer.ts'
+import type GuideTransformer from '../../app/guides/guide_transformer.ts'
+import type VideoTransformer from '../../app/videos/video_transformer.ts'
 import type InertiaMiddleware from '#middleware/inertia_middleware'
 
 export namespace Data {
-  export type Guide = InferData<GuideTransformer>
-  export namespace Guide {
-    export type Variants = InferVariants<GuideTransformer>
-  }
   export type UserAuth = InferData<UserAuthTransformer>
   export namespace UserAuth {
     export type Variants = InferVariants<UserAuthTransformer>
@@ -24,6 +20,10 @@ export namespace Data {
   export type User = InferData<UserTransformer>
   export namespace User {
     export type Variants = InferVariants<UserTransformer>
+  }
+  export type Guide = InferData<GuideTransformer>
+  export namespace Guide {
+    export type Variants = InferVariants<GuideTransformer>
   }
   export type Video = InferData<VideoTransformer>
   export namespace Video {

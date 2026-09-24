@@ -4,9 +4,7 @@ import type { InferSharedProps } from '@adonisjs/inertia/types';
 import BaseInertiaMiddleware from '@adonisjs/inertia/inertia_middleware';
 
 import packageJson from '../../package.json' with { type: 'json' };
-import UserAuthTransformer, {
-	guestAuth,
-} from '#transformers/user_auth_transformer';
+import UserAuthTransformer, { guestAuth } from '#auth/user_auth_transformer';
 
 export default class InertiaMiddleware extends BaseInertiaMiddleware {
 	async share(ctx: HttpContext) {

@@ -12,17 +12,20 @@
 	"imports": {
 		"#client/*": "./.adonisjs/client/*.ts",
 		"#generated/*": "./.adonisjs/server/*.js",
-		"#transformers/*": "./app/transformers/*.js",
-		"#controllers/*": "./app/controllers/*.js",
+		"#guides/*": "./app/guides/*.js",
+		"#videos/*": "./app/videos/*.js",
+		"#auth/*": "./app/auth/*.js",
+		"#home/*": "./app/home/*.js",
+		"#cgu/*": "./app/cgu/*.js",
+		"#status/*": "./app/status/*.js",
+		"#markdown/*": "./app/markdown/*.js",
 		"#exceptions/*": "./app/exceptions/*.js",
 		"#models/*": "./app/models/*.js",
 		"#mails/*": "./app/mails/*.js",
-		"#services/*": "./app/services/*.js",
 		"#libs/*": "./app/libs/*.js",
 		"#listeners/*": "./app/listeners/*.js",
 		"#events/*": "./app/events/*.js",
 		"#middleware/*": "./app/middleware/*.js",
-		"#validators/*": "./app/validators/*.js",
 		"#providers/*": "./providers/*.js",
 		"#policies/*": "./app/policies/*.js",
 		"#abilities/*": "./app/abilities/*.js",
@@ -115,7 +118,7 @@
 	},
 	"hotHook": {
 		"boundaries": [
-			"./app/controllers/**/*.ts",
+			"./app/**/*_controller.ts",
 			"./app/middleware/*.ts"
 		]
 	}

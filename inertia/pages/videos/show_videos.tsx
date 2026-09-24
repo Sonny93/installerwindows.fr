@@ -1,0 +1,56 @@
+import { Data } from '@generated/data';
+import { ClientOnly } from '@minimalstuff/ui';
+
+import { cn } from '~/shared/lib/cn';
+import { VideoList } from '~/videos/show_videos/video_list';
+import { VideoMeta } from '~/videos/show_videos/video_meta';
+import { useMediaQuery } from '~/shared/hooks/use_media_query';
+import { VideoPlayer } from '~/videos/show_videos/video_player';
+
+const MQ_MD = '(max-width: 991px)';
+
+interface VideosPageProps {
+	videos: Data.Video[];
+	currentVideo: Data.Video;
+	nextVideo: Data.Video | undefined;
+}
+
+export default function VideosPage({
+	videos,
+	currentVideo,
+	nextVideo,
+}: Readonly<VideosPageProps>) {
+	const isSmallScreen = useMediaQuery(MQ_MD);
+
+	return (
+		<div
+			className={cn(
+				'flex w-full flex-nowrap items-start gap-8',
+				isSmallScreen ? 'flex-col' : 'flex-row'
+			)}
+		>
+			{videos.at(0) ? (
+				<div className="flex w-full flex-col gap-6 lg:min-w-0 lg:flex-1">
+					<ClientOnly>
+						<VideoPlayer url={currentVideo.url} />
+					</ClientOnly>
+					<VideoMeta
+						title={currentVideo.title}
+						description={currentVideo.description}
+						publishedAt={currentVideo.publishedAt}
+					/>
+				</div>
+			) : null}
+
+			<div
+				className={isSmallScreen ? 'w-full' : 'w-full max-w-[350px] shrink-0'}
+			>
+				<VideoList
+					videos={videos}
+					nextVideo={nextVideo}
+					activeVideoId={currentVideo.id}
+				/>
+			</div>
+		</div>
+	);
+}

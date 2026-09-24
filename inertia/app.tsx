@@ -7,7 +7,7 @@ import { resolvePageComponent } from '@adonisjs/inertia/helpers';
 import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
 
 import { DefaultLayout } from '~/layouts/default_layout';
-import { PRIMAY_COLOR, PROJECT_NAME } from '~/consts/project';
+import { PRIMAY_COLOR, PROJECT_NAME } from '~/shared/consts/project';
 
 void createInertiaApp({
 	progress: { color: PRIMAY_COLOR, delay: 100 },

@@ -7,8 +7,8 @@ import { PropsWithChildren, useState } from 'react';
 import { TuyauProvider } from '@adonisjs/inertia/react';
 import { IconButton, ModalProvider } from '@minimalstuff/ui';
 
-import { tuyauClient } from '~/lib/tuyau_client';
-import { usePageTransition } from '~/hooks/use_page_transition';
+import { tuyauClient } from '~/shared/lib/tuyau_client';
+import { usePageTransition } from '~/shared/hooks/use_page_transition';
 
 export function BaseLayout({ children }: Readonly<PropsWithChildren>) {
 	const { props } = usePage<PageProps & { flash: string }>();

@@ -3,13 +3,13 @@ import router from '@adonisjs/core/services/router';
 import { middleware } from '#start/kernel';
 import { controllers } from '#generated/controllers';
 
-router.get('/', [controllers.Home, 'render']).as('home.show_home');
+router.get('/', [controllers.home.ShowHome, 'render']).as('home.show_home');
 router
-	.get('/videos/:videoId?', [controllers.ShowVideos, 'render'])
+	.get('/videos/:videoId?', [controllers.videos.ShowVideos, 'render'])
 	.as('videos.show_videos');
-router.get('/cgu', [controllers.Cgu, 'render']).as('cgu.show_cgu');
+router.get('/cgu', [controllers.cgu.ShowCgu, 'render']).as('cgu.show_cgu');
 router
-	.get('/status', [controllers.HealthChecks, 'render'])
+	.get('/status', [controllers.status.ShowStatus, 'render'])
 	.as('status.show_status');
 
 router.get('/guide/:guideSlug', [
@@ -22,10 +22,10 @@ router
 		router
 			.group(() => {
 				router
-					.get('/new', [controllers.guides.CreateGuides, 'render'])
+					.get('/new', [controllers.guides.CreateGuide, 'render'])
 					.as('guides.create_guide');
 				router
-					.post('/new', [controllers.guides.CreateGuides, 'execute'])
+					.post('/new', [controllers.guides.CreateGuide, 'execute'])
 					.as('guides.create_guide.submit');
 
 				router

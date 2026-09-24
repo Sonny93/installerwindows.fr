@@ -5,20 +5,28 @@
 
 export const controllers = {
   auth: {
-    DiscordCallback: () => import('#controllers/auth/discord_callback_controller'),
-    Login: () => import('#controllers/auth/login_controller'),
-    Logout: () => import('#controllers/auth/logout_controller'),
+    DiscordCallback: () => import('../../app/auth/discord_callback_controller.ts'),
+    Login: () => import('../../app/auth/login_controller.ts'),
+    Logout: () => import('../../app/auth/logout_controller.ts'),
   },
-  Cgu: () => import('#controllers/cgu_controller'),
+  cgu: {
+    ShowCgu: () => import('../../app/cgu/show_cgu_controller.ts'),
+  },
   guides: {
-    CreateGuides: () => import('#controllers/guides/create_guides_controller'),
-    DeleteGuide: () => import('#controllers/guides/delete_guide_controller'),
-    EditGuide: () => import('#controllers/guides/edit_guide_controller'),
-    LegacyGuideRedirect: () => import('#controllers/guides/legacy_guide_redirect_controller'),
-    ShowGuide: () => import('#controllers/guides/show_guide_controller'),
-    ShowGuides: () => import('#controllers/guides/show_guides_controller'),
+    CreateGuide: () => import('../../app/guides/create_guide_controller.ts'),
+    DeleteGuide: () => import('../../app/guides/delete_guide_controller.ts'),
+    EditGuide: () => import('../../app/guides/edit_guide_controller.ts'),
+    LegacyGuideRedirect: () => import('../../app/guides/legacy_guide_redirect_controller.ts'),
+    ShowGuide: () => import('../../app/guides/show_guide_controller.ts'),
+    ShowGuides: () => import('../../app/guides/show_guides_controller.ts'),
   },
-  HealthChecks: () => import('#controllers/health_checks_controller'),
-  Home: () => import('#controllers/home_controller'),
-  ShowVideos: () => import('#controllers/show_videos_controller'),
+  home: {
+    ShowHome: () => import('../../app/home/show_home_controller.ts'),
+  },
+  status: {
+    ShowStatus: () => import('../../app/status/show_status_controller.ts'),
+  },
+  videos: {
+    ShowVideos: () => import('../../app/videos/show_videos_controller.ts'),
+  },
 }

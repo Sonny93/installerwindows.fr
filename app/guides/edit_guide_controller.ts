@@ -1,0 +1,30 @@
+import { inject } from '@adonisjs/core';
+import type { HttpContext } from '@adonisjs/core/http';
+
+import { GuideService } from '#guides/guide_service';
+import GuideTransformer from '#guides/guide_transformer';
+import { editGuideValidator } from '#guides/validators/edit_guide_validator';
+
+@inject()
+export default class EditGuideController {
+	constructor(private readonly guideService: GuideService) {}
+
+	async render({ inertia, request }: HttpContext) {
+		const guide = await this.guideService.getGuideBySlug(request.param('slug'));
+		return inertia.render('guides/edit_guide', {
+			guide: GuideTransformer.transform(guide),
+		});
+	}
+
+	async execute({ request, response }: HttpContext) {
+		const { params, ...payload } =
+			await request.validateUsing(editGuideValidator);
+
+		const guide = await this.guideService.getGuideBySlug(params.slug);
+		await this.guideService.updateGuide(guide, payload);
+
+		return response
+			.redirect()
+			.toRoute('guides.show_guide', { guideSlug: guide.slug });
+	}
+}

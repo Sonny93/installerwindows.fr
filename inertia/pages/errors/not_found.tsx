@@ -1,7 +1,7 @@
 import { Link } from '@adonisjs/inertia/react';
 
-import { Error404 } from '~/components/errors/error_404';
-import { HelpButton } from '~/components/generics/help_button';
+import { HelpButton } from '~/shared/help_button';
+import { Error404 } from '~/errors/not_found/error_404';
 
 export default function NotFound() {
 	return (

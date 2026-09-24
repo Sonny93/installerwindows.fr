@@ -111,7 +111,29 @@ export default defineConfig({
 
 	hooks: {
 		init: [
-			indexEntities({ transformers: { enabled: true, withSharedProps: true } }),
+			indexEntities({
+				controllers: {
+					source: 'app',
+					glob: ['**/*_controller.ts'],
+					importAlias: undefined,
+				},
+				transformers: {
+					enabled: true,
+					withSharedProps: true,
+					source: 'app',
+					glob: ['**/*_transformer.ts'],
+					importAlias: undefined,
+					skipSegments: [
+						'guides',
+						'videos',
+						'auth',
+						'home',
+						'cgu',
+						'status',
+						'markdown',
+					],
+				},
+			}),
 			indexPages({ framework: 'react' }),
 			generateRegistry(),
 		],

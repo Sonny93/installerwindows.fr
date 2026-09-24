@@ -1,0 +1,96 @@
+import { useState } from 'react';
+import { ClientOnly, IconButton, ThemeToggle } from '@minimalstuff/ui';
+
+import { urlFor } from '~/shared/lib/url_for';
+import { AppDrawer } from '~/shared/app_drawer';
+import { HelpButton } from '~/shared/help_button';
+import { getThemeAriaLabel } from '~/shared/lib/theme';
+import type { NavLink } from '~/layouts/navbar/nav_link';
+import { useHeadroom } from '~/shared/hooks/use_headroom';
+import { InternalLink } from '~/shared/links/internal_link';
+import { useMediaQuery } from '~/shared/hooks/use_media_query';
+import { NavLinksList } from '~/layouts/navbar/nav_links_list';
+import {
+	EDITOR_NAME,
+	EDITOR_YTB_URL,
+	PROJECT_NAME,
+} from '~/shared/consts/project';
+
+const MQ_SM = '(max-width: 767px)';
+
+const links: NavLink[] = [
+	{ label: 'Vidéos', href: urlFor('videos.show_videos'), external: false },
+	{ label: 'Guides', href: urlFor('guides.show_guides'), external: false },
+	{ label: EDITOR_NAME, href: EDITOR_YTB_URL, external: true },
+];
+
+interface FloatingNavbarProps {
+	layoutMaxWidth: string;
+}
+
+export function FloatingNavbar({
+	layoutMaxWidth,
+}: Readonly<FloatingNavbarProps>) {
+	const [opened, setOpened] = useState(false);
+	const isMobile = useMediaQuery(MQ_SM);
+	const pinned = useHeadroom({ fixedAt: 120 });
+	const isDrawerOpen = opened && isMobile;
+
+	const close = () => setOpened(false);
+	const toggle = () => setOpened((o) => !o);
+
+	return (
+		<>
+			<div
+				className="sticky top-0 z-[9] w-full shrink-0 transition-transform duration-[400ms] ease-out bg-gray-100 dark:bg-gray-900"
+				style={{
+					transform: pinned ? 'translate3d(0,0,0)' : 'translate3d(0,-110px,0)',
+				}}
+			>
+				<div
+					className="mx-auto flex h-[60px] w-full items-center justify-between gap-3 px-2 md:px-4"
+					style={{ maxWidth: layoutMaxWidth }}
+				>
+					<div className="flex items-center gap-3">
+						{isMobile ? (
+							<IconButton
+								icon={opened ? 'i-tabler-x' : 'i-tabler-menu-2'}
+								aria-label={opened ? 'Fermer le menu' : 'Ouvrir le menu'}
+								variant="ghost"
+								onClick={toggle}
+							/>
+						) : null}
+						<InternalLink
+							href={urlFor('home.show_home')}
+							className="text-2xl font-normal no-underline hover:opacity-90 text-blue-600 hover:text-blue-700"
+						>
+							{PROJECT_NAME}
+						</InternalLink>
+					</div>
+
+					{isMobile ? null : (
+						<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+							<HelpButton />
+							<NavLinksList links={links} onLinkClick={close} />
+							<ThemeToggle getAriaLabel={getThemeAriaLabel} />
+						</div>
+					)}
+				</div>
+			</div>
+
+			<AppDrawer
+				opened={isDrawerOpen}
+				onClose={close}
+				title={PROJECT_NAME}
+				zIndex={999999}
+			>
+				<div className="flex flex-col gap-4">
+					<NavLinksList links={links} onLinkClick={close} />
+					<ClientOnly>
+						<ThemeToggle getAriaLabel={getThemeAriaLabel} />
+					</ClientOnly>
+				</div>
+			</AppDrawer>
+		</>
+	);
+}

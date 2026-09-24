@@ -15,8 +15,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/home_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/home_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'videos.show_videos': {
@@ -26,9 +26,9 @@ export interface Registry {
       body: {}
       paramsTuple: []
       params: {}
-      query: ExtractQueryForGet<InferInput<(typeof import('#validators/video_validator').videoValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/show_videos_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/show_videos_controller').default['render']>>> | { status: 422; response: { errors: SimpleError[] } }
+      query: {}
+      response: unknown
+      errorResponse: unknown
     }
   }
   'cgu.show_cgu': {
@@ -39,8 +39,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/cgu_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/cgu_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'status.show_status': {
@@ -51,8 +51,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/health_checks_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/health_checks_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'legacy_guide_redirect.render': {
@@ -63,8 +63,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { guideSlug: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/legacy_guide_redirect_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/legacy_guide_redirect_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'guides.create_guide': {
@@ -75,20 +75,20 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'guides.create_guide.submit': {
     methods: ["POST"]
     pattern: '/guides/new'
     types: {
-      body: ExtractBody<InferInput<(typeof import('#validators/guide_validator').guideValidator)>>
+      body: {}
       paramsTuple: []
       params: {}
-      query: ExtractQuery<InferInput<(typeof import('#validators/guide_validator').guideValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['execute']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/create_guides_controller').default['execute']>>> | { status: 422; response: { errors: SimpleError[] } }
+      query: {}
+      response: unknown
+      errorResponse: unknown
     }
   }
   'guides.edit_guide': {
@@ -99,20 +99,20 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { slug: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'guides.edit_guide.submit': {
     methods: ["PUT"]
     pattern: '/guides/:slug'
     types: {
-      body: ExtractBody<InferInput<(typeof import('#validators/guide_validator').editGuideValidator)>>
+      body: {}
       paramsTuple: [ParamValue]
       params: { slug: ParamValue }
-      query: ExtractQuery<InferInput<(typeof import('#validators/guide_validator').editGuideValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['execute']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/edit_guide_controller').default['execute']>>> | { status: 422; response: { errors: SimpleError[] } }
+      query: {}
+      response: unknown
+      errorResponse: unknown
     }
   }
   'guides.delete_guide': {
@@ -123,8 +123,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { slug: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/delete_guide_controller').default['execute']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/delete_guide_controller').default['execute']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'guides.show_guides': {
@@ -135,8 +135,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/show_guides_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/show_guides_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'guides.show_guide': {
@@ -147,8 +147,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { guideSlug: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/guides/show_guide_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/guides/show_guide_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'auth.login': {
@@ -159,8 +159,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/auth/login_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/auth/login_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'auth.discord_callback': {
@@ -171,8 +171,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/auth/discord_callback_controller').default['render']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/auth/discord_callback_controller').default['render']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
   'auth.logout': {
@@ -183,8 +183,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/auth/logout_controller').default['execute']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/auth/logout_controller').default['execute']>>>
+      response: unknown
+      errorResponse: unknown
     }
   }
 }
