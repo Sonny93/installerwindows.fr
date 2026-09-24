@@ -29,16 +29,23 @@ export default class HttpExceptionHandler extends ExceptionHandler {
 		'500..599': (error, { inertia }) =>
 			inertia.render('errors/server_error', {
 				message: error.message,
-				service:
-					error instanceof RemoteApiErrorException && (error as any)?.service
-						? (error as any).service
-						: undefined,
-				link:
-					error instanceof RemoteApiErrorException && (error as any)?.link
-						? (error as any).link
-						: undefined,
+				...this.remoteApiErrorProps(error),
 			}),
 	};
+
+	/**
+	 * Extracts the service and link to expose on the server error page when the error
+	 * is a remote API failure, without leaking anything for other error types.
+	 * @param error Error caught by the status page renderer.
+	 * @returns Service and link when the error is a RemoteApiErrorException, an empty object otherwise.
+	 */
+	private remoteApiErrorProps(error: unknown): {
+		service?: (typeof RemoteApiErrorException.services)[number];
+		link?: string;
+	} {
+		if (!(error instanceof RemoteApiErrorException)) return {};
+		return { service: error.service, link: error.link };
+	}
 
 	/**
 	 * The method is used for handling errors and returning

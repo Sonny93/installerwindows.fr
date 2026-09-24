@@ -6,8 +6,8 @@ export default class RemoteApiErrorException extends Exception {
 	static message =
 		"Une erreur est survenue lors de la récupération des données de l'API";
 	static services = ['youtube', 'github'] as const;
-	link?: string;
-	service?: string;
+	readonly link?: string;
+	readonly service: (typeof RemoteApiErrorException.services)[number];
 
 	constructor(
 		api: (typeof RemoteApiErrorException.services)[number],
