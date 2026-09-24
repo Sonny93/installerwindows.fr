@@ -7,7 +7,9 @@ import remarkRehype from 'remark-rehype';
 import { visit } from 'unist-util-visit';
 import rehypeStringify from 'rehype-stringify';
 import logger from '@adonisjs/core/services/logger';
+import type { Root, Element, ElementContent } from 'hast';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 
 import env from '#start/env';
 import { YoutubeService } from '#services/youtube_service';
@@ -18,7 +20,7 @@ export type TocItem = {
 	id: string;
 };
 
-type ExtractToc = (toc: TocItem[]) => (tree: any) => void;
+type ExtractToc = (toc: TocItem[]) => (tree: Root) => void;
 
 @inject()
 export class MarkdownService {
@@ -28,32 +30,27 @@ export class MarkdownService {
 
 	/**
 	 * Builds a unified tree visitor that fills an array with heading levels, slugs, and labels extracted from h1–h6 elements.
+	 * rehype-sanitize and rehype-slug both run earlier in the pipeline, so every heading element is expected to
+	 * carry a string `id` by the time this visitor runs; a missing or non-string id means the pipeline order was
+	 * broken upstream, so the visitor throws instead of silently producing a table-of-contents entry with no anchor.
 	 * @param toc Mutable array that will receive table-of-contents entries.
 	 * @returns Function to plug into the unified pipeline to walk the AST.
 	 */
 	extractToc: ExtractToc = (toc) => {
 		return (tree) => {
-			visit(tree, 'element', (node: any) => {
-				if (/^h[1-6]$/.test(node.tagName)) {
-					const level = Number.parseInt(node.tagName.charAt(1), 10);
-					const text = node.children
-						.map((child: any) => {
-							if (child.type === 'text') return child.value;
-							if (child.type === 'element') {
-								return child.children
-									.map((nested: any) => {
-										if (nested.type === 'text') return nested.value;
-										return '';
-									})
-									.join('');
-							}
-							return '';
-						})
-						.join('');
-					const id = node.properties.id;
+			visit(tree, 'element', (node) => {
+				if (!/^h[1-6]$/.test(node.tagName)) return;
 
-					toc.push({ level, text, id });
+				const level = Number.parseInt(node.tagName.charAt(1), 10);
+				const text = node.children.map(getTextContent).join('');
+				const id = node.properties.id;
+				if (typeof id !== 'string') {
+					throw new Error(
+						`Expected heading "${text}" to have a string id set by rehype-slug`
+					);
 				}
+
+				toc.push({ level, text, id });
 			});
 		};
 	};
@@ -72,6 +69,7 @@ export class MarkdownService {
 			.use(remarkParse)
 			.use(remarkRehype, { allowDangerousHtml: true })
 			.use(rehypeRaw)
+			.use(rehypeSanitize, defaultSchema)
 			.use(rehypeSlug)
 			.use(rehypeAutolinkHeadings, {
 				behavior: 'prepend',
@@ -115,6 +113,7 @@ export class MarkdownService {
 			.use(remarkParse)
 			.use(remarkRehype, { allowDangerousHtml: true })
 			.use(rehypeRaw)
+			.use(rehypeSanitize, defaultSchema)
 			.use(rehypeStringify, { allowDangerousHtml: true })
 			.process(markdown);
 
@@ -152,4 +151,24 @@ export class MarkdownService {
 
 		return markdown;
 	}
+}
+
+/**
+ * Recursively concatenates the text content of a heading's children, descending into
+ * nested elements (e.g. a heading wrapping its text in a `<code>` or `<strong>` tag).
+ * @param node Hast node to extract text from.
+ * @returns Concatenated text content of the node and its descendants.
+ */
+function getTextContent(node: ElementContent): string {
+	if (node.type === 'text') return node.value;
+	if (node.type === 'element') return getElementTextContent(node);
+	return '';
+}
+
+/**
+ * @param element Hast element to extract text from.
+ * @returns Concatenated text content of the element's children.
+ */
+function getElementTextContent(element: Element): string {
+	return element.children.map(getTextContent).join('');
 }
