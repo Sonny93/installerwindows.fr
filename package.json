@@ -16,7 +16,7 @@
 		"test": "node ace test",
 		"lint": "eslint .",
 		"format": "prettier --write .",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "tsc --noEmit && tsc --noEmit --project inertia/tsconfig.json",
 		"check": "pnpm run lint && pnpm run typecheck",
 		"release": "release-it",
 		"postinstall": "pnpm run format",
