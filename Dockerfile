@@ -7,15 +7,13 @@ RUN apk --no-cache add curl && corepack enable
 # All deps stage
 FROM base AS deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-COPY patches ./patches
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --ignore-scripts
 
 # Production only deps stage
 FROM base AS production-deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-COPY patches ./patches
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --ignore-scripts --prod
 
 # Build stage

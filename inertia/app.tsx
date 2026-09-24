@@ -1,6 +1,7 @@
 import { resolvePageComponent } from '@adonisjs/inertia/helpers';
 import { Data } from '@generated/data';
-import { createInertiaApp } from '@inertiajs/react';
+import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
+import type { ReactElement } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { PRIMAY_COLOR, PROJECT_NAME } from '~/consts/project';
 import { DefaultLayout } from '~/layouts/default_layout';
@@ -12,10 +13,10 @@ createInertiaApp({
 	title: (title) => (title && `${title} — `) + PROJECT_NAME,
 
 	resolve: async (name) => {
-		return resolvePageComponent(
+		return resolvePageComponent<ResolvedComponent>(
 			`./pages/${name}.tsx`,
-			import.meta.glob('./pages/**/*.tsx'),
-			(page: React.ReactElement<Data.SharedProps>) => (
+			import.meta.glob<ResolvedComponent>('./pages/**/*.tsx'),
+			(page: ReactElement<Data.SharedProps>) => (
 				<DefaultLayout>{page}</DefaultLayout>
 			)
 		);

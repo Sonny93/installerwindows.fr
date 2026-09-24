@@ -1,6 +1,6 @@
 import { Link } from '@adonisjs/inertia/react';
 import { useForm } from '@inertiajs/react';
-import { Button, useModalStore } from '@minimalstuff/ui';
+import { Button, ConfirmModal } from '@minimalstuff/ui';
 
 interface GuideTocControlsProps {
 	slug: string;
@@ -9,15 +9,16 @@ interface GuideTocControlsProps {
 export function GuideTocControls({ slug }: Readonly<GuideTocControlsProps>) {
 	const { delete: deleteGuide } = useForm();
 
-	const handleDelete = () => {
-		useModalStore.getState().openConfirm({
+	const handleDelete = async (): Promise<void> => {
+		await ConfirmModal.call({
 			title: 'Supprimer le guide',
 			children: (
 				<p className="text-sm">Êtes-vous sûr de vouloir supprimer le guide ?</p>
 			),
 			confirmLabel: 'Supprimer',
 			cancelLabel: 'Annuler',
-			confirmColor: 'red',
+			confirmColor: 'danger',
+			closeLabel: 'Fermer',
 			onConfirm: () => {
 				deleteGuide(`/guides/${slug}`);
 			},
@@ -32,7 +33,7 @@ export function GuideTocControls({ slug }: Readonly<GuideTocControlsProps>) {
 			<Link href={`/guides/edit/${slug}`} className={btnOutline}>
 				Modifier
 			</Link>
-			<Button variant="danger" size="sm" fullWidth onClick={handleDelete}>
+			<Button color="danger" size="sm" fullWidth onClick={handleDelete}>
 				Supprimer
 			</Button>
 		</>
