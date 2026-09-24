@@ -4,8 +4,8 @@ import type { Infer } from '@vinejs/vine/types';
 import logger from '@adonisjs/core/services/logger';
 
 import env from '#start/env';
-import { dateTimeSerializer } from '#libs/index';
 import { CacheService } from '#services/cache_service';
+import { dateTimeSerializer } from '#libs/date_time_serializer';
 import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import { youtubePlaylistItemsValidator } from '#validators/youtube_validator';
 
