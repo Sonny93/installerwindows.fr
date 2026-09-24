@@ -30,7 +30,6 @@ export type ScannedRoutes = {
     'guides.show': { paramsTuple: [ParamValue]; params: {'guideSlug': ParamValue} }
     'auth.login': { paramsTuple?: []; params?: {} }
     'auth.callback': { paramsTuple?: []; params?: {} }
-    'auth.logout': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'home': { paramsTuple?: []; params?: {} }
@@ -43,10 +42,10 @@ export type ScannedRoutes = {
     'guides.show': { paramsTuple: [ParamValue]; params: {'guideSlug': ParamValue} }
     'auth.login': { paramsTuple?: []; params?: {} }
     'auth.callback': { paramsTuple?: []; params?: {} }
-    'auth.logout': { paramsTuple?: []; params?: {} }
   }
   POST: {
     'guides.create': { paramsTuple?: []; params?: {} }
+    'auth.logout': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'guides.edit': { paramsTuple: [ParamValue]; params: {'slug': ParamValue} }

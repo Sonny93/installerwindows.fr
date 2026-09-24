@@ -62,7 +62,7 @@ router
 		 */
 		router
 			.group(() => {
-				router.get('/logout', [controllers.Auth, 'logout']).as('auth.logout');
+				router.post('/logout', [controllers.Auth, 'logout']).as('auth.logout');
 			})
 			.middleware([middleware.auth()]);
 	})
