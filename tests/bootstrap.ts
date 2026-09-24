@@ -1,8 +1,14 @@
 import { assert } from '@japa/assert';
+import { glob } from 'node:fs/promises';
+import { apiClient } from '@japa/api-client';
 import app from '@adonisjs/core/services/app';
 import type { Config } from '@japa/runner/types';
 import { pluginAdonisJS } from '@japa/plugin-adonisjs';
 import testUtils from '@adonisjs/core/services/test_utils';
+import { authApiClient } from '@adonisjs/auth/plugins/api_client';
+import { shieldApiClient } from '@adonisjs/shield/plugins/api_client';
+import { sessionApiClient } from '@adonisjs/session/plugins/api_client';
+import { inertiaApiClient } from '@adonisjs/inertia/plugins/api_client';
 
 /**
  * This file is imported by the "bin/test.ts" entrypoint file
@@ -12,7 +18,40 @@ import testUtils from '@adonisjs/core/services/test_utils';
  * Configure Japa plugins in the plugins array.
  * Learn more - https://japa.dev/docs/runner-config#plugins-optional
  */
-export const plugins: Config['plugins'] = [assert(), pluginAdonisJS(app)];
+export const plugins: Config['plugins'] = [
+	assert(),
+	pluginAdonisJS(app),
+	apiClient(),
+	sessionApiClient(app),
+	authApiClient(app),
+	shieldApiClient(),
+	inertiaApiClient(app),
+];
+
+/**
+ * Fails the run if a spec file matches none of the suite "files" patterns
+ * declared in adonisrc.ts, which would otherwise mean it silently never runs.
+ */
+async function assertEverySpecFileIsClassified() {
+	const classifiedFiles = new Set<string>();
+	for (const suite of app.rcFile.tests.suites) {
+		const patterns = Array.isArray(suite.files) ? suite.files : [suite.files];
+		for (const pattern of patterns) {
+			for await (const file of glob(pattern)) classifiedFiles.add(file);
+		}
+	}
+
+	const orphanFiles: string[] = [];
+	for await (const file of glob('app/**/*.spec.ts')) {
+		if (!classifiedFiles.has(file)) orphanFiles.push(file);
+	}
+
+	if (orphanFiles.length > 0) {
+		throw new Error(
+			`Spec file(s) matched by no suite in adonisrc.ts and would never run: ${orphanFiles.join(', ')}`
+		);
+	}
+}
 
 /**
  * Configure lifecycle function to run before and after all the
@@ -22,7 +61,7 @@ export const plugins: Config['plugins'] = [assert(), pluginAdonisJS(app)];
  * The teardown functions are executed after all the tests
  */
 export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
-	setup: [],
+	setup: [assertEverySpecFileIsClassified, () => testUtils.db().migrate()],
 	teardown: [],
 };
 

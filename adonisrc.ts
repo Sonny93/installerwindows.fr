@@ -76,12 +76,23 @@ export default defineConfig({
 	tests: {
 		suites: [
 			{
-				files: ['tests/unit/**/*.spec.{ts,js}'],
+				// No HTTP server. Role-based globs, disjoint from the functional suite by construction.
+				files: [
+					'app/**/*_service.spec.ts',
+					'app/libs/**/*.spec.ts',
+					'app/**/*_transformer.spec.ts',
+					'app/**/validators/**/*.spec.ts',
+				],
 				name: 'unit',
 				timeout: 2000,
 			},
 			{
-				files: ['tests/functional/**/*.spec.{ts,js}'],
+				// Boots the HTTP server and exercises real routes end to end.
+				files: [
+					'app/**/*_controller.spec.ts',
+					'app/exceptions/**/*.spec.ts',
+					'app/middleware/**/*.spec.ts',
+				],
 				name: 'functional',
 				timeout: 30000,
 			},

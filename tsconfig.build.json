@@ -1,0 +1,11 @@
+{
+	"extends": "./tsconfig.json",
+	"exclude": [
+		"./inertia/**/*",
+		"node_modules",
+		"build",
+		"**/*.spec.ts",
+		"tests/**/*",
+		"database/factories/**/*"
+	]
+}
