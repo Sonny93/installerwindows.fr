@@ -9,13 +9,16 @@ import packageJson from '../../package.json' with { type: 'json' };
 
 export default class InertiaMiddleware extends BaseInertiaMiddleware {
 	async share(ctx: HttpContext) {
-		const { session, auth } = ctx;
-		await auth?.check();
+		const { session } = ctx;
+		const isAuthenticated = await ctx.auth?.check();
+		const user = ctx.auth?.user;
 		return {
 			errors: ctx.inertia.always(this.getValidationErrors(ctx)),
 			flash: ctx.inertia.always(session?.flashMessages.get('flash')),
 			auth: ctx.inertia.always(
-				auth.user ? UserAuthTransformer.transform(auth.user) : guestAuth
+				isAuthenticated && user
+					? UserAuthTransformer.transform(user)
+					: guestAuth
 			),
 			version: ctx.inertia.always(packageJson.version),
 		};
