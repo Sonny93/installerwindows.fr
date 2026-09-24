@@ -7,6 +7,7 @@ import { InternalLink } from '~/components/generics/links/internal_link';
 import { EDITOR_NAME, EDITOR_YTB_URL, PROJECT_NAME } from '~/consts/project';
 import { useHeadroom } from '~/hooks/use_headroom';
 import { useMediaQuery } from '~/hooks/use_media_query';
+import { getThemeAriaLabel } from '~/lib/theme';
 
 const MQ_SM = '(max-width: 767px)';
 
@@ -95,7 +96,7 @@ export function FloatingNavbar({
 						<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
 							<HelpButton />
 							{showLinks}
-							<ThemeToggle />
+							<ThemeToggle getAriaLabel={getThemeAriaLabel} />
 						</div>
 					)}
 				</div>
@@ -110,7 +111,7 @@ export function FloatingNavbar({
 				<div className="flex flex-col gap-4">
 					{showLinks}
 					<ClientOnly>
-						<ThemeToggle />
+						<ThemeToggle getAriaLabel={getThemeAriaLabel} />
 					</ClientOnly>
 				</div>
 			</AppDrawer>
