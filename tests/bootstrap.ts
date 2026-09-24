@@ -10,6 +10,8 @@ import { shieldApiClient } from '@adonisjs/shield/plugins/api_client';
 import { sessionApiClient } from '@adonisjs/session/plugins/api_client';
 import { inertiaApiClient } from '@adonisjs/inertia/plugins/api_client';
 
+import env from '#start/env';
+
 /**
  * This file is imported by the "bin/test.ts" entrypoint file
  */
@@ -27,6 +29,22 @@ export const plugins: Config['plugins'] = [
 	shieldApiClient(),
 	inertiaApiClient(app),
 ];
+
+const TEST_DATABASE_SUFFIX = '_test';
+
+/**
+ * Refuses to run outside the test environment or against a database whose
+ * name does not end with "_test": the migrate hook rolls every migration
+ * back on teardown, which would wipe any other database.
+ */
+function assertTestDatabase() {
+	const databaseName = env.get('DB_DATABASE');
+	if (!app.inTest || !databaseName.endsWith(TEST_DATABASE_SUFFIX)) {
+		throw new Error(
+			`Refusing to run tests against database "${databaseName}" (NODE_ENV=${app.nodeEnvironment}): expected NODE_ENV=test and a database name ending with "${TEST_DATABASE_SUFFIX}"`
+		);
+	}
+}
 
 /**
  * Fails the run if a spec file matches none of the suite "files" patterns
@@ -61,7 +79,11 @@ async function assertEverySpecFileIsClassified() {
  * The teardown functions are executed after all the tests
  */
 export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
-	setup: [assertEverySpecFileIsClassified, () => testUtils.db().migrate()],
+	setup: [
+		assertTestDatabase,
+		assertEverySpecFileIsClassified,
+		() => testUtils.db().migrate(),
+	],
 	teardown: [],
 };
 
