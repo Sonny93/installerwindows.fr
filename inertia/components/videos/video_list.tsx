@@ -1,6 +1,7 @@
 import { Data } from '@generated/data';
 import { router } from '@inertiajs/react';
 import { Button } from '@minimalstuff/ui';
+
 import { VideoCard } from '~/components/videos/card/video_card';
 
 interface VideoListProps {

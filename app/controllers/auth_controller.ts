@@ -1,6 +1,7 @@
-import User from '#models/user';
-import env from '#start/env';
 import type { HttpContext } from '@adonisjs/core/http';
+
+import env from '#start/env';
+import User from '#models/user';
 
 export default class AuthController {
 	discord = (ctx: HttpContext) => ctx.ally.use('discord').redirect();
@@ -18,7 +19,7 @@ export default class AuthController {
 		if (provider.hasError()) {
 			return this.redirectWithFlash(
 				ctx,
-				provider.getError() || 'Une erreur est survenue'
+				provider.getError() ?? 'Une erreur est survenue'
 			);
 		}
 

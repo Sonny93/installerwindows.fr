@@ -1,9 +1,10 @@
-import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import { ExceptionHandler, type HttpContext } from '@adonisjs/core/http';
 import type {
 	StatusPageRange,
 	StatusPageRenderer,
 } from '@adonisjs/core/types/http';
+
+import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 export default class HttpExceptionHandler extends ExceptionHandler {
 	/**
 	 * In debug mode, the exception handler will display verbose errors

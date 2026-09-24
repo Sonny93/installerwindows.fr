@@ -1,5 +1,6 @@
-import { Data } from '@generated/data';
 import clsx from 'clsx';
+import { Data } from '@generated/data';
+
 import { ContentCard } from '~/components/generics/content_card';
 
 interface VideoCardProps extends Data.Video {

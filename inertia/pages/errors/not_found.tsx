@@ -1,4 +1,5 @@
 import { Link } from '@adonisjs/inertia/react';
+
 import { Error404 } from '~/components/errors/error_404';
 import { HelpButton } from '~/components/generics/help_button';
 

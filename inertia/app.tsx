@@ -1,13 +1,15 @@
-import { resolvePageComponent } from '@adonisjs/inertia/helpers';
-import { Data } from '@generated/data';
-import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
-import type { ReactElement } from 'react';
-import { hydrateRoot } from 'react-dom/client';
-import { PRIMAY_COLOR, PROJECT_NAME } from '~/consts/project';
-import { DefaultLayout } from '~/layouts/default_layout';
 import './css/app.css';
 
-createInertiaApp({
+import { Data } from '@generated/data';
+import type { ReactElement } from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import { resolvePageComponent } from '@adonisjs/inertia/helpers';
+import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
+
+import { DefaultLayout } from '~/layouts/default_layout';
+import { PRIMAY_COLOR, PROJECT_NAME } from '~/consts/project';
+
+void createInertiaApp({
 	progress: { color: PRIMAY_COLOR, delay: 100 },
 
 	title: (title) => (title && `${title} — `) + PROJECT_NAME,

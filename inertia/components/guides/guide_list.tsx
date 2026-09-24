@@ -1,4 +1,5 @@
 import { Data } from '@generated/data';
+
 import { GuideCard } from '~/components/guides/card/guide_card';
 
 interface GuideListProps {

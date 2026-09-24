@@ -1,16 +1,17 @@
-import { YoutubeService } from '#services/youtube_service';
-import { TocItem } from '#shared/types/index';
-import env from '#start/env';
-import { inject } from '@adonisjs/core';
-import logger from '@adonisjs/core/services/logger';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { unified } from 'unified';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
-import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
+import { inject } from '@adonisjs/core';
 import remarkRehype from 'remark-rehype';
-import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
+import rehypeStringify from 'rehype-stringify';
+import logger from '@adonisjs/core/services/logger';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+
+import env from '#start/env';
+import { TocItem } from '#shared/types/index';
+import { YoutubeService } from '#services/youtube_service';
 
 type ExtractToc = (toc: TocItem[]) => (tree: any) => void;
 
@@ -123,7 +124,7 @@ export class MarkdownService {
 	 */
 	private async replaceMarkdownLinks(markdown: string): Promise<string> {
 		markdown = markdown.replace(
-			/https?:\/\/installerwindows\.fr\/([\w\-\/]+)([^\s")]*)/g,
+			/https?:\/\/installerwindows\.fr\/([\w\-/]+)([^\s")]*)/g,
 			(_, path) => `${this.appUrl}/${path}`
 		);
 

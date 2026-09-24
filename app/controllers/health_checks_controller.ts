@@ -1,6 +1,7 @@
-import { healthChecks } from '#start/health';
-import type { HttpContext } from '@adonisjs/core/http';
 import logger from '@adonisjs/core/services/logger';
+import type { HttpContext } from '@adonisjs/core/http';
+
+import { healthChecks } from '#start/health';
 
 export default class HealthChecksController {
 	async render({ inertia }: HttpContext) {

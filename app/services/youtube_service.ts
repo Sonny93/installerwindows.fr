@@ -1,10 +1,11 @@
-import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
-import { CacheService } from '#services/cache_service';
-import env from '#start/env';
+import { DateTime } from 'luxon';
 import { inject } from '@adonisjs/core';
 import logger from '@adonisjs/core/services/logger';
-import { DateTime } from 'luxon';
+
+import env from '#start/env';
 import { dateTimeSerializer } from '../libs/index.js';
+import { CacheService } from '#services/cache_service';
+import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 
 export interface VideoInfo {
 	id: string;

@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
+
+import { InertiaSuccessEvent } from '~/types/inertia';
 import {
 	getCurrentPathAndSearch,
 	getUrlPathname,
 	restartCssAnimation,
 } from '~/lib/navigation';
-import { InertiaSuccessEvent } from '~/types/inertia';
 
 const PAGE_TRANSITION_CLASS = 'page-transition-enter';
 
@@ -69,14 +70,7 @@ export const usePageTransition = ({
 			element.addEventListener('animationend', onEnd);
 		};
 
-		document.addEventListener(
-			'inertia:success',
-			handleSuccess as EventListener
-		);
-		return () =>
-			document.removeEventListener(
-				'inertia:success',
-				handleSuccess as EventListener
-			);
+		document.addEventListener('inertia:success', handleSuccess);
+		return () => document.removeEventListener('inertia:success', handleSuccess);
 	}, [querySelector, ignorePatterns]);
 };

@@ -1,4 +1,5 @@
 import { Data } from '@generated/data';
+
 import { ContentCard } from '~/components/generics/content_card';
 
 interface GuideCardProps {

@@ -10,7 +10,7 @@ export function isValidHttpUrl(urlParam: string) {
 		try {
 			const url = new URL(urlToTest);
 			return url.protocol === 'http:' || url.protocol === 'https:';
-		} catch (_) {
+		} catch {
 			return false;
 		}
 	}
@@ -19,7 +19,7 @@ export function isValidHttpUrl(urlParam: string) {
 		try {
 			new URL(`http://${urlToTest}`);
 			return true;
-		} catch (_) {
+		} catch {
 			return false;
 		}
 	}
@@ -28,7 +28,7 @@ export function isValidHttpUrl(urlParam: string) {
 		try {
 			new URL(`http://${urlToTest}`);
 			return true;
-		} catch (_) {
+		} catch {
 			return false;
 		}
 	}
@@ -37,7 +37,7 @@ export function isValidHttpUrl(urlParam: string) {
 		try {
 			new URL(`http://${urlToTest}`);
 			return true;
-		} catch (_) {
+		} catch {
 			return false;
 		}
 	}

@@ -1,9 +1,10 @@
-import { Link } from '@adonisjs/inertia/react';
 import { Data } from '@generated/data';
-import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
+import { Link } from '@adonisjs/inertia/react';
+
+import { useAuth } from '~/hooks/use_auth';
 import { GuideList } from '~/components/guides/guide_list';
 import { DISCORD_SUGGESTION_CHANNEL_URL, HELP_URL } from '~/consts/project';
-import { useAuth } from '~/hooks/use_auth';
+import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 
 interface GuidesPageProps {
 	guides: Data.Guide[];

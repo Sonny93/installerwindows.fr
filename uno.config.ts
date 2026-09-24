@@ -1,6 +1,6 @@
 import presetIcons from '@unocss/preset-icons';
-import presetTypography from '@unocss/preset-typography';
 import presetWebFonts from '@unocss/preset-web-fonts';
+import presetTypography from '@unocss/preset-typography';
 import { defineConfig, presetAttributify, presetWind4 } from 'unocss';
 
 const markdownTypographyExtend = {

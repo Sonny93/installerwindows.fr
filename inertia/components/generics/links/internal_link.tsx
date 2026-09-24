@@ -1,6 +1,6 @@
-import { Link } from '@adonisjs/inertia/react';
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
+import { Link } from '@adonisjs/inertia/react';
 
 interface InternalLinkProps {
 	children: React.ReactNode;

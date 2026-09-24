@@ -1,6 +1,7 @@
-import { Link } from '@adonisjs/inertia/react';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
+import { Link } from '@adonisjs/inertia/react';
+
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 
 interface TextIconProps {

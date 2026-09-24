@@ -1,5 +1,6 @@
-import { SharedProps } from '@adonisjs/inertia/types';
 import { usePage } from '@inertiajs/react';
+import { SharedProps } from '@adonisjs/inertia/types';
+
 import { Field } from '~/components/generics/footer/field';
 import { TextIcon } from '~/components/generics/footer/text_icon';
 import { UserCard } from '~/components/generics/footer/user_card/user_card';

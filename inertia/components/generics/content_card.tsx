@@ -1,6 +1,6 @@
-import { Link } from '@adonisjs/inertia/react';
 import clsx from 'clsx';
 import { type ReactNode } from 'react';
+import { Link } from '@adonisjs/inertia/react';
 
 export interface ContentCardProps {
 	href: string;

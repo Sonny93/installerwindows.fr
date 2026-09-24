@@ -1,8 +1,9 @@
-import { slugify } from '#shared/utils/index';
+import clsx from 'clsx';
 import { useForm } from '@inertiajs/react';
 import { BASE_INPUT_STYLES, Button } from '@minimalstuff/ui';
-import clsx from 'clsx';
 import React, { ChangeEvent, FocusEvent, useState } from 'react';
+
+import { slugify } from '#shared/utils/index';
 
 export type Field = {
 	label: string;

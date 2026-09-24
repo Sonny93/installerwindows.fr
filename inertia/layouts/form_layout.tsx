@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
-import { FloatingNavbar } from '~/components/generics/floating_navbar';
-import { Footer } from '~/components/generics/footer/footer';
+
 import { BaseLayout } from './base_layout';
+import { Footer } from '~/components/generics/footer/footer';
+import { FloatingNavbar } from '~/components/generics/floating_navbar';
 
 const LAYOUT_MAX_WIDTH = '1500px';
 const CONTENT_MAX_WIDTH = '800px';

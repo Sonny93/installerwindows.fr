@@ -1,4 +1,5 @@
 import { Button } from '@minimalstuff/ui';
+
 import { Error500 } from '~/components/errors/error_500';
 import { HelpButton } from '~/components/generics/help_button';
 

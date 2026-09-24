@@ -1,7 +1,7 @@
-import adonisjs from '@adonisjs/vite/client';
-import react from '@vitejs/plugin-react';
 import UnoCSS from 'unocss/vite';
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import adonisjs from '@adonisjs/vite/client';
 
 export default defineConfig({
 	plugins: [

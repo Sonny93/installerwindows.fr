@@ -1,5 +1,5 @@
-import { TextIcon } from '~/components/generics/footer/text_icon';
 import { useAuth } from '~/hooks/use_auth';
+import { TextIcon } from '~/components/generics/footer/text_icon';
 
 export function UserCard() {
 	const auth = useAuth();

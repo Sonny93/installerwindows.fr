@@ -1,5 +1,5 @@
-import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
 import { HELP_URL } from '~/consts/project';
+import { ExternalLinkUnstyled } from '~/components/generics/links/external_link_unstyled';
 
 export const HelpButton = () => (
 	<ExternalLinkUnstyled

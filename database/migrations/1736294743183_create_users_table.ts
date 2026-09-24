@@ -1,5 +1,6 @@
-import { defaultTableFields } from '#database/default_table_fields';
 import { BaseSchema } from '@adonisjs/lucid/schema';
+
+import { defaultTableFields } from '#database/default_table_fields';
 
 export default class CreateUsersTable extends BaseSchema {
 	static tableName = 'users';

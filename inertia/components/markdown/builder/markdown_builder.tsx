@@ -1,6 +1,7 @@
+import { useEffect, useRef } from 'react';
+
 import type { TocItem } from '#shared/types/index';
 import { MarkdownToc } from '~/components/markdown/toc/markdown_toc';
-import { useEffect, useRef } from 'react';
 import {
 	bindMarkdownCopy,
 	enhanceMarkdownCopy,

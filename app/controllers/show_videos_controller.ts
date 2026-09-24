@@ -1,8 +1,9 @@
-import { YoutubeService } from '#services/youtube_service';
-import VideoTransformer from '#transformers/video_transformer';
-import { videoValidator } from '#validators/video_validator';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
+
+import { YoutubeService } from '#services/youtube_service';
+import { videoValidator } from '#validators/video_validator';
+import VideoTransformer from '#transformers/video_transformer';
 
 @inject()
 export default class VideosController {

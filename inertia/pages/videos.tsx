@@ -1,9 +1,10 @@
 import { Data } from '@generated/data';
 import { ClientOnly } from '@minimalstuff/ui';
+
+import { useMediaQuery } from '~/hooks/use_media_query';
 import { VideoList } from '~/components/videos/video_list';
 import { VideoMeta } from '~/components/videos/video_meta';
 import { VideoPlayer } from '~/components/videos/video_player';
-import { useMediaQuery } from '~/hooks/use_media_query';
 
 const MQ_MD = '(max-width: 991px)';
 

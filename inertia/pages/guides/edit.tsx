@@ -1,7 +1,8 @@
-import { Data } from '@generated/data';
 import { ReactNode } from 'react';
-import { GuideForm } from '~/components/guides/guide_form';
+import { Data } from '@generated/data';
+
 import { FormLayout } from '~/layouts/form_layout';
+import { GuideForm } from '~/components/guides/guide_form';
 
 interface EditGuidesProps {
 	guide: Data.Guide;

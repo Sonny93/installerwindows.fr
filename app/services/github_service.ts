@@ -1,11 +1,12 @@
-import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
+import { inject } from '@adonisjs/core';
+import logger from '@adonisjs/core/services/logger';
+
 import { CacheService } from '#services/cache_service';
+import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import {
 	transformRawToGithubUrl,
 	validateAndTransformMarkdownUrl,
 } from '#shared/utils/index';
-import { inject } from '@adonisjs/core';
-import logger from '@adonisjs/core/services/logger';
 @inject()
 export class GithubService {
 	constructor(private readonly cacheService: CacheService) {}

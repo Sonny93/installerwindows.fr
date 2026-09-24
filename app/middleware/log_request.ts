@@ -1,5 +1,5 @@
-import type { HttpContext } from '@adonisjs/core/http';
 import logger from '@adonisjs/core/services/logger';
+import type { HttpContext } from '@adonisjs/core/http';
 
 export default class LogRequest {
 	async handle({ request }: HttpContext, next: () => Promise<void>) {

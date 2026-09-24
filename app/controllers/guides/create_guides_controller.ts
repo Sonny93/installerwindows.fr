@@ -1,7 +1,8 @@
-import { GuideService } from '#services/guide_service';
-import { guideValidator } from '#validators/guide_validator';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
+
+import { GuideService } from '#services/guide_service';
+import { guideValidator } from '#validators/guide_validator';
 
 @inject()
 export default class CreateGuidesController {

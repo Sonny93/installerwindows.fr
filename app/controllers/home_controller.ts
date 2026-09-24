@@ -1,7 +1,8 @@
-import { GithubService } from '#services/github_service';
-import { MarkdownService } from '#services/markdown_service';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
+
+import { GithubService } from '#services/github_service';
+import { MarkdownService } from '#services/markdown_service';
 
 @inject()
 export default class HomeController {

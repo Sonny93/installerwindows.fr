@@ -15,9 +15,9 @@ export const urlify = (text: string) => {
 };
 
 const githubRepoRegex =
-	/^https?:\/\/(www\.)?github\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/blob\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
+	/^https?:\/\/(www\.)?github\.com\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/blob\/(?<branch>[^/]+)\/(?<path>.+\.md)$/;
 const rawContentRegex =
-	/^https?:\/\/(www\.)?raw\.githubusercontent\.com\/(?<owner>[^\/]+)\/(?<repo>[^\/]+)\/(?<branch>[^\/]+)\/(?<path>.+\.md)$/;
+	/^https?:\/\/(www\.)?raw\.githubusercontent\.com\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/(?<branch>[^/]+)\/(?<path>.+\.md)$/;
 
 export function validateAndTransformMarkdownUrl(url: string): string {
 	const githubMatch = url.match(githubRepoRegex);

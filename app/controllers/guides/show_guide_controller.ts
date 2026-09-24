@@ -1,8 +1,9 @@
-import { GithubService } from '#services/github_service';
-import { GuideService } from '#services/guide_service';
-import { MarkdownService } from '#services/markdown_service';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
+
+import { GuideService } from '#services/guide_service';
+import { GithubService } from '#services/github_service';
+import { MarkdownService } from '#services/markdown_service';
 
 @inject()
 export default class ShowGuideController {

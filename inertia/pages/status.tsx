@@ -54,7 +54,7 @@ const StatusPage = ({ services, status }: StatusPageProps) => (
 );
 
 const getBadgeClass = (status: string) => {
-	const key = status.toLowerCase() as keyof typeof badgeStyles;
+	const key = status.toLowerCase();
 	return badgeStyles[key] ?? badgeStyles.unknown;
 };
 
