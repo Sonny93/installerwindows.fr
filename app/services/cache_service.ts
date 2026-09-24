@@ -1,6 +1,8 @@
+import { inject } from '@adonisjs/core';
 import cache from '@adonisjs/cache/services/main';
 import type { GetSetFactory } from '@adonisjs/cache/types';
 
+@inject()
 export class CacheService {
 	/**
 	 * Reads a cache entry or populates it by running the factory when the key is missing.
