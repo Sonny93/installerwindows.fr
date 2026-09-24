@@ -7,7 +7,7 @@ import { PropsWithChildren, useState } from 'react';
 import { TuyauProvider } from '@adonisjs/inertia/react';
 import { IconButton, ModalProvider } from '@minimalstuff/ui';
 
-import { tuyauClient } from '~/lib/tuyau';
+import { tuyauClient } from '~/lib/tuyau_client';
 import { usePageTransition } from '~/hooks/use_page_transition';
 
 export function BaseLayout({ children }: Readonly<PropsWithChildren>) {
@@ -18,6 +18,8 @@ export function BaseLayout({ children }: Readonly<PropsWithChildren>) {
 		querySelector: '[data-page-transition]',
 		ignorePatterns: [/^\/videos\/[^/]+$/],
 	});
+
+	const closeFlash = (): void => setOpened(false);
 
 	return (
 		<TuyauProvider client={tuyauClient}>
@@ -33,7 +35,7 @@ export function BaseLayout({ children }: Readonly<PropsWithChildren>) {
 						variant="ghost"
 						size="sm"
 						className="shrink-0 text-red-700 hover:bg-red-100 dark:text-red-300 dark:hover:bg-red-900/50"
-						onClick={() => setOpened(false)}
+						onClick={closeFlash}
 					/>
 				</div>
 			) : null}

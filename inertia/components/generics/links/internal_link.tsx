@@ -1,6 +1,7 @@
-import clsx from 'clsx';
 import { CSSProperties } from 'react';
 import { Link } from '@adonisjs/inertia/react';
+
+import { cn } from '~/lib/cn';
 
 interface InternalLinkProps {
 	children: React.ReactNode;
@@ -20,7 +21,7 @@ export const InternalLink = ({
 	<Link
 		href={href}
 		style={style}
-		className={clsx(
+		className={cn(
 			'text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300',
 			className
 		)}

@@ -1,25 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ClientOnly, IconButton, ThemeToggle } from '@minimalstuff/ui';
 
+import { urlFor } from '~/lib/url_for';
 import { getThemeAriaLabel } from '~/lib/theme';
 import { useHeadroom } from '~/hooks/use_headroom';
 import { useMediaQuery } from '~/hooks/use_media_query';
 import { AppDrawer } from '~/components/generics/app_drawer';
+import type { NavLink } from '~/components/generics/nav_link';
 import { HelpButton } from '~/components/generics/help_button';
+import { NavLinksList } from '~/components/generics/nav_links_list';
 import { InternalLink } from '~/components/generics/links/internal_link';
 import { EDITOR_NAME, EDITOR_YTB_URL, PROJECT_NAME } from '~/consts/project';
-import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 
 const MQ_SM = '(max-width: 767px)';
 
-const links = [
-	{ label: 'Vidéos', href: '/videos', external: false },
-	{ label: 'Guides', href: '/guides', external: false },
-	{
-		label: EDITOR_NAME,
-		href: EDITOR_YTB_URL,
-		external: true,
-	},
+const links: NavLink[] = [
+	{ label: 'Vidéos', href: urlFor('videos.show_videos'), external: false },
+	{ label: 'Guides', href: urlFor('guides.show_guides'), external: false },
+	{ label: EDITOR_NAME, href: EDITOR_YTB_URL, external: true },
 ];
 
 interface FloatingNavbarProps {
@@ -32,37 +30,10 @@ export function FloatingNavbar({
 	const [opened, setOpened] = useState(false);
 	const isMobile = useMediaQuery(MQ_SM);
 	const pinned = useHeadroom({ fixedAt: 120 });
+	const isDrawerOpen = opened && isMobile;
 
 	const close = () => setOpened(false);
 	const toggle = () => setOpened((o) => !o);
-
-	const showLinks = links.map((link) => {
-		const onClick = () => close();
-		if (link.external) {
-			return (
-				<ExternalLinkStyled href={link.href} key={link.label} onClick={onClick}>
-					{link.label}
-				</ExternalLinkStyled>
-			);
-		}
-
-		return (
-			<InternalLink
-				href={link.href}
-				key={link.label}
-				className="font-normal"
-				onClick={onClick}
-			>
-				{link.label}
-			</InternalLink>
-		);
-	});
-
-	useEffect(() => {
-		if (opened && !isMobile) {
-			setOpened(false);
-		}
-	}, [isMobile, opened]);
 
 	return (
 		<>
@@ -86,7 +57,7 @@ export function FloatingNavbar({
 							/>
 						) : null}
 						<InternalLink
-							href="/"
+							href={urlFor('home.show_home')}
 							className="text-2xl font-normal no-underline hover:opacity-90 text-blue-600 hover:text-blue-700"
 						>
 							{PROJECT_NAME}
@@ -96,7 +67,7 @@ export function FloatingNavbar({
 					{isMobile ? null : (
 						<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
 							<HelpButton />
-							{showLinks}
+							<NavLinksList links={links} onLinkClick={close} />
 							<ThemeToggle getAriaLabel={getThemeAriaLabel} />
 						</div>
 					)}
@@ -104,13 +75,13 @@ export function FloatingNavbar({
 			</div>
 
 			<AppDrawer
-				opened={opened && isMobile}
+				opened={isDrawerOpen}
 				onClose={close}
 				title={PROJECT_NAME}
 				zIndex={999999}
 			>
 				<div className="flex flex-col gap-4">
-					{showLinks}
+					<NavLinksList links={links} onLinkClick={close} />
 					<ClientOnly>
 						<ThemeToggle getAriaLabel={getThemeAriaLabel} />
 					</ClientOnly>

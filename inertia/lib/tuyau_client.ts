@@ -5,5 +5,3 @@ export const tuyauClient = createTuyau({
 	baseUrl: '/',
 	registry,
 });
-
-export const urlFor = tuyauClient.urlFor;

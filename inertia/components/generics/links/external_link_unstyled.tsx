@@ -1,5 +1,6 @@
-import clsx from 'clsx';
 import { AnchorHTMLAttributes, CSSProperties, ReactNode } from 'react';
+
+import { cn } from '~/lib/cn';
 
 interface ExternalLinkUnstyledProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	children: ReactNode;
@@ -13,7 +14,7 @@ export const ExternalLinkUnstyled = ({
 	className,
 	...props
 }: ExternalLinkUnstyledProps) => (
-	<a target="_blank" rel="noreferrer" className={clsx(className)} {...props}>
+	<a target="_blank" rel="noreferrer" className={cn(className)} {...props}>
 		{children}
 	</a>
 );

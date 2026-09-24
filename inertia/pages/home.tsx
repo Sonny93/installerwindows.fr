@@ -4,6 +4,6 @@ interface HomePageProps {
 	html: string;
 }
 
-const HomePage = ({ html }: HomePageProps) => <MarkdownBuilder html={html} />;
-
-export default HomePage;
+export default function HomePage({ html }: Readonly<HomePageProps>) {
+	return <MarkdownBuilder html={html} />;
+}

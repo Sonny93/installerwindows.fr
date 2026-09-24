@@ -1,8 +1,9 @@
-import clsx from 'clsx';
 import { type ReactNode } from 'react';
 import { Link } from '@adonisjs/inertia/react';
 
-export interface ContentCardProps {
+import { cn } from '~/lib/cn';
+
+interface ContentCardProps {
 	href: string;
 	thumbnailSrc: string;
 	thumbnailAlt: string;
@@ -37,20 +38,20 @@ export const ContentCard = ({
 }: Readonly<ContentCardProps>) => (
 	<Link
 		href={href}
-		className={clsx(cardLink, 'text-inherit', className)}
+		className={cn(cardLink, 'text-inherit', className)}
 		data-active={dataActive}
 	>
 		<span className={cardBefore} aria-hidden />
-		<div className={clsx(thumbWrap, 'aspect-video')}>
+		<div className={cn(thumbWrap, 'aspect-video')}>
 			<img
 				src={thumbnailSrc}
 				alt={thumbnailAlt}
 				className="h-full w-full object-cover"
 			/>
 		</div>
-		<div className={clsx('px-2 pt-2 pb-0', bodyClassName)}>
-			{meta ? <p className={clsx('text-xs', metaClassName)}>{meta}</p> : null}
-			<p className={clsx('line-clamp-1', titleClassName)} title={title}>
+		<div className={cn('px-2 pt-2 pb-0', bodyClassName)}>
+			{meta ? <p className={cn('text-xs', metaClassName)}>{meta}</p> : null}
+			<p className={cn('line-clamp-1', titleClassName)} title={title}>
 				{title}
 			</p>
 		</div>

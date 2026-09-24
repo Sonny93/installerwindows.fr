@@ -1,4 +1,6 @@
-import { Field, Form, FormProps } from '~/components/generics/form';
+import { Form } from '~/components/generics/form';
+import type { Field } from '~/components/generics/field';
+import type { FormProps } from '~/components/generics/form_props';
 
 const fields: Field[] = [
 	{ label: 'Titre', name: 'title' },
@@ -32,7 +34,7 @@ export function GuideForm({ values, ...formProps }: Readonly<GuideFormProps>) {
 	return <Form {...formProps} fields={fieldsWithValues} />;
 }
 
-export const computedFields = (
+const computedFields = (
 	fields: Field[],
 	value: Record<string, string>
 ): Field[] =>

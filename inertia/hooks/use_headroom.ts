@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export function useHeadroom({ fixedAt }: { fixedAt: number }) {
+export function useHeadroom({ fixedAt }: { fixedAt: number }): boolean {
 	const [pinned, setPinned] = useState(true);
 	const lastScrollY = useRef(0);
 

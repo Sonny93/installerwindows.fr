@@ -1,25 +1,16 @@
 import { useEffect, useRef } from 'react';
 
-import type { TocItem } from '~/components/markdown/toc/toc_item';
 import { MarkdownToc } from '~/components/markdown/toc/markdown_toc';
-import {
-	bindMarkdownCopy,
-	enhanceMarkdownCopy,
-} from './markdown_copy_enhancer';
+import { bindMarkdownCopy } from '~/components/markdown/builder/bind_markdown_copy';
+import { enhanceMarkdownCopy } from '~/components/markdown/builder/enhance_markdown_copy';
+import type { MarkdownBuilderProps } from '~/components/markdown/builder/markdown_builder_props';
 
-export interface MarkdownBuilderProps {
-	html: string;
-	toc?: TocItem[];
-	slug?: string;
-	githubUrl?: string;
-}
-
-export const MarkdownBuilder = ({
+export function MarkdownBuilder({
 	html,
 	toc,
 	slug,
 	githubUrl,
-}: Readonly<MarkdownBuilderProps>) => {
+}: Readonly<MarkdownBuilderProps>) {
 	const rootRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -40,4 +31,4 @@ export const MarkdownBuilder = ({
 			{toc ? <MarkdownToc toc={toc} slug={slug} githubUrl={githubUrl} /> : null}
 		</div>
 	);
-};
+}

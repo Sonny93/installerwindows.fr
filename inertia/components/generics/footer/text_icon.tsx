@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import { ReactNode } from 'react';
 import { Link } from '@adonisjs/inertia/react';
 
+import { cn } from '~/lib/cn';
 import { ExternalLinkStyled } from '~/components/generics/links/external_link_styled';
 
 interface TextIconProps {
@@ -22,14 +22,14 @@ export function TextIcon({
 	const content = (
 		<span className="flex items-center gap-2">
 			<span
-				className={clsx(icon, iconClass, 'text-black dark:text-white')}
+				className={cn(icon, iconClass, 'text-black dark:text-white')}
 				aria-hidden
 			/>
 			<span className="text-black dark:text-white">{children}</span>
 		</span>
 	);
 
-	const linkClass = clsx(
+	const linkClass = cn(
 		'font-normal hover:opacity-80 text-black dark:text-white'
 	);
 

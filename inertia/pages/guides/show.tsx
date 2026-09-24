@@ -8,8 +8,6 @@ interface ShowGuidePageProps {
 	githubUrl: string;
 }
 
-const ShowGuidePage = (props: ShowGuidePageProps) => (
-	<MarkdownBuilder {...props} />
-);
-
-export default ShowGuidePage;
+export default function ShowGuidePage(props: Readonly<ShowGuidePageProps>) {
+	return <MarkdownBuilder {...props} />;
+}

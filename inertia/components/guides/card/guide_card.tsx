@@ -1,5 +1,6 @@
 import { Data } from '@generated/data';
 
+import { urlFor } from '~/lib/url_for';
 import { ContentCard } from '~/components/generics/content_card';
 
 interface GuideCardProps {
@@ -8,7 +9,7 @@ interface GuideCardProps {
 
 export const GuideCard = ({ guide }: Readonly<GuideCardProps>) => (
 	<ContentCard
-		href={`/guides/${guide.slug}`}
+		href={urlFor('guides.show_guide', { guideSlug: guide.slug })}
 		thumbnailSrc={guide.thumbnail}
 		thumbnailAlt={`${guide.title} thumbnail`}
 		meta={guide.createdAt}

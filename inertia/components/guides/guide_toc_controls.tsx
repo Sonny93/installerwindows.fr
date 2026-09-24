@@ -2,6 +2,8 @@ import { useForm } from '@inertiajs/react';
 import { Link } from '@adonisjs/inertia/react';
 import { Button, ConfirmModal } from '@minimalstuff/ui';
 
+import { urlFor } from '~/lib/url_for';
+
 interface GuideTocControlsProps {
 	slug: string;
 }
@@ -20,7 +22,7 @@ export function GuideTocControls({ slug }: Readonly<GuideTocControlsProps>) {
 			confirmColor: 'danger',
 			closeLabel: 'Fermer',
 			onConfirm: () => {
-				deleteGuide(`/guides/${slug}`);
+				deleteGuide(urlFor('guides.delete_guide', { slug }));
 			},
 		});
 	};
@@ -34,7 +36,11 @@ export function GuideTocControls({ slug }: Readonly<GuideTocControlsProps>) {
 
 	return (
 		<>
-			<Link href={`/guides/edit/${slug}`} className={btnOutline}>
+			<Link
+				route="guides.edit_guide"
+				routeParams={{ slug }}
+				className={btnOutline}
+			>
 				Modifier
 			</Link>
 			<Button color="danger" size="sm" fullWidth onClick={handleDeleteClick}>

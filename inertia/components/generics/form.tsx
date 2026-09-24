@@ -1,25 +1,21 @@
-import clsx from 'clsx';
+import { Button } from '@minimalstuff/ui';
 import { useForm } from '@inertiajs/react';
-import { BASE_INPUT_STYLES, Button } from '@minimalstuff/ui';
 import React, { ChangeEvent, FocusEvent, useState } from 'react';
 
 import { slugify } from '~/lib/slugify';
+import { FormField } from '~/components/generics/form_field';
+import type { FormProps } from '~/components/generics/form_props';
 
-export type Field = {
-	label: string;
-	name: string;
-	description?: string;
-	required?: boolean;
-	placeholder?: string;
-	value?: string;
-};
-
-export interface FormProps {
-	title: string;
-	fields: Field[];
-	formUrl: string;
-	formMethod?: 'post' | 'put';
+function resolveBlurHandler(
+	name: string,
+	handleTitleBlur: (event: FocusEvent<HTMLInputElement>) => void,
+	handleSlugBlur: (event: FocusEvent<HTMLInputElement>) => void
+) {
+	if (name === 'title') return handleTitleBlur;
+	if (name === 'slug') return handleSlugBlur;
+	return undefined;
 }
+
 export function Form({
 	title,
 	fields,
@@ -73,51 +69,21 @@ export function Form({
 				<h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">
 					{title}
 				</h2>
-				{fields.map(({ label, description, name, placeholder, required }) => {
-					const onBlurTitle = name === 'title' ? handleTitleBlur : undefined;
-					const onBlurSlug = name === 'slug' ? handleSlugBlur : undefined;
-					const req = required ?? true;
-					return (
-						<div key={name} className="w-full">
-							<label
-								htmlFor={name}
-								className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
-							>
-								{label}
-								{req ? (
-									<span className="ml-1 text-red-500 dark:text-red-400">*</span>
-								) : null}
-							</label>
-							{description ? (
-								<p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
-									{description}
-								</p>
-							) : null}
-							<input
-								id={name}
-								name={name}
-								placeholder={placeholder ?? label}
-								value={data[name]}
-								onChange={handleChange}
-								disabled={loading}
-								required={req}
-								onBlur={onBlurTitle ?? onBlurSlug}
-								className={clsx(
-									BASE_INPUT_STYLES,
-									'px-3 py-2 text-sm',
-									errors[name] &&
-										'border-red-500 focus:ring-red-500 dark:border-red-400'
-								)}
-								aria-invalid={!!errors[name]}
-							/>
-							{errors[name] ? (
-								<p className="mt-1 text-xs text-red-600 dark:text-red-400">
-									{errors[name]}
-								</p>
-							) : null}
-						</div>
-					);
-				})}
+				{fields.map((field) => (
+					<FormField
+						key={field.name}
+						{...field}
+						value={data[field.name]}
+						error={errors[field.name]}
+						disabled={loading}
+						onChange={handleChange}
+						onBlur={resolveBlurHandler(
+							field.name,
+							handleTitleBlur,
+							handleSlugBlur
+						)}
+					/>
+				))}
 				<div className="flex justify-between gap-4">
 					<Button variant="subtle" type="reset" disabled={loading || !isDirty}>
 						Effacer

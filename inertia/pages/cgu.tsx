@@ -5,6 +5,7 @@ interface CGUPageProps {
 	html: string;
 	toc: TocItem[];
 }
-const CGUPage = (props: CGUPageProps) => <MarkdownBuilder {...props} />;
 
-export default CGUPage;
+export default function CGUPage(props: Readonly<CGUPageProps>) {
+	return <MarkdownBuilder {...props} />;
+}

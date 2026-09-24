@@ -1,6 +1,6 @@
 import { Data } from '@generated/data';
-import { router } from '@inertiajs/react';
 import { Button } from '@minimalstuff/ui';
+import { useRouter } from '@adonisjs/inertia/react';
 
 import { VideoCard } from '~/components/videos/card/video_card';
 
@@ -15,9 +15,14 @@ export function VideoList({
 	nextVideo,
 	activeVideoId,
 }: Readonly<VideoListProps>) {
+	const router = useRouter();
 	const videos = nextVideo
 		? removeVideoFromList(videosProps, nextVideo)
 		: videosProps;
+
+	const goToFirstVideo = (): void => {
+		router.get({ route: 'videos.show_videos' });
+	};
 
 	return (
 		<>
@@ -35,11 +40,7 @@ export function VideoList({
 					/>
 				</div>
 			) : (
-				<Button
-					variant="outline"
-					onClick={() => router.visit('/videos')}
-					fullWidth
-				>
+				<Button variant="outline" onClick={goToFirstVideo} fullWidth>
 					Revenir à la première vidéo
 				</Button>
 			)}

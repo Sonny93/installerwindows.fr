@@ -1,6 +1,7 @@
 import type { Data } from '@generated/data';
 import { Link } from '@adonisjs/inertia/react';
 
+import { urlFor } from '~/lib/url_for';
 import { useAuth } from '~/hooks/use_auth';
 import { TextIcon } from '~/components/generics/footer/text_icon';
 
@@ -15,7 +16,7 @@ export function UserCard() {
 }
 
 const NotAuthenticated = () => (
-	<TextIcon icon="i-tabler-login" href="/auth/login" external>
+	<TextIcon icon="i-tabler-login" href={urlFor('auth.login')} external>
 		Connexion
 	</TextIcon>
 );
@@ -36,7 +37,7 @@ function Authenticated({ user }: Readonly<AuthenticatedProps>) {
 				{user.fullname}
 			</span>
 			<Link
-				href="/auth/logout"
+				route="auth.logout"
 				method="post"
 				as="button"
 				className="inline-flex shrink-0 items-center justify-center rounded text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"

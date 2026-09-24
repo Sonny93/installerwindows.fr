@@ -1,6 +1,7 @@
 import { Data } from '@generated/data';
 import { ClientOnly } from '@minimalstuff/ui';
 
+import { cn } from '~/lib/cn';
 import { useMediaQuery } from '~/hooks/use_media_query';
 import { VideoList } from '~/components/videos/video_list';
 import { VideoMeta } from '~/components/videos/video_meta';
@@ -23,7 +24,10 @@ export default function VideosPage({
 
 	return (
 		<div
-			className={`flex w-full flex-nowrap items-start gap-8 ${isSmallScreen ? 'flex-col' : 'flex-row'}`}
+			className={cn(
+				'flex w-full flex-nowrap items-start gap-8',
+				isSmallScreen ? 'flex-col' : 'flex-row'
+			)}
 		>
 			{videos.at(0) ? (
 				<div className="flex w-full flex-col gap-6 lg:min-w-0 lg:flex-1">

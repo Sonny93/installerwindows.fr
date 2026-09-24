@@ -1,6 +1,7 @@
 import { usePage } from '@inertiajs/react';
 import { SharedProps } from '@adonisjs/inertia/types';
 
+import { urlFor } from '~/lib/url_for';
 import { Field } from '~/components/generics/footer/field';
 import { TextIcon } from '~/components/generics/footer/text_icon';
 import { UserCard } from '~/components/generics/footer/user_card/user_card';
@@ -58,10 +59,13 @@ export function Footer({ layoutMaxWidth }: Readonly<FooterProps>) {
 					>
 						Github
 					</TextIcon>
-					<TextIcon icon="i-material-symbols-signal-wifi-4-bar" href="/status">
+					<TextIcon
+						icon="i-material-symbols-signal-wifi-4-bar"
+						href={urlFor('status.show_status')}
+					>
 						Statut des services
 					</TextIcon>
-					<TextIcon icon="i-tabler-contract" href="/cgu">
+					<TextIcon icon="i-tabler-contract" href={urlFor('cgu.show_cgu')}>
 						CGUs
 					</TextIcon>
 					<UserCard />
