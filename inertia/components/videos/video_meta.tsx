@@ -1,4 +1,4 @@
-import { urlify } from '#shared/utils/index';
+import { LinkifiedText } from '~/components/videos/linkified_text';
 
 interface VideoMetaProps {
 	title: string;
@@ -18,9 +18,9 @@ export const VideoMeta = ({
 				{title}
 			</h2>
 		</div>
-		<div
+		<LinkifiedText
+			text={description}
 			className="prose prose-sm dark:prose-invert mt-4 max-w-none whitespace-pre-wrap"
-			dangerouslySetInnerHTML={{ __html: urlify(description) }}
 		/>
 	</>
 );
