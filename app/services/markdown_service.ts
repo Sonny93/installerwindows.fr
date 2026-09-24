@@ -13,6 +13,7 @@ import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 
 import env from '#start/env';
 import { YoutubeService } from '#services/youtube_service';
+import MissingHeadingIdException from '#exceptions/missing_heading_id_exception';
 
 export type TocItem = {
 	level: number;
@@ -45,7 +46,7 @@ export class MarkdownService {
 				const text = node.children.map(getTextContent).join('');
 				const id = node.properties.id;
 				if (typeof id !== 'string') {
-					throw new Error(
+					throw new MissingHeadingIdException(
 						`Expected heading "${text}" to have a string id set by rehype-slug`
 					);
 				}
