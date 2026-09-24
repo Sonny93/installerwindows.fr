@@ -5,8 +5,8 @@ Y'a des publicités qui sont intégrées dans Windows 11. C'est pénible. On va 
 ## Bandeau de pub de l'explorateur de fichiers
 
 <details>
-  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary> 
-  
+  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary>
+
 ![bandeau pub](https://i.imgur.com/dbeI18r.png)
 </details>
 
@@ -24,8 +24,8 @@ Pour désactiver ces publicités :
 ## Publicités de l'écran de verrouillage
 
 <details>
-  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary> 
-  
+  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary>
+
 ![lockscreen](https://i.imgur.com/vc9SUos.png)
 </details>
 
@@ -45,8 +45,8 @@ Pour désactiver ces publicités :
 ## Publicités dans les paramètres
 
 <details>
-  <summary>Exemple de ce que c'est (j'ai pas d'exemple mdr, c vide)</summary> 
-  
+  <summary>Exemple de ce que c'est (j'ai pas d'exemple mdr, c vide)</summary>
+
 </details>
 
 Pour désactiver ces publicités :
@@ -67,9 +67,9 @@ Pour désactiver ces publicités :
 ## Publicités dans les notifications
 
 <details>
-  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary> 
-  
-  ![lockscreen](https://i.imgur.com/7SYPURr.png)
+  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary>
+
+![lockscreen](https://i.imgur.com/7SYPURr.png)
 </details>
 
 Pour désactiver ces publicités :
@@ -90,9 +90,9 @@ Pour désactiver ces publicités :
 ## Publicités au démarrage
 
 <details>
-  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary> 
-  
-  ![lockscreen](https://i.imgur.com/fEYowk0.png)
+  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary>
+
+![lockscreen](https://i.imgur.com/fEYowk0.png)
 </details>
 
 Pour désactiver ces publicités :
@@ -129,9 +129,9 @@ Pour désactiver cette option :
 ## Publicités du menu démarrer
 
 <details>
-  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary> 
-  
-  ![lockscreen](https://i.imgur.com/5qN1Kkh.png)
+  <summary>Exemple de ce que c'est (cliquer pour déplier)</summary>
+
+![lockscreen](https://i.imgur.com/5qN1Kkh.png)
 </details>
 
 Pour désactiver ces publicités :

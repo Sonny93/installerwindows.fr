@@ -15,9 +15,9 @@ interface Video {
 }
 
 enum VideoStatus {
-	'unlisted' = 'unlisted',
-	'private' = 'private',
-	'public' = 'public',
+	unlisted = 'unlisted',
+	private = 'private',
+	public = 'public',
 }
 
 interface DbType {
