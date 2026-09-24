@@ -3,7 +3,9 @@ import { Data } from '@generated/data';
 import { VideoPlayer } from '~/videos/show_videos/video_player';
 import { VideoHeader } from '~/videos/show_videos/video_header';
 import { EpisodeRail } from '~/videos/show_videos/episode_rail';
+import { AutoplayToggle } from '~/videos/show_videos/autoplay_toggle';
 import { VideoDescription } from '~/videos/show_videos/video_description';
+import { useVideoAutoplay } from '~/videos/show_videos/use_video_autoplay';
 import { EpisodeNavigation } from '~/videos/show_videos/episode_navigation';
 
 interface ShowVideosProps {
@@ -21,6 +23,12 @@ export default function ShowVideos({
 }: Readonly<ShowVideosProps>) {
 	const firstVideo = videos.at(0);
 	const hasDescription = currentVideo.description.length > 0;
+	const {
+		isAutoplayEnabled,
+		setAutoplayEnabled,
+		handlePlayerReady,
+		handlePlayerEnded,
+	} = useVideoAutoplay({ nextVideoId: nextVideo?.id });
 
 	return (
 		<div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
@@ -29,6 +37,8 @@ export default function ShowVideos({
 					key={currentVideo.id}
 					videoId={currentVideo.id}
 					title={currentVideo.episodeTitle}
+					onReady={handlePlayerReady}
+					onEnded={handlePlayerEnded}
 				/>
 				<VideoHeader
 					episodeNumber={currentVideo.episodeNumber}
@@ -46,6 +56,10 @@ export default function ShowVideos({
 			</div>
 			<aside className="lg:sticky lg:top-20">
 				<EpisodeRail videos={videos} currentVideoId={currentVideo.id} />
+				<AutoplayToggle
+					isEnabled={isAutoplayEnabled}
+					onToggle={setAutoplayEnabled}
+				/>
 			</aside>
 		</div>
 	);
