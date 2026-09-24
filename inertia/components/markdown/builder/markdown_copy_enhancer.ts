@@ -148,59 +148,71 @@ export function enhanceMarkdownCopy(root: HTMLElement) {
 	ensureSingleLineBlockquoteCopy(root);
 }
 
+async function handlePreClick(event: MouseEvent): Promise<void> {
+	const target = event.target;
+	if (!isCopyButton(target)) return;
+
+	const pre = target.closest('pre');
+	if (!pre) return;
+
+	const text = getPreCodeText(pre);
+	if (text === null) return;
+
+	try {
+		await copyText(text);
+		setButtonLabel(target as HTMLButtonElement, 'Copied', 1200);
+	} catch {
+		setButtonLabel(target as HTMLButtonElement, 'Copy failed', 1600);
+	}
+}
+
+async function handleInlineCodeClick(event: MouseEvent): Promise<void> {
+	const target = event.target;
+	if (!isInlineCode(target)) return;
+	if (target.closest('pre')) return;
+	if (target.getAttribute(INLINE_CODE_ATTR) !== 'true') return;
+
+	const text = getInlineText(target);
+	if (!text) return;
+
+	try {
+		await copyText(text);
+		setInlineState(target, true);
+	} catch {
+		setInlineState(target, false);
+	}
+}
+
+async function handleBlockquoteClick(event: MouseEvent): Promise<void> {
+	const target = event.target;
+	if (!(target instanceof HTMLElement)) return;
+
+	const blockquote = target.closest('blockquote');
+	if (!blockquote) return;
+	if (blockquote.getAttribute(BLOCKQUOTE_ATTR) !== 'true') return;
+
+	const text = getInlineText(blockquote);
+	if (!text) return;
+
+	try {
+		await copyText(text);
+		setInlineState(blockquote, true);
+	} catch {
+		setInlineState(blockquote, false);
+	}
+}
+
 export function bindMarkdownCopy(root: HTMLElement) {
-	const onPreClick = async (event: MouseEvent) => {
-		const target = event.target;
-		if (!isCopyButton(target)) return;
-
-		const pre = target.closest('pre');
-		if (!pre) return;
-
-		const text = getPreCodeText(pre);
-		if (text === null) return;
-
-		try {
-			await copyText(text);
-			setButtonLabel(target as HTMLButtonElement, 'Copied', 1200);
-		} catch {
-			setButtonLabel(target as HTMLButtonElement, 'Copy failed', 1600);
-		}
+	const onPreClick = (event: MouseEvent): void => {
+		void handlePreClick(event);
 	};
 
-	const onInlineCodeClick = async (event: MouseEvent) => {
-		const target = event.target;
-		if (!isInlineCode(target)) return;
-		if (target.closest('pre')) return;
-		if (target.getAttribute(INLINE_CODE_ATTR) !== 'true') return;
-
-		const text = getInlineText(target);
-		if (!text) return;
-
-		try {
-			await copyText(text);
-			setInlineState(target, true);
-		} catch {
-			setInlineState(target, false);
-		}
+	const onInlineCodeClick = (event: MouseEvent): void => {
+		void handleInlineCodeClick(event);
 	};
 
-	const onBlockquoteClick = async (event: MouseEvent) => {
-		const target = event.target;
-		if (!(target instanceof HTMLElement)) return;
-
-		const blockquote = target.closest('blockquote');
-		if (!blockquote) return;
-		if (blockquote.getAttribute(BLOCKQUOTE_ATTR) !== 'true') return;
-
-		const text = getInlineText(blockquote);
-		if (!text) return;
-
-		try {
-			await copyText(text);
-			setInlineState(blockquote, true);
-		} catch {
-			setInlineState(blockquote, false);
-		}
+	const onBlockquoteClick = (event: MouseEvent): void => {
+		void handleBlockquoteClick(event);
 	};
 
 	root.addEventListener('click', onPreClick);
