@@ -1,56 +1,52 @@
 import { Data } from '@generated/data';
-import { ClientOnly } from '@minimalstuff/ui';
 
-import { cn } from '~/shared/lib/cn';
-import { VideoList } from '~/videos/show_videos/video_list';
-import { VideoMeta } from '~/videos/show_videos/video_meta';
-import { useMediaQuery } from '~/shared/hooks/use_media_query';
 import { VideoPlayer } from '~/videos/show_videos/video_player';
+import { VideoHeader } from '~/videos/show_videos/video_header';
+import { EpisodeRail } from '~/videos/show_videos/episode_rail';
+import { VideoDescription } from '~/videos/show_videos/video_description';
+import { EpisodeNavigation } from '~/videos/show_videos/episode_navigation';
 
-const MQ_MD = '(max-width: 991px)';
-
-interface VideosPageProps {
+interface ShowVideosProps {
 	videos: Data.Video[];
-	currentVideo: Data.Video;
+	currentVideo: Data.Video.Variants['forPlayer'];
+	previousVideo: Data.Video | undefined;
 	nextVideo: Data.Video | undefined;
 }
 
-export default function VideosPage({
+export default function ShowVideos({
 	videos,
 	currentVideo,
+	previousVideo,
 	nextVideo,
-}: Readonly<VideosPageProps>) {
-	const isSmallScreen = useMediaQuery(MQ_MD);
+}: Readonly<ShowVideosProps>) {
+	const firstVideo = videos.at(0);
+	const hasDescription = currentVideo.description.length > 0;
 
 	return (
-		<div
-			className={cn(
-				'flex w-full flex-nowrap items-start gap-8',
-				isSmallScreen ? 'flex-col' : 'flex-row'
-			)}
-		>
-			{videos.at(0) ? (
-				<div className="flex w-full flex-col gap-6 lg:min-w-0 lg:flex-1">
-					<ClientOnly>
-						<VideoPlayer url={currentVideo.url} />
-					</ClientOnly>
-					<VideoMeta
-						title={currentVideo.title}
-						description={currentVideo.description}
-						publishedAt={currentVideo.publishedAt}
-					/>
-				</div>
-			) : null}
-
-			<div
-				className={isSmallScreen ? 'w-full' : 'w-full max-w-[350px] shrink-0'}
-			>
-				<VideoList
-					videos={videos}
-					nextVideo={nextVideo}
-					activeVideoId={currentVideo.id}
+		<div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+			<div className="flex flex-col gap-6">
+				<VideoPlayer
+					key={currentVideo.id}
+					videoId={currentVideo.id}
+					title={currentVideo.episodeTitle}
 				/>
+				<VideoHeader
+					episodeNumber={currentVideo.episodeNumber}
+					episodeTitle={currentVideo.episodeTitle}
+					publishedAt={currentVideo.publishedAt}
+				/>
+				<EpisodeNavigation
+					previousVideo={previousVideo}
+					nextVideo={nextVideo}
+					firstVideo={firstVideo}
+				/>
+				{hasDescription ? (
+					<VideoDescription description={currentVideo.description} />
+				) : null}
 			</div>
+			<aside className="lg:sticky lg:top-20">
+				<EpisodeRail videos={videos} currentVideoId={currentVideo.id} />
+			</aside>
 		</div>
 	);
 }

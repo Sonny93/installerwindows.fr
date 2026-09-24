@@ -9,7 +9,6 @@ interface ContentCardProps {
 	thumbnailAlt: string;
 	meta?: ReactNode;
 	title: string;
-	dataActive?: 'true' | 'false';
 	className?: string;
 	bodyClassName?: string;
 	metaClassName?: string;
@@ -30,17 +29,12 @@ export const ContentCard = ({
 	thumbnailAlt,
 	meta,
 	title,
-	dataActive,
 	className,
 	bodyClassName,
 	metaClassName,
 	titleClassName,
 }: Readonly<ContentCardProps>) => (
-	<Link
-		href={href}
-		className={cn(cardLink, 'text-inherit', className)}
-		data-active={dataActive}
-	>
+	<Link href={href} className={cn(cardLink, 'text-inherit', className)}>
 		<span className={cardBefore} aria-hidden />
 		<div className={cn(thumbWrap, 'aspect-video')}>
 			<img

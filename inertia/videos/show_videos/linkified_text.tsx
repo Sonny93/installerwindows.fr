@@ -1,4 +1,6 @@
-const URL_PATTERN = /https?:\/\/\S+/g;
+import { ExternalLinkStyled } from '~/shared/links/external_link_styled';
+
+const URL_PATTERN = /(https?:\/\/\S+)/;
 
 type TextSegment = {
 	offset: number;
@@ -6,33 +8,21 @@ type TextSegment = {
 	isUrl: boolean;
 };
 
+/**
+ * Splits text around URLs without any regex/lastIndex state: String#split with
+ * a capturing group already returns the matched URLs interleaved with the
+ * surrounding text, so this only has to turn that array into keyable segments.
+ */
 function splitIntoSegments(text: string): TextSegment[] {
-	const segments: TextSegment[] = [];
-	let lastIndex = 0;
-	let match: RegExpExecArray | null;
+	return text
+		.split(URL_PATTERN)
+		.reduce<TextSegment[]>((segments, value, index) => {
+			if (value === '') return segments;
 
-	URL_PATTERN.lastIndex = 0;
-	while ((match = URL_PATTERN.exec(text)) !== null) {
-		if (match.index > lastIndex) {
-			segments.push({
-				offset: lastIndex,
-				value: text.slice(lastIndex, match.index),
-				isUrl: false,
-			});
-		}
-		segments.push({ offset: match.index, value: match[0], isUrl: true });
-		lastIndex = match.index + match[0].length;
-	}
-
-	if (lastIndex < text.length) {
-		segments.push({
-			offset: lastIndex,
-			value: text.slice(lastIndex),
-			isUrl: false,
-		});
-	}
-
-	return segments;
+			const previous = segments.at(-1);
+			const offset = previous ? previous.offset + previous.value.length : 0;
+			return [...segments, { offset, value, isUrl: index % 2 === 1 }];
+		}, []);
 }
 
 interface LinkifiedTextProps {
@@ -40,24 +30,23 @@ interface LinkifiedTextProps {
 	className?: string;
 }
 
-export const LinkifiedText = ({
+export function LinkifiedText({
 	text,
 	className,
-}: Readonly<LinkifiedTextProps>) => {
+}: Readonly<LinkifiedTextProps>) {
 	const segments = splitIntoSegments(text).map((segment) =>
 		segment.isUrl ? (
-			<a
+			<ExternalLinkStyled
 				key={segment.offset}
 				href={segment.value}
-				rel="noreferrer"
-				target="_blank"
+				className="underline underline-offset-2"
 			>
 				{segment.value}
-			</a>
+			</ExternalLinkStyled>
 		) : (
 			<span key={segment.offset}>{segment.value}</span>
 		)
 	);
 
 	return <div className={className}>{segments}</div>;
-};
+}

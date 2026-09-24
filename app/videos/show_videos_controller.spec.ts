@@ -61,8 +61,23 @@ test.group('ShowVideosController', () => {
 		const response = await client.get(`/videos/${lastVideo.id}`).withInertia();
 
 		response.assertStatus(200);
-		response.assertInertiaPropsContains({ currentVideo: { id: lastVideo.id } });
+		response.assertInertiaPropsContains({
+			currentVideo: { id: lastVideo.id },
+			previousVideo: { id: firstVideo.id },
+		});
 		assert.isUndefined(response.inertiaProps.nextVideo);
+	});
+
+	test('should respond 404 when the playlist is empty', async ({
+		client,
+		cleanup,
+	}) => {
+		app.container.swap(YoutubeService, () => new FakeYoutubeService([]));
+		cleanup(() => app.container.restore(YoutubeService));
+
+		const response = await client.get('/videos').withInertia();
+
+		response.assertStatus(404);
 	});
 
 	test('should redirect to the first video when the id is well-formed but unknown', async ({

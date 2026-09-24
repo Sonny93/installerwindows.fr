@@ -1,26 +1,19 @@
-import ReactPlayer from 'react-player';
+const YOUTUBE_NOCOOKIE_EMBED_URL = 'https://www.youtube-nocookie.com/embed';
 
 interface VideoPlayerProps {
-	url: string;
+	videoId: string;
+	title: string;
 }
 
-export const VideoPlayer = ({ url }: Readonly<VideoPlayerProps>) => (
-	<div className="relative aspect-video w-full min-h-0 flex-1">
-		<ReactPlayer
-			height="100%"
-			width="100%"
-			className="!aspect-video overflow-hidden rounded-md"
-			style={{
-				transition: 'opacity 0.3s ease-in-out',
-			}}
-			src={url}
-			config={{
-				youtube: {
-					color: 'white',
-				},
-			}}
-			preload="auto"
-			controls
+export const VideoPlayer = ({ videoId, title }: Readonly<VideoPlayerProps>) => (
+	<div className="aspect-video w-full overflow-hidden rounded-lg bg-black shadow-md">
+		<iframe
+			src={`${YOUTUBE_NOCOOKIE_EMBED_URL}/${videoId}`}
+			title={title}
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allowFullScreen
+			referrerPolicy="strict-origin-when-cross-origin"
+			className="size-full border-0"
 		/>
 	</div>
 );
