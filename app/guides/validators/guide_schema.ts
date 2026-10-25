@@ -1,7 +1,7 @@
 import vine from '@vinejs/vine';
 
-import { slugify } from '#libs/slugify';
 import { forbiddenValues } from '#guides/validators/rules/forbidden_values';
+import { slugify } from '#libs/slugify';
 
 const githubRegex =
 	/^(https?:\/\/)?(github\.com|raw\.githubusercontent\.com)\/.*$/;

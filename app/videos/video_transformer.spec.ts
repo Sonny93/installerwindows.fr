@@ -1,7 +1,7 @@
 import { test } from '@japa/runner';
 
-import VideoTransformer from '#videos/video_transformer';
 import { makeVideoInfo } from '#tests/helpers/video_info_fixture';
+import VideoTransformer from '#videos/video_transformer';
 
 test.group('VideoTransformer', () => {
 	test('should parse the episode number and title from a numbered title', ({

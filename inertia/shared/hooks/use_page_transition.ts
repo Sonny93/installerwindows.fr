@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 
+import type { InertiaSuccessEvent } from '~/shared/hooks/inertia_success_event';
+import { getCurrentPathAndSearch } from '~/shared/lib/get_current_path_and_search';
 import { getUrlPathname } from '~/shared/lib/get_url_pathname';
 import { restartCssAnimation } from '~/shared/lib/restart_css_animation';
-import { InertiaSuccessEvent } from '~/shared/hooks/inertia_success_event';
-import { getCurrentPathAndSearch } from '~/shared/lib/get_current_path_and_search';
 
 const PAGE_TRANSITION_CLASS = 'page-transition-enter';
 

@@ -1,8 +1,8 @@
 import { inject } from '@adonisjs/core';
 
+import EmptyPlaylistException from '#exceptions/empty_playlist_exception';
 import { YoutubeService } from '#videos/youtube_service';
 import type { VideoInfo } from '#videos/youtube_service';
-import EmptyPlaylistException from '#exceptions/empty_playlist_exception';
 
 export type PlaylistLookup =
 	| {

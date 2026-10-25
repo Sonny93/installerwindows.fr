@@ -1,7 +1,7 @@
 import { Button } from '@minimalstuff/ui';
 
-import { HelpButton } from '~/shared/help_button';
 import { Error500 } from '~/errors/server_error/error_500';
+import { HelpButton } from '~/shared/help_button';
 
 const DEFAULT_ERROR_MESSAGE =
 	'Une erreur côté serveur est survenue. Si le problème persiste, veuillez nous contacter.';

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 
-import { MarkdownToc } from '~/shared/markdown/toc/markdown_toc';
 import { bindMarkdownCopy } from '~/shared/markdown/builder/bind_markdown_copy';
 import { enhanceMarkdownCopy } from '~/shared/markdown/builder/enhance_markdown_copy';
 import type { MarkdownBuilderProps } from '~/shared/markdown/builder/markdown_builder_props';
+import { MarkdownToc } from '~/shared/markdown/toc/markdown_toc';
 
 export function MarkdownBuilder({
 	html,

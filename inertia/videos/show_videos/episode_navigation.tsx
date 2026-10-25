@@ -1,4 +1,4 @@
-import { Data } from '@generated/data';
+import type { Data } from '@generated/data';
 
 import { urlFor } from '~/shared/lib/url_for';
 import { EpisodeNavigationLink } from '~/videos/show_videos/episode_navigation_link';

@@ -1,5 +1,5 @@
-import type { TocItem } from '~/shared/markdown/toc/toc_item';
 import { MarkdownBuilder } from '~/shared/markdown/builder/markdown_builder';
+import type { TocItem } from '~/shared/markdown/toc/toc_item';
 
 interface CGUPageProps {
 	html: string;

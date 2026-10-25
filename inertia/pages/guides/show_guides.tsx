@@ -1,13 +1,13 @@
-import { Data } from '@generated/data';
 import { Link } from '@adonisjs/inertia/react';
+import type { Data } from '@generated/data';
 
-import { useAuth } from '~/shared/hooks/use_auth';
 import { GuideList } from '~/guides/show_guides/guide_list';
-import { ExternalLinkStyled } from '~/shared/links/external_link_styled';
 import {
 	DISCORD_SUGGESTION_CHANNEL_URL,
 	HELP_URL,
 } from '~/shared/consts/project';
+import { useAuth } from '~/shared/hooks/use_auth';
+import { ExternalLinkStyled } from '~/shared/links/external_link_styled';
 
 interface GuidesPageProps {
 	guides: Data.Guide[];

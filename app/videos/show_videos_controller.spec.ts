@@ -1,9 +1,9 @@
-import { test } from '@japa/runner';
 import app from '@adonisjs/core/services/app';
+import { test } from '@japa/runner';
 
-import { YoutubeService } from '#videos/youtube_service';
-import { makeVideoInfo } from '#tests/helpers/video_info_fixture';
 import { FakeYoutubeService } from '#tests/helpers/fake_youtube_service';
+import { makeVideoInfo } from '#tests/helpers/video_info_fixture';
+import { YoutubeService } from '#videos/youtube_service';
 
 test.group('ShowVideosController', () => {
 	test('should redirect /videos to the first video of the playlist', async ({

@@ -1,12 +1,12 @@
-import { Data } from '@generated/data';
+import type { Data } from '@generated/data';
 
-import { VideoPlayer } from '~/videos/show_videos/video_player';
-import { VideoHeader } from '~/videos/show_videos/video_header';
-import { EpisodeRail } from '~/videos/show_videos/episode_rail';
 import { AutoplayToggle } from '~/videos/show_videos/autoplay_toggle';
-import { VideoDescription } from '~/videos/show_videos/video_description';
-import { useVideoAutoplay } from '~/videos/show_videos/use_video_autoplay';
 import { EpisodeNavigation } from '~/videos/show_videos/episode_navigation';
+import { EpisodeRail } from '~/videos/show_videos/episode_rail';
+import { useVideoAutoplay } from '~/videos/show_videos/use_video_autoplay';
+import { VideoDescription } from '~/videos/show_videos/video_description';
+import { VideoHeader } from '~/videos/show_videos/video_header';
+import { VideoPlayer } from '~/videos/show_videos/video_player';
 
 interface ShowVideosProps {
 	videos: Data.Video[];

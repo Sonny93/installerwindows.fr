@@ -1,5 +1,5 @@
-import { Form } from '~/shared/form/form';
 import type { Field } from '~/shared/form/field';
+import { Form } from '~/shared/form/form';
 import type { FormProps } from '~/shared/form/form_props';
 
 const fields: Field[] = [

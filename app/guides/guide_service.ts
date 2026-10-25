@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core';
 
-import Guide from '#models/guide';
 import { GithubService } from '#markdown/github_service';
+import Guide from '#models/guide';
 
 type CrudGuideData = {
 	title: string;
@@ -22,7 +22,7 @@ export class GuideService {
 	 */
 	async createGuide({ githubUrl, ...data }: CrudGuideData) {
 		const githubRawUrl = this.githubService.toRawContentUrl(githubUrl);
-		return await Guide.create({
+		return Guide.create({
 			...data,
 			githubRawUrl,
 		});
@@ -34,7 +34,7 @@ export class GuideService {
 	 * @returns Matching guide or fails when no row exists.
 	 */
 	async getGuideBySlug(slug: string) {
-		return await Guide.query().where('slug', slug).firstOrFail();
+		return Guide.query().where('slug', slug).firstOrFail();
 	}
 
 	/**
@@ -42,7 +42,7 @@ export class GuideService {
 	 * @returns Collection of guides.
 	 */
 	async getAllGuides() {
-		return await Guide.query().orderBy('created_at', 'desc');
+		return Guide.query().orderBy('created_at', 'desc');
 	}
 
 	/**
@@ -55,7 +55,7 @@ export class GuideService {
 	 */
 	async updateGuide(guide: Guide, { githubUrl, ...data }: CrudGuideData) {
 		const githubRawUrl = this.githubService.toRawContentUrl(githubUrl);
-		return await guide.merge({ ...data, githubRawUrl }).save();
+		return guide.merge({ ...data, githubRawUrl }).save();
 	}
 
 	/**
@@ -64,6 +64,6 @@ export class GuideService {
 	 * @returns Result of the Lucid delete operation.
 	 */
 	async deleteGuide(guide: Guide) {
-		return await guide.delete();
+		return guide.delete();
 	}
 }

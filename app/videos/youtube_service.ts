@@ -1,12 +1,12 @@
-import { DateTime } from 'luxon';
 import { inject } from '@adonisjs/core';
-import type { Infer } from '@vinejs/vine/types';
 import logger from '@adonisjs/core/services/logger';
+import type { Infer } from '@vinejs/vine/types';
+import { DateTime } from 'luxon';
 
-import env from '#start/env';
-import { CacheService } from '#markdown/cache_service';
-import { dateTimeSerializer } from '#libs/date_time_serializer';
 import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
+import { dateTimeSerializer } from '#libs/date_time_serializer';
+import { CacheService } from '#markdown/cache_service';
+import env from '#start/env';
 import { youtubePlaylistItemsValidator } from '#videos/validators/youtube_playlist_items_validator';
 
 export interface VideoInfo {

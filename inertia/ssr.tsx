@@ -1,8 +1,8 @@
-import { Data } from '@generated/data';
+import { resolvePageComponent } from '@adonisjs/inertia/helpers';
+import type { Data } from '@generated/data';
+import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
 import type { ReactElement } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { resolvePageComponent } from '@adonisjs/inertia/helpers';
-import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
 
 import { DefaultLayout } from '~/layouts/default_layout';
 

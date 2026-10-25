@@ -1,10 +1,11 @@
-import { Button } from '@minimalstuff/ui';
 import { useForm } from '@inertiajs/react';
-import React, { ChangeEvent, FocusEvent, useState } from 'react';
+import { Button } from '@minimalstuff/ui';
+import type { ChangeEvent, FocusEvent } from 'react';
+import React, { useState } from 'react';
 
-import { slugify } from '~/shared/lib/slugify';
 import { FormField } from '~/shared/form/form_field';
 import type { FormProps } from '~/shared/form/form_props';
+import { slugify } from '~/shared/lib/slugify';
 
 function resolveBlurHandler(
 	name: string,

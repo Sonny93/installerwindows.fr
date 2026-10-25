@@ -1,5 +1,5 @@
-import { Data } from '@generated/data';
 import { Link } from '@adonisjs/inertia/react';
+import type { Data } from '@generated/data';
 
 import { cn } from '~/shared/lib/cn';
 import { urlFor } from '~/shared/lib/url_for';

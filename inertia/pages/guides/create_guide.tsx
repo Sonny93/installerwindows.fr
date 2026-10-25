@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { urlFor } from '~/shared/lib/url_for';
-import { FormLayout } from '~/layouts/form_layout';
 import { GuideForm } from '~/guides/shared/guide_form';
+import { FormLayout } from '~/layouts/form_layout';
+import { urlFor } from '~/shared/lib/url_for';
 
 function CreateGuides() {
 	return (

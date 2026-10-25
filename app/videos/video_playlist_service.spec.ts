@@ -1,9 +1,9 @@
 import { test } from '@japa/runner';
 
+import EmptyPlaylistException from '#exceptions/empty_playlist_exception';
+import { FakeYoutubeService } from '#tests/helpers/fake_youtube_service';
 import { makeVideoInfo } from '#tests/helpers/video_info_fixture';
 import { VideoPlaylistService } from '#videos/video_playlist_service';
-import { FakeYoutubeService } from '#tests/helpers/fake_youtube_service';
-import EmptyPlaylistException from '#exceptions/empty_playlist_exception';
 
 test.group('VideoPlaylistService.findVideo', () => {
 	test('should return the first video as missing when videoId is undefined', async ({

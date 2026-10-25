@@ -1,12 +1,12 @@
-import { test } from '@japa/runner';
 import app from '@adonisjs/core/services/app';
+import { test } from '@japa/runner';
 
-import env from '#start/env';
+import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import { CacheService } from '#markdown/cache_service';
 import { GithubService } from '#markdown/github_service';
-import { NoCacheService } from '#tests/helpers/no_cache_service';
+import env from '#start/env';
 import { FakeGithubService } from '#tests/helpers/fake_github_service';
-import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
+import { NoCacheService } from '#tests/helpers/no_cache_service';
 
 test.group('HttpExceptionHandler - unknown route', () => {
 	test('should render errors/not_found for a route that matches nothing', async ({

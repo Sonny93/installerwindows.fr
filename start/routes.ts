@@ -1,7 +1,7 @@
 import router from '@adonisjs/core/services/router';
 
-import { middleware } from '#start/kernel';
 import { controllers } from '#generated/controllers';
+import { middleware } from '#start/kernel';
 
 router.get('/', [controllers.home.ShowHome, 'render']).as('home.show_home');
 router

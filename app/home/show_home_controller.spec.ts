@@ -1,10 +1,10 @@
-import { test } from '@japa/runner';
 import app from '@adonisjs/core/services/app';
+import { test } from '@japa/runner';
 
 import { GithubService } from '#markdown/github_service';
-import { YoutubeService } from '#videos/youtube_service';
 import { FakeGithubService } from '#tests/helpers/fake_github_service';
 import { FakeYoutubeService } from '#tests/helpers/fake_youtube_service';
+import { YoutubeService } from '#videos/youtube_service';
 
 test.group('ShowHomeController', () => {
 	test('should render home/show_home with html derived from the GitHub markdown', async ({

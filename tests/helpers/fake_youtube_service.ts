@@ -1,6 +1,6 @@
+import { NoCacheService } from '#tests/helpers/no_cache_service';
 import { YoutubeService } from '#videos/youtube_service';
 import type { VideoInfo } from '#videos/youtube_service';
-import { NoCacheService } from '#tests/helpers/no_cache_service';
 
 /**
  * YoutubeService double used by functional tests so no request ever reaches

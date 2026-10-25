@@ -1,5 +1,5 @@
-import { Footer } from '~/layouts/footer/footer';
 import { BaseLayout } from '~/layouts/base_layout';
+import { Footer } from '~/layouts/footer/footer';
 import { FloatingNavbar } from '~/layouts/navbar/floating_navbar';
 
 const LAYOUT_MAX_WIDTH = '1500px';

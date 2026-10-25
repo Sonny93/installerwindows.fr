@@ -1,15 +1,15 @@
-import { test } from '@japa/runner';
 import app from '@adonisjs/core/services/app';
 import testUtils from '@adonisjs/core/services/test_utils';
+import { test } from '@japa/runner';
 
-import { GithubService } from '#markdown/github_service';
-import { YoutubeService } from '#videos/youtube_service';
 import { GuideFactory } from '#database/factories/guide_factory';
+import { GithubService } from '#markdown/github_service';
 import { FakeGithubService } from '#tests/helpers/fake_github_service';
 import { FakeYoutubeService } from '#tests/helpers/fake_youtube_service';
+import { YoutubeService } from '#videos/youtube_service';
 
 test.group('ShowGuideController', (group) => {
-	group.each.setup(() => testUtils.db().withGlobalTransaction());
+	group.each.setup(() => testUtils.db().wrapInGlobalTransaction());
 
 	test('should render guides/show_guide with a githubUrl derived from the stored raw URL', async ({
 		client,

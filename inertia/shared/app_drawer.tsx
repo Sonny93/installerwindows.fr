@@ -1,5 +1,6 @@
+import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ReactNode, useEffect } from 'react';
 
 type AppDrawerProps = {
 	opened: boolean;

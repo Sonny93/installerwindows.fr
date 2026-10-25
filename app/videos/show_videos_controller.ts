@@ -1,10 +1,10 @@
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http';
 
+import { showVideosValidator } from '#videos/validators/show_videos_validator';
+import { VideoPlaylistService } from '#videos/video_playlist_service';
 import VideoTransformer from '#videos/video_transformer';
 import type { VideoInfo } from '#videos/youtube_service';
-import { VideoPlaylistService } from '#videos/video_playlist_service';
-import { showVideosValidator } from '#videos/validators/show_videos_validator';
 
 @inject()
 export default class ShowVideosController {

@@ -1,6 +1,6 @@
 import type { NavLink } from '~/layouts/navbar/nav_link';
-import { InternalLink } from '~/shared/links/internal_link';
 import { ExternalLinkStyled } from '~/shared/links/external_link_styled';
+import { InternalLink } from '~/shared/links/internal_link';
 
 interface NavLinksListProps {
 	links: NavLink[];

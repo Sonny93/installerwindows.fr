@@ -29,29 +29,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Read Node version from package.json (volta)
-        id: node_version
-        run: echo "version=$(node -p "require('./package.json').volta.node")" >> "$GITHUB_OUTPUT"
+      - name: Setup mise
+        uses: jdx/mise-action@8418fedb1110381a0d3ba51a7a415d7c1b884550 # v5.2.2
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: ${{ steps.node_version.outputs.version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        id: pnpm_store
-        run: echo "path=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
-
-      - name: Cache pnpm store
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.pnpm_store.outputs.path }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

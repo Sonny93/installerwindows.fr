@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 interface Error404Props extends ComponentPropsWithoutRef<'svg'> {}
 export const Error404 = (props: Error404Props) => (

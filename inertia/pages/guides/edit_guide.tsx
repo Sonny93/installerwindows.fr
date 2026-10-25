@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
-import { Data } from '@generated/data';
+import type { Data } from '@generated/data';
+import type { ReactNode } from 'react';
 
-import { urlFor } from '~/shared/lib/url_for';
-import { FormLayout } from '~/layouts/form_layout';
 import { GuideForm } from '~/guides/shared/guide_form';
+import { FormLayout } from '~/layouts/form_layout';
+import { urlFor } from '~/shared/lib/url_for';
 
 interface EditGuidesProps {
 	guide: Data.Guide;

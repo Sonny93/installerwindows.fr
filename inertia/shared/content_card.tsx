@@ -1,5 +1,5 @@
-import { type ReactNode } from 'react';
 import { Link } from '@adonisjs/inertia/react';
+import { type ReactNode } from 'react';
 
 import { cn } from '~/shared/lib/cn';
 

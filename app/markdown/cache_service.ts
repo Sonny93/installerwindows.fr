@@ -1,6 +1,6 @@
-import { inject } from '@adonisjs/core';
 import cache from '@adonisjs/cache/services/main';
 import type { GetSetFactory } from '@adonisjs/cache/types';
+import { inject } from '@adonisjs/core';
 
 @inject()
 export class CacheService {

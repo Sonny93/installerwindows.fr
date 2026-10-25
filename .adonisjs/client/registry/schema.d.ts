@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /// <reference path="../manifest.d.ts" />
 
-import type { ExtractBody, ExtractErrorResponse, ExtractQuery, ExtractQueryForGet, ExtractResponse } from '@tuyau/core/types'
+import type { ExtractBody, ExtractErrorResponse, ExtractQuery, ExtractQueryForGet, ExtractRawResponse, ExtractResponse } from '@tuyau/core/types'
 import type { InferInput, SimpleError } from '@vinejs/vine/types'
 
 export type ParamValue = string | number | bigint | boolean
@@ -17,6 +17,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'videos.show_videos': {
@@ -29,6 +30,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'cgu.show_cgu': {
@@ -41,6 +43,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'status.show_status': {
@@ -53,6 +56,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'legacy_guide_redirect.render': {
@@ -65,6 +69,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'guides.create_guide': {
@@ -77,6 +82,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'guides.create_guide.submit': {
@@ -89,6 +95,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'guides.edit_guide': {
@@ -101,6 +108,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'guides.edit_guide.submit': {
@@ -113,6 +121,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'guides.delete_guide': {
@@ -125,6 +134,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'guides.show_guides': {
@@ -137,6 +147,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'guides.show_guide': {
@@ -149,6 +160,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'auth.login': {
@@ -161,6 +173,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'auth.discord_callback': {
@@ -173,6 +186,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
   'auth.logout': {
@@ -185,6 +199,7 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+      rawResponse: ExtractRawResponse<unknown>
     }
   }
 }

@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core';
-import { readFile } from 'node:fs/promises';
-import app from '@adonisjs/core/services/app';
 import type { HttpContext } from '@adonisjs/core/http';
+import app from '@adonisjs/core/services/app';
+import { readFile } from 'node:fs/promises';
 
 import { MarkdownService } from '#markdown/markdown_service';
 

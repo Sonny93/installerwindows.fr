@@ -1,10 +1,10 @@
-import { test } from '@japa/runner';
 import testUtils from '@adonisjs/core/services/test_utils';
+import { test } from '@japa/runner';
 
 import { GuideFactory } from '#database/factories/guide_factory';
 
 test.group('ShowGuidesController', (group) => {
-	group.each.setup(() => testUtils.db().withGlobalTransaction());
+	group.each.setup(() => testUtils.db().wrapInGlobalTransaction());
 
 	test('should list guides from the database', async ({ client, assert }) => {
 		const guide = await GuideFactory.create();

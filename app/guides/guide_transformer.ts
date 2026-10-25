@@ -1,7 +1,7 @@
 import { BaseTransformer } from '@adonisjs/core/transformers';
 
-import type Guide from '#models/guide';
 import { dateTimeSerializer } from '#libs/date_time_serializer';
+import type Guide from '#models/guide';
 
 export default class GuideTransformer extends BaseTransformer<Guide> {
 	toObject() {

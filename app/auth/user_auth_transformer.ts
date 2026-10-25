@@ -1,8 +1,8 @@
 import { BaseTransformer } from '@adonisjs/core/transformers';
 
-import type User from '#models/user';
-import type { Data } from '#client/data.d';
 import UserTransformer from '#auth/user_transformer';
+import type { Data } from '#client/data.d';
+import type User from '#models/user';
 
 export type UserAuth =
 	| { isAuthenticated: true; user: Data.User }

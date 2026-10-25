@@ -1,11 +1,9 @@
+import type { SharedProps } from '@adonisjs/inertia/types';
 import { usePage } from '@inertiajs/react';
-import { SharedProps } from '@adonisjs/inertia/types';
 
-import { urlFor } from '~/shared/lib/url_for';
 import { Field } from '~/layouts/footer/field';
 import { TextIcon } from '~/layouts/footer/text_icon';
 import { UserCard } from '~/layouts/footer/user_card';
-import { ExternalLinkStyled } from '~/shared/links/external_link_styled';
 import {
 	DEV_URL,
 	DISCORD_SUGGESTION_CHANNEL_URL,
@@ -13,6 +11,8 @@ import {
 	EDITOR_YTB_URL,
 	PROJECT_GITHUB_URL,
 } from '~/shared/consts/project';
+import { urlFor } from '~/shared/lib/url_for';
+import { ExternalLinkStyled } from '~/shared/links/external_link_styled';
 
 interface FooterProps {
 	layoutMaxWidth: string;

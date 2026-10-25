@@ -1,5 +1,5 @@
-import app from '@adonisjs/core/services/app';
 import { defineConfig } from '@adonisjs/core/http';
+import app from '@adonisjs/core/services/app';
 
 /**
  * The configuration settings used by the HTTP server

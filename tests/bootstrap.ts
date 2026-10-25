@@ -1,14 +1,14 @@
-import { assert } from '@japa/assert';
-import { glob } from 'node:fs/promises';
-import { apiClient } from '@japa/api-client';
-import app from '@adonisjs/core/services/app';
-import type { Config } from '@japa/runner/types';
-import { pluginAdonisJS } from '@japa/plugin-adonisjs';
-import testUtils from '@adonisjs/core/services/test_utils';
 import { authApiClient } from '@adonisjs/auth/plugins/api_client';
-import { shieldApiClient } from '@adonisjs/shield/plugins/api_client';
-import { sessionApiClient } from '@adonisjs/session/plugins/api_client';
+import app from '@adonisjs/core/services/app';
+import testUtils from '@adonisjs/core/services/test_utils';
 import { inertiaApiClient } from '@adonisjs/inertia/plugins/api_client';
+import { sessionApiClient } from '@adonisjs/session/plugins/api_client';
+import { shieldApiClient } from '@adonisjs/shield/plugins/api_client';
+import { apiClient } from '@japa/api-client';
+import { assert } from '@japa/assert';
+import { pluginAdonisJS } from '@japa/plugin-adonisjs';
+import type { Config } from '@japa/runner/types';
+import { glob } from 'node:fs/promises';
 
 import env from '#start/env';
 

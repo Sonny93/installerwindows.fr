@@ -1,6 +1,6 @@
-import { handlePreClick } from '~/shared/markdown/builder/pre_copy_click_handler';
-import { handleInlineCodeClick } from '~/shared/markdown/builder/inline_code_click_handler';
 import { handleBlockquoteClick } from '~/shared/markdown/builder/blockquote_copy_click_handler';
+import { handleInlineCodeClick } from '~/shared/markdown/builder/inline_code_click_handler';
+import { handlePreClick } from '~/shared/markdown/builder/pre_copy_click_handler';
 
 /**
  * Wires the click-to-copy handlers onto `root` via delegated listeners so

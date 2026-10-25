@@ -1,9 +1,9 @@
-import type { Data } from '@generated/data';
 import { Link } from '@adonisjs/inertia/react';
+import type { Data } from '@generated/data';
 
-import { urlFor } from '~/shared/lib/url_for';
-import { useAuth } from '~/shared/hooks/use_auth';
 import { TextIcon } from '~/layouts/footer/text_icon';
+import { useAuth } from '~/shared/hooks/use_auth';
+import { urlFor } from '~/shared/lib/url_for';
 
 export function UserCard() {
 	const auth = useAuth();

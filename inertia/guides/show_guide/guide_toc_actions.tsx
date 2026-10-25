@@ -1,5 +1,5 @@
-import { useAuth } from '~/shared/hooks/use_auth';
 import { GuideTocControls } from '~/guides/show_guide/guide_toc_controls';
+import { useAuth } from '~/shared/hooks/use_auth';
 import { ExternalLinkUnstyled } from '~/shared/links/external_link_unstyled';
 
 const btnOutline =

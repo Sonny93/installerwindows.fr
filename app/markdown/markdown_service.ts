@@ -1,19 +1,19 @@
-import { unified } from 'unified';
-import rehypeRaw from 'rehype-raw';
-import rehypeSlug from 'rehype-slug';
-import remarkParse from 'remark-parse';
 import { inject } from '@adonisjs/core';
-import remarkRehype from 'remark-rehype';
-import { visit } from 'unist-util-visit';
-import rehypeStringify from 'rehype-stringify';
 import logger from '@adonisjs/core/services/logger';
 import type { Root, Element, ElementContent } from 'hast';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeRaw from 'rehype-raw';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
+import rehypeSlug from 'rehype-slug';
+import rehypeStringify from 'rehype-stringify';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import { unified } from 'unified';
+import { visit } from 'unist-util-visit';
 
+import MissingHeadingIdException from '#exceptions/missing_heading_id_exception';
 import env from '#start/env';
 import { YoutubeService } from '#videos/youtube_service';
-import MissingHeadingIdException from '#exceptions/missing_heading_id_exception';
 
 export type TocItem = {
 	level: number;

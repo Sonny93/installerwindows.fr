@@ -1,5 +1,5 @@
-import { useForm } from '@inertiajs/react';
 import { Link } from '@adonisjs/inertia/react';
+import { useForm } from '@inertiajs/react';
 import { Button, ConfirmModal } from '@minimalstuff/ui';
 
 import { urlFor } from '~/shared/lib/url_for';

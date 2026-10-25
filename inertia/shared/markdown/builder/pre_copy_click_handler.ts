@@ -1,5 +1,5 @@
-import { copyText } from '~/shared/markdown/builder/copy_text';
 import { COPY_MARKER_ATTRS } from '~/shared/markdown/builder/copy_markers';
+import { copyText } from '~/shared/markdown/builder/copy_text';
 
 const COPIED_LABEL_MS = 1200;
 const COPY_FAILED_LABEL_MS = 1600;

@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, CSSProperties, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, CSSProperties, ReactNode } from 'react';
 
 import { cn } from '~/shared/lib/cn';
 

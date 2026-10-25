@@ -1,5 +1,5 @@
-import { DateTime } from 'luxon';
 import { test } from '@japa/runner';
+import { DateTime } from 'luxon';
 
 import { dateTimeSerializer } from '#libs/date_time_serializer';
 

@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 interface Error500Props extends ComponentPropsWithoutRef<'svg'> {}
 export const Error500 = (props: Error500Props) => (

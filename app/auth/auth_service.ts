@@ -1,8 +1,8 @@
 import { inject } from '@adonisjs/core';
 
-import env from '#start/env';
-import User from '#models/user';
 import AuthenticationRefusedException from '#exceptions/authentication_refused_exception';
+import User from '#models/user';
+import env from '#start/env';
 
 const DISCORD_PROVIDER_TYPE = 'discord';
 

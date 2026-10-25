@@ -1,14 +1,15 @@
 import '@minimalstuff/ui/style.css';
 import 'virtual:uno.css';
 
-import { usePage } from '@inertiajs/react';
-import { PageProps } from '@adonisjs/inertia/types';
-import { PropsWithChildren, useState } from 'react';
 import { TuyauProvider } from '@adonisjs/inertia/react';
+import type { PageProps } from '@adonisjs/inertia/types';
+import { usePage } from '@inertiajs/react';
 import { IconButton, ModalProvider } from '@minimalstuff/ui';
+import type { PropsWithChildren } from 'react';
+import { useState } from 'react';
 
-import { tuyauClient } from '~/shared/lib/tuyau_client';
 import { usePageTransition } from '~/shared/hooks/use_page_transition';
+import { tuyauClient } from '~/shared/lib/tuyau_client';
 
 export function BaseLayout({ children }: Readonly<PropsWithChildren>) {
 	const { props } = usePage<PageProps & { flash: string }>();

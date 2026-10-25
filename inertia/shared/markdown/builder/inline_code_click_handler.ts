@@ -1,6 +1,6 @@
+import { COPY_MARKER_ATTRS } from '~/shared/markdown/builder/copy_markers';
 import { copyText } from '~/shared/markdown/builder/copy_text';
 import { getInlineText } from '~/shared/markdown/builder/get_inline_text';
-import { COPY_MARKER_ATTRS } from '~/shared/markdown/builder/copy_markers';
 import { setInlineCopyFeedback } from '~/shared/markdown/builder/set_inline_copy_feedback';
 
 function isInlineCode(target: EventTarget | null): target is HTMLElement {

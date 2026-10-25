@@ -1,7 +1,7 @@
-import { Data } from '@generated/data';
+import type { Data } from '@generated/data';
 
-import { urlFor } from '~/shared/lib/url_for';
 import { ContentCard } from '~/shared/content_card';
+import { urlFor } from '~/shared/lib/url_for';
 
 interface GuideCardProps {
 	guide: Data.Guide;

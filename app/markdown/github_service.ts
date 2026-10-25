@@ -1,9 +1,9 @@
 import { inject } from '@adonisjs/core';
 import logger from '@adonisjs/core/services/logger';
 
-import { CacheService } from '#markdown/cache_service';
-import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import InvalidGithubMarkdownUrlException from '#exceptions/invalid_github_markdown_url_exception';
+import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
+import { CacheService } from '#markdown/cache_service';
 
 const githubRepoRegex =
 	/^https?:\/\/(www\.)?github\.com\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/blob\/(?<branch>[^/]+)\/(?<path>.+\.md)$/;

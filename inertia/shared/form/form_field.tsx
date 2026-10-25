@@ -1,8 +1,8 @@
-import { ChangeEvent, FocusEvent } from 'react';
 import { BASE_INPUT_STYLES } from '@minimalstuff/ui';
+import type { ChangeEvent, FocusEvent } from 'react';
 
-import { cn } from '~/shared/lib/cn';
 import type { Field } from '~/shared/form/field';
+import { cn } from '~/shared/lib/cn';
 
 interface FormFieldProps extends Field {
 	value: string;

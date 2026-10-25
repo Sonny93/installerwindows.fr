@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { BaseLayout } from './base_layout';
 import { Footer } from '~/layouts/footer/footer';

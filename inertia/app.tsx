@@ -1,10 +1,10 @@
 import './css/app.css';
 
-import { Data } from '@generated/data';
+import { resolvePageComponent } from '@adonisjs/inertia/helpers';
+import type { Data } from '@generated/data';
+import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
 import type { ReactElement } from 'react';
 import { hydrateRoot } from 'react-dom/client';
-import { resolvePageComponent } from '@adonisjs/inertia/helpers';
-import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react';
 
 import { DefaultLayout } from '~/layouts/default_layout';
 import { PRIMAY_COLOR, PROJECT_NAME } from '~/shared/consts/project';

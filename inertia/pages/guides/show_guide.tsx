@@ -1,6 +1,6 @@
-import type { TocItem } from '~/shared/markdown/toc/toc_item';
 import { GuideTocActions } from '~/guides/show_guide/guide_toc_actions';
 import { MarkdownBuilder } from '~/shared/markdown/builder/markdown_builder';
+import type { TocItem } from '~/shared/markdown/toc/toc_item';
 
 interface ShowGuidePageProps {
 	html: string;

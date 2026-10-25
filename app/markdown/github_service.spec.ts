@@ -1,8 +1,8 @@
 import { test } from '@japa/runner';
 
+import InvalidGithubMarkdownUrlException from '#exceptions/invalid_github_markdown_url_exception';
 import { GithubService } from '#markdown/github_service';
 import { NoCacheService } from '#tests/helpers/no_cache_service';
-import InvalidGithubMarkdownUrlException from '#exceptions/invalid_github_markdown_url_exception';
 
 const blobUrl = 'https://github.com/owner/repo/blob/main/path/to/file.md';
 const rawUrl =
