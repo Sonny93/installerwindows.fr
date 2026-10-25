@@ -17,8 +17,6 @@ services:
       start_interval: 500ms
     volumes:
       - postgres-volume:/var/lib/postgresql
-    ports:
-      - '${DB_PORT}:5432'
 
   installerwindows.fr:
     container_name: installerwindows.fr
@@ -27,6 +25,7 @@ services:
       context: .
     environment:
       - DB_HOST=postgres
+      - DB_PORT=5432
       - HOST=0.0.0.0
       - NODE_ENV=production
     env_file:
