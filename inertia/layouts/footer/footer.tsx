@@ -21,57 +21,79 @@ interface FooterProps {
 export function Footer({ layoutMaxWidth }: Readonly<FooterProps>) {
 	const { version } = usePage<SharedProps>().props;
 	return (
-		<footer className="w-full py-10 bg-gray-100 dark:bg-gray-900">
+		<footer className="w-full py-10 bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
 			<div
 				className="mx-auto flex w-full flex-col gap-8 px-4 md:px-6"
 				style={{ maxWidth: layoutMaxWidth }}
 			>
 				<Field label="Installerwindows.fr">
 					<div>
-						<p className="max-w-[50%] font-light max-md:max-w-full text-gray-800 dark:text-gray-400">
+						<p className="max-w-prose font-light text-gray-800 dark:text-gray-400">
 							Guides pour (ré)installer Windows 11 au propre et faire des
 							optimisations saines pour votre machine. Il s'agit de guides
 							complets, que vous devriez pouvoir suivre quel que soit votre
 							niveau en informatique.
 						</p>
-						<p className="mt-1 text-sm text-gray-500">v{version}</p>
+						<p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+							v{version}
+						</p>
 					</div>
 				</Field>
 				<Field label="Liens utiles">
-					<TextIcon
-						icon="i-simple-icons-youtube"
-						href={EDITOR_YTB_URL}
-						external
-					>
-						Piwi
-					</TextIcon>
-					<TextIcon
-						icon="i-simple-icons-discord"
-						href={DISCORD_SUGGESTION_CHANNEL_URL}
-						external
-					>
-						Discord
-					</TextIcon>
-					<TextIcon
-						icon="i-simple-icons-github"
-						href={PROJECT_GITHUB_URL}
-						external
-					>
-						Github
-					</TextIcon>
-					<TextIcon
-						icon="i-material-symbols-signal-wifi-4-bar"
-						href={urlFor('status.show_status')}
-					>
-						Statut des services
-					</TextIcon>
-					<TextIcon icon="i-tabler-contract" href={urlFor('cgu.show_cgu')}>
-						CGUs
-					</TextIcon>
-					<UserCard />
+					<nav aria-label="Liens utiles">
+						<ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
+							<li>
+								<TextIcon
+									icon="i-simple-icons-youtube"
+									href={EDITOR_YTB_URL}
+									external
+								>
+									Piwi
+								</TextIcon>
+							</li>
+							<li>
+								<TextIcon
+									icon="i-simple-icons-discord"
+									href={DISCORD_SUGGESTION_CHANNEL_URL}
+									external
+								>
+									Discord
+								</TextIcon>
+							</li>
+							<li>
+								<TextIcon
+									icon="i-simple-icons-github"
+									href={PROJECT_GITHUB_URL}
+									external
+								>
+									Github
+								</TextIcon>
+							</li>
+							<li>
+								<TextIcon
+									icon="i-material-symbols-signal-wifi-4-bar"
+									href={urlFor('status.show_status')}
+								>
+									Statut des services
+								</TextIcon>
+							</li>
+							<li>
+								<TextIcon
+									icon="i-tabler-contract"
+									href={urlFor('cgu.show_cgu')}
+								>
+									CGUs
+								</TextIcon>
+							</li>
+							<li>
+								<UserCard />
+							</li>
+						</ul>
+					</nav>
 				</Field>
 				<p className="font-light text-gray-800 dark:text-gray-200">
-					Réalisé avec ❤️ par{' '}
+					Réalisé avec <span aria-hidden="true">❤️</span>
+					<span className="sr-only">amour</span> par{' '}
 					<ExternalLinkStyled href={DEV_URL}>Sonny</ExternalLinkStyled>,
 					rédaction par{' '}
 					<ExternalLinkStyled href={EDITOR_X_URL}>Piwi</ExternalLinkStyled>

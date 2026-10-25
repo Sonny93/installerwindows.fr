@@ -12,9 +12,14 @@ body {
 }
 
 * {
-	scroll-behavior: smooth;
 	scrollbar-width: 7px;
 	scrollbar-color: rgb(203 213 225 / 0.5) transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
 }
 
 .dark {
@@ -67,5 +72,11 @@ body {
 	to {
 		opacity: 1;
 		filter: blur(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.page-transition-enter {
+		animation: none;
 	}
 }

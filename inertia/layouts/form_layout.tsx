@@ -1,24 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
-import { BaseLayout } from './base_layout';
-import { Footer } from '~/layouts/footer/footer';
-import { FloatingNavbar } from '~/layouts/navbar/floating_navbar';
-
-const LAYOUT_MAX_WIDTH = '1500px';
-const CONTENT_MAX_WIDTH = '800px';
+import { PageShell } from '~/layouts/page_shell';
 
 export const FormLayout = ({ children }: Readonly<PropsWithChildren>) => (
-	<BaseLayout>
-		<div className="flex min-h-screen flex-col bg-gray-50 dark:bg-gray-800">
-			<FloatingNavbar layoutMaxWidth={LAYOUT_MAX_WIDTH} />
-			<div
-				className="mx-auto w-full max-w-[1920px] flex-1 px-4 py-6 md:px-6"
-				style={{ maxWidth: CONTENT_MAX_WIDTH }}
-				data-page-transition
-			>
-				<main className="min-w-0">{children}</main>
-			</div>
-			<Footer layoutMaxWidth={LAYOUT_MAX_WIDTH} />
-		</div>
-	</BaseLayout>
+	<PageShell contentMaxWidth="800px">{children}</PageShell>
 );

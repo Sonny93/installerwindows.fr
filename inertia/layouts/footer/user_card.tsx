@@ -40,7 +40,7 @@ function Authenticated({ user }: Readonly<AuthenticatedProps>) {
 				route="auth.logout"
 				method="post"
 				as="button"
-				className="inline-flex shrink-0 items-center justify-center rounded text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
+				className="inline-flex size-8 shrink-0 items-center justify-center rounded-sm text-red-600 hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 dark:text-red-400 dark:hover:bg-red-950/40"
 				aria-label="Déconnexion"
 			>
 				<span className="i-tabler-logout h-4 w-4 shrink-0" aria-hidden />

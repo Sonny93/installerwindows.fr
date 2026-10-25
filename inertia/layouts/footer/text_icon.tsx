@@ -25,12 +25,14 @@ export function TextIcon({
 				className={cn(icon, iconClass, 'text-black dark:text-white')}
 				aria-hidden
 			/>
-			<span className="text-black dark:text-white">{children}</span>
+			<span className="text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
+				{children}
+			</span>
 		</span>
 	);
 
 	const linkClass = cn(
-		'font-normal hover:opacity-80 text-black dark:text-white'
+		'group font-normal text-black dark:text-white rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500'
 	);
 
 	if (external) {
