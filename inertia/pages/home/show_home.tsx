@@ -1,9 +1,5 @@
-import { MarkdownBuilder } from '~/shared/markdown/builder/markdown_builder';
+import { HomeLanding } from '~/home/show_home/home_landing';
 
-interface HomePageProps {
-	html: string;
-}
-
-export default function HomePage({ html }: Readonly<HomePageProps>) {
-	return <MarkdownBuilder html={html} />;
+export default function HomePage() {
+	return <HomeLanding />;
 }

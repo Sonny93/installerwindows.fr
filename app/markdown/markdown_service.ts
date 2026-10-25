@@ -105,24 +105,6 @@ export class MarkdownService {
 	}
 
 	/**
-	 * Converts a Markdown string to HTML without extracting a table of contents.
-	 * @param markdown Markdown source.
-	 * @returns Stringified HTML fragment after link post-processing.
-	 */
-	async markdownToHtml(markdown: string): Promise<string> {
-		const file = await unified()
-			.use(remarkParse)
-			.use(remarkRehype, { allowDangerousHtml: true })
-			.use(rehypeRaw)
-			.use(rehypeSanitize, defaultSchema)
-			.use(rehypeStringify, { allowDangerousHtml: true })
-			.process(markdown);
-
-		const html = await this.replaceMarkdownLinks(file.toString());
-		return html;
-	}
-
-	/**
 	 * Rewrites absolute public-domain URLs and YouTube videos that appear in the configured playlist to internal site routes.
 	 * @param markdown HTML or fragment containing links to normalize.
 	 * @returns String with links replaced where applicable.

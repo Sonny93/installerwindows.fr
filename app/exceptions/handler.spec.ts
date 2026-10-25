@@ -1,6 +1,8 @@
 import app from '@adonisjs/core/services/app';
+import testUtils from '@adonisjs/core/services/test_utils';
 import { test } from '@japa/runner';
 
+import { GuideFactory } from '#database/factories/guide_factory';
 import RemoteApiErrorException from '#exceptions/remote_api_error_exception';
 import { CacheService } from '#markdown/cache_service';
 import { GithubService } from '#markdown/github_service';
@@ -23,6 +25,8 @@ test.group('HttpExceptionHandler - unknown route', () => {
 
 test.group('HttpExceptionHandler - remote API failures', (group) => {
 	const originalFetch = globalThis.fetch;
+
+	group.each.setup(() => testUtils.db().wrapInGlobalTransaction());
 
 	group.each.teardown(() => {
 		globalThis.fetch = originalFetch;
@@ -52,6 +56,7 @@ test.group('HttpExceptionHandler - remote API failures', (group) => {
 		client,
 		cleanup,
 	}) => {
+		const guide = await GuideFactory.create();
 		const blobUrl = 'https://github.com/owner/repo/blob/main/README.md';
 		app.container.swap(
 			GithubService,
@@ -60,7 +65,7 @@ test.group('HttpExceptionHandler - remote API failures', (group) => {
 		);
 		cleanup(() => app.container.restore(GithubService));
 
-		const response = await client.get('/').withInertia();
+		const response = await client.get(`/guides/${guide.slug}`).withInertia();
 
 		response.assertStatus(500);
 		response.assertInertiaComponent('errors/server_error');

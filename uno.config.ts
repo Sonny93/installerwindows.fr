@@ -6,7 +6,11 @@ import { defineConfig, presetAttributify, presetWind4 } from 'unocss';
 const markdownTypographyExtend = {
 	a: {
 		'text-decoration': 'none',
-		color: 'var(--colors-blue-400)',
+		'text-underline-offset': '0.2em',
+		color: 'var(--colors-blue-700)',
+	},
+	'a:hover': {
+		'text-decoration': 'underline',
 	},
 	h1: {
 		'font-size': '2rem',
@@ -88,11 +92,6 @@ const markdownTypographyExtend = {
 		'margin-left': 'auto',
 		'margin-right': 'auto',
 	},
-	'img#img-header': {
-		height: 'auto',
-		width: '100%',
-		display: 'block',
-	},
 	'li:not(:last-child)': {
 		'margin-bottom': '0.5em',
 	},
@@ -119,47 +118,6 @@ const markdownTypographyExtend = {
 		'font-weight': '600',
 		color: 'var(--un-prose-headings)',
 		'user-select': 'none',
-	},
-	'#guide-w11': {
-		padding: '1.5em',
-		width: '50%',
-		margin: '0 auto',
-		display: 'flex',
-		gap: '1em',
-		'flex-direction': 'column',
-	},
-	'#guide-w11 > h2': {
-		'margin-top': '0',
-		'margin-bottom': '0',
-	},
-	'#guide-w11 p': {
-		'text-align': 'justify',
-	},
-	'#guide-w11 ul': {
-		padding: '0',
-		display: 'flex',
-		'align-items': 'center',
-		'justify-content': 'center',
-		gap: '2rem',
-	},
-	'#guide-w11 ul, #guide-w11 ul li': {
-		'list-style': 'none',
-		margin: '0',
-	},
-	'#guide-w11 ul a': {
-		cursor: 'pointer',
-		color: '#fff',
-		'background-color': '#1c7ed6',
-		padding: '0.625rem 1.25rem',
-		'border-radius': '0.25rem',
-		'white-space': 'nowrap',
-		'text-decoration': 'none',
-		'text-align': 'center',
-		transition: 'background-color 0.2s ease',
-	},
-	'#guide-w11 ul a:hover': {
-		'text-decoration': 'none',
-		'background-color': '#1864ab',
 	},
 };
 
@@ -205,20 +163,8 @@ export default defineConfig({
 		{
 			layer: 'typography',
 			getCSS: () => `
-@media (max-width: 1100px) {
-	.prose #guide-w11 {
-		float: unset;
-		width: 100%;
-	}
-	.prose #guide-w11 > * {
-		max-width: 100%;
-		width: 500px;
-		margin-left: auto !important;
-		margin-right: auto !important;
-	}
-	.prose #guide-w11 ul {
-		flex-wrap: wrap;
-	}
+.dark .prose a {
+	color: var(--colors-blue-400);
 }
 `,
 		},
