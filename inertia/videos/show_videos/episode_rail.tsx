@@ -1,4 +1,4 @@
-import { Data } from '@generated/data';
+import type { Data } from '@generated/data';
 
 import { EpisodeRailItem } from '~/videos/show_videos/episode_rail_item';
 import { resolveEpisodeRailItemProgress } from '~/videos/show_videos/episode_rail_progress';
@@ -32,11 +32,7 @@ export function EpisodeRail({
 				</span>
 			</div>
 			<div
-				role="progressbar"
-				aria-label="Progression dans la série"
-				aria-valuenow={position}
-				aria-valuemin={0}
-				aria-valuemax={total}
+				aria-hidden="true"
 				className="mt-2 h-1 w-full rounded-full bg-gray-200 dark:bg-gray-700"
 			>
 				<div
